@@ -1,0 +1,14 @@
+# OS/files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*~
+.vscode/
+
+# Build/output
+__pycache__/
+node_modules/
+dist/
+build/
