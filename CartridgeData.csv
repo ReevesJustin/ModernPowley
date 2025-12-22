@@ -1,0 +1,11 @@
+id,cartridge,groove_dia,case_vol,case_length,cartridge_oal,barrel_length,eff_case_vol,bullet_manu,bullet_mass,bullet_length,propellant_manu,propellant_name,bulk_density,propellant_Qex,propellant_mass,load_ratio,eff_barrel_length,muzzle_vel,est_pmax,est_muzzle_pressure
+1,.25 Creedmoor,0.257,51.95,1.92,2.8,24,45.28,Berger,135,1.416,Alliant,RL16,920,3800,42,100.6,21.2,2797,56093,12286
+2,.223 Remington,0.224,30.8,1.755,2.3,20,25.77,Sierra TMK,77,1.068,Vihtavuori,N135,886,3550,22.5,98.3,17.7,2766,58630,9424
+3,6mm GT,0.243,45.1,1.719,2.59,28,40.61,Berger LRHT,109,1.276,Hodgdon,H4350,930,3900,37,97.8,25.41,2999,57753,10226
+4,.300 Blackout,0.308,24.4,1.356,2.1,16,20.76,Speer TNT,125,0.935,Vihtavuori,N110,806,3950,17,101.4,13.9,2115,43924,4446
+5,.308 Winchester,0.308,56.15,2.005,2.8,20,48.4,Sierra MatchKing,175,1.245,IMR,IMR4064,871,3790,42,99.4,17.2,2562,60086,10440
+6,6.5 Creedmoor,0.264,52.45,1.915,2.85,18,46.68,Hornady ELDM,140,1.381,Alliant,RL16,920,3860,42,99.4,15.15,2618,60294,16547
+7,6.5 Creedmoor,0.264,52.48,1.915,2.825,24,46.44,Hornady ELDM,140,1.375,Vihtavuori,N555,904,3750,42.3,100.6,21.175,2661,51950,11591
+8,.260 AI,0.264,56.7,2.01,2.94,28,48.95,Berger LRHT,153.5,1.514,Vihtavuori,N160,920,3650,44,97.4,25.06,2722,55483,9868
+9,300 Norma Mag,0.308,105.1,2.483,3.55,32,95.59,Berger Hybrid OTM,230,1.61,Vihtavuori,N570,930,4000,88,98.8,28.45,3061,59442,13776
+10,6mm GT,0.243,44.8,1.746,2.57,28,38.72,Sierra DTAC,115,1.335,Hodgdon,H4350,931,3900,36.2,98,25.43,2918,58844,9698
