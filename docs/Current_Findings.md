@@ -12,6 +12,8 @@ Gaps exist only at the extreme fast end (> Benchmark) and extreme slow end (< N5
 * 9 empirical optimal loads (high load density ≥ 97%, complete burnout, modern precision/ELR cartridges).
 * 22 GRT-derived propellant models providing Ba, a0 (dynamic vivacity coefficient), z1/z2, bulk density, Qex, and k.
 
+![Propellant Mass Histogram](plots/propellant_mass_hist.png)
+
 ### Key Calculations
 
 Effective vivacity
@@ -24,6 +26,10 @@ Plot coordinates
 * X-axis: Relative Capacity
 * Y-axis: Approximate Powley SD scale (bullet weight in grains)
 
+![Expansion Ratios](plots/expansion_ratios.png)
+
+![Velocity vs Barrel Length](plots/velocity_vs_barrel.png)
+
 ## Results
 
 ### Charge Weight Prediction
@@ -31,8 +37,12 @@ The previously derived equation
 `charge_mass ≈ 0.71 × (eff_case_vol)1.02 × (eff_barrel_length)0.06`
 continues to predict actual charges within ±1.3 grains across the full range (17–88 gr), including the large-volume 300 Norma Magnum.
 
+![Predicted vs Actual Charges](plots/predicted_vs_actual.png)
+
 ### Propellant Selection Accuracy
 When original loads are plotted on an RC vs. SD graph and overlaid with Ba_eff-ranked bands:
+
+![RC vs SD Plot](plots/rc_sd_ba_eff.png)
 
 * All 8 precision/ELR loads (excluding .300 Blackout outlier) cluster in the medium-slow band (Ba_eff 0.55–0.70).
 * Actual propellants used (RL16, N555, IMR4064, N135, estimated N160, N570) fall centrally within their respective bands.
