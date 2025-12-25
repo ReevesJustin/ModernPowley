@@ -16,6 +16,7 @@ The project includes several Python scripts in the `scripts/` directory for data
 - `analysis.py`: Performs statistical analysis on the datasets.
 - `calculate_metrics.py`: Calculates derived metrics like efficiency proxy and mass ratio.
 - `create_db.py`: Creates a SQLite database from CartridgeData.csv.
+- `propellant_selector.py`: Interactive CLI tool for propellant selection based on user inputs, with dynamic data loading, ranking, and optional summary output.
 
 Run a script with: `python scripts/script_name.py`
 

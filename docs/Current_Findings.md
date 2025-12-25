@@ -42,7 +42,9 @@ continues to predict actual charges within ±1.3 grains across the full range (1
 ### Propellant Selection Accuracy
 When original loads are plotted on an RC vs. SD graph and overlaid with Ba_eff-ranked bands:
 
-![RC vs SD Plot](https://github.com/ReevesJustin/ModernPowley/blob/main/plots/rc_sd_ba_eff.png)
+![RC vs SD Plot](https://github.com/ReevesJustin/ModernPowley/blob/main/plots/rc_sd_modern.png)
+
+![RC vs Bullet Weight Plot](https://github.com/ReevesJustin/ModernPowley/blob/main/plots/rc_bulletweight_modern.png)
 
 * All 8 precision/ELR loads (excluding .300 Blackout outlier) cluster in the medium-slow band (Ba_eff 0.55–0.70).
 * Actual propellants used (RL16, N555, IMR4064, N135, estimated N160, N570) fall centrally within their respective bands.
