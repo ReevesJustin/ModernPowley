@@ -21,8 +21,10 @@ The scripts need specific data to run calculations. Here's what's required:
 2. **Prepare Propellant Data**: If not already present, create or obtain `data/propellant_params.csv` with propellant details. Each row represents a propellant type.
 
 3. **Run Parsing Scripts First**: Before main calculations, parse the GRT files:
-   - Run `python scripts/parse_grt_cartridge.py` to extract cartridge data into CSV.
-   - Run `python scripts/parse_grt_prop.py` to extract propellant data.
+   - Run `python scripts/parse_grt_cartridge.py` to extract cartridge data into CSV.  
+     Example CLI command: `python scripts/parse_grt_cartridge.py`
+   - Run `python scripts/parse_grt_prop.py` to extract propellant data.  
+     Example CLI command: `python scripts/parse_grt_prop.py`
 
    These generate `data/cartridge_data_from_grt.csv` and update propellant parameters.
 
@@ -30,19 +32,25 @@ Ensure all data files are in the `data/` directory before running other scripts.
 
 ## Interpreting Outputs: What Each Script Produces and How to Understand It
 
-The scripts perform calculations and save results as CSV files in `data/`. Each output helps evaluate propellants. Here's a breakdown:
+The scripts perform calculations and save results as CSV files in `data/`. Each output helps evaluate propellants. Here's a breakdown with example CLI commands:
 
-- **calculate_metrics.py**: Computes basic metrics like expansion ratio (a measure of how much space the bullet has to move in the barrel, affecting pressure and velocity) and propellant mass. Output: `data/calculated_metrics.csv`. Look for high expansion ratios for efficient burns.
+- **calculate_metrics.py**: Computes basic metrics like expansion ratio (a measure of how much space the bullet has to move in the barrel, affecting pressure and velocity) and propellant mass. Output: `data/calculated_metrics.csv`. Look for high expansion ratios for efficient burns.  
+  Example CLI command: `python scripts/calculate_metrics.py`
 
-- **compute_ba_eff.py**: Calculates ballistic efficiency (how effectively the propellant converts chemical energy into bullet kinetic energy). Output: `data/calculated_metrics.csv` (added columns). Higher efficiency means better performance.
+- **compute_ba_eff.py**: Calculates ballistic efficiency (how effectively the propellant converts chemical energy into bullet kinetic energy). Output: `data/calculated_metrics.csv` (added columns). Higher efficiency means better performance.  
+  Example CLI command: `python scripts/compute_ba_eff.py`
 
-- **compute_predictions.py**: Predicts velocities and pressures based on models. Output: `data/Predictions.csv`. Compare predicted vs. actual values to validate.
+- **compute_predictions.py**: Predicts velocities and pressures based on models. Output: `data/Predictions.csv`. Compare predicted vs. actual values to validate.  
+  Example CLI command: `python scripts/compute_predictions.py`
 
-- **propellant_selector.py**: Recommends propellants based on criteria like desired velocity. Output: Console printouts or CSV with selections. Choose propellants that match your load goals.
+- **propellant_selector.py**: Recommends propellants based on criteria like desired velocity. Output: Console printouts or CSV with selections. Choose propellants that match your load goals.  
+  Example CLI command: `python scripts/propellant_selector.py` (runs interactively)
 
-- **create_db.py**: Builds a database of cartridge and propellant data. Output: Local database file. Use this for quick lookups.
+- **create_db.py**: Builds a database of cartridge and propellant data. Output: Local database file. Use this for quick lookups.  
+  Example CLI command: `python scripts/create_db.py`
 
-- **analysis.py**: Performs overall analysis, combining metrics. Output: Various CSVs like `data/ExpansionRatio.csv`. Review for trends in performance.
+- **analysis.py**: Performs overall analysis, combining metrics. Output: Various CSVs like `data/ExpansionRatio.csv`. Review for trends in performance.  
+  Example CLI command: `python scripts/analysis.py`
 
 To understand outputs:
 - Open CSV files in Excel or a text editor.
@@ -51,17 +59,20 @@ To understand outputs:
 
 ## Creating Plots: How to Generate and Read Visualizations
 
-Plots visualize data for easier interpretation. They are saved in `plots/` as PNG files.
+Plots visualize data for easier interpretation. They are saved in `plots/` as PNG files. Run the scripts below to generate them.
 
 ### Generating Plots
 
 Run these scripts to create visualizations:
 
-- `python scripts/plot_data.py`: Generates general plots like predicted vs. actual velocities, expansion ratios, and propellant mass histograms.
+- `python scripts/plot_data.py`: Generates general plots like predicted vs. actual velocities, expansion ratios, and propellant mass histograms.  
+  Example CLI command: `python scripts/plot_data.py`
 
-- `python scripts/plot_rc_bulletweight.py`: Plots recoil vs. bullet weight.
+- `python scripts/plot_rc_bulletweight.py`: Plots recoil vs. bullet weight.  
+  Example CLI command: `python scripts/plot_rc_bulletweight.py`
 
-- `python scripts/plot_rc_sd.py`: Plots recoil vs. sectional density (bullet weight relative to caliber).
+- `python scripts/plot_rc_sd.py`: Plots recoil vs. sectional density (bullet weight relative to caliber).  
+  Example CLI command: `python scripts/plot_rc_sd.py`
 
 These use data from CSVs, so run calculation scripts first.
 
