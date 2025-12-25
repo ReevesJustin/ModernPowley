@@ -4,7 +4,7 @@
 
 The Powley Computer for Handloaders is a semi-empirical slide-rule tool developed in the early 1960s to help handloaders estimate safe and efficient charges using IMR powders in modern bottleneck rifle cartridges. It targeted conservative peak pressures around 44,000 CUP (approximately 50,000–52,000 PSI) and assumed high load densities with near-instantaneous powder burn followed by approximate adiabatic expansion (Q≈0, per ΔU=Q-W; gas expands as P V^γ=const, ideal gas law; no friction or heat losses).
 
-![Powley Computer](image/classiccardboard_3.jpg)
+![Powley Computer](https://github.com/ReevesJustin/ModernPowley/blob/main/image/classiccardboard_3.jpg)
 
 *Image credit: Shooting Sports USA* The tool comprises two parts: the Load Computer (for charge weight, powder selection, and velocity prediction) and the Pressure Computer (for estimating peak pressure from velocity or vice versa).
 
