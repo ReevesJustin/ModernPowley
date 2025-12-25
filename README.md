@@ -10,12 +10,17 @@ Building on Homer Powley's 1960s slide-rule tool, it updates for modern temperat
 
 The project includes several Python scripts in the `scripts/` directory for data processing and analysis. Ensure you have Python 3 and required libraries (pandas, numpy, matplotlib) installed.
 
+- `parse_grt_cartridge.py`: Parses GRT .grtload XML files to extract cartridge data into `data/cartridge_data_from_grt.csv`.
 - `parse_grt_prop.py`: Parses GRT .grtload XML files to extract propellant parameters into `data/propellant_params.csv`.
+- `compute_ba_eff.py`: Computes ballistic efficiency (Ba_eff) for propellants and updates `data/propellant_params.csv`.
 - `compute_predictions.py`: Computes predicted charge masses from `data/CartridgeData.csv` and outputs to `data/Predictions.csv` using the empirical formula.
-- `plot_data.py`: Generates various plots and analysis from the data, saving to `plots/`.
-- `analysis.py`: Performs statistical analysis on the datasets.
 - `calculate_metrics.py`: Calculates derived metrics like efficiency proxy and mass ratio.
+- `calculate_charge.py`: Calculates expansion ratios and predicted charges.
+- `analysis.py`: Performs statistical analysis on the datasets.
 - `create_db.py`: Creates a SQLite database from CartridgeData.csv.
+- `plot_data.py`: Generates various plots and analysis from the data, saving to `plots/`.
+- `plot_rc_bulletweight.py`: Plots relative capacity vs. bullet weight with Ba_eff bands.
+- `plot_rc_sd.py`: Plots relative capacity vs. sectional density with Ba_eff bands.
 - `propellant_selector.py`: Interactive CLI tool for propellant selection based on user inputs, with dynamic data loading, ranking, and optional summary output.
 
 Run a script with: `python scripts/script_name.py`
@@ -23,9 +28,12 @@ Run a script with: `python scripts/script_name.py`
 ### Data
 
 - `data/CartridgeData.csv`: Main cartridge data.
+- `data/cartridge_data_from_grt.csv`: Parsed cartridge data from GRT files.
 - `data/Predictions.csv`: Predicted vs actual charges.
 - `data/ExpansionRatio.csv`: Expansion ratios.
 - `data/propellant_params.csv`: Extracted propellant parameters.
+- `data/derived_metrics.csv`: Derived metrics like efficiency proxy.
+- `data/calculated_metrics.csv`: Calculated metrics and charges.
 
 ## Documentation
 

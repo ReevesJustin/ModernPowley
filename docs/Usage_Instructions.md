@@ -78,16 +78,26 @@ These use data from CSVs, so run calculation scripts first.
 
 ### Reading the Plots
 
-- **predicted_vs_actual.png**: Scatter plot of predicted vs. actual muzzle velocities. Points close to the diagonal line indicate accurate predictions.
+- **predicted_vs_actual.png**: Scatter plot of predicted vs. actual muzzle velocities. Points close to the diagonal line indicate accurate predictions.  
+  ![Predicted vs Actual Charges](plots/predicted_vs_actual.png)
 
-- **expansion_ratios.png**: Bar chart of expansion ratios by propellant. Higher bars mean more efficient gas expansion.
+- **expansion_ratios.png**: Bar chart of expansion ratios by propellant. Higher bars mean more efficient gas expansion.  
+  ![Expansion Ratios](plots/expansion_ratios.png)
 
-- **propellant_mass_hist.png**: Histogram of propellant masses. Shows distribution for load consistency.
+- **propellant_mass_hist.png**: Histogram of propellant masses. Shows distribution for load consistency.  
+  ![Propellant Mass Histogram](plots/propellant_mass_hist.png)
 
-- **velocity_vs_barrel.png**: Velocity changes with barrel length. Helps optimize barrel design.
+- **velocity_vs_barrel.png**: Velocity changes with barrel length. Helps optimize barrel design.  
+  ![Velocity vs Barrel Length](plots/velocity_vs_barrel.png)
 
-- **ba_eff_vs_sd_banded.png**: Ballistic efficiency vs. sectional density, banded by groups. Look for high-efficiency clusters.
+- **ba_eff_vs_sd_banded.png**: Ballistic efficiency vs. sectional density, banded by groups. Look for high-efficiency clusters.  
+  ![BA Eff vs SD Banded](plots/ba_eff_vs_sd_banded.png)
 
-- **rc_sd_ba_eff.png**, **rc_sd_banded.png**: Recoil vs. sectional density/efficiency. Lower recoil for comfortable shooting.
+- **rc_sd_ba_eff.png**, **rc_sd_banded.png**: Recoil vs. sectional density/efficiency. Lower recoil for comfortable shooting.  
+  ![RC SD BA Eff](plots/rc_sd_ba_eff.png)  
+  ![RC SD Banded](plots/rc_sd_banded.png)
+
+- **rc_bulletweight.png**: Recoil vs. bullet weight plot.  
+  ![RC Bullet Weight](plots/rc_bulletweight.png)
 
 Interpret: Use plots to identify trends, like which propellants maximize velocity with minimal pressure. Consult ballistics guides for deeper insights.

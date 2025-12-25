@@ -19,34 +19,6 @@ def main():
         # Process propellant data
         propellant_df['pname'] = propellant_df['pname'].str.replace('%20', ' ')
         propellant_dict = propellant_df.set_index('pname')['Ba_eff'].to_dict()
-        # Add additional from known data
-        additional_prop = {
-            'RL16': 0.651,
-            'N135': 0.65,
-            'H4350': 0.45,
-            'N110': 0.75,
-            'IMR4064': 0.62,
-            'N555': 0.586,
-            'N160': 0.55,
-            'N570': 0.475,
-            'Benchmark': 0.688,
-            'N140': 0.658,
-            'Ramshot TAC': 0.635,
-            'IMR3031': 0.621,
-            'AA2495': 0.605,
-            'Varget': 0.599,
-            'N150': 0.586,
-            'H4895': 0.581,
-            'N540': 0.578,
-            'IMR4350': 0.557,
-            'Reloder TS15.5': 0.531,
-            'H4831': 0.440,
-            'Reloder22': 0.413,
-            'H1000': 0.371,
-            'Retumbo': 0.346,
-            'N565': 0.321
-        }
-        propellant_dict.update(additional_prop)
 
         print("Propellant Selection Tool")
         print("Enter cartridge details:")
@@ -66,7 +38,7 @@ def main():
 
         # Calculate RC, SD
         bore_area = np.pi * (groove_dia/2)**2
-        bore_cap_per_inch = bore_area * 252.3
+        bore_cap_per_inch = bore_area * 253
         RC = eff_case_vol / bore_cap_per_inch
         SD = bullet_mass
 
@@ -75,7 +47,7 @@ def main():
         print(f"Sectional Density (SD): {SD}")
 
         # Find closest cartridge
-        cartridge_df['RC_calc'] = cartridge_df['eff_case_vol'] / (np.pi * (cartridge_df['groove_dia']/2)**2 * 252.3)
+        cartridge_df['RC_calc'] = cartridge_df['eff_case_vol'] / (np.pi * (cartridge_df['groove_dia']/2)**2 * 253)
         cartridge_df['SD_calc'] = cartridge_df['bullet_mass']
         distances = np.sqrt((cartridge_df['RC_calc'] - RC)**2 + (cartridge_df['SD_calc'] - SD)**2)
         closest_idx = distances.idxmin()

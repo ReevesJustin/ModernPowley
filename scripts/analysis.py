@@ -2,10 +2,13 @@ import pandas as pd
 import numpy as np
 import os
 
+# Get script directory for robust path handling
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
 # Load CSVs
-cartridge_df = pd.read_csv('../data/CartridgeData.csv')
-expansion_df = pd.read_csv('../data/ExpansionRatio.csv')
-predictions_df = pd.read_csv('../data/Predictions.csv')
+cartridge_df = pd.read_csv(os.path.join(script_dir, '..', 'data', 'CartridgeData.csv'))
+expansion_df = pd.read_csv(os.path.join(script_dir, '..', 'data', 'ExpansionRatio.csv'))
+predictions_df = pd.read_csv(os.path.join(script_dir, '..', 'data', 'Predictions.csv'))
 
 print("=== Statistical Insights ===")
 print("CartridgeData numerical columns summary:")
