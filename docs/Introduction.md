@@ -24,11 +24,11 @@ This mirrors Powley's empirical finding that pressure scales roughly with veloci
 
 ## Assumptions
 
-- **High load density:** ≥95–100% (often compressed) for positioning consistency and low ES/SD (higher than Powley's ~86% baseline).
+- **High load density:** ≥95–100% for positioning consistency and low ES/SD (higher than Powley's ~86% baseline).
 - **Burn fraction z2 ≥ 0.95:** Inferred from moderate muzzle pressure (~10,000–16,000 PSI) and flat velocity curves (extending Powley's instantaneous burn ideal; physics alternative: model via Vieille's law r = Ba P^n with Arrhenius for temperature dependence).
 - **Target peak pressure:** ~55,000–60,000 PSI (Piezo; modern strong actions—higher than Powley's conservative ~44,000 CUP target).
 - **Propellants:** Modern commercial options (Vihtavuori N1xx/N5xx, Alliant RL-series, Hodgdon H/V series, IMR Enduron/4000-series, etc.); accounts for in-cartridge behavior diverging from closed-bomb tests.
-- **Bullet alignment:** Preference for heavy-for-caliber VLD/hybrid designs (long bearing surface, ~4.8–5.7 calibers).
+- **Bullet alignment:** Projectiles are assumed to have co-axial in-bore alignment with the leade using heavy-for-caliber tangent or hybrid ogive designs (e.g., long bearing surface ~4.8–5.7 calibers) to ensure stable flight and minimize yaw, per gyroscopic stability principles (spin rate >10× precession for stability).
 - **Standard primers and jacketed bullets:** no major friction/heat losses (calibrated empirically, as in Powley).
 
 ---
@@ -68,21 +68,6 @@ This mirrors Powley's empirical finding that pressure scales roughly with veloci
 
 This framework enables rapid screening of wildcats or custom loads, highlighting when commercial propellants fall short—guiding further refinement in tools like GRT/QuickLOAD. It preserves the Powley Computer's elegant simplicity while addressing its limitations (e.g., higher densities, broader powders, true PSI targets).
 
-## Glossary
-
-- **Ba_eff (Effective Vivacity):** Adjusted burn rate index accounting for dynamic behavior during powder combustion; higher values indicate faster effective burn.
-- **ER (Expansion Ratio):** Ratio of total gas volume (case + barrel) to initial case volume; determines required propellant speed.
-- **RC (Relative Capacity):** Proxy for expansion characteristics; higher RC favors slower propellants.
-- **SD (Sectional Density):** Bullet weight in pounds divided by caliber squared; affects quickness calculations.
-- **MR (Mass Ratio):** Propellant mass divided by bullet mass; influences pressure and velocity.
-- **gr H₂O:** Units for volume in grains of water equivalent.
-
-## Usage Guide
-
-1. Gather cartridge inputs: case capacity, bullet weight, barrel length, etc.
-2. Calculate derived parameters (eff_case_vol, ER, RC).
-3. Predict charge mass using the empirical equation.
-4. Select propellant via Ba_eff bands on RC vs. SD plot.
-5. Validate with tools like QuickLOAD; adjust for mismatches.
+While laboratory-grade piezo pressure transducers and universal receivers are beyond reach for the average person, this framework provides safer, accessible methods to find optimized handloads through empirical correlations and physics-based approximations.
 
 **Future expansion:** Database of characterized propellants (bulk density, Qex, in-cartridge burn proxy) for automated matching.
