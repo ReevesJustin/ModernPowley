@@ -47,8 +47,8 @@ The scripts perform calculations and save results as CSV files in `data/`. Each 
 - **compute_predictions.py**: Predicts velocities and pressures based on models. Output: `data/Predictions.csv`. Compare predicted vs. actual values to validate.  
   Example CLI command: `python scripts/compute_predictions.py`
 
-- **propellant_selector.py**: Recommends propellants based on criteria like desired velocity. Output: Console printouts or CSV with selections. Choose propellants that match your load goals.  
-  Example CLI command: `python scripts/propellant_selector.py` (runs interactively)
+- **propellant_selector.py**: Interactive tool that takes cartridge specifications (groove diameter, case volume, barrel length, bullet mass), calculates predicted charge, Relative Capacity (RC), Sectional Density (SD), finds the closest known cartridge in the database, displays a text-based RC vs SD chart showing your load's position, computes the ideal Ba_eff value, and ranks the top propellant suggestions by closeness to ideal Ba_eff. Optional: save a summary to a file. Output: Console printouts including all calculations, the chart, and rankings. Use this to get tailored propellant recommendations.  
+  Example CLI command: `python scripts/propellant_selector.py --save-summary` (runs interactively or with command-line arguments)
 
 - **create_db.py**: Builds a database of cartridge and propellant data. Output: Local database file. Use this for quick lookups.  
   Example CLI command: `python scripts/create_db.py`
