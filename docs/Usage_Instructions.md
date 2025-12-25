@@ -8,7 +8,7 @@ This document provides step-by-step instructions for using the scripts in this p
 
 The scripts need specific data to run calculations. Here's what's required:
 
-- **Cartridge Data**: Information about the cartridge, such as length, diameter, and bullet weight. This comes from GRT (Gun Recoil and Trajectory) files, which are simulation outputs from ballistics software. Place these files in the `data/GRT_Files/` directory. Example: `65CM_140ELDM_RL16_44F.grtload`.
+ - **Cartridge Data**: Information about the cartridge, such as length, diameter, and bullet weight. This comes from GRT (Gordon's Reloading Tool) files, which are simulation outputs from ballistics software. Place these files in the `data/GRT_Files/` directory. Example: `65CM_140ELDM_RL16_44F.grtload`.
 
 - **Propellant Parameters**: Details about different propellants, like burn rate and energy content. This is stored in `data/propellant_params.csv`. Ensure this file exists with columns for propellant name, burn rate, etc.
 
@@ -16,7 +16,7 @@ The scripts need specific data to run calculations. Here's what's required:
 
 ### How to Provide the Data
 
-1. **Download or Generate GRT Files**: Use ballistics software like QuickLOAD or GRT to simulate your cartridge. Export the load data to a `.grtload` file and place it in `data/GRT_Files/`.
+ 1. **Download or Generate GRT Files**: Use ballistics software like QuickLOAD or GRT (Gordon's Reloading Tool) to simulate your cartridge. Export the load data to a `.grtload` file and place it in `data/GRT_Files/`.
 
 2. **Prepare Propellant Data**: If not already present, create or obtain `data/propellant_params.csv` with propellant details. Each row represents a propellant type.
 

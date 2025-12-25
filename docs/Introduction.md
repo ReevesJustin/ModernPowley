@@ -66,7 +66,7 @@ This mirrors Powley's empirical finding that pressure scales roughly with veloci
 
 ---
 
-This framework enables rapid screening of wildcats or custom loads, highlighting when commercial propellants fall short—guiding further refinement in tools like GRT/QuickLOAD. It preserves the Powley Computer's elegant simplicity while addressing its limitations (e.g., higher densities, broader powders, true PSI targets).
+This framework enables rapid screening of wildcats or custom loads, highlighting when commercial propellants fall short—guiding further refinement in tools like GRT (Gordon's Reloading Tool)/QuickLOAD. It preserves the Powley Computer's elegant simplicity while addressing its limitations (e.g., higher densities, broader powders, true PSI targets).
 
 While laboratory-grade piezo pressure transducers and universal receivers are beyond reach for the average person, this framework provides safer, accessible methods to find optimized handloads through empirical correlations and physics-based approximations.
 

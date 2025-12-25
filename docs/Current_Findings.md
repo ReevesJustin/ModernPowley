@@ -1,7 +1,7 @@
 # Current Findings: Validation and Refinement of the Algebraic Propellant Selection Framework
 
 ## Executive Summary
-Analysis of 9 verified high-performance loads combined with 22 calibrated GRT propellant models confirms that a modernized Powley-style algebraic framework can reliably predict both optimal charge weight and propellant selection.
+Analysis of 9 verified high-performance loads combined with 22 calibrated GRT (Gordon's Reloading Tool) propellant models confirms that a modernized Powley-style algebraic framework can reliably predict both optimal charge weight and propellant selection.
 Charge mass prediction remains highly accurate (R² > 0.998, typical error < 1 grain) using the near-linear relationship with effective case volume and weak dependence on effective barrel length (per empirical fit, but rooted in expansion ratio ER = 1 + (bore vol / case vol) and P-V conservation via ideal gas law PV=nRT). Note: Effective barrel length is critical. Barrel length is partially responsible for selecting a propellant that is consumed before projectile muzzle exit. This is a built-in bias, in that the existing example loads were selected to fit this criterion.
 Incorporation of dynamic burn rate index Ba_eff (averaged over φ=0 to z2, accounting for progressive burning a0>1; physics: r=Ba P^n, with Arrhenius k=A e^{-Ea/RT} for kinetics) from calibrated geometric burn models significantly improves propellant ranking over raw Ba or closed-bomb charts.
 The original optimal propellants in the dataset fall within tight, well-populated bands on a Relative Capacity vs. Sectional Density plot, with multiple commercial alternatives available for most loads.
@@ -10,7 +10,7 @@ Gaps exist only at the extreme fast end (> Benchmark) and extreme slow end (< N5
 
 ### Data Sources
 * 9 empirical optimal loads (high load density ≥ 97%, complete burnout, modern precision/ELR cartridges).
-* 22 GRT-derived propellant models providing Ba, a0 (dynamic vivacity coefficient), z1/z2, bulk density, Qex, and k.
+* 22 GRT (Gordon's Reloading Tool)-derived propellant models providing Ba, a0 (dynamic vivacity coefficient), z1/z2, bulk density, Qex, and k.
 
 ![Propellant Mass Histogram](https://github.com/ReevesJustin/ModernPowley/blob/main/plots/propellant_mass_hist.png)
 

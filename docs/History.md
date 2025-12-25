@@ -47,7 +47,7 @@ Inputs include caliber, barrel length, case capacity (gr H₂O), bullet weight, 
 
 - Accuracy: Good within a few percent for medium-pressure bottleneck cases near 44,000 CUP, but underestimates high pressures (>50,000 CUP, especially low SD/large cases) and overestimates low pressures. Optimistic velocities; powder order can invert in real firings (e.g., IMR 4064 often outperforms 4895/4320 despite ranking).
 - Scope: Designed for IMR single-base powders; unreliable for extremes, non-standard components, or low-density loads.
-- Modern Comparison: QuickLOAD/GRT are more advanced but can miss pressures by ~10,000 PSI. Powley's simplicity made it portable; digital versions obsolete the slide rule but retain its empirical nature.
+- Modern Comparison: QuickLOAD/GRT (Gordon's Reloading Tool) are more advanced but can miss pressures by ~10,000 PSI. Powley's simplicity made it portable; digital versions obsolete the slide rule but retain its empirical nature.
 
 Quote from Homer Powley: "First contemplation of the problems of Interior Ballistics gives the impression that they should yield rather easily to relatively simple methods of analysis. Further study shows the subject to be of almost unbelievable complexity."
 

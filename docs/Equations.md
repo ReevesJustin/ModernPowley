@@ -1,4 +1,4 @@
-# Dynamic Vivacity Modfication to GRT/QuickLOAD Models
+# Dynamic Vivacity Modification to GRT (Gordon's Reloading Tool)/QuickLOAD Models
 In Gordon's Reloading Tool (and QuickLOAD), the base vivacity Ba is modified by a loading-density dependent function to produce dynamic vivacity Ba(φ):
 
 ### Ba(φ) = Ba × (a0 + (1 – a0) × φ)
@@ -70,7 +70,7 @@ Ba_eff = Ba × [a0 + (1 – a0) × (z2 / 2)]<br>
 Description: Averages dynamic Ba(φ) over useful burn; physics: burn rate r=Ba P^n, with Arrhenius for Ea activation energy in combustion kinetics.<br>
 Variables:
 Ba_eff: Effective/dynamic vivacity (higher = effectively faster burn)<br>
-Ba: Base vivacity coefficient from GRT model<br>
+Ba: Base vivacity coefficient from GRT (Gordon's Reloading Tool) model<br>
 a0: Dynamic vivacity coefficient (Ba(phi) coefficient 0; >1 for progressive powders)<br>
 z2: Upper burn-up limit (fraction of grain consumed at effective end of burn)
 
