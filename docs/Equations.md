@@ -1,32 +1,31 @@
-# Dynamic Vivacity Modification to GRT/QuickLOAD Models
-
+# Dynamic Vivacity Modfication to GRT/QuickLOAD Models
 In Gordon's Reloading Tool (and QuickLOAD), the base vivacity Ba is modified by a loading-density dependent function to produce dynamic vivacity Ba(φ):
 
-$$ Ba(\phi) = Ba \times (a_0 + (1 - a_0) \times \phi) $$
+### Ba(φ) = Ba × (a0 + (1 – a0) × φ)
 
-where:<br>
-$ \phi $ = burned fraction (0 at start, 1 at complete burn).<br>
-$ a_0 $ = the coefficient from the .propellant file ("Ba(phi) coefficient 0").
+where:<br> 
+φ = burned fraction (0 at start, 1 at complete burn).<br>
+a0 = the coefficient from the .propellant file ("Ba(phi) coefficient 0").
 
 For most modern powders:<br>
-$ a_0 > 1 $ → dynamic vivacity increases as burn progresses (progressive burning).<br>
-For $ a_0 < 1 $, it decreases (degressive).
+a0 >1 → dynamic vivacity increases as burn progresses (progressive burning).<br>
+For a0 <1, it decreases (degressive).
 
 This captures deterrent coating effects and grain geometry changes, making burn rate, pressure, and density dependent in a simple way.
 
 The full rate equation is:
-$$ \frac{d\phi}{dt} = Ba(\phi) \times p^{\alpha} $$ (where $ \alpha \approx 1 $ for most, built into Ba units)
+dφ/dt = Ba(φ) × p^(α)  (where α ≈ 1 for most, built into Ba units)
 But for selection purposes, we use average or effective vivacity over the useful burn (φ = 0 to z2).
 Integrating Dynamic Vivacity into the Framework
 To create a more accurate "effective burn rate index" for Powley-style selection:<br>
 
-$$ Ba_{eff} = Ba \times \left[ a_0 + (1 - a_0) \times \phi \right]_{\text{average over } \phi = 0 \text{ to } z_2} $$
+Effective Ba_eff = Ba × average(a0 + (1 – a0) × φ) over φ = 0 to z2
 
 Approximate average factor (linear assumption over burn):
 
-$$ \text{avg\_factor} = a_0 + (1 - a_0) \times \left( \frac{z_2}{2} \right) $$
+avg_factor = a0 + (1 – a0) × (z2 / 2)
 
-$$ Ba_{eff} = Ba \times \text{avg\_factor} $$
+Ba_eff = Ba × avg_factor
 
 Higher Ba_eff = effectively faster overall burn (accounts for progressive 
 powders appearing "slower" early but accelerating).
@@ -36,7 +35,7 @@ powders appearing "slower" early but accelerating).
 Below is a comprehensive list of all equations and formulas referenced throughout the development of the Algebraic Propellant Selection Framework, including descriptions and variable definitions.
 
 **Charge Mass Prediction Equation:**<br>
-$$ \text{charge\_mass} \approx 0.71 \times (\text{eff\_case\_vol})^{1.02} \times (\text{eff\_barrel\_length})^{0.06} $$
+charge_mass ≈ 0.71 × (eff_case_vol)^1.02 × (eff_barrel_length)^0.06 <br>
 
 Description: Empirical power-law fit to predict optimal propellant charge weight in grains for high-density, balanced loads.
     Variables:
@@ -48,7 +47,7 @@ eff_case_vol: Effective case volume (grains of H₂O, after bullet seating displ
 eff_barrel_length: Effective barrel length (inches; barrel length minus cartridge OAL)
 
 **Expansion Ratio (ER or X) Equation:**<br>
-$$ ER = 1 + \frac{\text{bore volume}}{\text{effective case volume}} $$
+ER = 1 + (bore volume / effective case volume)<br>
 
 Description: Classic internal ballistics expansion ratio; determines required propellant burn rate (higher ER needs faster powder).
 
@@ -57,7 +56,7 @@ bore volume: π × (groove_dia/2)2 × eff_barrel_length × ~253 (gr H₂O)
 effective case volume: Same as eff_case_vol above
 
 **Relative Capacity (RC) Equation:**<br>
-$$ RC \approx \frac{\text{effective case volume}}{\text{bore capacity per inch in gr H}_2\text{O}} $$
+RC ≈ effective case volume / (bore capacity per inch in gr H₂O)<br>
 Description: Powley-style proxy for expansion characteristics; higher RC favors faster propellants. Equivalent to "inches of bore filled by case capacity."
 
 Variables:
@@ -65,8 +64,8 @@ effective case volume: As above
 bore capacity per inch: Cross-sectional bore area converted to gr H₂O per linear inch (~253 × π × (groove_dia/2)2)
 
 **Effective Burn Rate Index (Ba_eff) Equation:**<br>
-$$ Ba_{eff} = Ba \times [a_0 + (1 - a_0) \times (\frac{z_2}{2})] $$
-Description: Averages dynamic Ba(φ) over useful burn; physics: burn rate $ r = Ba \times P^n $, with Arrhenius for Ea activation energy in combustion kinetics.<br>
+Ba_eff = Ba × [a0 + (1 – a0) × (z2 / 2)]<br>
+Description: Averages dynamic Ba(φ) over useful burn; physics: burn rate r=Ba P^n, with Arrhenius for Ea activation energy in combustion kinetics.<br>
 Variables:
 Ba_eff: Effective/dynamic vivacity (higher = effectively faster burn)<br>
 Ba: Base vivacity coefficient from GRT model<br>
@@ -74,7 +73,7 @@ a0: Dynamic vivacity coefficient (Ba(phi) coefficient 0; >1 for progressive powd
 z2: Upper burn-up limit (fraction of grain consumed at effective end of burn)
 
 **Powley Quickness Approximation (Historical Reference) Equation:** <br>
-$$ \text{Quickness} \approx 19 \text{ to } 20 + \frac{12}{SD \times MR^{0.5-0.6}} $$<br>Description: Empirical proxy for burn speed; quickness ≈ 19 to 20 + 12 / (SD × MR^{0.5–0.6}); not directly physics-based; alternative: use ER or Ba_eff for ranking, per $ P V^{\gamma} = \text{const} $ in gas dynamics.
+Quickness ≈ 19 to 20 + 12 / (SD × MR^{0.5–0.6})<br>Description: Empirical proxy for burn speed; quickness ≈ 19 to 20 + 12 / (SD × MR^{0.5–0.6}); not directly physics-based; alternative: use ER or Ba_eff for ranking, per P V^γ=const in gas dynamics.
 
 Provided for context/comparison.
 
