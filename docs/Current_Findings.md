@@ -78,7 +78,7 @@ The framework successfully replicates and extends the original Powley Computer�
 
 * The algebraic framework shows promise for further evaluation and is ready for practical use in screening conventional and mild wildcat cartridges.
 * Propellant selection should use effective vivacity (Ba_eff) rather than base Ba for ranking.
-* For new designs falling outside Ba_eff 0.45–0.90, expect either under-burn (too slow) or excessive muzzle blast/pressure (too fast).
+* For new designs falling outside Ba_eff 0.45–0.90, expect either early burnout (lower velocities than possible, burn too fast) or excessive muzzle blast/pressure (burn too slow).
 
 ## Next Steps
 
