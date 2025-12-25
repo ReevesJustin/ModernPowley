@@ -64,9 +64,9 @@ Variables:
 effective case volume: As above
 bore capacity per inch: Cross-sectional bore area converted to gr H₂O per linear inch (~253 × π × (groove_dia/2)2)
 
-**Effective Vivacity (Ba_eff) Equation:**<br>
+**Effective Burn Rate Index (Ba_eff) Equation:**<br>
 Ba_eff = Ba × [a0 + (1 – a0) × (z2 / 2)]<br>
-Description: Adjusts base vivacity for dynamic (loading-density dependent) behavior over the useful burn fraction; accounts for progressive/degressive burning.<br>
+Description: Averages dynamic Ba(φ) over useful burn; physics: burn rate r=Ba P^n, with Arrhenius for Ea activation energy in combustion kinetics.<br>
 Variables:
 Ba_eff: Effective/dynamic vivacity (higher = effectively faster burn)<br>
 Ba: Base vivacity coefficient from GRT model<br>
@@ -74,7 +74,7 @@ a0: Dynamic vivacity coefficient (Ba(phi) coefficient 0; >1 for progressive powd
 z2: Upper burn-up limit (fraction of grain consumed at effective end of burn)
 
 **Powley Quickness Approximation (Historical Reference) Equation:** <br>
-Quickness ≈ 19 – 20 + 12 / (SD × MR0.5–0.6)Description: Original/semi-empirical formula used in Powley Computer to select powder "quickness" (higher = faster). 
+Quickness ≈ 19 to 20 + 12 / (SD × MR^{0.5–0.6})<br>Description: Empirical proxy for burn speed; quickness ≈ 19 to 20 + 12 / (SD × MR^{0.5–0.6}); not directly physics-based; alternative: use ER or Ba_eff for ranking, per P V^γ=const in gas dynamics.
 
 Provided for context/comparison.
 

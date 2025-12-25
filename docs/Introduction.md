@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The objective of this framework is to develop a simple algebraic transfer function for propellant selection and load optimization in rifle cartridges. By leveraging empirical data from verified high-performance loads, the system predicts suitable commercially available propellants, optimal charge weights, and key performance metrics. It flags mismatches where no commercial powder achieves the desired criteria: load density ≥95%, near-complete burnout at or before muzzle exit (low muzzle pressure, minimal blast), and safe peak pressures (~55,000–60,000 PSI in modern actions).
+The objective of this framework is to develop a simple algebraic transfer function for propellant selection and load optimization in rifle cartridges. By leveraging empirical data from verified high-performance loads, the system predicts suitable commercially available propellants, optimal charge weights, and key performance metrics. It flags mismatches where no commercial powder achieves the desired criteria: load density ≥95%, propellant consumption fraction φ ≈ 1 at muzzle (complete burnout minimizes residual gas, per mass conservation and Arrhenius kinetics for burn rate r ∝ e^{-Ea/RT}), and safe peak pressures (~55,000–60,000 PSI in modern actions).
 
 For a detailed historical account of the Powley Computer, see [docs/History.md](docs/History.md).
 
@@ -25,7 +25,7 @@ This mirrors Powley's empirical finding that pressure scales roughly with veloci
 ## Assumptions
 
 - **High load density:** ≥95–100% (often compressed) for positioning consistency and low ES/SD (higher than Powley's ~86% baseline).
-- **Near-complete burnout:** Inferred from moderate muzzle pressure (~10,000–16,000 PSI) and flat velocity curves (extending Powley's instantaneous burn ideal).
+- **Burn fraction z2 ≥ 0.95:** Inferred from moderate muzzle pressure (~10,000–16,000 PSI) and flat velocity curves (extending Powley's instantaneous burn ideal; physics alternative: model via Vieille's law r = Ba P^n with Arrhenius for temperature dependence).
 - **Target peak pressure:** ~55,000–60,000 PSI (Piezo; modern strong actions—higher than Powley's conservative ~44,000 CUP target).
 - **Propellants:** Modern commercial options (Vihtavuori N1xx/N5xx, Alliant RL-series, Hodgdon H/V series, IMR Enduron/4000-series, etc.); accounts for in-cartridge behavior diverging from closed-bomb tests.
 - **Bullet alignment:** Preference for heavy-for-caliber VLD/hybrid designs (long bearing surface, ~4.8–5.7 calibers).
@@ -61,7 +61,7 @@ This mirrors Powley's empirical finding that pressure scales roughly with veloci
 - Flag if `predicted charge / (eff_case_vol × bulk_density_g/cm³)` < 0.95 (poor fill) or ER mismatch suggests post-muzzle burnout (higher muzzle blast).
 
 ### Velocity and Pressure Estimates (Refinements to Powley/Miller):
-- **Velocity:** Approximate adiabatic expansion, tuned empirically (e.g., `V ≈ sqrt(2 × energy_from_charge × efficiency / bullet_mass)`; ~3000–4000 ft-lb chemical energy per gr powder, varying by type—Powley used similar thermodynamic conversion).
+- **Velocity:** Approximate adiabatic expansion (Q≈0 in fast cycles, per first law ΔU = Q - W; expands as P V^γ = const for ideal gas, γ=C_p/C_v), tuned empirically (e.g., `V ≈ sqrt(2 × energy_from_charge × efficiency / bullet_mass)`; ~3000–4000 ft-lb chemical energy per gr powder, varying by type—Powley used similar thermodynamic conversion).
 - **Pressure:** Empirical proxy from charge, velocity², and ER (`pressure ∝ velocity²`; use Miller's peak/average ratio with mass/expansion adjustments; convert CUP to modern PSI equivalents, accounting for ~10–20% underestimate in crusher method).
 
 ---

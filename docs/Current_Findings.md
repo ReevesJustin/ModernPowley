@@ -2,8 +2,8 @@
 
 ## Executive Summary
 Analysis of 9 verified high-performance loads combined with 22 calibrated GRT propellant models confirms that a modernized Powley-style algebraic framework can reliably predict both optimal charge weight and propellant selection.
-Charge mass prediction remains highly accurate (R² > 0.998, typical error < 1 grain) using the near-linear relationship with effective case volume and weak dependence on effective barrel length. Note: Effective barrel length is critical. Barrel length is partially responsible for selecting a propellant that is consumed before projectile muzzle exit. This is a built-in bias, in that the existing example loads were selected to fit this criterion.
-Incorporation of dynamic vivacity (Ba_eff) from calibrated geometric burn models significantly improves propellant ranking over raw Ba or closed-bomb charts.
+Charge mass prediction remains highly accurate (R² > 0.998, typical error < 1 grain) using the near-linear relationship with effective case volume and weak dependence on effective barrel length (per empirical fit, but rooted in expansion ratio ER = 1 + (bore vol / case vol) and P-V conservation via ideal gas law PV=nRT). Note: Effective barrel length is critical. Barrel length is partially responsible for selecting a propellant that is consumed before projectile muzzle exit. This is a built-in bias, in that the existing example loads were selected to fit this criterion.
+Incorporation of dynamic burn rate index Ba_eff (averaged over φ=0 to z2, accounting for progressive burning a0>1; physics: r=Ba P^n, with Arrhenius k=A e^{-Ea/RT} for kinetics) from calibrated geometric burn models significantly improves propellant ranking over raw Ba or closed-bomb charts.
 The original optimal propellants in the dataset fall within tight, well-populated bands on a Relative Capacity vs. Sectional Density plot, with multiple commercial alternatives available for most loads.
 Gaps exist only at the extreme fast end (> Benchmark) and extreme slow end (< N570), correctly flagging cases where no ideal commercial powder exists. Note: Faster propellant models are available (e.g., VV N130, N133), but they have not yet been incorporated.
 ## Methods
@@ -38,7 +38,7 @@ When original loads are plotted on an RC vs. SD graph and overlaid with Ba_eff-r
 * Actual propellants used (RL16, N555, IMR4064, N135, estimated N160, N570) fall centrally within their respective bands.
 * Multiple alternatives exist within ±0.08 Ba_eff for every load, indicating robust commercial coverage in the precision cartridge space.
 * The H4350 load in the 6mm GT remains the only clear mismatch (too slow for its RC), consistent with field observations requiring ≥25" barrel for optimality. Note: H4350 is seldom an optimal propellant for many applications due to its bulk density and dynamic vivacity. It is often too dense to allow optimal case fill under maximum peak pressure.
-* Note on .300 Blackout: This load is an outlier because the propellant (N110), case volume, and projectile mass prevented a higher charge weight. While the end result is optimal with complete burnout before the muzzle, it suggests the use of a heavier projectile would be prudent to improve ballistic efficiency, as maximum peak pressure is below the target window.
+* Note on .300 Blackout: This load is an outlier because the propellant (N110), case volume, and projectile mass prevented a higher charge weight. While the end result is optimal with burn fraction φ ≈ 1 (complete consumption per mass/energy conservation) before the muzzle, it suggests the use of a heavier projectile would be prudent to improve ballistic efficiency, as maximum peak pressure is below the target window.
 
 ### Dynamic Vivacity Impact
 Progressive-burning modern powders (high a0) show significant effective acceleration:
@@ -50,7 +50,7 @@ Progressive-burning modern powders (high a0) show significant effective accelera
 This adjustment correctly places extruded powders with apparent low temperature sensitivity in their observed performance sweet spot despite lower nominal Ba. Note: There is no such thing as truly temperature-stable extruded powders—only propellants that exhibit apparent low temperature sensitivity under specific internal ballistic and external temperature conditions.
 
 ## Discussion
-The framework successfully replicates and extends the original Powley Computer’s functionality:
+The framework successfully replicates and extends the original Powley Computer’s functionality (empiricism flagged; alternative: direct Ba from Vieille's law):
 
 * Charge prediction exceeds Powley accuracy due to modern high-density calibration.
 * Propellant selection via Ba_eff bands is more reliable than closed-bomb rankings or raw vivacity.
