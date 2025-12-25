@@ -48,14 +48,14 @@ This mirrors Powley's empirical finding that pressure scales roughly with veloci
 ### Derived Parameters (Building on Powley Expansions):
 - **Seating depth (in):** `Cartridge OAL – (case length + reasonable neck engagement)`
 - **Effective case volume/net capacity (gr H₂O):** Full case capacity minus volume displaced by seated bullet portion (approximate using bullet geometry; boat-tails add less displacement—similar to Powley's "volume under bullet").
-- **Effective barrel length (in):** `Barrel length – (cartridge OAL – ~0.5–1 in chamber/throat allowance)` (refines Powley's nominal barrel use).
+- **Effective barrel length (in):** `Barrel length – (cartridge OAL)` (Assuming negligible throat length, but refines Powley's nominal barrel use).
 - **Bore volume (gr H₂O):** `π × (groove_dia/2)² × effective_barrel_length × ~253` (conversion factor in³ to gr H₂O).
 - **Expansion ratio (ER or X):** `1 + (bore volume / effective case volume)`. Optimal range ~5.5–9.0 for precision loads (higher ER needs faster powder; lower needs slower—core to Powley's quickness selection).
 - **Sectional density (SD):** `Bullet weight (lb) / (diameter²) = bullet_mass_gr / (7000 × diameter²)`; used in Powley/Davis quickness equations.
 - **Powder-to-bullet mass ratio (k or MR):** `Propellant_mass / bullet_mass` (~0.28–0.38 in optima; central to Miller's pressure ratio refinements).
 
 ### Propellant Selection and Charge Prediction (Modern Updates to Powley):
-- **Initial charge estimate:** `Effective volume × density factor` (e.g., ~0.86–1.0+ for modern compressed loads vs. Powley's 0.86 baseline).
+- **Initial charge estimate:** `Effective volume × density factor` (~0.86–1.0 covers the bulk density range for most modern propellants vs. Powley's 0.86 IMR baseline).
 - **Use empirical fit:** `Charge mass (gr) ≈ constant × (eff_case_vol)^{~1.0–1.02} × (eff_barrel_length)^{~0.06}` (near-linear, extending Powley's volume-based scaling).
 - **Quickness/burn rate matching:** Via expansion ratio and SD/MR (e.g., adapted Davis/Miller: `quickness ≈ 19–20 + 12 / (SD × MR^{0.5–0.6})`); map to modern powders).
 - Flag if `predicted charge / (eff_case_vol × bulk_density_g/cm³)` < 0.95 (poor fill) or ER mismatch suggests post-muzzle burnout (higher muzzle blast).
