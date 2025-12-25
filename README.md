@@ -25,6 +25,12 @@ The project includes several Python scripts in the `scripts/` directory for data
 
 Run a script with: `python scripts/script_name.py`
 
+### Jupyter Notebook
+
+The project includes a Jupyter notebook (`demo.ipynb`) for an interactive demo combining data loading, calculations, and plotting.
+
+Run with: `jupyter notebook jupyter/demo.ipynb`
+
 ### Data
 
 - `data/CartridgeData.csv`: Main cartridge data.

@@ -30,6 +30,10 @@ The scripts need specific data to run calculations. Here's what's required:
 
 Ensure all data files are in the `data/` directory before running other scripts.
 
+## Interactive Demo
+
+Use the Jupyter notebook (`jupyter/demo.ipynb`) for step-by-step execution of data processing, metrics calculation, and visualization in an integrated environment.
+
 ## Interpreting Outputs: What Each Script Produces and How to Understand It
 
 The scripts perform calculations and save results as CSV files in `data/`. Each output helps evaluate propellants. Here's a breakdown with example CLI commands:

@@ -23,3 +23,9 @@
 - Source calibrated GRT parameters (Ba, a0, z1/z2, bulk density, Qex, k) for additional propellants like RL26, N560, H4831SC, and ultra-slow models.
 - Refine Relative Capacity (RC) for Bullet Seating Displacement: Current RC ≈ eff_case_vol / bore_capacity_per_inch is a good approximation, but bullet seating depth can reduce usable case volume by 5–15% in short-throat or heavy-bullet configurations (e.g., .308 Win with 190gr SMKs, or 6.5 Creedmoor with 140–147gr ELD-Ms). Also, it would be nice to keep track of statistics for fired case volume to seated projectile effective volume for possible calculation shortcuts.
 - Prototype a Simple Tool: Short-term: Google Sheets or Excel version mirroring core calculations (inputs: cartridge dims, bullet weight/SD, barrel length → outputs: predicted charge, RC, recommended Ba_eff band). Longer-term: Streamlit or Gradio app for interactive selector.
+
+## Future-Proofing
+- Bundle into a simple package or add argparse to scripts for CLI flags.
+
+## Completed Future-Proofing
+- Created Jupyter notebook (`jupyter/demo.ipynb`) in jupyter/ directory for interactive demo combining all scripts/plots.
