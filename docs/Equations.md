@@ -1,9 +1,10 @@
-# Dynamic Vivacity Modfication to GRT/QuickLOAD Models
+# Dynamic Vivacity Modification to GRT/QuickLOAD Models
+
 In Gordon's Reloading Tool (and QuickLOAD), the base vivacity Ba is modified by a loading-density dependent function to produce dynamic vivacity Ba(φ):
 
 ### Ba(φ) = Ba × (a0 + (1 – a0) × φ)
 
-where:<br> 
+where:<br>
 φ = burned fraction (0 at start, 1 at complete burn).<br>
 a0 = the coefficient from the .propellant file ("Ba(phi) coefficient 0").
 
@@ -27,10 +28,11 @@ avg_factor = a0 + (1 – a0) × (z2 / 2)
 
 Ba_eff = Ba × avg_factor
 
-Higher Ba_eff = effectively faster overall burn (accounts for progressive 
+Higher Ba_eff = effectively faster overall burn (accounts for progressive
 powders appearing "slower" early but accelerating).
 
 ## List of Equations and Formulas Discussed in the Framework
+
 Below is a comprehensive list of all equations and formulas referenced throughout the development of the Algebraic Propellant Selection Framework, including descriptions and variable definitions.
 
 **Charge Mass Prediction Equation:**<br>
@@ -96,7 +98,7 @@ All other references (e.g., velocity from adiabatic expansion, pressure ∝ velo
 
 Updated Table (Sorted by Vivacity Ba Descending: Faster → Slower)
 | Propellant          | Ba (Vivacity) | Bulk Density (kg/m³) | Qex (kJ/kg) | k      | z1     | z2     | Notes / Calibrated For     |
-|-------------------|---------------|----------------------|-------------|--------|--------|--------|----------------------------|
+|--------------------|---------------|----------------------|-------------|--------|--------|--------|----------------------------|
 | Benchmark         | 0.688267      | 952                  | 3770        | 1.2398 | 0.4015 | 0.7984 | General/short-medium       |
 | N140              | 0.657737      | 930                  | 3600        | 1.2306 | 0.4278 | 0.7901 | .223 75 ELDM               |
 | Ramshot TAC       | 0.635197      | 1054                 | 3750        | 1.2602 | 0.4725 | 0.7564 | .223 data                  |

@@ -6,15 +6,6 @@ Charge mass prediction remains highly accurate (R² > 0.998, typical error < 1 g
 Incorporation of dynamic vivacity (Ba_eff) from calibrated geometric burn models significantly improves propellant ranking over raw Ba or closed-bomb charts.
 The original optimal propellants in the dataset fall within tight, well-populated bands on a Relative Capacity vs. Sectional Density plot, with multiple commercial alternatives available for most loads.
 Gaps exist only at the extreme fast end (> Benchmark) and extreme slow end (< N570), correctly flagging cases where no ideal commercial powder exists. Note: Faster propellant models are available (e.g., VV N130, N133), but they have not yet been incorporated.
-# Current Findings: Validation and Refinement of the Algebraic Propellant Selection Framework
-
-## Executive Summary
-Analysis of 9 verified high-performance loads combined with 22 calibrated GRT propellant models confirms that a modernized Powley-style algebraic framework can reliably predict both optimal charge weight and propellant selection.
-Charge mass prediction remains highly accurate (R² > 0.998, typical error < 1 grain) using the near-linear relationship with effective case volume and weak dependence on effective barrel length. Note: Effective barrel length is critical. Barrel length is partially responsible for selecting a propellant that is consumed before projectile muzzle exit. This is a built-in bias, in that the existing example loads were selected to fit this criterion.
-Incorporation of dynamic vivacity (Ba_eff) from calibrated geometric burn models significantly improves propellant ranking over raw Ba or closed-bomb charts.
-The original optimal propellants in the dataset fall within tight, well-populated bands on a Relative Capacity vs. Sectional Density plot, with multiple commercial alternatives available for most loads.
-Gaps exist only at the extreme fast end (> Benchmark) and extreme slow end (< N570), correctly flagging cases where no ideal commercial powder exists. Note: Faster propellant models are available (e.g., VV N130, N133), but they have not yet been incorporated.
-
 ## Methods
 
 ### Data Sources
@@ -47,7 +38,7 @@ When original loads are plotted on an RC vs. SD graph and overlaid with Ba_eff-r
 * Actual propellants used (RL16, N555, IMR4064, N135, estimated N160, N570) fall centrally within their respective bands.
 * Multiple alternatives exist within ±0.08 Ba_eff for every load, indicating robust commercial coverage in the precision cartridge space.
 * The H4350 load in the 6mm GT remains the only clear mismatch (too slow for its RC), consistent with field observations requiring ≥25" barrel for optimality. Note: H4350 is seldom an optimal propellant for many applications due to its bulk density and dynamic vivacity. It is often too dense to allow optimal case fill under maximum peak pressure.
-* Note on .300 Blackout: This load is an outlier because N110 completely fills the case and achieves burnout before the muzzle. However, maximum peak pressure is below the target window. This indicates the cartridge combination could benefit from a heavier projectile to improve ballistic efficiency.
+* Note on .300 Blackout: This load is an outlier because the propellant (N110), case volume, and projectile mass prevented a higher charge weight. While the end result is optimal with complete burnout before the muzzle, it suggests the use of a heavier projectile would be prudent to improve ballistic efficiency, as maximum peak pressure is below the target window.
 
 ### Dynamic Vivacity Impact
 Progressive-burning modern powders (high a0) show significant effective acceleration:
