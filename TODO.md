@@ -13,6 +13,10 @@
 
 - Plotting scripts: Enhanced RC vs. SD and new RC vs. bullet weight with Ba_eff bands, modern aesthetics, dynamic data loading. [Implemented as plot_rc_sd.py and plot_rc_bulletweight.py]
 
+## Completed Implementation Steps:
+
+- Create comprehensive usage instructions document with clear steps for inputs, outputs, and plotting.
+
 ## Remaining Implementation Steps:
 - Charge predictor function.
 - Update propellant_selector.py: Load propellant data dynamically from CSV, smarter ranking by Ba_eff closeness, lookup closest cartridge, visual output tie-in, polish/error handling.
