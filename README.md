@@ -32,4 +32,4 @@ Run a script with: `python scripts/script_name.py`
 - [Equations](docs/Equations.md) - Detailed formulas, propellant table, and derivations
 - [Current Findings](docs/Current_Findings.md) - Validation results and discussion
 - [History](docs/History.md) - Account of the Powley Computer development
-- [Dynamic Vivacity](docs/Dynamic_Vivacity.md) - Explanation of burn rate adjustments
+- [Equations](docs/Equations.md) - Formulas, propellant table, and burn rate adjustments
