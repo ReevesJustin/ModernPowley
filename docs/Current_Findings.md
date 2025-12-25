@@ -1,7 +1,7 @@
 # Current Findings: Validation and Refinement of the Algebraic Propellant Selection Framework
 
 ## Executive Summary
-Analysis of 9 verified high-performance loads combined with 22 calibrated GRT (Gordon's Reloading Tool) propellant models confirms that a modernized Powley-style algebraic framework can reliably predict both optimal charge weight and propellant selection.
+Analysis of 9 verified high-performance loads combined with 22 calibrated GRT (Gordon's Reloading Tool) propellant models confirms that a modernized Powley-style algebraic framework can reliably predict both optimal charge weight windows and propellant selection.
 Charge mass prediction remains highly accurate (R² > 0.998, typical error < 1 grain) using the near-linear relationship with effective case volume and weak dependence on effective barrel length (per empirical fit, but rooted in expansion ratio ER = 1 + (bore vol / case vol) and P-V conservation via ideal gas law PV=nRT). Note: Effective barrel length is critical. Barrel length is partially responsible for selecting a propellant that is consumed before projectile muzzle exit. This is a built-in bias, in that the existing example loads were selected to fit this criterion.
 Incorporation of dynamic burn rate index Ba_eff (averaged over φ=0 to z2, accounting for progressive burning a0>1; physics: r=Ba P^n, with Arrhenius k=A e^{-Ea/RT} for kinetics) from calibrated geometric burn models significantly improves propellant ranking over raw Ba or closed-bomb charts.
 The original optimal propellants in the dataset fall within tight, well-populated bands on a Relative Capacity vs. Sectional Density plot, with multiple commercial alternatives available for most loads.
@@ -78,7 +78,7 @@ The framework successfully replicates and extends the original Powley Computer�
 
 * The algebraic framework shows promise for further evaluation and is ready for practical use in screening conventional and mild wildcat cartridges.
 * Propellant selection should use effective vivacity (Ba_eff) rather than base Ba for ranking.
-* For new designs falling outside Ba_eff 0.45–0.90, expect either under-burn (too slow) or excessive muzzle blast/pressure (too fast).
+* For new designs falling outside Ba_eff 0.45–0.90, expect either early burnout (lower velocities than possible, burn too fast) or excessive muzzle blast/pressure (burn too slow).
 
 ## Next Steps
 
