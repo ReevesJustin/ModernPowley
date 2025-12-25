@@ -1,3 +1,8 @@
+"""
+Analysis script for cartridge data.
+Loads data from CSVs, performs statistical analysis, validation, and suggests visualizations.
+"""
+
 import pandas as pd
 import numpy as np
 import os
@@ -11,17 +16,21 @@ expansion_df = pd.read_csv(os.path.join(script_dir, '..', 'data', 'ExpansionRati
 predictions_df = pd.read_csv(os.path.join(script_dir, '..', 'data', 'Predictions.csv'))
 
 print("=== Statistical Insights ===")
+# Summarize numerical columns in cartridge data
 print("CartridgeData numerical columns summary:")
 numerical_cols = cartridge_df.select_dtypes(include=[np.number]).columns
 print(cartridge_df[numerical_cols].describe())
 
+# Summarize expansion ratios
 print("\nExpansionRatio summary:")
 print(expansion_df.describe())
 
+# Summarize predictions
 print("\nPredictions summary:")
 print(predictions_df.describe())
 
 print("\n=== Validation of Predictions ===")
+# Calculate prediction errors
 mae = np.mean(np.abs(predictions_df['Difference (gr)']))
 rmse = np.sqrt(np.mean(predictions_df['Difference (gr)']**2))
 print(f"Mean Absolute Error (MAE): {mae:.2f} gr")
@@ -29,11 +38,11 @@ print(f"Root Mean Square Error (RMSE): {rmse:.2f} gr")
 print(f"Average Difference: {predictions_df['Difference (gr)'].mean():.2f} gr")
 
 print("\n=== Trends and Anomalies ===")
-# Trend: muzzle_vel vs barrel_length
+# Analyze correlation between muzzle velocity and barrel length
 corr = cartridge_df['muzzle_vel'].corr(cartridge_df['barrel_length'])
 print(f"Correlation between muzzle velocity and barrel length: {corr:.2f}")
 
-# Anomalies: outliers in muzzle_vel
+# Detect outliers in muzzle velocity using IQR method
 q1 = cartridge_df['muzzle_vel'].quantile(0.25)
 q3 = cartridge_df['muzzle_vel'].quantile(0.75)
 iqr = q3 - q1

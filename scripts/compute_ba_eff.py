@@ -13,7 +13,7 @@ csv_path = os.path.join(data_dir, 'propellant_params.csv')
 # Load data
 df = pd.read_csv(csv_path)
 
-# Compute Ba_eff = Ba * (a0 + (1 - a0) * (z2 / 2))
+# Compute Ba_eff (effective vivacity): accounts for burn characteristics
 df['Ba_eff'] = df['Ba'] * (df['a0'] + (1 - df['a0']) * (df['z2'] / 2))
 
 # Save back

@@ -15,12 +15,12 @@ csv_path = os.path.join(data_dir, 'CartridgeData.csv')
 # Load data
 df = pd.read_csv(csv_path)
 
-# Compute ER
+# Compute Expansion Ratio (ER): ratio of bore volume to case volume
 df['bore_area'] = np.pi * (df['groove_dia']/2)**2
 bore_volume = df['bore_area'] * df['eff_barrel_length'] * 253  # approx gr H2O
 df['ER'] = 1 + bore_volume / df['eff_case_vol']
 
-# Predict charge_mass
+# Predict charge mass using empirical formula
 df['predicted_charge'] = 0.71 * (df['eff_case_vol'] ** 1.02) * (df['eff_barrel_length'] ** 0.06)
 
 # Print summary

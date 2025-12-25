@@ -1,0 +1,7 @@
+
+Propellant Selection Summary for .25 Creedmoor
+===========================================
+Cartridge specs: Groove dia 0.257", Case vol 45.28 gr H2O, Barrel 21.2", Bullet 135.0 gr
+Calculated: RC=3.45, SD=135.0, Predicted charge=41.36 gr
+Ideal Ba_eff: 0.677
+Top propellants: Reloder 16

@@ -71,13 +71,13 @@ plt.tight_layout()
 plt.savefig(os.path.join(plots_dir, 'predicted_vs_actual.png'))
 plt.close()
 
-# Calculate RC and SD
+# Calculate Relative Capacity (RC) and Sectional Density (SD)
 df['bore_area'] = np.pi * (df['groove_dia']/2)**2
 df['bore_cap_per_inch'] = df['bore_area'] * 252.3  # gr H2O/inch
 df['RC'] = df['eff_case_vol'] / df['bore_cap_per_inch']
 df['SD'] = df['bullet_mass']  # approximate Powley SD scale
 
-# Ba_eff dict based on calibrated models
+# Map propellants to Ba_eff values based on calibrated models
 ba_eff_dict = {
     'RL16': 0.651,
     'N135': 0.65,
@@ -107,7 +107,7 @@ plt.tight_layout()
 plt.savefig(os.path.join(plots_dir, 'rc_sd_ba_eff.png'))
 plt.close()
 
-# Calculate R² for charge predictions
+# Calculate R² for charge predictions to assess model fit
 pred_df = pd.read_csv(os.path.join(data_dir, 'Predictions.csv'))
 y_true = pred_df['Actual Charge (gr)']
 y_pred = pred_df['Predicted Charge (gr)']
@@ -116,7 +116,7 @@ ss_tot = np.sum((y_true - np.mean(y_true))**2)
 r2_charge = 1 - (ss_res / ss_tot)
 print(f"R² for charge predictions: {r2_charge:.4f}")
 
-# Band clustering
+# Group loads by Ba_eff bands for analysis
 slow = df[df['Ba_eff'] < 0.55]
 medium = df[(df['Ba_eff'] >= 0.55) & (df['Ba_eff'] <= 0.70)]
 fast = df[df['Ba_eff'] > 0.70]

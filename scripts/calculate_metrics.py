@@ -14,11 +14,11 @@ csv_path = os.path.join(data_dir, 'CartridgeData.csv')
 # Load data
 df = pd.read_csv(csv_path)
 
-# Calculate metrics
-# Efficiency proxy: velocity / pressure
+# Calculate derived metrics
+# Efficiency proxy: ratio of muzzle velocity to estimated max pressure
 df['efficiency_proxy'] = df['muzzle_vel'] / df['est_pmax']
 
-# Mass ratio
+# Mass ratio: propellant mass to bullet mass
 df['mass_ratio'] = df['propellant_mass'] / df['bullet_mass']
 
 # Expansion ratio (approximate from barrel_length, assuming groove_dia ~ bullet_dia)

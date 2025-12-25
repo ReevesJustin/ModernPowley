@@ -92,6 +92,8 @@ The RC vs. SD plot (`rc_sd_banded.png`) shows tight clustering of optimal loads 
 
 In contrast, the RC vs. Bullet Weight plot (`rc_bulletweight.png`) exhibits looser clustering, with broader spreads across weight ranges. This is useful for heavy-bullet intuition (e.g., identifying trends for 140–147gr ELD-Ms in 6.5 Creedmoor), but less reliable for fine-tuned selection compared to SD, which better captures quickness and burn dynamics.
 
+SD provides tighter propellant separation due to caliber normalization. By dividing bullet weight by the square of the caliber (SD = weight / caliber²), SD accounts for how different calibers affect ballistic efficiency and propellant requirements. For instance, a 130-grain bullet in 6.5mm (.264 caliber) has an SD of 0.248, while a similar weight in 7mm (.284 caliber) would have a lower SD of 0.207, indicating different performance envelopes despite similar masses. This normalization leads to more distinct Ba_eff bands and improved predictions across calibers, reducing overlaps that occur when using raw bullet weight alone.
+
 ![RC vs Bullet Weight](plots/rc_bulletweight.png)
 
 *RC vs. Bullet Weight: Looser clusters compared to SD, useful for heavy-bullet trends.*

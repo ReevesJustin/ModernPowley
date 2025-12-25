@@ -10,6 +10,7 @@ import os
 import argparse
 
 def main():
+    """Main function to run the propellant selection tool."""
     parser = argparse.ArgumentParser(description="Propellant Selection Tool")
     parser.add_argument('--cartridge', help='Cartridge name')
     parser.add_argument('--groove_dia', type=float, help='Groove diameter (inches)')
@@ -38,14 +39,14 @@ def main():
         barrel_length = args.barrel_length if args.barrel_length else float(input("Barrel length (in): "))
         bullet_mass = args.bullet_mass if args.bullet_mass else float(input("Bullet mass (gr): "))
 
-        # Assume eff_case_vol ≈ case_vol
+        # Assume effective case volume ≈ case volume
         eff_case_vol = case_vol
         eff_barrel_length = barrel_length - 2.5  # rough cartridge OAL approx
 
-        # Predict charge
+        # Predict charge using empirical formula
         predicted_charge = 0.71 * (eff_case_vol ** 1.02) * (eff_barrel_length ** 0.06)
 
-        # Calculate RC, SD
+        # Calculate Relative Capacity (RC) and Sectional Density (SD)
         bore_area = np.pi * (groove_dia/2)**2
         bore_cap_per_inch = bore_area * 253
         RC = eff_case_vol / bore_cap_per_inch
@@ -63,7 +64,7 @@ def main():
         closest_cartridge = cartridge_df.loc[closest_idx, 'cartridge']
         print(f"Closest cartridge: {closest_cartridge}")
 
-        # Text-based chart position (simple RC vs SD grid)
+        # Create text-based chart position for RC vs SD
         rc_min, rc_max = 0, 6
         sd_min, sd_max = 50, 200
         rc_scaled = int((RC - rc_min) / (rc_max - rc_min) * 20)
@@ -77,7 +78,7 @@ def main():
             print(f"{sd_max - i*15:3d} {' '.join(row)}")
         print("RC →  0 1 2 3 4 5 6")
 
-        # Ideal Ba_eff interpolation (rough linear fit from data)
+        # Calculate ideal Ba_eff based on RC (rough linear fit from data)
         ideal_ba_eff = max(0.45, min(0.9, -0.05 * RC + 0.85))
         print(f"Ideal Ba_eff: {ideal_ba_eff:.3f}")
 

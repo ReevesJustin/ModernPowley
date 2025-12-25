@@ -29,6 +29,8 @@ Run a script with: `python scripts/script_name.py`
 
 The project includes a Jupyter notebook (`demo.ipynb`) for an interactive demo combining data loading, calculations, and plotting.
 
+Interactive Demo: [Launch demo.ipynb](jupyter/demo.ipynb)
+
 Run with: `jupyter notebook jupyter/demo.ipynb`
 
 ### Data
