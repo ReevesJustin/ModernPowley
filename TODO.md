@@ -27,5 +27,10 @@
 ## Future-Proofing
 - Bundle into a simple package or add argparse to scripts for CLI flags.
 
+## Completed Enhancements
+- Enhanced propellant_selector.py: Added argparse for CLI flags with fallback to interactive prompts when no flags provided.
+- Embedded key plots in README.md and docs for visual appeal.
+- Added RC vs. SD vs. Bullet Weight comparison in Current_Findings.md.
+
 ## Completed Future-Proofing
 - Created Jupyter notebook (`jupyter/demo.ipynb`) in jupyter/ directory for interactive demo combining all scripts/plots.

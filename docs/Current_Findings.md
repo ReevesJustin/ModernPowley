@@ -86,4 +86,14 @@ The framework successfully replicates and extends the original Powley Computer�
 * Refine Relative Capacity calculation to explicitly account for bullet seating displacement. Currently, effective case capacity is entered as an input instead of calculated.
 * Develop simple spreadsheet implementation of the full selector (inputs → RC/SD point → recommended propellants + charge estimate).
 
+## Comparison of RC vs. SD vs. Bullet Weight Plots
+
+The RC vs. SD plot (`rc_sd_banded.png`) shows tight clustering of optimal loads within specific Ba_eff bands (medium-slow: 0.55–0.70), confirming the framework's effectiveness for propellant selection. This reinforces Powley's original choice of SD over raw bullet weight, as SD accounts for caliber and provides more precise groupings.
+
+In contrast, the RC vs. Bullet Weight plot (`rc_bulletweight.png`) exhibits looser clustering, with broader spreads across weight ranges. This is useful for heavy-bullet intuition (e.g., identifying trends for 140–147gr ELD-Ms in 6.5 Creedmoor), but less reliable for fine-tuned selection compared to SD, which better captures quickness and burn dynamics.
+
+![RC vs Bullet Weight](plots/rc_bulletweight.png)
+
+*RC vs. Bullet Weight: Looser clusters compared to SD, useful for heavy-bullet trends.*
+
 This modern empirical framework preserves the elegant simplicity of the original Powley Computer while delivering substantially higher accuracy for contemporary high-performance reloading.

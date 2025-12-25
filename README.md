@@ -41,6 +41,16 @@ Run with: `jupyter notebook jupyter/demo.ipynb`
 - `data/derived_metrics.csv`: Derived metrics like efficiency proxy.
 - `data/calculated_metrics.csv`: Calculated metrics and charges.
 
+## Key Visualizations
+
+![Predicted vs Actual Charges](plots/predicted_vs_actual.png)
+
+*Proof of accuracy: Predictions within ~1 grain of actual loads.*
+
+![RC vs SD with Ba_eff](plots/rc_sd_banded.png)
+
+*Relative Capacity (RC) vs. Sectional Density (SD) plot with Ba_eff bands for propellant selection.*
+
 ## Documentation
 
 - [Introduction](docs/Introduction.md) - Full overview, hypothesis, assumptions, and calculations

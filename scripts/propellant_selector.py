@@ -7,8 +7,18 @@ provides text-based chart position, includes error handling, and optional summar
 import pandas as pd
 import numpy as np
 import os
+import argparse
 
 def main():
+    parser = argparse.ArgumentParser(description="Propellant Selection Tool")
+    parser.add_argument('--cartridge', help='Cartridge name')
+    parser.add_argument('--groove_dia', type=float, help='Groove diameter (inches)')
+    parser.add_argument('--case_vol', type=float, help='Case volume (gr H2O)')
+    parser.add_argument('--barrel_length', type=float, help='Barrel length (inches)')
+    parser.add_argument('--bullet_mass', type=float, help='Bullet mass (grains)')
+    parser.add_argument('--save-summary', action='store_true', help='Save summary to file')
+    args = parser.parse_args()
+
     try:
         # Load data
         script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -21,13 +31,12 @@ def main():
         propellant_dict = propellant_df.set_index('pname')['Ba_eff'].to_dict()
 
         print("Propellant Selection Tool")
-        print("Enter cartridge details:")
 
-        cartridge = input("Cartridge name: ")
-        groove_dia = float(input("Groove diameter (in): "))
-        case_vol = float(input("Case volume (gr H2O): "))
-        barrel_length = float(input("Barrel length (in): "))
-        bullet_mass = float(input("Bullet mass (gr): "))
+        cartridge = args.cartridge if args.cartridge else input("Cartridge name: ")
+        groove_dia = args.groove_dia if args.groove_dia else float(input("Groove diameter (in): "))
+        case_vol = args.case_vol if args.case_vol else float(input("Case volume (gr H2O): "))
+        barrel_length = args.barrel_length if args.barrel_length else float(input("Barrel length (in): "))
+        bullet_mass = args.bullet_mass if args.bullet_mass else float(input("Bullet mass (gr): "))
 
         # Assume eff_case_vol ≈ case_vol
         eff_case_vol = case_vol
@@ -78,8 +87,7 @@ def main():
         print(f"Top suggested propellants: {', '.join(top_suggestions)}")
 
         # Optional summary file
-        save = input("Save summary to file? (y/n): ").lower().strip()
-        if save == 'y':
+        if args.save_summary:
             summary = f"Cartridge: {cartridge}\nGroove Dia: {groove_dia}\nCase Vol: {case_vol}\nBarrel Length: {barrel_length}\nBullet Mass: {bullet_mass}\nPredicted Charge: {predicted_charge:.2f}\nRC: {RC:.2f}\nSD: {SD}\nClosest Cartridge: {closest_cartridge}\nIdeal Ba_eff: {ideal_ba_eff:.3f}\nTop Propellants: {', '.join(top_suggestions)}\n"
             with open(os.path.join(data_dir, 'summary.txt'), 'w') as f:
                 f.write(summary)
