@@ -59,6 +59,8 @@ effective case volume: Same as eff_case_vol above
 RC ≈ effective case volume / (bore capacity per inch in gr H₂O)<br>
 Description: Powley-style proxy for expansion characteristics; higher RC favors faster propellants. Equivalent to "inches of bore filled by case capacity."
 
+Refinement for Bullet Seating Displacement: Current RC is a good approximation, but bullet seating depth can reduce usable case volume by 5–15% in short-throat or heavy-bullet configurations. To refine: adjusted_eff_case_vol = eff_case_vol - (bullet_seating_depth * case_cross_section_area). However, exact seating depth requires additional data. For better accuracy, track statistics on fired case volume vs. seated projectile effective volume.
+
 Variables:
 effective case volume: As above
 bore capacity per inch: Cross-sectional bore area converted to gr H₂O per linear inch (~253 × π × (groove_dia/2)2)
