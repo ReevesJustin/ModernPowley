@@ -15,11 +15,11 @@
 |---:|---|---|---|---|
 | 184-232 | SD, two bullet-length estimates, seating depth, cylindrical intrusion, net capacity, approximate bore area, relative capacity, travel, ER | gr, in, in2 | emulator_derived | Uses gross fired-case overflow capacity plus geometric subtraction, unlike the manual's requested seating-depth-specific water capacity input. |
 | 246-257 | `I=.86W`, `MR=I/G`, `Q=20+12/(SD*sqrt(MR))`; switch to `.80W` if `Q>145` | gr, ratio | emulator_derived | Code labels variables “per Davis”; `Q` is not recomputed after charge/MR change. |
-| 259-264 | `V=8000*sqrt(I*(1-ER^-0.25)/(G+I/3))` | ft/s | emulator_derived | Equation is not printed in the 1961 manual. |
+| 259-264 | `V=8000*sqrt(I*(1-ER^-0.25)/(G+I/3))` | ft/s | emulator_derived | Matches the expanded later Davis transcription; it is not printed in the 1961 manual. |
 | 266-283 | ordered powder branches | quickness index | emulator_derived | Exact nonoverlapping code boundaries; grouped outputs differ from a single slide position. |
-| 289-295 | Miller-labeled approximation of Davis F2 table | dimensionless | emulator_derived | Miller publication absent; accuracy comment is author assertion only. |
+| 289-295 | Miller-labeled approximation of Davis F2 table | dimensionless | emulator_derived | Davis Table 4 is now transcribed separately; Miller publication remains absent and the accuracy comment is author assertion only. |
 | 297-300 | rough CUP-to-claimed-PSI expression | CUP to claimed psi | emulator_derived | Scientific source absent; repository does not treat it as a general conversion. |
-| 302-340 | `K2`, Howell-labeled `134.7`, CUP, energy, efficiency | mixed | emulator_derived | Davis/Howell/Miller primary pages absent. |
+| 302-340 | `K2`, Howell-labeled `134.7`, CUP, energy, efficiency | mixed | emulator_derived | The Davis pressure chain is transcribed separately; Howell and Miller primary publications remain absent. |
 | 344-365 | inverse velocity for requested CUP with fixed 0.86 loading density | ft/s | emulator_derived | Emulator operation only; not a manual equation. |
 
 ## Powder Branches and Rounding

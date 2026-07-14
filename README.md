@@ -34,6 +34,13 @@ original velocity equation, and the original pressure equation remain
 source-incomplete. Those original operations fail
 with `MissingProvenanceError`; they are not guessed from later transcriptions.
 
+W. C. Davis Jr.'s later 1981 formulation is reconstructed separately in
+`later.davis`, including a bounded transcription of his Table 4 pressure factor.
+The Archive page images are access-restricted and are not stored locally, so
+the supplied Table 4 transcription remains medium confidence pending a retained
+visual scan. This does not change the unavailable status of original-Powley
+powder selection, velocity, or pressure operations.
+
 The following are quarantined and unvalidated:
 
 - `Ba_target = clamp(0.85 - 0.05*RC, 0.45, 0.90)`;

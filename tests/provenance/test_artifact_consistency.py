@@ -41,3 +41,12 @@ def test_local_primary_artifact_hashes_match_source_ledger():
     assert digest(Path("reference/online_emulator/kwk_powley_20240228.html")) == sources[
         "SRC-KWK-EMULATOR"
     ]["artifact_hash"].removeprefix("sha256:")
+    assert digest(Path("reference/davis_1981/davis_equation_transcription.md")) == sources[
+        "SRC-DAVIS-1981-TRANSCRIPTION"
+    ]["artifact_hash"].removeprefix("sha256:")
+    assert digest(Path("data/reference/davis_1981_table4.csv")) == sources[
+        "SRC-DAVIS-1981-TABLE4"
+    ]["artifact_hash"].removeprefix("sha256:")
+    assert digest(Path("reference/davis_1981/table4_correction_ledger.csv")) == sources[
+        "SRC-DAVIS-1981-TABLE4-CORRECTIONS"
+    ]["artifact_hash"].removeprefix("sha256:")

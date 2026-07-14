@@ -66,7 +66,7 @@ These are in-sample descriptive values, not validation.
 
 The repository does **not** yet contain an exact complete original-Powley
 calculator. Exact original powder-scale boundaries, velocity equation and
-pressure equation remain unavailable. Davis pages, Howell's 1997 source,
+pressure equation remain unavailable. Retained Davis page images, Howell's 1997 source,
 Miller's 1999 source, authoritative GRT parameter semantics, row-level load
 provenance, 21 cited powder artifacts, burnout evidence and the original
 regression fit procedure remain missing. Those paths fail or stay excluded; no

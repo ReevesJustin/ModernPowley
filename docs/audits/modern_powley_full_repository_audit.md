@@ -172,8 +172,8 @@ are the controlled categories requested in the audit brief.
 - **Severity/category:** P1 / historical attribution error
 - **File/symbol:** `docs/History.md:28-34`, `docs/Equations.md:77-80`
 - **Current behavior:** presents `20+12/(SD*sqrt(MR))` and `19+12/(SD*MR^0.6)` as interchangeable approximations.
-- **Why questionable/evidence:** accessible transcription attributes the first to Davis and reports the physical slide scale approximates the second; exact change author/date is unknown.
-- **Source status/units:** Davis book pages absent; original scale image not adequate for exact numeric reconstruction.
+- **Why questionable/evidence:** the later Davis primary-source transcription prints the first; a secondary web transcription reports the physical slide scale approximates the second; exact change author/date is unknown.
+- **Source status/units:** Davis formulation recovered as later primary publication; original scale image remains inadequate for exact numeric reconstruction.
 - **Downstream impact:** false original attribution.
 - **Correction/test/disposition:** Davis formula is isolated under `later.davis`; original lookup fails explicitly.
 
@@ -185,7 +185,7 @@ are the controlled categories requested in the audit brief.
 - **Why questionable/evidence:** transcription phrases adjacent ranges as inclusive (`81 to 91`, `91 to 110`), creating overlaps; it also prints `4427`, likely but not safely assumed to mean `4227`.
 - **Source status/units:** secondary transcription only; index dimension follows Davis convention.
 - **Downstream impact:** boundary powder classifications.
-- **Correction/test/disposition:** overlaps and raw typo retained in `later.davis`; Davis page image still needed.
+- **Correction/test/disposition:** overlaps and raw typo retained in `later.davis`; a complete primary Table 3 page image is still needed.
 
 ### MP-AUD-018 - Unit constants are inconsistent
 

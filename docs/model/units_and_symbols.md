@@ -24,3 +24,38 @@ was inspected; it does not mean the complete calculator operation is available.
 | Maximum Pressure | unresolved historical pressure | copper-crusher result described with `psi` wording | printed psi | unavailable | none | 4, 8 | medium | Do not convert to modern transducer PSI or generic CUP. |
 | Muzzle Pressure | unresolved original estimate | muzzle-pressure scale reading | psi | unavailable | none | 6 | medium | Only isolated readings are printed. |
 | bullet energy | `bullet_energy_ft_lbf` | projectile kinetic energy in examples | ft lb | ft lbf | none | 4-5 | high | Not needed for reconstructed original operations. |
+
+## Davis 1981 Symbols
+
+Davis symbols are later-publication terms and do not replace the original-manual
+dictionary above. Descriptive Python names avoid Davis's later reuse of `P` for
+both displacement and pressure.
+
+| Davis symbol | repository name | definition | Davis unit | confidence | note |
+|---|---|---|---|---|---|
+| `A` | `mass_ratio` | `I/G` | dimensionless | high | Davis orientation is explicit. |
+| `B` | `bullet_length_inches` | bullet length | in | high | later Davis geometry input |
+| `C` | `case_length_inches` | case length | in | high | later Davis geometry input |
+| `D` | `bullet_diameter_inches` | bullet diameter | in | high | squared where printed |
+| `E` | `barrel_length_from_bolt_face_inches` | bolt face to muzzle | in | high | distinct from original measured bullet travel |
+| `F` | `gross_case_capacity_water_grains` | full fired-case water capacity | gr water | high | Davis then subtracts displacement. |
+| `G` | `bullet_weight_grains` | bullet weight | gr | high | none |
+| `H` | `boat_tail_height_inches` | axial boat-tail height | in | high | must not exceed seating depth in implementation |
+| `I` | `charge_weight_grains` | powder charge | gr | high | none |
+| `J` | `boat_tail_small_diameter_inches` | small-end tail diameter | in | high | must not exceed `D` |
+| `K` | `boat_tail_correction_water_grains` | displacement added back for boat tail | gr water | high | not pressure `K1/K2/K3` |
+| `L` | `cartridge_oal_inches` | cartridge overall length | in | high | none |
+| `LD` | `loading_density` | `I/W` | dimensionless | high | not powder bulk density |
+| `M` | `velocity_fraction_m` | `R^(-1/4)` | dimensionless | high | OCR radical damaged |
+| `N` | `velocity_fraction_n` | `1-M` | dimensionless | high | none |
+| `P` | `flat_base_displacement_water_grains` | seated cylindrical-envelope displacement | gr water | high | Python does not reuse this name for pressure. |
+| `Q` | `effective_bore_volume_cubic_inches` | rifling-adjusted swept volume | in3 | high | uses printed 0.773 factor |
+| `R` | `expansion_ratio` | `(Q+U)/U` | dimensionless | high | Davis definition |
+| `S` | `seating_depth_inches` | `C+B-L` | in | high | Davis geometry, not original capacity procedure |
+| `T` | `bullet_travel_inches` | `E+S-C` | in | high | printed sequence preserved |
+| `U` | `powder_chamber_volume_cubic_inches` | `W/252.4` | in3 | high | Davis 70 F water convention |
+| `V` | `muzzle_velocity_fps` | Davis-calculated or measured velocity | ft/s | high | measured preferred for pressure per Davis |
+| `W` | `loaded_capacity_water_grains` | powder-space water capacity after displacement | gr water | high | distinct from gross `F` |
+| `X` | `powder_selection_index` | Davis empirical index | arbitrary | high | not original-Powley verified |
+| `Y` | `effective_moving_weight_grains` | `G+I/3` | gr | high | OCR omitted `I` |
+| `Z` | `sectional_density` | `G/(7000 D^2)` | lb/in2 convention | high | none |
