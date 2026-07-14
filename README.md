@@ -10,7 +10,7 @@
 This repository is an evidence-based reconstruction of the Powley Computer plus
 a quarantined record of later ModernPowley experiments. The agent-derived
 prototype is preserved at tag `pre_audit_agent_derived_prototype` (commit
-`6485b3d2f4c9fb48e2349f548ba7c79c8821947d`). History was not rewritten.
+`08e4ee05b5b10ec8b5f30986bd7e5bd945cc6dc8`). History was not rewritten.
 
 The repository uses `uv` exclusively for Python versions, dependency locking,
 environment synchronization, and command execution. `pyproject.toml`,
@@ -58,6 +58,7 @@ keyword `allow_unvalidated=True`. `Ba_eff` is not ballistic efficiency.
 ## Repository Guide
 
 - `docs/audits/modern_powley_full_repository_audit.md`: finding-by-finding audit.
+- `docs/audits/original_powley_reconstruction_closure.md`: end-to-end original-method closure decision and traceability matrix.
 - `reference/source_ledger.csv`: source access and artifact hashes.
 - `reference/powley_manual/powleysmanuals1.md`: searchable OCR-style manual transcription; verify against the scan.
 - `reference/powley_manual/powleysmanuals1.pdf`: hash-verified primary scan.
