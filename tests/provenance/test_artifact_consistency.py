@@ -35,3 +35,9 @@ def test_local_primary_artifact_hashes_match_source_ledger():
     assert digest(Path("reference/powley_manual/powleysmanuals1.md")) == sources[
         "SRC-POWLEY-1961-MANUAL-TRANSCRIPTION"
     ]["artifact_hash"].removeprefix("sha256:")
+    assert digest(Path("reference/powley_manual/powleysmanuals1.pdf")) == sources[
+        "SRC-POWLEY-1961-MANUAL"
+    ]["artifact_hash"].removeprefix("sha256:")
+    assert digest(Path("reference/online_emulator/kwk_powley_20240228.html")) == sources[
+        "SRC-KWK-EMULATOR"
+    ]["artifact_hash"].removeprefix("sha256:")

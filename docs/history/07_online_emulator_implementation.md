@@ -3,6 +3,9 @@
 `SRC-KWK-EMULATOR` is the archived 2024-02-28 snapshot of Karl W.
 Kleimenhagen's `kwk.us/powley.html`, SHA-256
 `0162ee7722dfd4bf586120590e7a7fcd4d72c908e9d17b6f335822dcac990e03`.
+The exact archived bytes are committed at
+`reference/online_emulator/kwk_powley_20240228.html`. The detailed independent
+audit is `docs/audits/archived_emulator_equation_audit.md`.
 This is exact emulator behavior, not original Powley and not a substitute for
 Davis, Howell, or Miller publications.
 
@@ -37,6 +40,9 @@ velocity = 8000 * sqrt(charge*N/Y)
 Lookup uses ordered branches `<81`, `<=91`, `<=110`, `<=125`, `<=145`,
 `<=165`, `<=180`, then `>180`; the emulator has no endpoint overlap. This is
 distinct from ambiguous natural-language “x to y” Table 3 ranges.
+The exact branches are transcribed in
+`data/reference/original_powley_powder_scale.csv`, whose rows are explicitly
+classified `online_emulator`, not `original_powley`.
 
 ## Pressure Computer (lines 289-340)
 

@@ -18,7 +18,7 @@ environment synchronization, and command execution. `pyproject.toml`,
 
 ## Audit Status
 
-The accessible 1961 instruction manual directly supports:
+Visual inspection of the committed 1961 manual scan directly supports:
 
 - net powder-space water capacity as the capacity input;
 - inch-pound sectional density;
@@ -28,8 +28,10 @@ The accessible 1961 instruction manual directly supports:
 - distinct barrel-volume and total-expansion ratios;
 - one printed .308 Winchester worked example.
 
-Exact original powder-scale boundaries, the original velocity equation, and the
-original pressure equation are not yet source-complete. Those operations fail
+The archived emulator's exact powder bands and equations are reproduced only in
+a separate `later.emulator` module. Exact original powder-scale boundaries, the
+original velocity equation, and the original pressure equation remain
+source-incomplete. Those original operations fail
 with `MissingProvenanceError`; they are not guessed from later transcriptions.
 
 The following are quarantined and unvalidated:
@@ -46,6 +48,9 @@ keyword `allow_unvalidated=True`. `Ba_eff` is not ballistic efficiency.
 - `docs/audits/modern_powley_full_repository_audit.md`: finding-by-finding audit.
 - `reference/source_ledger.csv`: source access and artifact hashes.
 - `reference/powley_manual/powleysmanuals1.md`: searchable OCR-style manual transcription; verify against the scan.
+- `reference/powley_manual/powleysmanuals1.pdf`: hash-verified primary scan.
+- `docs/history/original_manual_page_map.md`: visual page-by-page source map.
+- `docs/audits/archived_emulator_equation_audit.md`: independent emulator audit.
 - `docs/provenance/equation_ledger.csv`: equation attribution and status.
 - `docs/provenance/data_field_ledger.csv`: every committed CSV field.
 - `docs/provenance/grt_field_mapping.csv`: audited XML mappings.

@@ -2,13 +2,14 @@
 
 ## Accessible Primary Artifact
 
-`SRC-POWLEY-1961-MANUAL` is a nine-image scan of Homer S. Powley's 1961
+`SRC-POWLEY-1961-MANUAL` is a committed nine-image scan of Homer S. Powley's 1961
 *Powley Computer for Handloaders Instruction Manual*. Its SHA-256 is
 `119bc2c3cf4b798e7bf4ee1cb59b69a1643673875ad6556ee573912e1973ed66`.
-The scan was retrieved from
-`https://embscomputerart.com/pdfs/powleysmanuals1.pdf`. The host presented a
-certificate-name mismatch; that transport defect is recorded in the source
-ledger. Page references use the printed manual page number.
+The scan is stored at `reference/powley_manual/powleysmanuals1.pdf`; its bytes
+match the artifact retrieved from
+`https://embscomputerart.com/pdfs/powleysmanuals1.pdf`. Every scan page was
+visually inspected on 2026-07-14. Page references use the printed manual page
+number and the page map records the corresponding PDF scan page.
 
 The searchable derivative at
 `reference/powley_manual/powleysmanuals1.md` is an OCR-style transcription with
@@ -19,6 +20,8 @@ The manual directly supports powder-space capacity and loading density (p. 3),
 the 0.80/0.86 loading-density rules (p. 3), total expansion-ratio meaning (p. 5),
 capacity dependence on seating depth (pp. 8-9), 253 grains water per cubic inch,
 sectional-density arithmetic, bullet travel, and a worked example (p. 9).
+It does not contain the physical calculator scales or algebraic generators for
+the powder-selection and Expansion Ratio-Velocity readings.
 
 ## Other Artifacts
 

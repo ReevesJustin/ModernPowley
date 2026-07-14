@@ -1,31 +1,31 @@
-constant_id,value,unit,meaning,location,attribution_class,source_id,status
-CONST-001,7000,gr/lb,grains per avoirdupois pound,src/modern_powley/original/units.py,"Original Powley, directly sourced",SRC-POWLEY-1961-MANUAL,active historical convention
-CONST-002,253,gr H2O/in3,manual water-volume conversion,src/modern_powley/original/units.py,"Original Powley, directly sourced",SRC-POWLEY-1961-MANUAL,active historical convention
-CONST-003,0.80,dimensionless,loading density for IMR 4198/4227,src/modern_powley/original/charge.py,"Original Powley, directly sourced",SRC-POWLEY-1961-MANUAL,active historical convention
-CONST-004,0.86,dimensionless,loading density for other listed IMR powders,src/modern_powley/original/charge.py,"Original Powley, directly sourced",SRC-POWLEY-1961-MANUAL,active historical convention
-CONST-005,20,index offset,Davis powder-index offset,src/modern_powley/later/davis.py,"Later Davis transcription or extension",SRC-DAVIS-WEB-TRANSCRIPTION,active pending Davis page
-CONST-006,12,index scale,Davis powder-index numerator,src/modern_powley/later/davis.py,"Later Davis transcription or extension",SRC-DAVIS-WEB-TRANSCRIPTION,active pending Davis page
-CONST-007,0.5,exponent,Davis mass-ratio exponent,src/modern_powley/later/davis.py,"Later Davis transcription or extension",SRC-DAVIS-WEB-TRANSCRIPTION,active pending Davis page
-CONST-008,"81;91;110;125;145;165;180",index,Davis Table 3 transcribed boundaries,src/modern_powley/later/davis.py,"Later Davis transcription or extension",SRC-DAVIS-WEB-TRANSCRIPTION,"endpoint wording retained; Davis page needed"
-CONST-009,19,index offset,reported physical-scale approximation,docs/History.md at checkpoint,"Unknown or unresolved",SRC-DAVIS-WEB-TRANSCRIPTION,not implemented
-CONST-010,0.6,exponent,reported physical-scale approximation,docs/History.md at checkpoint,"Unknown or unresolved",SRC-DAVIS-WEB-TRANSCRIPTION,not implemented
-CONST-011,252.3,gr H2O/in3,legacy bore-volume conversion,scripts/plot_rc_sd.py,"Agent-generated assumption",,rejected in original namespace
-CONST-012,15.432,gr/cm3,legacy cm3-to-water-grain conversion,scripts/parse_grt_cartridge.py at checkpoint,"Derived quantity",,removed from repaired parser; density convention undocumented
-CONST-013,25.4,mm/in,legacy metric-inch conversion,scripts/parse_grt_cartridge.py at checkpoint,"Derived quantity",,removed at XML boundary; raw units retained
-CONST-014,0.0648,g/gr,legacy approximate gram-grain divisor,scripts/parse_grt_cartridge.py at checkpoint,"Agent-generated assumption",,removed from repaired parser
-CONST-015,2.5,in,legacy fixed barrel subtraction,scripts/propellant_selector.py,"Agent-generated assumption",,rejected
-CONST-016,0.71,unit-dependent,charge regression coefficient,src/modern_powley/experimental/charge_regression.py,"Empirical regression",,quarantined
-CONST-017,1.02,exponent,charge regression capacity exponent,src/modern_powley/experimental/charge_regression.py,"Empirical regression",,quarantined
-CONST-018,0.06,exponent,charge regression travel exponent,src/modern_powley/experimental/charge_regression.py,"Empirical regression",,quarantined
-CONST-019,0.85,unknown,Ba target intercept,src/modern_powley/experimental/ba_target.py,"Agent-generated assumption",,quarantined
-CONST-020,-0.05,unknown per RC,Ba target slope,src/modern_powley/experimental/ba_target.py,"Agent-generated assumption",,quarantined
-CONST-021,"0.45;0.90",unknown,Ba target clamp limits,src/modern_powley/experimental/ba_target.py,"Agent-generated assumption",,quarantined
-CONST-022,"0.55;0.70",unknown,legacy Ba_eff plot bands,jupyter/demo.ipynb,"Agent-generated assumption",,rejected
-CONST-023,"0..6;50..200",mixed,legacy text-chart ranges,scripts/propellant_selector.py,"Agent-generated assumption",,disabled
-CONST-024,RL16->Reloder 16,string alias,legacy powder-name join mapping,scripts/plot_rc_sd.py,"Agent-generated assumption",,disabled; provenance absent
-CONST-025,252.4,gr H2O/in3,kwk net-volume conversion,kwk emulator JavaScript line 218,"Later Davis transcription or extension",SRC-KWK-EMULATOR,online emulator only
-CONST-026,198,mixed,kwk cylindrical intrusion factor,kwk emulator JavaScript line 212,"Later Davis transcription or extension",SRC-KWK-EMULATOR,online emulator only
-CONST-027,0.773,area factor,kwk approximate bore-area factor,kwk emulator JavaScript line 220,"Later Davis transcription or extension",SRC-KWK-EMULATOR,online emulator only
-CONST-028,8000,velocity scale,kwk velocity coefficient,kwk emulator JavaScript line 262,"Later Davis transcription or extension",SRC-KWK-EMULATOR,online emulator only
-CONST-029,"0.024075;9.3;1.071;0.009736",mixed,kwk Miller-labeled F2 coefficients,kwk emulator JavaScript line 294,"Miller modification",SRC-KWK-EMULATOR,"secondary implementation; Miller source absent"
-CONST-030,"134.7;142",pressure coefficients,kwk Howell-labeled value and Davis comparison,kwk emulator JavaScript line 321,"Howell correction",SRC-KWK-EMULATOR,"secondary implementation; primary pages absent"
+constant_id,value,unit,meaning,location,attribution_class,source_id,verification_status,disposition
+CONST-001,7000,gr/lb,grains per avoirdupois pound,src/modern_powley/original/units.py,original_powley,SRC-POWLEY-1961-MANUAL,verified_visual_scan,active historical convention
+CONST-002,253,gr H2O/in3,manual water-volume conversion,src/modern_powley/original/units.py,original_powley,SRC-POWLEY-1961-MANUAL,verified_visual_scan,active historical convention
+CONST-003,0.80,dimensionless,loading density for IMR 4198/4227,src/modern_powley/original/charge.py,original_powley,SRC-POWLEY-1961-MANUAL,verified_visual_scan,active historical convention
+CONST-004,0.86,dimensionless,loading density for other listed IMR powders,src/modern_powley/original/charge.py,original_powley,SRC-POWLEY-1961-MANUAL,verified_visual_scan,active historical convention
+CONST-005,20,index offset,Davis powder-index offset,src/modern_powley/later/davis.py,davis,SRC-DAVIS-WEB-TRANSCRIPTION,verified_secondary,active pending Davis page
+CONST-006,12,index scale,Davis powder-index numerator,src/modern_powley/later/davis.py,davis,SRC-DAVIS-WEB-TRANSCRIPTION,verified_secondary,active pending Davis page
+CONST-007,0.5,exponent,Davis mass-ratio exponent,src/modern_powley/later/davis.py,davis,SRC-DAVIS-WEB-TRANSCRIPTION,verified_secondary,active pending Davis page
+CONST-008,81;91;110;125;145;165;180,index,Davis Table 3 transcribed boundaries,src/modern_powley/later/davis.py,davis,SRC-DAVIS-WEB-TRANSCRIPTION,verified_secondary,endpoint wording retained; Davis page needed
+CONST-009,19,index offset,reported physical-scale approximation,docs/History.md at checkpoint,unknown,SRC-DAVIS-WEB-TRANSCRIPTION,unresolved,not implemented
+CONST-010,0.6,exponent,reported physical-scale approximation,docs/History.md at checkpoint,unknown,SRC-DAVIS-WEB-TRANSCRIPTION,unresolved,not implemented
+CONST-011,252.3,gr H2O/in3,legacy bore-volume conversion,scripts/plot_rc_sd.py,unknown,,contradicted,rejected in original namespace
+CONST-012,15.432,gr/cm3,legacy cm3-to-water-grain conversion,scripts/parse_grt_cartridge.py at checkpoint,unknown,,unresolved,removed from repaired parser; density convention undocumented
+CONST-013,25.4,mm/in,legacy metric-inch conversion,scripts/parse_grt_cartridge.py at checkpoint,unknown,,unresolved,removed at XML boundary; raw units retained
+CONST-014,0.0648,g/gr,legacy approximate gram-grain divisor,scripts/parse_grt_cartridge.py at checkpoint,unknown,,unresolved,removed from repaired parser
+CONST-015,2.5,in,legacy fixed barrel subtraction,scripts/propellant_selector.py,unknown,,contradicted,rejected
+CONST-016,0.71,unit-dependent,charge regression coefficient,src/modern_powley/experimental/charge_regression.py,modern_powley_experiment,,experimental,quarantined
+CONST-017,1.02,exponent,charge regression capacity exponent,src/modern_powley/experimental/charge_regression.py,modern_powley_experiment,,experimental,quarantined
+CONST-018,0.06,exponent,charge regression travel exponent,src/modern_powley/experimental/charge_regression.py,modern_powley_experiment,,experimental,quarantined
+CONST-019,0.85,unknown,Ba target intercept,src/modern_powley/experimental/ba_target.py,modern_powley_experiment,,experimental,quarantined
+CONST-020,-0.05,unknown per RC,Ba target slope,src/modern_powley/experimental/ba_target.py,modern_powley_experiment,,experimental,quarantined
+CONST-021,0.45;0.90,unknown,Ba target clamp limits,src/modern_powley/experimental/ba_target.py,modern_powley_experiment,,experimental,quarantined
+CONST-022,0.55;0.70,unknown,legacy Ba_eff plot bands,jupyter/demo.ipynb,unknown,,contradicted,rejected
+CONST-023,0..6;50..200,mixed,legacy text-chart ranges,scripts/propellant_selector.py,unknown,,unresolved,disabled
+CONST-024,RL16->Reloder 16,string alias,legacy powder-name join mapping,scripts/plot_rc_sd.py,unknown,,unresolved,disabled; provenance absent
+CONST-025,252.4,gr H2O/in3,kwk net-volume conversion,kwk emulator JavaScript line 218,online_emulator,SRC-KWK-EMULATOR,emulator_derived,online emulator only
+CONST-026,198,mixed,kwk cylindrical intrusion factor,kwk emulator JavaScript line 212,online_emulator,SRC-KWK-EMULATOR,emulator_derived,online emulator only
+CONST-027,0.773,area factor,kwk approximate bore-area factor,kwk emulator JavaScript line 220,online_emulator,SRC-KWK-EMULATOR,emulator_derived,online emulator only
+CONST-028,8000,velocity scale,kwk velocity coefficient,kwk emulator JavaScript line 262,online_emulator,SRC-KWK-EMULATOR,emulator_derived,online emulator only
+CONST-029,0.024075;9.3;1.071;0.009736,mixed,kwk Miller-labeled F2 coefficients,kwk emulator JavaScript line 294,online_emulator,SRC-KWK-EMULATOR,emulator_derived,secondary implementation; Miller source absent
+CONST-030,134.7;142,pressure coefficients,kwk Howell-labeled value and Davis comparison,kwk emulator JavaScript line 321,online_emulator,SRC-KWK-EMULATOR,emulator_derived,secondary implementation; primary pages absent

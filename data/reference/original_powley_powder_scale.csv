@@ -1,0 +1,9 @@
+lower_bound,lower_inclusive,upper_bound,upper_inclusive,powder_designation,instruction,source_id,source_location,attribution_class,confidence,notes
+,false,81,false,,Much slower than 4831,SRC-KWK-EMULATOR,JavaScript lines 266-268,online_emulator,high,Emulator-derived; not original-manual verified
+81,true,91,true,,Slower than 4831,SRC-KWK-EMULATOR,JavaScript lines 269-271,online_emulator,high,Emulator-derived; not original-manual verified
+91,false,110,true,4831;4350,,SRC-KWK-EMULATOR,JavaScript lines 272-273,online_emulator,high,Emulator-derived grouped output
+110,false,125,true,4320;4895;4064,,SRC-KWK-EMULATOR,JavaScript lines 274-275,online_emulator,high,Emulator-derived grouped output; no fine ordering implied
+125,false,145,true,3031,,SRC-KWK-EMULATOR,JavaScript lines 276-277,online_emulator,high,Emulator-derived grouped output
+145,false,165,true,4198,,SRC-KWK-EMULATOR,JavaScript lines 278-279,online_emulator,high,Emulator-derived grouped output
+165,false,180,true,4227,,SRC-KWK-EMULATOR,JavaScript lines 280-281,online_emulator,high,Emulator-derived grouped output
+180,false,,false,,Faster than 4227,SRC-KWK-EMULATOR,JavaScript lines 282-283,online_emulator,high,Emulator-derived; not original-manual verified

@@ -2,13 +2,23 @@ from enum import Enum
 
 
 class AttributionClass(str, Enum):
-    ORIGINAL_POWLEY = "Original Powley, directly sourced"
-    DAVIS = "Later Davis transcription or extension"
-    HOWELL = "Howell correction"
-    MILLER = "Miller modification"
-    GRT = "GRT-derived parameter or behavior"
-    EXPERIMENTAL = "ModernPowley experimental hypothesis"
-    REGRESSION = "Empirical regression"
-    DERIVED = "Derived quantity"
-    AGENT_ASSUMPTION = "Agent-generated assumption"
-    UNKNOWN = "Unknown or unresolved"
+    ORIGINAL_POWLEY = "original_powley"
+    DAVIS = "davis"
+    HOWELL = "howell"
+    MILLER = "miller"
+    ONLINE_EMULATOR = "online_emulator"
+    GRT = "grt"
+    EXPERIMENTAL = "modern_powley_experiment"
+    UNKNOWN = "unknown"
+
+
+class ProvenanceStatus(str, Enum):
+    VERIFIED_PRIMARY = "verified_primary"
+    VERIFIED_VISUAL_SCAN = "verified_visual_scan"
+    VERIFIED_SECONDARY = "verified_secondary"
+    EMULATOR_DERIVED = "emulator_derived"
+    OCR_ONLY = "ocr_only"
+    INFERRED = "inferred"
+    EXPERIMENTAL = "experimental"
+    CONTRADICTED = "contradicted"
+    UNRESOLVED = "unresolved"

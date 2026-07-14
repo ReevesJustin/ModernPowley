@@ -17,6 +17,8 @@ def test_original_loading_density_rules():
 def test_non_imr_does_not_borrow_imr_density():
     with pytest.raises(ValueError):
         loading_density("H4350")
+    with pytest.raises(ValueError):
+        loading_density("IMR 7977")
 
 
 def test_charge_requires_net_powder_space_input():

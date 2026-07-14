@@ -7,3 +7,8 @@ data are committed.
 
 Classification: **Miller modification, unresolved**. No Miller equation is
 implemented, and no unspecified Miller relationship supports a pressure estimate.
+
+The archived emulator labels its `F2` expression as Miller's approximation of a
+Davis table. The repository reproduces that code only under
+`modern_powley.later.emulator`; the missing Miller publication prevents an
+independent Miller implementation.

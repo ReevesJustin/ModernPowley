@@ -23,8 +23,9 @@
     },
     {
       "path": "docs/provenance/data_field_ledger.csv",
-      "sha256": "ffbfc54799a483e65720013c2cffca2db14c1a41a71992d14c71f1c3f4e20072"
+      "sha256": "c59d4ab76c65cb65a342764494f8d8a841f079205981ee2440ac0b4fdc670efc"
     }
   ],
+  "post_generation_updates": "The data-field ledger was provenance-normalized and extended for the emulator reference scale during the historical reconstruction pass.",
   "timestamp": "2026-07-14T02:38:07-05:00"
 }

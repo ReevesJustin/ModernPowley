@@ -1,0 +1,1043 @@
+<html>
+<!--
+	(c) 2003 through 2006
+
+- if enter fps or bullet weight and have the other, compute the K.E.
+
+-->
+<head>
+
+<title>Powley Computer</title>
+
+<meta http-equiv="Content-Style-Type"  content="text/css">
+<meta http-equiv="Content-Script-Type" content="application/javascript">
+
+<meta name="keywords" content="powley,computer">
+<meta name="description" content="a free Powley Computer for handloaders, which works in standard browsers">
+
+<style>
+BODY {
+	line-height: 130% ;
+}
+P {
+	margin-bottom: 0em ;
+}
+DIV.hint {
+	line-height: 110% ;
+	border: black 1px solid;
+	padding: 4px;
+	position: absolute; /* CSS2; absolute needs left, top, etc. as well */
+	/* top: is set by the javascript */
+	width: 50%; /* rendering problems in Firefox if left and width aren't binary fractions */
+	left: 25%; /* couldn't figure out how to auto center this */
+	visibility: hidden;
+	color: black;
+	background-color: yellow;
+}
+DIV.hint#Tp12 {
+	width: 600px; /* Tp12 has the plot of CUP vs. psi */
+	left: 39px;
+}
+DIV.hint#Tp19 {
+	width: 600px; /* Tp19 has plot of powder selection vs. SD and NCB */
+	left: 39px;
+}
+SPAN.tip {
+	color: black;
+	border-right: #EE0 1px solid;
+	border-bottom: #EE0 1px dotted;
+	padding-right: 2px;
+}
+</style>
+<script>
+
+// ECMAscript Global Code used to record the
+// current mouse position into m_y
+
+if ( ! document.all ) {  // ?
+	document.captureEvents( Event.MOUSEMOVE ) ;
+	document.onmousemove = get_mouse ;
+}
+
+var  m_y ;
+
+function  get_mouse( e ) {  // whence e?
+	m_y = e.pageY ;
+}
+
+// the next 3 functions are used in activating the pop-up help windows
+// (I don't fully understand these -- the code is copied)
+
+function  layer( id ) {	// returns the STYLE of the ID
+
+	// this may not be need, since the major browsers support it?
+
+	if ( document.getElementById ) {  // IE and FireFox will
+		return  document.getElementById(id).style
+	}
+	return  null
+}
+
+function  t_i( id ) {
+
+	// FF, but not IE, will accept checkboxes outside a form?
+
+	if ( f.noPop.checked )
+		return
+
+	// is this just to convert to string for .getElementById() ?
+	var  hlp = layer( 'Tp' + id )
+	if ( hlp ) {
+		if ( document.all ) {
+			m_y = event.y + document.body.scrollTop
+		}
+		hlp.top = m_y + 22
+		hlp.visibility = 'visible'
+	}
+}
+
+function t_o(id) {
+
+	if ( f.noPop.checked )
+		return
+
+	var  hlp = layer( 'Tp' + id )
+	if ( hlp ) {
+		hlp.visibility = 'hidden'
+	}
+}
+
+
+function ErrMsg( msg ) {
+
+	f.Err.value =  msg.length == 0  ?  ""  :  " " + msg
+}
+
+function sqr( x ) {
+
+	return  x * x
+}
+
+function ToNearest( x , n ) {
+
+	return  Math.round( x / n ) * n
+}
+
+function hundreds( x ) {
+
+	return  ToNearest( x , 100 ).toFixed()
+}
+
+function scan( x , msg ) {
+
+	// IE-5.5 converts to 0 both empty strings and strings filled
+	// with whitespace
+
+	y = x.value			// get the input string
+	y.replace( /\s/g , "" )		// strip whitespace
+	if ( y.length != 0 ) {
+		y = y - 0		// convert to a number; could use Number(y)
+		if ( isNaN( y ) )
+			ErrMsg( "illegible " + msg )
+		else if ( y <= 0 )
+			ErrMsg( msg + " must be >= 0" )
+		else {
+			ErrMsg( "" )
+			return  y
+		}
+	}
+	throw NaN
+}
+
+
+// variable names per Davis
+
+var F	// volume of empty case
+var C	// case length
+var L	// cartridge length
+var B	// bullet length
+var G	// bullet weight
+var D	// bullet diameter
+var E	// barrel length
+
+var S	// bullet seating depth
+var T	// bullet travel
+var P	// case occupied by bullet shank
+var U	// net case volume, cu in
+var W	// net case volume, gn
+var Q	// volume of bore, cu in
+var R	// expansion ratio
+var LD	// load density
+var Z	// bullet sectional density
+
+// var f, which will be document.Powley, must be declared after the FORM
+
+
+function NoPowder( msg ) {
+
+	f.XN.value = msg
+	f.I.value = ""		// give no predictions
+	f.MR.value = ""
+	f.V.value = ""
+}
+
+function verifyLoadInputs() {
+
+	try {
+		G = scan( f.G , "Bullet Weight" )
+		D = scan( f.D , "Diameter" )
+		f.D.value = D.toFixed( 3 )	// keep the format bullets.html expects
+		Z = ( G / 7000 ) / sqr( D )	// bullet sectional density
+		f.Z.value = Z.toFixed( 3 )
+
+		if ( f.estBL[0].checked ) {
+			B = 0.20 + 3.67 * Z	// SP est.
+			f.B.value = B.toFixed(2)
+		} else if ( f.estBL[1].checked ) {
+			B = 0.08 + 3.67 * Z	// RN est.
+			f.B.value = B.toFixed(2)
+		}
+
+		C = scan( f.C , "Case Length" )
+		L = scan( f.L , "Cartridge Length" )
+		B = scan( f.B , "Bullet Length")
+		S = C + B - L
+		if ( S < 0 ) {
+			ErrMsg( "negative seating depth" )
+			throw NaN
+		}
+		f.S.value = S.toFixed( 2 )
+
+		F = scan( f.F , "Case Capacity" )
+		P = 198 * S * sqr( D )		// 252.4*pi/4=198.2
+		W = F - P
+		if ( W <= 0 ) {
+			ErrMsg( "no volume under bullet" )
+			throw NaN
+		}
+		U = W / 252.4
+		f.W.value = W.toFixed( 1 )
+		area = 0.773 * sqr( D )		// of bore, approx.
+		f.CB.value = ( U / area ).toFixed( 2 )
+
+		E = scan( f.E , "Barrel" )
+		T = E - C + S
+		if ( T <= 0 ) {
+			ErrMsg( "negative bullet travel" )
+			throw NaN
+		}
+		f.T.value = T.toFixed( 1 )
+		Q = T * area
+		R = ( Q + U ) / U
+		f.R.value = R.toFixed( 1 )
+
+		return true
+	} catch ( NaN ) {
+		ClearLoad()
+		return false
+	}
+}
+
+function PowleyLoad() {
+
+	if ( ! verifyLoadInputs() )
+		return false
+
+	I = 0.86 * W		// charge weight
+	A = I / G		// mass ratio
+
+	X = 20 + ( 12 / ( Z * Math.sqrt( A ) ) )	// powder index
+	if ( X > 145 ) {	// if faster than 3031
+		I = 0.80 * W	//   will use a less dense powder (?)
+		A = I / G	//   so recompute mass ratio
+	}
+
+	f.I.value = ToNearest( I , 0.1 ).toFixed( 1 )
+	f.X.value = ToNearest( X , 1 ).toFixed()
+	f.MR.value = A.toFixed( 3 )
+
+	M = 1 / Math.pow( R , 1/4 )
+	N = 1 - M
+	Y = G  +  I / 3
+	V = 8000 * Math.sqrt( I * N / Y )
+
+	f.V.value = ToNearest( V , 1 ).toFixed()
+
+	if ( X < 81 )
+		NoPowder( "Much slower than 4831" )
+		// perhaps 7828 would work here
+	else if ( X <= 91 )
+		NoPowder( "Slower than 4831" )
+		// trying 7828 here didn't give the best results
+	else if ( X <= 110 )
+		f.XN.value = "4831, 4350"
+	else if ( X <= 125 )
+		f.XN.value = "4320, 4895, 4064"
+	else if ( X <= 145 )
+		f.XN.value = "3031"
+	else if ( X <= 165 )
+		f.XN.value = "4198"
+	else if ( X <= 180 )
+		f.XN.value = "4227"
+	else
+		NoPowder( "Faster than 4227" )
+
+	return  true
+}
+
+
+function MF2( A , R ) {
+
+	// This is Miller's approximation of Davis's F2 table.
+	// I found it accurate to within 0.01, which is under 1%.
+
+	return  0.024075 * ( 9.3 - A ) * ( 1.071 + R - 0.009736 * sqr( R ) )
+}
+
+function CUPpsi( CUP ) {
+
+	f.PSI.value = ToNearest( CUP * ( 1 + Math.pow(CUP,2.2) / 1.2e11 ) , 1000 ).toFixed()
+}
+
+function PowleyPressure() {
+
+	if ( ! verifyLoadInputs() )
+		return
+
+	try {
+		I = scan( f.IA , "Charge" )
+		LD = I / W
+		f.LD.value = LD.toFixed( 2 )
+
+		V = scan( f.VA , "Velocity" )
+	} catch ( NaN ) {
+		ClearPressure( f )
+		return
+	}
+
+	A  = I / G	// mass ratio
+	K2 = 0.53 / A  +  0.26
+	F2 = MF2( A , R )	// note: R was set by verifyLoadInputs(), above
+	CUP = 134.7 * sqr( V / 100 )  *  LD / ( R - 1 )  * K2 * F2  // 134.7 per Howell, Davis has 142
+
+	err = ""
+	if ( R < 5  ||  R > 13 )
+		err += "ER"
+	if ( A < 0.2  ||  A > 1.0 )
+		err += err.length > 0 ? " and MR" : "MR"
+	if ( err.length > 0 )
+		err += " extrapolated"
+	ErrMsg( err )
+
+	f.MR.value = A.toFixed( 3 )
+
+	f.CUP.value = hundreds( CUP )
+	CUPpsi( CUP )
+
+	KE = 0.5 * G/7000/32.2 * sqr(V)
+	EFF = 100 * ( KE ) / ( I * 185 )
+	f.EFF.value = EFF.toFixed( 1 )
+	f.KE.value = KE.toFixed()
+}
+
+
+function AlterPressure() {
+
+	if ( ! verifyLoadInputs() )  // be sure R, etc. are fresh
+		return
+
+	try {
+		CUP = scan( f.CUP , "CUP" )
+	} catch ( NaN ) {
+		return  // should some outputs be cleared here?
+	}
+
+	LD = 0.86
+	I = LD * W
+	A  = I / G
+	K2 = 0.53 / A  +  0.26
+	F2 = MF2( A , R )
+	V = 100 * Math.sqrt( CUP / K2 / F2 * ( R - 1 ) / 0.86 / 134.7 )
+
+	f.VA.value = V.toFixed()
+	f.IA.value = I.toFixed( 1 )
+
+	PowleyPressure()  // update all PC outputs
+}
+
+function ClearLoad() {		// clears Load Computer outputs
+
+	f.I.value = ""
+	f.V.value = ""
+	f.XN.value = ""		// X Name
+	f.MR.value = ""
+	f.X.value = ""
+}
+
+function ClearPressure() {	// clears Pressure Computer outputs
+
+	if ( f.setCUP.checked ) {
+		f.VA.value = ""
+		f.IA.value = ""
+	} else {
+		f.CUP.value = ""
+	}
+	f.PSI.value = ""
+	f.EFF.value = ""
+	f.LD.value = ""
+	f.KE.value = ""
+}
+
+
+function doPC() {  // Pressure Computer inputs altered
+
+	ClearPressure()
+	PowleyPressure()
+}
+
+function AlterPC() {  // Pressure Computer inputs altered
+
+	f.setCUP.checked = false
+	doPC()
+}
+
+function AlterLC() {  // Load Computer inputs altered
+
+	ClearLoad()
+	ClearPressure()
+	f.Z.value = ""
+	f.W.value = ""
+	f.CB.value = ""
+	f.S.value = ""
+	f.T.value = ""
+	f.R.value = ""
+
+	if ( PowleyLoad() )
+		if ( f.setCUP.checked )
+			AlterPressure()
+		else
+			doPC()
+}
+
+
+function AlterDepth() {
+
+	try {
+		S = scan( f.S , "Depth" )
+		C = scan( f.C , "Case Length" )
+		B = scan( f.B , "Bullet Length")
+	} catch ( NaN ) {
+		return
+	}
+
+	L = C + B - S
+	f.L.value = L.toFixed(2)
+
+	AlterLC()
+}
+
+function AlterSD() {
+
+	try {
+		Z = scan( f.Z , "SD" )
+		D = scan( f.D , "Diameter" )
+	} catch ( NaN ) {
+		return
+	}
+
+	hold = Z
+
+	G = Z * sqr(D) * 7000
+	f.G.value = G.toFixed()
+
+	AlterLC()  // re-writes SD
+
+	if ( f.Z.value == "" ) {
+		f.Z.value = hold.toFixed(3)
+	}
+}
+
+function example( F, C, L, B, G, D, E, IA, VA ) {
+
+	f.setCUP.checked = false
+
+	f.estBL[0].checked = false
+	f.estBL[1].checked = false
+	f.estBL[2].checked = true
+
+	f.F.value = F
+	f.C.value = C
+	f.L.value = L
+	f.B.value = B
+	f.G.value = G
+	f.D.value = D
+	f.E.value = E
+
+	f.IA.value = IA
+	f.VA.value = VA
+
+	AlterLC()
+}
+
+
+// window functions
+
+// They try to close the bullets & cartridges windows if the parent is closed.
+
+
+function list_show( w, f, n, o ) {  // w-indow, f-ile, n-ame, o-ptions
+
+	if ( w != null ) {
+		if ( w.closed == false ) {  // Opera doesn't like  if(!w.closed)
+			w.focus()
+			return w
+		}
+	}
+
+	// give window a unique name, else in Opera bullets file will be in same window
+	return window.open( f , n , o )
+}
+
+function list_close( w ) {
+
+	if ( w != null ) {
+		if ( w.closed == false ) {
+			w.close()
+		}
+	}
+}
+
+var cart_win, bul_win	// statics used by the next 3 functions
+
+function cartridges() {
+
+	cart_win = list_show( cart_win , "cartridges.html" , "cartridges" ,
+		"width=775,height=500,resizable,scrollbars" )
+}
+
+function bullets() {
+
+	bul_win = list_show( bul_win , "bullets.html" , "bullets" ,
+		"width=650,height=500,resizable,scrollbars" )
+}
+
+function clean_up() {
+
+	// Opera doesn't call this on Back, Forward, or Reload but does if jump to new URL
+
+	list_close( cart_win )
+	list_close( bul_win )
+}
+
+function bad_opera() {
+
+	alert( "Sorry, some browsers, such as Safari & Chrome, misuse the Enter key. You might " + 
+		"recover inputs using the Backspace key." )
+}
+
+</script>
+</head>
+
+<body onunload="clean_up()">
+
+<form name="Powley" onsubmit="bad_opera()">
+<table align=center>
+
+<tr>	<td colspan=2 align=center> <b>Load Computer</b> <br>
+		<i>(this input column)</i>
+	<td colspan=2 align=center> <b>Pressure Computer</b> <br>
+		<i>(both input columns)</i>
+	<td colspan=2 align=center> <i>(related outputs)</i>
+
+<tr>	<td> <span onmouseover="t_i(1)" onmouseout="t_o(1)" class=tip>
+		<a href="cases.html">Case Capacity</a></span>
+	<td> <input type="TEXT" name="F" size=6 tabindex=1
+		onchange="AlterLC()"> gn
+	<td> <span onmouseover="t_i(10)" onmouseout="t_o(10)"
+		class=tip>Charge</span>
+	<td> <input type="TEXT" name="IA" size=6 tabindex=8
+		onchange="AlterPC()"> gn
+	<td> <span onmouseover="t_i(31)" onmouseout="t_o(31)"
+		class=tip>Seating Depth</span>
+	<td> <input type="TEXT" name="S" size=6 tabindex=11
+		onchange="AlterDepth()"> in
+
+<tr>	<td> Case Length
+	<td> <input type="TEXT" name="C" size=6 tabindex=2
+		onchange="AlterLC()"> in
+	<td> <span onmouseover="t_i(11)" onmouseout="t_o(11)"
+		class=tip>Velocity</span>
+	<td> <input type="TEXT" name="VA" size=6 tabindex=9
+		onchange="AlterPC()"> fps
+	<td> <span onmouseover="t_i(8)" onmouseout="t_o(8)"
+		class=tip>Net Capacity</span>
+	<td> <input type="TEXT" name="W" size=6 readonly> gn
+
+<tr>	<td> Cartridge Length
+	<td> <input type="TEXT" name="L" size=6 tabindex=3
+		onchange="AlterLC()"> in
+	<td>
+	<td> <i>(output)</i>
+	<td> <span onmouseover="t_i(7)" onmouseout="t_o(7)"
+		class=tip>Bullet Travel</span>
+	<td> <input type="TEXT" name="T" size=6 readonly> in
+
+<tr>	<td> <span onmouseover="t_i(4)" onmouseout="t_o(4)"
+		class=tip><a href="twist.html">Bullet Length</a></span><input
+		type="radio" name="estBL" onclick="AlterLC()"><input
+		type="radio" name="estBL" onclick="AlterLC()">
+	<td> <input type="TEXT" name="B" size=6 tabindex=4
+		onchange="AlterLC()"> in<input checked
+		type="radio" name="estBL" onclick="AlterLC()">
+	<td> <span onmouseover="t_i(16)" onmouseout="t_o(16)"
+		class=tip><a href="pressures.html">Pressure</a></span><input
+		type="checkbox" name="setCUP" onchange="AlterPressure()">
+	<td style="padding-right:1em">
+		<input type="TEXT" name="CUP" size=6 tabindex=10
+		onchange="AlterPressure()"> CUP
+	<td> <span onmouseover="t_i(14)" onmouseout="t_o(14)"
+		class=tip>Expansion Ratio</span>
+	<td> <input type="TEXT" name="R" size=6 readonly>
+
+<tr>	<td> Bullet Weight
+	<td> <input type="TEXT" name="G" size=6 tabindex=5
+		onchange="AlterLC()"> gn
+	<td>
+	<td>
+	<td> <span onmouseover="t_i(13)" onmouseout="t_o(13)"
+		class=tip>Mass Ratio</span>
+	<td> <input type="TEXT" name="MR" size=6 readonly> gn/gn
+
+<tr>	<td> Bullet Diameter
+	<td> <input type="TEXT" name="D" size=6 tabindex=6
+		onchange="AlterLC()"> in
+	<td>
+	<td>
+	<td> <span onmouseover="t_i(18)" onmouseout="t_o(18)"
+		class=tip>Sectional Density</span>
+	<td> <input type="TEXT" name="Z" size=6 tabindex=12
+		onchange="AlterSD()"> lb/in/in
+
+<tr>	<td> <span onmouseover="t_i(6)" onmouseout="t_o(6)"
+		class=tip>Barrel Length</span>
+	<td> <input type="TEXT" name="E" size=6 tabindex=7
+		onchange="AlterLC()"> in
+	<td colspan=2 align=center> <i>(warnings)</i>
+	<td> <span onmouseover="t_i(9)" onmouseout="t_o(9)"
+		class=tip>Relative Capacity</span>
+	<td> <input type="TEXT" name="CB" size=6 readonly> in
+
+<tr>	<td>
+	<td> <i>(outputs)</i>
+	<td colspan=2> <input type="TEXT" name="Err" size=32>
+	<td> <span onmouseover="t_i(3)" onmouseout="t_o(3)"
+		class=tip><a href="powley_notes.html#quickness">Quickness</a></span>
+	<td> <input type="TEXT" name="X" size=6 readonly>
+
+<tr>	<td> <span onmouseover="t_i(19)" onmouseout="t_o(19)"
+		onclick="plotter()" class=tip><a href="powders.html">IMR Powder</a></span>
+	<td> <input type="TEXT" name="XN" size=20 readonly>
+	<td colspan=2 align=center><small>disable help pop-ups</small><input
+		type="checkbox" name="noPop">
+	<td> <span onmouseover="t_i(5)" onmouseout="t_o(5)"
+		class=tip>Loading Density</span>
+	<td> <input type="TEXT" name="LD" size=6 readonly> gn/gn
+
+<tr>	<td> <span onmouseover="t_i(2)" onmouseout="t_o(2)"
+		onclick="f.IA.value=f.I.value;f.VA.value=f.V.value;AlterPC()"
+		class=tip>Charge</span>
+	<td> <input type="TEXT" name="I" size=6 readonly> gn
+	<td>
+	<td>
+	<td> <span onmouseover="t_i(30)" onmouseout="t_o(30)"
+		class=tip>Kinetic Energy</span>
+	<td> <input type="TEXT" name="KE" size=6 readonly> ft-lb
+
+<tr>	<td> <span onmouseover="t_i(38)" onmouseout="t_o(38)"
+		class=tip>Velocity</span>
+	<td> <input type="TEXT" name="V" size=6 readonly> fps
+	<td> <span onmouseover="t_i(12)" onmouseout="t_o(12)"
+		class=tip>Pressure</span>
+	<td> <input type="TEXT" name="PSI" size=6 readonly> psi
+	<td> <span onmouseover="t_i(15)" onmouseout="t_o(15)"
+		class=tip>Efficiency</span>
+	<td> <input type="TEXT" name="EFF" size=6 readonly> %
+
+<tr>	<td colspan=6 align=center>
+
+<span onmouseover="t_i(36)" onmouseout="t_o(36)" class=tip><i>Cartridges:</i></span>
+
+<input type="button" onclick="cartridges()" style="margin-right:1em" value="list">
+
+<span onmouseover="t_i(37)" onmouseout="t_o(37)" class=tip><i>Bullets:</i></span>
+
+<input type="button" onclick="bullets()" style="margin-right:1em" value="list">
+
+<span onmouseover="t_i(20)" onmouseout="t_o(20)" class=tip><i>Examples:</i></span>
+
+<input type="button" onclick="example( '69','2.49','3.20','1.07','150','.308','24','53.0','3012')"
+	onmouseover="t_i(21)" onmouseout="t_o(21)" value="1"> &nbsp;
+
+<!-- The nbsp's between the Example's buttons are needed for appearance in IE-6. -->
+
+<input type="button" onclick="example( '44','1.91','2.35','0.76','63','.224','24','35.0','3490')"
+	onmouseover="t_i(22)" onmouseout="t_o(22)" value="2"> &nbsp;
+
+<input type="button" onclick="example( '58','2.01','2.78','1.23','250','.358','25','42.0','2260')"
+	onmouseover="t_i(23)" onmouseout="t_o(23)" value="3"> &nbsp;
+
+<input type="button" onclick="example( '86','2.84','3.57','1.35','220','.308','24','67.0','2710')"
+	onmouseover="t_i(24)" onmouseout="t_o(24)" value="4"> &nbsp;
+
+<input type="button" onclick="example( '69','2.21','2.57','0.72','240','.429','25','47.0','2335')"
+	onmouseover="t_i(25)" onmouseout="t_o(25)" value="5"> &nbsp;
+
+<input type="button" onclick="example( '51','1.91','2.50','0.88','200','.358','24','37.5','2110')"
+	onmouseover="t_i(26)" onmouseout="t_o(26)" value="6"> &nbsp;
+
+<input type="button" onclick="example( '63','2.10','2.75','1.01','200','.338','24','41.9','2200')"
+	onmouseover="t_i(27)" onmouseout="t_o(27)" value="7">
+
+</table>
+</form>
+
+<script>
+var f = document.Powley  // makes for shorter code, albeit more obtuse
+</script>
+
+<div style="width:40em ; margin: 1em auto;">
+
+<h3 align=center style="margin-top:2em">A Powley Computer for Handloaders</h3>
+
+<p> Before using these Computers, you should understand their limitations, and
+these are considered <a href="powley_notes.html" >in the Notes</a>.
+
+<ul style="font-size:80%">
+<li> To run these Computers, JavaScript must be enabled.
+<!-- <li> Browser differences cause problems; <a href="powley_notes.html#standards" >see the Notes</a>. -->
+<li> Pointing to <span onmouseover="t_i(35)" onmouseout="t_o(35)" class=tip>marked text</span>
+	pops up a brief explanation.
+<li> Tab between input fields. Calculations are updated with each new entry.
+<li> Load Computer charges are only for rifles capable of at least 52,000 CUP.
+<li> Use only with conventional jacketed bullets over standard primers.
+<li> Both Computers can <span style="text-decoration:underline">under</span>estimate pressure.
+</ul>
+
+<hr>
+
+<p> The Powley Computer is an empirical method for predicting charges and performance with the single base IMR powders. 
+For a full simulator&mdash;one which covers a greater range of powders&mdash;try Kolbe's P-Max. 
+It is available for both 
+<a href="https://www.p-max.uk/index.htm">smokeless</a> and
+<a href="https://www.p-max.uk/black_powder.htm">black</a> powders.
+
+<p> For external ballistics (trajectory, twist rates, <i>etc</i>), try the calculators at 
+<a href="https://www.jbmballistics.com/">JBM Ballistics</a>.</p>
+
+<hr>
+
+</div>
+
+
+<p align=center><img src="Powley_portrait.jpg" style="max-width:8em;"><br>H. S. Powley</p>
+
+
+
+<!-- pop-up help div's follow -->
+
+<div ID="Tp1" class="hint">Enter the weight of water needed to fill an empty
+case to the mouth. It is better to measure a fired case, before it is
+resized. <p>Approximate case and cartridge dimensions for several common
+cartridges are available in the <i>Cartridges</i> list, below. Follow the
+link at this label to an adjoining file listing the case capacities of many
+other cartridges. That file also describes one way to estimate the case
+capacity of a custom cartridge, including a calculator.</div>
+
+<div ID="Tp2" class="hint"> The Load Computer tries to predict a Charge
+which will nearly fill the case and will produce a peak pressure between
+40,000 and 50,000 CUP. With small bore cartridges, the pressures will likely
+be on the high end of this range.<p>Clicking here transfers the Load
+Computer charge and velocity estimate into the Pressure Computer, as inputs.
+For powders 3031 and slower, the Pressure estimate will be about 43,500 CUP,
+and this can be taken to be the target pressure of the Load Computer. For
+the faster powders, the Pressure estimate is about 40,000 CUP, suggesting
+Powley wanted a more conservative load with these.</div>
+
+<div ID="Tp3" class="hint">The reference scale for the Quickness calculated
+by the Load Computer is<pre style="text-align: center">
+180    4227
+160    4198
+135    3031
+120    4064
+115    4895
+110    4320
+100    4350
+ 95    4831
+</pre>
+Follow the link at this label to comments in the Notes on how to interpret
+such numbers.</div>
+
+<div ID="Tp4" class="hint">This Computer has a limited list of bullet
+lengths, below. However, if the bullet weight and diameter have been entered
+and if one of these two buttons is set, the Computer will estimate the
+length of the bullet. If the <i>left</i> button is set, the length estimated
+will be that of a spitzer, but if the <i>right</i> button is set, that of a
+round nose will be. If the button on the other side of the input field is
+set, no estimation will be made. (Previous versions used checkboxes, but IE
+could not process these correctly.) The estimations for RN bullets are good,
+but spitzers vary greatly in length.<p>Using these bullet length estimations
+allows one to quickly see how necking down a case affects performance at a
+given bullet weight. For instance, you can compare a 250 gn RN in the
+.30-06, .338-06, and .35 Whelen by selecting each from the cartridge window,
+with no need to go to the bullet window.<p>The calculator assumes flat base
+bullets. For a given seating depth, boat tail bullets leave a bit more room
+(net capacity) in the case. To compensate for a boat tail, one can add about
+1 gn to the Case Capacity for 37 caliber bullets, about .5 gn for 30
+caliber, and about .1 gn for 22 caliber.<p>The link at this label points to
+a basic twist rate calculator.</div>
+
+<div ID="Tp5" class="hint">This is the weight of the Charge (second column)
+divided by the net case capacity (this column). The Pressure Computer is
+best used with values near 0.86. </div>
+
+<div ID="Tp6" class="hint" style="text-align: center">breech to muzzle</div>
+
+<div ID="Tp7" class="hint" style="text-align: center">base of bullet to
+muzzle</div>
+
+<div ID="Tp8" class="hint" style="text-align: center">net case capacity,
+below the seated bullet</div>
+
+<div ID="Tp9" class="hint">This is the net case capacity (volume) divided by
+the cross sectional area of the bore. This value characterizes cartridge
+case capacity just as Sectional Density characterizes bullet weight. Values
+run from about 0.9 inches for the .30 Carbine to about 4.8 for the .300 Wea
+to above 6.0 for some small bore cartridges. The predictions of the
+computers seems to be better with cases around 3.0, which lies between the
+.308 and the .30-06.<p>In the Load Computer, powder selection is determined
+by SD and Relative Capacity (RC); see the pop-up at IMR Powder, in the first
+column. While Powley stated his equations in terms of Mass Ratio (above), it
+is easier to visualize RC.</div>
+
+<div ID="Tp10" class="hint" style="text-align: center">Enter the weight of
+the charge in the cartridge being tested.</div>
+
+<div ID="Tp11" class="hint">Enter the chronographed velocity of the
+cartridge being tested. Using an average over several samples is prudent,
+but see the discussion in the Notes.</div>
+
+<div ID="Tp12" class="hint"><img src="brownell.png" style=
+"float:right;margin-left:1em"> This is a rough estimate of the true pressure
+indicated by the Pressure Computer. It was <i>not</i> suggested by Powley,
+and no accurate, universal conversion between copper crusher readings
+(<i>eg.</i>, CUP) and true psi exists. The estimation used here is based on
+(1) the CUP and psi cartridge pressure limits suggested by SAAMI, (2) these
+limits as suggested by the CIP, and (3) test data (right) from Lloyd
+Brownell in the 09/1968 <i>Handloader</i>.</div>
+
+<div ID="Tp13" class="hint">This is the ratio of the charge weight to the
+bullet's weight. Together with Expansion Ratio and Pressure, it determines
+the cartridge's performance. <p> If no Pressure Computer inputs are
+present, the MR is computed from the Load Computer outputs. Otherwise, the
+charge given to the Pressure Computer is used to compute MR. In the Pressure
+Computer, MR outside the range 0.2 to 1.0 requires extrapolation from
+Powley's data.</div>
+
+<div ID="Tp14" class="hint">This is the volume behind the bullet as it exits
+divided by the cartridge's Net Capacity. Together with Mass Ratio and
+Pressure, it determines a cartridge's potential. ER greatly affects muzzle
+pressure and thus muzzle blast. In the Pressure Computer, ER outside the
+range 5.0 to 13.0 requires extrapolation from Powley's data.</div>
+
+<div ID="Tp15" class="hint">Efficiency is the bullet's Kinetic Energy
+divided by the chemical energy in the charge. It is computed from the
+Pressure Computer inputs for charge and velocity. For the calculation, the
+chemical energy in the charge is estimated to be 185 ft-lb per gn of powder,
+an average value from QuickLOAD for the IMR powders (however, 178 is given
+in the <i>NRA Fact Book</i> of 1988).<p>Efficiency is primarily a function
+of peak pressure and Expansion Ratio, and increases in either improve
+efficiency. The efficiency shows why increasing the case capacity doesn't
+increase the velocity as much as one might expect: "improving" a case
+decreases the ER.</div>
+
+<div ID="Tp16" class="hint">From cartridge dimensions and chronographed
+velocity, the Pressure Computer estimates the pressure that would be
+indicated by copper crushers. While the term "CUP" is properly applied only
+to crusher tests done to SAAMI procedures, it is used here to represent any
+radial copper crusher reading. <p>The Pressure Computer tends to
+underestimate the pressure for loads around 50,000 CUP, and it also tends to
+overestimate pressures near 30,000 CUP. See the Notes.<p>If a value for
+pressure is entered here and if the Load Computer inputs have already been
+entered, the computer calculates a charge and velocity which would indicate
+that pressure. This can be treated as an estimate of cartridge performance
+at that pressure. <b>No</b> indication of which powder would be used to
+attain that performance is attempted. <p>Use the checkbox to hold the
+Pressure fixed. So set, each change to Load Computer inputs generates a new
+estimate for performance at that pressure. Because the Computer tends to
+underestimate higher pressures, it is best to take between 2000 and 4000 CUP
+off the Pressure limit when near 50,000 CUP. Using 48,000 for performance
+estimates is a fair limit, but for cartridges combining large Relative
+Capacity with low SD bullets, use about 43,000&mdash;see the Notes.
+<p>Follow the link to an adjoining file for a list of cartridge pressure
+standards, and keep in mind the Powley Computers use "crusher" pressure
+readings, not piezo.</div>
+
+<div ID="Tp18" class="hint">If the bullet diameter has already been entered,
+the computer will calculate the bullet weight when a new value for SD is
+entered. For hunting with bullets of conventional construction, an SD near
+.300 is often recommended.</div>
+
+<div ID="Tp19" class="hint">Read the discussion on powder quickness in the
+Notes, and consider the calculated Quickness shown in the third column. In
+some cases, the Computer can indicate a powder too fast. Be especially wary
+of predictions for 4227 and 4198. Powder selection in the Load Computer is
+determined by SD and Relative Capacity (third column) and is mapped below.
+Follow the link at this label for a further discussion.<p align=center><img
+src="powley.png"></div>
+
+<div ID="Tp20" class="hint">Point to a button for comments. Click the button
+to enter that example's inputs into the Computers. The examples include
+those in which the Powley Computers give correct predictions and those in
+which it fails.<p>The Computers' outputs are compared to published
+values from reputable load books. (Cartridge dimensions entered into the
+Load Computer are, of course, approximations.) The charge and velocity from
+the load book are entered as Pressure Computer inputs.</div>
+
+<div ID="Tp21" class="hint"> <small><i>(click)</i></small> This is the
+.30-06 loaded with a 150 gn SP bullet, and it shows the Powley Computer at
+its best. The numbers can be compared to the pressure tested loads in
+Lyman's 48th Handbook. Lyman's data shows the charge from the Load Computer
+would be quite safe, even if the velocity is rather optimistic. Lyman's data
+shows that maximum performance comes with the 4064/4895 class of powders.
+The Computer suggests using a slower powder, 4350, which results in somewhat
+lower pressures, a goal of the Computer. Note that the Quickness value is on
+the border of the medium and the slow classes of powders. The CUP estimate
+from the Pressure Computer is calculated from Lyman's maximum load for 4064,
+and the estimated pressure is within 1000 CUP of the measured 49,600. </div>
+
+<div ID="Tp22" class="hint">This is a .22-250 loaded with a 63 gn bullet, a
+cartridge which can be found in Lyman's 48th. Here again, the Computer has
+selected a powder slow enough that the charge weight given does not exceed
+pressures. Lyman found that 35.0 gn of 4064 was maximum and that a
+compressed charge of 4350 was needed to get the higher velocities. <p> The
+Pressure Computer was given Lyman's max load, of 4064, and the pressure
+estimate is below the measured 50,800 by nearly 4000 CUP. Greater percentage
+errors in the pressure estimate can be found, especially with smaller
+calibers, when one combines low SD bullets with relatively large case
+capacities; see the Notes.</div>
+
+<div ID="Tp23" class="hint">IMR's site 10/2005 had data for the .358 Win.
+loaded with a 250 gn spitzer. The Load Computer picks the powder IMR reports
+giving the best velocity and suggests a charge which is below maximums. The
+Pressure Computer estimate is 3000 CUP below the lab measurement.</div>
+
+<div ID="Tp24" class="hint">CUP data for the .300 H&amp;H loaded with 220 gn
+bullets was found on IMR's web site, 08/2005. The Load Computer tries to
+predict a conservative load, one which when loaded for a nearly full case
+will give pressures comfortably <i>below</i> maximums. IMR's data shows a
+nearly full case of 4831 is right <i>at</i> maximum. Since 4831 was the
+slowest IMR powder available to reloaders when the Powley Computer was
+developed, the Computer is correct in showing a suitable IMR powder didn't
+then exist. <p>IMR's data for 4831 is entered into the Pressure
+Computer, giving a CUP estimate 6% (3,500) below the 54,000 measured.
+<p>Entering the cartridge's maximum of 54,000 CUP into the Pressure
+returns a velocity estimate of just over 2800 fps. I could find no published
+load quite that fast, but this was not unexpected; the Pressure Computer
+tends to underestimate pressures near 50,000 CUP. </div>
+
+<div ID="Tp25" class="hint">One can find .444 Marlin loads for 240 gn
+bullets in IMR's Guide dated 05/01. While the pressure limit for the .444 is
+lower than that intended for the Load Computer, the numbers were run to see
+what would come out. Some sources list a case capacity of 69 gn, and this is
+used in the example. The Load Computer indicates a charge of 4198 which is
+reasonable, being below IMR's maximium of 47.0 gn. Entering IMR's maximum
+data for 4198 into the Pressure Computer produces an estimate which is 9%
+below the 44,000 CUP measured. <p> Other sources list the case capacity as
+66 gn. Entering even 68 gn for the capacity causes the Computer to indicate
+4227 as the powder. Comparing this charge to IMR's 4227 data (where 32.5 gn
+gave 44,000 CUP) suggests a pressure <i>well</i> in excess of 50,000 CUP
+would be generated.<p> Use these Computers only with rifles capable of high
+pressures and be wary of indicated charges of 4227 and 4198. With these two
+powders, it would be prudent to begin load development with the next slower
+powder, <i>ie.</i> 4198 and 3031, respectively. Such problems with the
+indicated charge seem to be more likely with cartridges combining a bullet
+of SD below .200 with a case providing a Relative Capacity (third column)
+below 2. </div>
+
+<div ID="Tp26" class="hint">IMR's site on 08/2005 had data for the .35 Rem
+loaded with a 200 gn RN bullet. The Load Computer happens to indicate the
+very load which is maximum. One goal of the Load Computer is a charge
+producing a peak pressure between 40,000 and 50,000 CUP. Here, only 34,700
+CUP was recorded in the lab. <p>Using a Load Computer charge in a low
+pressure cartridge such as the .35 Rem is <b>not</b> recommended. The
+example only shows that Load Computer charges will not always generate the
+desired pressure, which in turn results in the velocity estimate being off.
+Note that for a rifle capable of 52,000 CUP, the charge indicated is quite
+safe, if rather mild. <p> In this example, the Pressure Computer's estimate
+of pressure is 2% high, and in general it overestimates pressures near
+30,000 CUP.</div>
+
+<div ID="Tp27" class="hint">This is an example of developing a load for an
+obsolete, lower pressure cartridge. The dimensions for the .33 WCF are
+entered into the computer. The Pressure Computer is given the claimed
+factory velocity of 2200 fps (the Computer is fairly insensitive to charge
+weight) and produces an estimate of about 34,000 CUP, in line with the
+pressures reported by Whelen back in 1918. <p> This 2200 fps velocity is
+divided by the Load Computer's estimate of 2477 (at about 44,000 CUP) and
+found to be 11% lower. Using a ratio suggested by Powley (see the Notes),
+the Load Computer charge should be dropped by 11% as well, giving 41.9 gn.
+Since 4895 is a powder recommended for reduced loads, such a reduction in
+charge is not unreasonable. (Do not greatly reduce 4350 and slower powders.)
+<p>Hornady's 1977 data for the .33 WCF shows 2200 fps was obtained with 45.1
+gn of 4895, and starting loads down to 35.1 gn were listed. Another source
+listed 45 gn of 4064 giving about 2200 (but 45 gn of 4895 giving nearly 2500
+fps!). Load development should begin with a charge at least 5% below that
+computed (or 39.8 gn), and the load should not be worked up beyond 2200 fps
+on the chronograph; indeed, 2100 fps would be a prudent limit.</div>
+
+<div ID="Tp30" class="hint" align=center>based on the velocity from the
+second column</div>
+
+<div ID="Tp31" class="hint">If a new value for the bullet seating depth is
+entered and if the case and bullet lengths have also been entered, the
+computer will calculate the corresponding cartridge length (first
+column).</div>
+
+<div ID="Tp35" class="hint" align=center>The checkbox near the center of the
+form disables these.</div>
+
+<div ID="Tp36" class="hint">This button brings up a list of cartridges.
+Selecting a cartridge enters into the Computers values for the case
+capacity, the case and cartridge lengths, the bullet diameter, and the
+working pressure. For cartridge lengths, industry maximums are entered,
+unless this makes seating depth too short with bullets at the SD typically
+loaded. For pressure, industry maximums are entered unless, as in the case
+of the .45-70, factory loads are known to be loaded to lower pressures. Know
+that many factory loadings have lengths and pressures below maximum. Mind
+the Seating Depth (third column) when trying lower SD bullets.
+<p><i>Caution</i>: in the list, cartridges in dotted outline operate at
+lower pressures and must not use Load Computer outputs directly; see Example
+7. These cartridges can be used to test the Pressure Computer at lower
+pressures. <p><i>Beware</i>: from the Pressure Computer, the predicted
+performance for cartridges operating near 50,000 CUP is nearly always
+<i>higher</i> than possible in pressure barrel tests; see the Notes. The
+predicted performance near 40,000 CUP is generally good, but near 30,000 CUP
+it tends to be low.</div>
+
+<div ID="Tp37" class="hint">This button brings up a list of bullets of
+various calibers, weights, and styles. Selecting a bullet enters into the
+Load Computer values for the bullet length and weight. This version of the
+Powley Computer assumes flat base bullets, and all bullets in the list are
+so. Dimensions for Woodleigh bullets were copied from their web site; all
+other lengths were copied from QuickLOAD's lists. <p><i>Note</i>: no check
+is made that the bullet diameter matches that of the cartridge. The length
+and weight alone are copied.</div>
+
+<div ID="Tp38" class="hint">For the charge indicated, the velocity estimate
+is sometimes close, but for some cartridges it will be rather optimistic;
+see Example 6.<p>For a cartridge rated near 52,000 CUP, the velocity predicted
+by the Load Computer can be safely attained, but the powder and charge weight
+indicated may not do so.</div>
+
+</body>
+</html>

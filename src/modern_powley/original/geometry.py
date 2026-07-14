@@ -1,11 +1,10 @@
 """Geometry and input definitions used by the audited baseline.
 
-Powley's manual calls for measured water capacity of the powder space. The
-cylindrical intrusion helper is a derived approximation, not an original
-Powley measurement procedure.
+Powley's manual calls for measured water capacity of the powder space. No
+gross-capacity subtraction helper is exposed in this source-backed namespace.
 """
 
-from math import isfinite, pi
+from math import pi
 
 from .units import GRAINS_PER_POUND, _positive, cubic_inches_to_water_grains
 
@@ -24,25 +23,11 @@ def mass_ratio(charge_weight_grains: float, bullet_weight_grains: float) -> floa
     )
 
 
-def net_case_capacity(
-    gross_fired_case_capacity_water_grains: float,
-    bullet_intrusion_water_grains: float,
-) -> float:
-    """Derived net powder-space capacity; direct measurement is preferred."""
-    gross = _positive(gross_fired_case_capacity_water_grains, "gross_fired_case_capacity_water_grains")
-    intrusion = float(bullet_intrusion_water_grains)
-    if not isfinite(intrusion) or intrusion < 0 or intrusion >= gross:
-        raise ValueError("bullet intrusion must be nonnegative and less than gross capacity")
-    return gross - intrusion
-
-
-def cylindrical_bullet_intrusion_water_grains(
-    bullet_diameter_inches: float, seating_depth_inches: float
-) -> float:
-    """Derived cylindrical approximation; not Powley's direct procedure."""
-    diameter = _positive(bullet_diameter_inches, "bullet_diameter_inches")
-    depth = _positive(seating_depth_inches, "seating_depth_inches")
-    return cubic_inches_to_water_grains(pi * (diameter / 2.0) ** 2 * depth)
+def effective_bore_diameter_inches(bore_diameter_inches: float, groove_diameter_inches: float) -> float:
+    """Manual p. 9 convention when the caliber slide does not list a caliber."""
+    bore = _positive(bore_diameter_inches, "bore_diameter_inches")
+    groove = _positive(groove_diameter_inches, "groove_diameter_inches")
+    return (bore + groove) / 2.0
 
 
 def projectile_travel_inches(distance_from_muzzle_to_bullet_tip_inches: float, bullet_length_inches: float) -> float:
@@ -66,3 +51,14 @@ def barrel_volume_ratio(barrel_volume_water_grains_value: float, net_capacity_wa
 
 def total_expansion_ratio(barrel_volume_water_grains_value: float, net_capacity_water_grains: float) -> float:
     return 1.0 + barrel_volume_ratio(barrel_volume_water_grains_value, net_capacity_water_grains)
+
+
+def total_expansion_ratio_from_dimensions(
+    net_capacity_water_grains: float,
+    bore_diameter_inches: float,
+    groove_diameter_inches: float,
+    projectile_travel: float,
+) -> float:
+    diameter = effective_bore_diameter_inches(bore_diameter_inches, groove_diameter_inches)
+    barrel_volume = barrel_volume_water_grains(diameter, projectile_travel)
+    return total_expansion_ratio(barrel_volume, net_capacity_water_grains)

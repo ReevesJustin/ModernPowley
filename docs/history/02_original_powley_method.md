@@ -1,6 +1,6 @@
 # Original Powley Method
 
-This chapter reports only what the accessible 1961 manual supports. An item
+This chapter reports only what visual inspection of the 1961 manual scan supports. An item
 marked **unresolved** is not implemented by inference.
 
 ## Inputs and Measurement
@@ -15,10 +15,13 @@ marked **unresolved** is not implemented by inference.
 
 The manual asks the user to measure barrel length and water capacity, states that
 capacity changes with seating depth and case brand, and recommends averaging
-several readings (pp. 8-9). It defines the relevant capacity as powder-space
-capacity. The accessible pages do not describe a complete syringe/weighing
-fixture procedure. Direct net measurement is preferred; gross capacity minus a
-documented intrusion volume is a separately labeled derived estimate.
+several readings (pp. 8-9). Visual inspection confirms that loading density uses
+the water weight that fills the **powder space**. It does not instruct the user
+to enter fired-case overflow capacity and does not print a complete weighing or
+fixture procedure. Whether the water space was measured with a seated bullet or
+by another equivalent fixture remains unresolved. Gross capacity minus a
+cylindrical shank estimate is the archived emulator's method, not a verified
+original-manual operation, and has been removed from `original/`.
 
 ## Confirmed Equations
 
@@ -27,6 +30,8 @@ SD = (Wb / 7000) / d^2
 MR = Wc / Wb
 Wc = 0.80 * V0    for IMR 4198 and IMR 4227
 Wc = 0.86 * V0    for the other listed IMR powders
+deff = (dbore + dgroove) / 2
+ER = (V0 + Vb) / V0
 ```
 
 `V0` is numerically the water weight filling the available powder space, not
@@ -59,7 +64,8 @@ explicitly. Davis, Howell and Miller variants are not inserted here.
 
 ## Published Worked Example
 
-Manual p. 9 gives a .308 Winchester example:
+Manual p. 9 gives a .308 Winchester example. The complete audited calculation
+is in `docs/history/original_powley_worked_example.md`.
 
 | Quantity | Printed value |
 |---|---:|
@@ -86,3 +92,8 @@ The manual is built around listed single-base IMR powders, nearly full powder
 space, and what it calls a good working pressure. Historical caution language
 does not establish modern safety or applicability. No load recommendation is
 derived from this baseline.
+
+The manual also prints local percentage rules for small charge changes and
+special procedures for lettered powder positions. They are recorded as
+`EQ-057` through `EQ-059` but not implemented: the text limits their context,
+and the letter procedures depend on an unavailable original scale position.
