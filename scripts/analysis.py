@@ -7,6 +7,11 @@ import pandas as pd
 import numpy as np
 import os
 
+raise RuntimeError(
+    "Legacy validation analysis is disabled: it reports in-sample selected-row metrics as validation. "
+    "Run scripts/audit_regression.py instead."
+)
+
 # Get script directory for robust path handling
 script_dir = os.path.dirname(os.path.abspath(__file__))
 

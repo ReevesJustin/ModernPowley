@@ -4,7 +4,7 @@
 
 - Visualization: A script to generate the RC vs. SD plot with Ba_eff bands + your 9 data points (matplotlib → save to /plots/). [Implemented as plot_rc_sd.py]
 - Automation: Python script to read CartridgeData.csv → compute predictions → output to Predictions.csv. [Implemented as compute_predictions.py]
-- Implement Core Scripts in /scripts/: calculate_charge.py, compute_ba_eff.py, plot_rc_sd.py, requirements.txt added.
+- Historical core scripts were added; they are now disabled pending provenance. Environment management has moved from `requirements.txt` to `uv` with `pyproject.toml` and `uv.lock`.
 - Script to parse GRT .propellant XML files → CSV table (Ba, a0, etc.). [Implemented as parse_grt_prop.py]
 - Script to parse GRT cartridge data → CSV (effective volume, bullet info, etc.). [Implemented as parse_grt_cartridge.py with unit conversions]
 - Update propellant_selector.py: Dynamic loading, smarter ranking, closest cartridge lookup, visual tie-in, polish/error handling.

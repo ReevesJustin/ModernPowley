@@ -1,0 +1,127 @@
+data_asset,field,attribution_class,unit,source_id,verification_evidence,status
+data/CartridgeData.csv,id,Unknown or unresolved,unknown or encoded in heading,,no row-level or field-level source record,excluded from authoritative calculations
+data/CartridgeData.csv,cartridge,Unknown or unresolved,unknown or encoded in heading,,no row-level or field-level source record,excluded from authoritative calculations
+data/CartridgeData.csv,groove_dia,Unknown or unresolved,in,,no row-level or field-level source record,excluded from authoritative calculations
+data/CartridgeData.csv,case_vol,Unknown or unresolved,gr H2O,,no row-level or field-level source record,excluded from authoritative calculations
+data/CartridgeData.csv,case_length,Unknown or unresolved,in,,no row-level or field-level source record,excluded from authoritative calculations
+data/CartridgeData.csv,cartridge_oal,Unknown or unresolved,in,,no row-level or field-level source record,excluded from authoritative calculations
+data/CartridgeData.csv,barrel_length,Unknown or unresolved,in,,no row-level or field-level source record,excluded from authoritative calculations
+data/CartridgeData.csv,eff_case_vol,Unknown or unresolved,claimed gr H2O; source dependent,,no row-level or field-level source record,excluded from authoritative calculations
+data/CartridgeData.csv,bullet_manu,Unknown or unresolved,unknown or encoded in heading,,no row-level or field-level source record,excluded from authoritative calculations
+data/CartridgeData.csv,bullet_mass,Unknown or unresolved,gr,,no row-level or field-level source record,excluded from authoritative calculations
+data/CartridgeData.csv,bullet_length,Unknown or unresolved,in,,no row-level or field-level source record,excluded from authoritative calculations
+data/CartridgeData.csv,propellant_manu,Unknown or unresolved,unknown or encoded in heading,,no row-level or field-level source record,excluded from authoritative calculations
+data/CartridgeData.csv,propellant_name,Unknown or unresolved,unknown or encoded in heading,,no row-level or field-level source record,excluded from authoritative calculations
+data/CartridgeData.csv,bulk_density,Unknown or unresolved,mixed/ambiguous across artifacts,,no row-level or field-level source record,excluded from authoritative calculations
+data/CartridgeData.csv,propellant_Qex,Unknown or unresolved,claimed kJ/kg,,no row-level or field-level source record,excluded from authoritative calculations
+data/CartridgeData.csv,propellant_mass,Unknown or unresolved,gr,,no row-level or field-level source record,excluded from authoritative calculations
+data/CartridgeData.csv,load_ratio,Unknown or unresolved,percent (apparent; unverified),,no row-level or field-level source record,excluded from authoritative calculations
+data/CartridgeData.csv,eff_barrel_length,Unknown or unresolved,in,,no row-level or field-level source record,excluded from authoritative calculations
+data/CartridgeData.csv,muzzle_vel,Unknown or unresolved,ft/s,,no row-level or field-level source record,excluded from authoritative calculations
+data/CartridgeData.csv,est_pmax,Unknown or unresolved,psi (claimed; method unknown),,no row-level or field-level source record,excluded from authoritative calculations
+data/CartridgeData.csv,est_muzzle_pressure,Unknown or unresolved,psi (claimed; method unknown),,no row-level or field-level source record,excluded from authoritative calculations
+data/ExpansionRatio.csv,Cartridge,Derived quantity,unknown or encoded in heading,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/ExpansionRatio.csv,Eff. Case Vol (gr H2O),Derived quantity,unknown or encoded in heading,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/ExpansionRatio.csv,Barrel Length (in),Derived quantity,unknown or encoded in heading,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/ExpansionRatio.csv,Approx. Barrel Vol (gr H2O),Derived quantity,unknown or encoded in heading,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/ExpansionRatio.csv,Expansion Ratio (Barrel Vol / Eff Case Vol),Derived quantity,unknown or encoded in heading,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/Predictions.csv,cartridge,Derived quantity,unknown or encoded in heading,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/Predictions.csv,Eff Case Vol (gr H2O),Derived quantity,unknown or encoded in heading,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/Predictions.csv,Eff Barrel Length (in),Derived quantity,unknown or encoded in heading,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/Predictions.csv,Predicted Charge (gr),Derived quantity,unknown or encoded in heading,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/Predictions.csv,Actual Charge (gr),Derived quantity,unknown or encoded in heading,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/Predictions.csv,Difference (gr),Derived quantity,unknown or encoded in heading,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/calculated_metrics.csv,id,Derived quantity,unknown or encoded in heading,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/calculated_metrics.csv,cartridge,Derived quantity,unknown or encoded in heading,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/calculated_metrics.csv,groove_dia,Derived quantity,in,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/calculated_metrics.csv,case_vol,Derived quantity,gr H2O,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/calculated_metrics.csv,case_length,Derived quantity,in,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/calculated_metrics.csv,cartridge_oal,Derived quantity,in,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/calculated_metrics.csv,barrel_length,Derived quantity,in,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/calculated_metrics.csv,eff_case_vol,Derived quantity,claimed gr H2O; source dependent,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/calculated_metrics.csv,bullet_manu,Derived quantity,unknown or encoded in heading,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/calculated_metrics.csv,bullet_mass,Derived quantity,gr,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/calculated_metrics.csv,bullet_length,Derived quantity,in,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/calculated_metrics.csv,propellant_manu,Derived quantity,unknown or encoded in heading,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/calculated_metrics.csv,propellant_name,Derived quantity,unknown or encoded in heading,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/calculated_metrics.csv,bulk_density,Derived quantity,mixed/ambiguous across artifacts,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/calculated_metrics.csv,propellant_Qex,Derived quantity,claimed kJ/kg,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/calculated_metrics.csv,propellant_mass,Derived quantity,gr,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/calculated_metrics.csv,load_ratio,Derived quantity,percent (apparent; unverified),,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/calculated_metrics.csv,eff_barrel_length,Derived quantity,in,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/calculated_metrics.csv,muzzle_vel,Derived quantity,ft/s,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/calculated_metrics.csv,est_pmax,Derived quantity,psi (claimed; method unknown),,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/calculated_metrics.csv,est_muzzle_pressure,Derived quantity,psi (claimed; method unknown),,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/calculated_metrics.csv,bore_area,Derived quantity,in2,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/calculated_metrics.csv,ER,Derived quantity,dimensionless; total-expansion convention,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/calculated_metrics.csv,predicted_charge,Derived quantity,gr,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/cartridge_data_from_grt.csv,cartridge_name,GRT-derived parameter or behavior,unknown or encoded in heading,SRC-GRT-LOAD-001,generated by legacy parser,descriptive/transcription use only
+data/cartridge_data_from_grt.csv,oal,GRT-derived parameter or behavior,in (generated parser output),SRC-GRT-LOAD-001,generated by legacy parser,descriptive/transcription use only
+data/cartridge_data_from_grt.csv,case_length,GRT-derived parameter or behavior,in,SRC-GRT-LOAD-001,generated by legacy parser,descriptive/transcription use only
+data/cartridge_data_from_grt.csv,case_vol,GRT-derived parameter or behavior,gr H2O,SRC-GRT-LOAD-001,generated by legacy parser,descriptive/transcription use only
+data/cartridge_data_from_grt.csv,groove_dia,GRT-derived parameter or behavior,in,SRC-GRT-LOAD-001,generated by legacy parser,descriptive/transcription use only
+data/cartridge_data_from_grt.csv,eff_case_vol,agent-generated assumption,claimed gr H2O; source dependent,SRC-GRT-LOAD-001,invalid Aeff area-to-volume mapping,descriptive/transcription use only
+data/cartridge_data_from_grt.csv,barrel_length,GRT-derived parameter or behavior,in,SRC-GRT-LOAD-001,generated by legacy parser,descriptive/transcription use only
+data/cartridge_data_from_grt.csv,bullet_dia,GRT-derived parameter or behavior,in,SRC-GRT-LOAD-001,generated by legacy parser,descriptive/transcription use only
+data/cartridge_data_from_grt.csv,bullet_mass,GRT-derived parameter or behavior,gr,SRC-GRT-LOAD-001,generated by legacy parser,descriptive/transcription use only
+data/cartridge_data_from_grt.csv,bullet_length,GRT-derived parameter or behavior,in,SRC-GRT-LOAD-001,generated by legacy parser,descriptive/transcription use only
+data/cartridge_data_from_grt.csv,propellant_mass,GRT-derived parameter or behavior,gr,SRC-GRT-LOAD-001,generated by legacy parser,descriptive/transcription use only
+data/derived_metrics.csv,id,Derived quantity,unknown or encoded in heading,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/derived_metrics.csv,cartridge,Derived quantity,unknown or encoded in heading,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/derived_metrics.csv,groove_dia,Derived quantity,in,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/derived_metrics.csv,case_vol,Derived quantity,gr H2O,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/derived_metrics.csv,case_length,Derived quantity,in,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/derived_metrics.csv,cartridge_oal,Derived quantity,in,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/derived_metrics.csv,barrel_length,Derived quantity,in,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/derived_metrics.csv,eff_case_vol,Derived quantity,claimed gr H2O; source dependent,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/derived_metrics.csv,bullet_manu,Derived quantity,unknown or encoded in heading,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/derived_metrics.csv,bullet_mass,Derived quantity,gr,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/derived_metrics.csv,bullet_length,Derived quantity,in,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/derived_metrics.csv,propellant_manu,Derived quantity,unknown or encoded in heading,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/derived_metrics.csv,propellant_name,Derived quantity,unknown or encoded in heading,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/derived_metrics.csv,bulk_density,Derived quantity,mixed/ambiguous across artifacts,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/derived_metrics.csv,propellant_Qex,Derived quantity,claimed kJ/kg,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/derived_metrics.csv,propellant_mass,Derived quantity,gr,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/derived_metrics.csv,load_ratio,Derived quantity,percent (apparent; unverified),,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/derived_metrics.csv,eff_barrel_length,Derived quantity,in,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/derived_metrics.csv,muzzle_vel,Derived quantity,ft/s,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/derived_metrics.csv,est_pmax,Derived quantity,psi (claimed; method unknown),,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/derived_metrics.csv,est_muzzle_pressure,Derived quantity,psi (claimed; method unknown),,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/derived_metrics.csv,efficiency_proxy,Derived quantity,ft/s per psi,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/derived_metrics.csv,mass_ratio,Derived quantity,dimensionless,,generator identified; upstream provenance incomplete,descriptive/transcription use only
+data/propellant_params.csv,CaliberName,GRT-derived parameter or behavior,unknown or encoded in heading,SRC-GRT-LOAD-001,one local GRT artifact,descriptive/transcription use only
+data/propellant_params.csv,oal,GRT-derived parameter or behavior,in (generated parser output),SRC-GRT-LOAD-001,one local GRT artifact,descriptive/transcription use only
+data/propellant_params.csv,caselen,GRT-derived parameter or behavior,unknown or encoded in heading,SRC-GRT-LOAD-001,one local GRT artifact,descriptive/transcription use only
+data/propellant_params.csv,casevol,GRT-derived parameter or behavior,unknown or encoded in heading,SRC-GRT-LOAD-001,one local GRT artifact,descriptive/transcription use only
+data/propellant_params.csv,Dz,GRT-derived parameter or behavior,unknown or encoded in heading,SRC-GRT-LOAD-001,one local GRT artifact,descriptive/transcription use only
+data/propellant_params.csv,Aeff,GRT-derived parameter or behavior,unknown or encoded in heading,SRC-GRT-LOAD-001,one local GRT artifact,descriptive/transcription use only
+data/propellant_params.csv,pMaxZul,GRT-derived parameter or behavior,unknown or encoded in heading,SRC-GRT-LOAD-001,one local GRT artifact,descriptive/transcription use only
+data/propellant_params.csv,method,GRT-derived parameter or behavior,unknown or encoded in heading,SRC-GRT-LOAD-001,one local GRT artifact,descriptive/transcription use only
+data/propellant_params.csv,sebert,GRT-derived parameter or behavior,unknown or encoded in heading,SRC-GRT-LOAD-001,one local GRT artifact,descriptive/transcription use only
+data/propellant_params.csv,ps,GRT-derived parameter or behavior,unknown or encoded in heading,SRC-GRT-LOAD-001,one local GRT artifact,descriptive/transcription use only
+data/propellant_params.csv,shotshell,GRT-derived parameter or behavior,unknown or encoded in heading,SRC-GRT-LOAD-001,one local GRT artifact,descriptive/transcription use only
+data/propellant_params.csv,Ba,GRT-derived parameter or behavior,unknown; XML unit blank,SRC-GRT-LOAD-001,one local GRT artifact,descriptive/transcription use only
+data/propellant_params.csv,k,GRT-derived parameter or behavior,unknown or encoded in heading,SRC-GRT-LOAD-001,one local GRT artifact,descriptive/transcription use only
+data/propellant_params.csv,case_length,GRT-derived parameter or behavior,in,SRC-GRT-LOAD-001,one local GRT artifact,descriptive/transcription use only
+data/propellant_params.csv,z2,GRT-derived parameter or behavior,unknown; XML unit blank,SRC-GRT-LOAD-001,one local GRT artifact,descriptive/transcription use only
+data/propellant_params.csv,z1,GRT-derived parameter or behavior,unknown; XML unit blank,SRC-GRT-LOAD-001,one local GRT artifact,descriptive/transcription use only
+data/propellant_params.csv,a0,GRT-derived parameter or behavior,unknown; XML unit blank,SRC-GRT-LOAD-001,one local GRT artifact,descriptive/transcription use only
+data/propellant_params.csv,Qex,GRT-derived parameter or behavior,unknown or encoded in heading,SRC-GRT-LOAD-001,one local GRT artifact,descriptive/transcription use only
+data/propellant_params.csv,bulk_density,GRT-derived parameter or behavior,mixed/ambiguous across artifacts,SRC-GRT-LOAD-001,one local GRT artifact,descriptive/transcription use only
+data/propellant_params.csv,mname,GRT-derived parameter or behavior,unknown or encoded in heading,SRC-GRT-LOAD-001,one local GRT artifact,descriptive/transcription use only
+data/propellant_params.csv,pname,GRT-derived parameter or behavior,unknown or encoded in heading,SRC-GRT-LOAD-001,one local GRT artifact,descriptive/transcription use only
+data/propellant_params.csv,lotid,GRT-derived parameter or behavior,unknown or encoded in heading,SRC-GRT-LOAD-001,one local GRT artifact,descriptive/transcription use only
+data/propellant_params.csv,a1,GRT-derived parameter or behavior,unknown or encoded in heading,SRC-GRT-LOAD-001,one local GRT artifact,descriptive/transcription use only
+data/propellant_params.csv,eta,GRT-derived parameter or behavior,unknown or encoded in heading,SRC-GRT-LOAD-001,one local GRT artifact,descriptive/transcription use only
+data/propellant_params.csv,pc,GRT-derived parameter or behavior,unknown or encoded in heading,SRC-GRT-LOAD-001,one local GRT artifact,descriptive/transcription use only
+data/propellant_params.csv,pcd,GRT-derived parameter or behavior,unknown or encoded in heading,SRC-GRT-LOAD-001,one local GRT artifact,descriptive/transcription use only
+data/propellant_params.csv,pt,GRT-derived parameter or behavior,unknown or encoded in heading,SRC-GRT-LOAD-001,one local GRT artifact,descriptive/transcription use only
+data/propellant_params.csv,tcc,GRT-derived parameter or behavior,unknown or encoded in heading,SRC-GRT-LOAD-001,one local GRT artifact,descriptive/transcription use only
+data/propellant_params.csv,tch,GRT-derived parameter or behavior,unknown or encoded in heading,SRC-GRT-LOAD-001,one local GRT artifact,descriptive/transcription use only
+data/propellant_params.csv,mc,GRT-derived parameter or behavior,unknown or encoded in heading,SRC-GRT-LOAD-001,one local GRT artifact,descriptive/transcription use only
+data/propellant_params.csv,laddercnt,GRT-derived parameter or behavior,unknown or encoded in heading,SRC-GRT-LOAD-001,one local GRT artifact,descriptive/transcription use only
+data/propellant_params.csv,laddermc,GRT-derived parameter or behavior,unknown or encoded in heading,SRC-GRT-LOAD-001,one local GRT artifact,descriptive/transcription use only
+data/propellant_params.csv,imageUuid,GRT-derived parameter or behavior,unknown or encoded in heading,SRC-GRT-LOAD-001,one local GRT artifact,descriptive/transcription use only
+data/propellant_params.csv,imageDetailUuid,GRT-derived parameter or behavior,unknown or encoded in heading,SRC-GRT-LOAD-001,one local GRT artifact,descriptive/transcription use only
+data/propellant_params.csv,propellant,GRT-derived parameter or behavior,unknown or encoded in heading,SRC-GRT-LOAD-001,one local GRT artifact,descriptive/transcription use only
+data/propellant_params.csv,Ba_eff,ModernPowley experimental hypothesis,unknown experimental scalar,,unsupported derived scalar,excluded from authoritative calculations

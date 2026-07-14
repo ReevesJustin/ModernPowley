@@ -8,6 +8,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 
+raise RuntimeError(
+    "Legacy plots are disabled because their data provenance and scientific labels failed audit."
+)
+
 # Set style
 plt.style.use('default')
 
@@ -77,7 +81,7 @@ df['bore_cap_per_inch'] = df['bore_area'] * 252.3  # gr H2O/inch
 df['RC'] = df['eff_case_vol'] / df['bore_cap_per_inch']
 df['SD'] = df['bullet_mass']  # approximate Powley SD scale
 
-# Map propellants to Ba_eff values based on calibrated models
+# Legacy mapping to unsupported Ba_eff values; script is disabled above.
 ba_eff_dict = {
     'RL16': 0.651,
     'N135': 0.65,

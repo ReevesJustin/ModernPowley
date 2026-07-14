@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "modern-powley"
+version = "0.1.0"
+description = "Audited reconstruction of the Powley Computer with quarantined experiments"
+requires-python = ">=3.11,<3.15"
+dependencies = [
+    "matplotlib>=3.10",
+    "numpy>=2.2",
+    "pandas>=2.2",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9",
+]
+
+[tool.uv]
+cache-dir = ".uv-cache"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src", "."]
+testpaths = ["tests"]

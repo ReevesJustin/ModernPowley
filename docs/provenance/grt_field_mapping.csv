@@ -1,0 +1,27 @@
+source_field,source_location_or_xml_path,observed_value,source_unit,semantic_meaning,destination_field,conversion,confidence,verification_evidence,status
+casevol,/GordonsReloadingTool/InnerBallistikInput/caliber/input[@name='casevol'],3.405544569646086,cm3,case volume,case_volume_cm3,none,high,"XML descr='case volume'",transcribe
+Aeff,/GordonsReloadingTool/InnerBallistikInput/caliber/input[@name='Aeff'],34.645092,mm2,effective area,effective_area_mm2,none,high,"XML descr='effektive area'",transcribe; exclude from volume
+Dz,/GordonsReloadingTool/InnerBallistikInput/caliber/input[@name='Dz'],6.7056,mm,groove caliber,groove_diameter_mm,none,high,XML description,transcribe
+oal,/GordonsReloadingTool/InnerBallistikInput/caliber/input[@name='oal'],72.39,mm,cartridge overall length,cartridge_oal_mm,none,high,XML description,transcribe
+caselen,/GordonsReloadingTool/InnerBallistikInput/caliber/input[@name='caselen'],48.514,mm,case length,case_length_mm,none,high,XML description,transcribe
+xe,/GordonsReloadingTool/InnerBallistikInput/gun/input[@name='xe'],457.2,mm,barrel length,barrel_length_mm,none,high,XML description; length convention still requires GRT documentation,transcribe raw
+mp,/GordonsReloadingTool/InnerBallistikInput/projectile/input[@name='mp'],9.0718474,g,projectile weight,projectile_mass_g,none,high,XML description,transcribe
+Dbul,/GordonsReloadingTool/InnerBallistikInput/projectile/input[@name='Dbul'],6.71,mm,projectile diameter,projectile_diameter_mm,none,high,XML description,transcribe
+gdepth,/GordonsReloadingTool/InnerBallistikInput/projectile/input[@name='gdepth'],11.224,mm,bullet seating depth,seating_depth_mm,none,high,XML description,transcribe
+glen,/GordonsReloadingTool/InnerBallistikInput/projectile/input[@name='glen'],35.1,mm,projectile overall length,projectile_length_mm,none,high,XML description,transcribe
+mc,/GordonsReloadingTool/InnerBallistikInput/propellant/input[@name='mc'],2.72155422,g,propellant mass,propellant_mass_g,none,high,XML description,transcribe
+Ba,/GordonsReloadingTool/InnerBallistikInput/propellant/input[@name='Ba'],0.468557,,vivacity coefficient,grt_ba_raw,none,medium,XML description but blank unit and model definition absent,transcribe raw only
+a0,/GordonsReloadingTool/InnerBallistikInput/propellant/input[@name='a0'],1.7895,,prog/deg coefficient,grt_a0_raw,none,medium,XML description; equation semantics absent,transcribe raw only
+z1,/GordonsReloadingTool/InnerBallistikInput/propellant/input[@name='z1'],0.4777,,burn-up limit z1,grt_z1_raw,none,medium,XML description; exact semantics absent,transcribe raw only
+z2,/GordonsReloadingTool/InnerBallistikInput/propellant/input[@name='z2'],0.8033,,burn-up limit z2,grt_z2_raw,none,medium,XML description; exact semantics absent,transcribe raw only
+Qex,/GordonsReloadingTool/InnerBallistikInput/propellant/input[@name='Qex'],3860,kJ/kg,specific explosive heat,specific_explosive_heat_kj_per_kg,none,high,XML description and unit,transcribe
+k,/GordonsReloadingTool/InnerBallistikInput/propellant/input[@name='k'],1.2360609,,ratio of specific heats,grt_specific_heat_ratio,none,medium,XML description; conditions absent,transcribe raw only
+pc,/GordonsReloadingTool/InnerBallistikInput/propellant/input[@name='pc'],1620,kg/m3,material density,material_density_kg_per_m3,none,high,XML description and unit,transcribe
+pcd,/GordonsReloadingTool/InnerBallistikInput/propellant/input[@name='pcd'],903,kg/m3,bulk density,bulk_density_kg_per_m3,none,high,XML description and unit,transcribe
+f,/GordonsReloadingTool/InnerBallistikInput/caliberfile/var[@name='f'],0.38,,unknown caliberfile variable,,none,low,"name alone; conflicts with explicit Ba",exclude
+c_b_,/GordonsReloadingTool/InnerBallistikInput/caliberfile/var[@name='c_b_'],2.29,,unknown caliberfile variable,,none,low,"name alone; conflicts with explicit a0",exclude
+c_Z,/GordonsReloadingTool/InnerBallistikInput/caliberfile/var[@name='c_Z'],6.71,,unknown caliberfile variable,,none,low,"name alone; conflicts with explicit z1",exclude
+c_F,/GordonsReloadingTool/InnerBallistikInput/caliberfile/var[@name='c_F'],6.50,,unknown caliberfile variable,,none,low,"name alone; conflicts with explicit z2",exclude
+c_Q,/GordonsReloadingTool/InnerBallistikInput/caliberfile/var[@name='c_Q'],34.66,,unknown caliberfile variable,,none,low,"name alone; parser calls it bulk density despite explicit pcd=903 kg/m3",exclude
+c_u_,/GordonsReloadingTool/InnerBallistikInput/caliberfile/var[@name='c_u_'],203.00,,unknown caliberfile variable,,none,low,"name alone; parser calls it energy despite explicit Qex=3860 kJ/kg",exclude
+c_alpha,/GordonsReloadingTool/InnerBallistikInput/caliberfile/var[@name='c_alpha'],60.00,,unknown caliberfile variable,,none,low,"name alone; parser calls it k despite explicit k=1.2360609",exclude

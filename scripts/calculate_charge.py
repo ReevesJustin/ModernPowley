@@ -7,6 +7,11 @@ import pandas as pd
 import numpy as np
 import os
 
+raise RuntimeError(
+    "Legacy charge generation is disabled. The regression is quarantined under "
+    "modern_powley.experimental and requires explicit opt-in."
+)
+
 # Paths
 script_dir = os.path.dirname(os.path.abspath(__file__))
 data_dir = os.path.join(script_dir, '..', 'data')

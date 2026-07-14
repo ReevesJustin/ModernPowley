@@ -5,6 +5,11 @@ Script to batch process propellant CSV and add Ba_eff column.
 import pandas as pd
 import os
 
+raise RuntimeError(
+    "Legacy Ba_eff generation is disabled. The hypothesis is quarantined under "
+    "modern_powley.experimental and is not ballistic efficiency."
+)
+
 # Paths
 script_dir = os.path.dirname(os.path.abspath(__file__))
 data_dir = os.path.join(script_dir, '..', 'data')

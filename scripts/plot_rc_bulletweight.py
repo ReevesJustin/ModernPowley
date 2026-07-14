@@ -9,6 +9,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 
+raise RuntimeError(
+    "Legacy Ba_eff plot generation is disabled; committed plots are stale audit artifacts."
+)
+
 # Paths
 script_dir = os.path.dirname(os.path.abspath(__file__))
 data_dir = os.path.join(script_dir, '..', 'data')
@@ -43,8 +47,7 @@ df = df.merge(df_prop[['propellant_name', 'Ba_eff']], on='propellant_name', how=
 # Check for missing Ba_eff
 missing_ba = df['Ba_eff'].isna().sum() > 0
 if missing_ba:
-    print("Warning: Some propellants missing Ba_eff, filling with mean")
-    df['Ba_eff'] = df['Ba_eff'].fillna(df['Ba_eff'].mean())
+    raise ValueError("Missing Ba_eff values: mean imputation is prohibited")
 
 # Calculate RC
 if not all(col in df.columns for col in ['groove_dia', 'eff_case_vol', 'bullet_mass']):
@@ -60,7 +63,7 @@ plt.figure(figsize=(10, 8))
 
 # Scatter with viridis
 sc = plt.scatter(df['RC'], df['bullet_mass'], c=df['Ba_eff'], cmap='viridis', s=100, edgecolor='k', alpha=0.8)
-plt.colorbar(sc, label='Ballistic Efficiency (Ba_eff)')
+plt.colorbar(sc, label='Unvalidated Ba_eff hypothesis')
 
 # Annotations: label with propellant
 for idx in df.index:

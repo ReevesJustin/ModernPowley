@@ -5,6 +5,11 @@ Automation script to compute charge predictions from CartridgeData.csv and outpu
 import pandas as pd
 import os
 
+raise RuntimeError(
+    "Legacy prediction generation is disabled. Use the opt-in experimental API "
+    "only for artifact reproduction."
+)
+
 # Paths
 script_dir = os.path.dirname(os.path.abspath(__file__))
 data_dir = os.path.join(script_dir, '..', 'data')

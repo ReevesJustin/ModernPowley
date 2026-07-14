@@ -1,62 +1,82 @@
-# Algebraic Propellant Selection: A Modern Empirical Framework
+# ModernPowley: Repository Under Audit
 
-This project develops a simple algebraic transfer function for propellant selection and load optimization in rifle cartridges. Leveraging empirical data from verified high-performance loads, it predicts suitable commercially available propellants, optimal charge weights, and key performance metrics. The system flags mismatches where no commercial powder achieves desired criteria (load density ≥95%, near-complete burnout, safe peak pressures ~55,000–60,000 PSI).
+> [!CAUTION]
+> Current powder rankings are not validated. The historical `Ba` target and
+> `Ba_eff` ranking logic are experimental, and some equations, field mappings,
+> and historical attributions were introduced without adequate provenance.
+> Current and preserved prototype outputs must not be treated as load
+> recommendations or as evidence of pressure, velocity, or burnout performance.
 
-Building on Homer Powley's 1960s slide-rule tool, it updates for modern propellants (Vihtavuori, Alliant, Hodgdon, IMR), high-density loads, and precise PSI targets. Core calculations involve expansion ratio, sectional density, and mass ratios to select propellants and predict charges.
+This repository is an evidence-based reconstruction of the Powley Computer plus
+a quarantined record of later ModernPowley experiments. The agent-derived
+prototype is preserved at tag `pre_audit_agent_derived_prototype` (commit
+`6485b3d2f4c9fb48e2349f548ba7c79c8821947d`). History was not rewritten.
 
-## Usage
+The repository uses `uv` exclusively for Python versions, dependency locking,
+environment synchronization, and command execution. `pyproject.toml`,
+`.python-version`, and `uv.lock` are the authoritative environment files.
 
-### Scripts
+## Audit Status
 
-The project includes several Python scripts in the `scripts/` directory for data processing and analysis. Ensure you have Python 3 and required libraries (pandas, numpy, matplotlib) installed.
+The accessible 1961 instruction manual directly supports:
 
-- `parse_grt_cartridge.py`: Parses GRT .grtload XML files to extract cartridge data into `data/cartridge_data_from_grt.csv`.
-- `parse_grt_prop.py`: Parses GRT .grtload XML files to extract propellant parameters into `data/propellant_params.csv`.
-- `compute_ba_eff.py`: Computes ballistic efficiency (Ba_eff) for propellants and updates `data/propellant_params.csv`.
-- `compute_predictions.py`: Computes predicted charge masses from `data/CartridgeData.csv` and outputs to `data/Predictions.csv` using the empirical formula.
-- `calculate_metrics.py`: Calculates derived metrics like efficiency proxy and mass ratio.
-- `calculate_charge.py`: Calculates expansion ratios and predicted charges.
-- `analysis.py`: Performs statistical analysis on the datasets.
-- `create_db.py`: Creates a SQLite database from CartridgeData.csv.
-- `plot_data.py`: Generates various plots and analysis from the data, saving to `plots/`.
-- `plot_rc_bulletweight.py`: Plots relative capacity vs. bullet weight with Ba_eff bands.
-- `plot_rc_sd.py`: Plots relative capacity vs. sectional density with Ba_eff bands.
-- `propellant_selector.py`: Interactive CLI tool for propellant selection based on user inputs, with dynamic data loading, ranking, and optional summary output.
+- net powder-space water capacity as the capacity input;
+- inch-pound sectional density;
+- charge-to-bullet mass ratio;
+- historical 0.80/0.86 IMR loading-density arithmetic;
+- bullet travel as effective barrel length;
+- distinct barrel-volume and total-expansion ratios;
+- one printed .308 Winchester worked example.
 
-Run a script with: `python scripts/script_name.py`
+Exact original powder-scale boundaries, the original velocity equation, and the
+original pressure equation are not yet source-complete. Those operations fail
+with `MissingProvenanceError`; they are not guessed from later transcriptions.
 
-### Jupyter Notebook
+The following are quarantined and unvalidated:
 
-The project includes a Jupyter notebook (`demo.ipynb`) for an interactive demo combining data loading, calculations, and plotting.
+- `Ba_target = clamp(0.85 - 0.05*RC, 0.45, 0.90)`;
+- `Ba_eff = Ba * [a0 + (1-a0)*z2/2]`;
+- `Wc = 0.71 * V0^1.02 * Ltravel^0.06`.
 
-Interactive Demo: [Launch demo.ipynb](jupyter/demo.ipynb)
+They live under `src/modern_powley/experimental/` and require the explicit
+keyword `allow_unvalidated=True`. `Ba_eff` is not ballistic efficiency.
 
-Run with: `jupyter notebook jupyter/demo.ipynb`
+## Repository Guide
 
-### Data
+- `docs/audits/modern_powley_full_repository_audit.md`: finding-by-finding audit.
+- `reference/source_ledger.csv`: source access and artifact hashes.
+- `reference/powley_manual/powleysmanuals1.md`: searchable OCR-style manual transcription; verify against the scan.
+- `docs/provenance/equation_ledger.csv`: equation attribution and status.
+- `docs/provenance/data_field_ledger.csv`: every committed CSV field.
+- `docs/provenance/grt_field_mapping.csv`: audited XML mappings.
+- `docs/history/`: separate Powley, Davis, Howell, Miller, and experimental histories.
+- `src/modern_powley/original/`: only directly supported arithmetic and explicit failures.
+- `src/modern_powley/later/`: later transcriptions, never labeled original.
+- `src/modern_powley/experimental/`: opt-in prototype hypotheses.
+- `tests/`: unit, reference, regression-reproduction, and provenance tests.
 
-- `data/CartridgeData.csv`: Main cartridge data.
-- `data/cartridge_data_from_grt.csv`: Parsed cartridge data from GRT files.
-- `data/Predictions.csv`: Predicted vs actual charges.
-- `data/ExpansionRatio.csv`: Expansion ratios.
-- `data/propellant_params.csv`: Extracted propellant parameters.
-- `data/derived_metrics.csv`: Derived metrics like efficiency proxy.
-- `data/calculated_metrics.csv`: Calculated metrics and charges.
+Legacy CSVs, plots, scripts, and notebook outputs remain for auditability. They
+are stale unless accompanied by a current generation manifest, and they do not
+become measured data merely because they are committed.
 
-## Key Visualizations
+## Reproducible Audit Commands
 
-![Predicted vs Actual Charges](plots/predicted_vs_actual.png)
+```bash
+uv sync --locked
+uv run pytest -q
+uv run python scripts/audit_regression.py
+uv run python scripts/generate_audit_inventory.py
+uv lock --check
+git diff --stat
+```
 
-*Proof of accuracy: Predictions within ~1 grain of actual loads.*
+The regression command reports in-sample artifact reproduction only. It is not
+independent validation.
 
-![RC vs SD with Ba_eff](plots/rc_sd_banded.png)
+## Source and Data Policy
 
-*Relative Capacity (RC) vs. Sectional Density (SD) plot with Ba_eff bands for propellant selection.*
-
-## Documentation
-
-- [Introduction](docs/Introduction.md) - Full overview, hypothesis, assumptions, and calculations
-- [Equations](docs/Equations.md) - Detailed formulas, propellant table, and derivations
-- [Current Findings](docs/Current_Findings.md) - Validation results and discussion
-- [History](docs/History.md) - Account of the Powley Computer development
-- [Usage Instructions](docs/Usage_Instructions.md) - Step-by-step guide to using the scripts
+Every scientific value must retain units and one of the attribution classes in
+the ledgers. GRT output is modeled data. Missing powder values remain missing;
+they are never filled with a mean or borrowed from another powder. Commercial
+relative burn-rate charts are rough ordinal references, not deterministic
+internal-ballistics mappings.

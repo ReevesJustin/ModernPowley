@@ -1,101 +1,40 @@
-# Current Findings: Validation and Refinement of the Algebraic Propellant Selection Framework
+# Current Audited Findings
 
-## Executive Summary
-Analysis of 9 verified high-performance loads combined with 22 calibrated GRT (Gordon's Reloading Tool) propellant models confirms that a modernized Powley-style algebraic framework can reliably predict both optimal charge weight windows and propellant selection.
-Charge mass prediction remains highly accurate (R² > 0.998, typical error < 1 grain) using the near-linear relationship with effective case volume and weak dependence on effective barrel length (per empirical fit, but rooted in expansion ratio ER = 1 + (bore vol / case vol) and P-V conservation via ideal gas law PV=nRT). Note: Effective barrel length is critical. Barrel length is partially responsible for selecting a propellant that is consumed before projectile muzzle exit. This is a built-in bias, in that the existing example loads were selected to fit this criterion.
-Incorporation of dynamic burn rate index Ba_eff (averaged over φ=0 to z2, accounting for progressive burning a0>1; physics: r=Ba P^n, with Arrhenius k=A e^{-Ea/RT} for kinetics) from calibrated geometric burn models significantly improves propellant ranking over raw Ba or closed-bomb charts.
-The original optimal propellants in the dataset fall within tight, well-populated bands on a Relative Capacity vs. Sectional Density plot, with multiple commercial alternatives available for most loads.
-Gaps exist only at the extreme fast end (> Benchmark) and extreme slow end (< N570), correctly flagging cases where no ideal commercial powder exists. Note: Faster propellant models are available (e.g., VV N130, N133), but they have not yet been incorporated.
-## Methods
+## Confirmed Defects
 
-### Data Sources
-* 9 empirical optimal loads (high load density ≥ 97%, complete burnout, modern precision/ELR cartridges).
-* 22 GRT (Gordon's Reloading Tool)-derived propellant models providing Ba, a0 (dynamic vivacity coefficient), z1/z2, bulk density, Qex, and k.
+- GRT `Aeff` (`mm2`) was mapped to effective case volume.
+- The selector used gross capacity as net powder-space capacity.
+- The selector and notebook used bullet grains as sectional density.
+- Effective barrel length used a fixed 2.5-inch subtraction or COAL subtraction
+  instead of initial bullet-base-to-muzzle travel.
+- Powder suggestions depended on unsupported `Ba_target` and `Ba_eff` equations.
+- Missing powder scalars were silently mean-imputed in plots.
+- Modeled/unknown data was described as empirical and verified.
+- Burnout claims had no supporting burn-fraction or burnout fields.
 
-![Propellant Mass Histogram](https://github.com/ReevesJustin/ModernPowley/blob/main/plots/propellant_mass_hist.png)
+## Regression Reproduction
 
-### Key Calculations
+All 10 committed prediction rows produce:
 
-Effective vivacity
-`Ba_eff = Ba × [a0 + (1 – a0) × (z2 / 2)]`
-(linear average of dynamic vivacity over useful burn fraction)
-Relative Capacity (RC)
-`RC ≈ effective case volume (gr H₂O) / bore capacity per inch (gr H₂O/in)`
-Higher RC favors faster propellants.
-Plot coordinates
-* X-axis: Relative Capacity
-* Y-axis: Approximate Powley SD scale (bullet weight in grains)
+| Metric | Value |
+|---|---:|
+| MAE | 1.0460839220 gr |
+| RMSE | 1.3505634115 gr |
+| maximum absolute error | 2.8916517475 gr |
+| mean signed error | -0.9237984375 gr |
+| prediction-form R2 | 0.9942624233 |
 
-![Expansion Ratios](https://github.com/ReevesJustin/ModernPowley/blob/main/plots/expansion_ratios.png)
+These are in-sample artifact statistics, not validation. There is no committed
+fit procedure, uncertainty estimate, holdout, cross-validation, or external
+dataset. Duplicate cartridge names and missing prediction row IDs further limit
+join reliability.
 
-![Velocity vs Barrel Length](https://github.com/ReevesJustin/ModernPowley/blob/main/plots/velocity_vs_barrel.png)
+## Historical Reconstruction
 
-## Results
+The 1961 manual supports net powder-space capacity, sectional density, mass
+ratio, historical loading-density arithmetic, projectile travel, expansion-ratio
+meaning, and a worked example. It does not provide enough accessible information
+to implement exact original powder boundaries, velocity, or pressure equations.
 
-### Charge Weight Prediction
-The previously derived equation
-`charge_mass ≈ 0.71 × (eff_case_vol)1.02 × (eff_barrel_length)0.06`
-continues to predict actual charges within ±1.3 grains across the full range (17–88 gr), including the large-volume 300 Norma Magnum.
-
-![Predicted vs Actual Charges](https://github.com/ReevesJustin/ModernPowley/blob/main/plots/predicted_vs_actual.png)
-
-### Propellant Selection Accuracy
-When original loads are plotted on an RC vs. SD graph and overlaid with Ba_eff-ranked bands:
-
-![RC vs SD Plot](https://github.com/ReevesJustin/ModernPowley/blob/main/plots/rc_sd_modern.png)
-
-![RC vs Bullet Weight Plot](https://github.com/ReevesJustin/ModernPowley/blob/main/plots/rc_bulletweight_modern.png)
-
-* All 8 precision/ELR loads (excluding .300 Blackout outlier) cluster in the medium-slow band (Ba_eff 0.55–0.70).
-* Actual propellants used (RL16, N555, IMR4064, N135, estimated N160, N570) fall centrally within their respective bands.
-* Multiple alternatives exist within ±0.08 Ba_eff for every load, indicating robust commercial coverage in the precision cartridge space.
-* The H4350 load in the 6mm GT remains the only clear mismatch (too slow for its RC), consistent with field observations requiring ≥25" barrel for optimality. Note: H4350 is seldom an optimal propellant for many applications due to its bulk density and dynamic vivacity. It is often too dense to allow optimal case fill under maximum peak pressure.
-* Note on .300 Blackout: This load is an outlier because the propellant (N110), case volume, and projectile mass prevented a higher charge weight. While the end result is optimal with burn fraction φ ≈ 1 (complete consumption per mass/energy conservation) before the muzzle, it suggests the use of a heavier projectile would be prudent to improve ballistic efficiency, as maximum peak pressure is below the target window.
-
-### Dynamic Vivacity Impact
-Progressive-burning modern powders (high a0) show significant effective acceleration:
-
-* RL16: base Ba 0.468 → Ba_eff 0.651
-* N570: base Ba 0.295 → Ba_eff 0.475
-* N555: base Ba 0.447 → Ba_eff 0.586
-
-This adjustment correctly places extruded powders with apparent low temperature sensitivity in their observed performance sweet spot despite lower nominal Ba. Note: There is no such thing as truly temperature-stable extruded powders—only propellants that exhibit apparent low temperature sensitivity under specific internal ballistic and external temperature conditions.
-
-## Discussion
-The framework successfully replicates and extends the original Powley Computer’s functionality (empiricism flagged; alternative: direct Ba from Vieille's law):
-
-* Charge prediction exceeds Powley accuracy due to modern high-density calibration.
-* Propellant selection via Ba_eff bands is more reliable than closed-bomb rankings or raw vivacity.
-* The system naturally identifies commercial gaps at the extremes, enabling informed wildcat design decisions.
-
-## Current Limitations
-
-* Relative Capacity calculation remains approximate for heavily seated heavy-for-caliber boat-tail bullets (displaced volume reduction).
-* Extreme fast powders (pistol/shotgun territory) not yet modeled.
-* Very slow surplus/extreme powders (US869, WC860 variants) untested.
-
-## Conclusions and Recommendations
-
-* The algebraic framework shows promise for further evaluation and is ready for practical use in screening conventional and mild wildcat cartridges.
-* Propellant selection should use effective vivacity (Ba_eff) rather than base Ba for ranking.
-* For new designs falling outside Ba_eff 0.45–0.90, expect either early burnout (lower velocities than possible, burn too fast) or excessive muzzle blast/pressure (burn too slow).
-
-## Next Steps
-
-* Expand database with RL26, N560, H4831SC, and any available ultra-slow models.
-* Refine Relative Capacity calculation to explicitly account for bullet seating displacement. Currently, effective case capacity is entered as an input instead of calculated.
-* Develop simple spreadsheet implementation of the full selector (inputs → RC/SD point → recommended propellants + charge estimate).
-
-## Comparison of RC vs. SD vs. Bullet Weight Plots
-
-The RC vs. SD plot (`rc_sd_banded.png`) shows tight clustering of optimal loads within specific Ba_eff bands (medium-slow: 0.55–0.70), confirming the framework's effectiveness for propellant selection. This reinforces Powley's original choice of SD over raw bullet weight, as SD accounts for caliber and provides more precise groupings.
-
-In contrast, the RC vs. Bullet Weight plot (`rc_bulletweight.png`) exhibits looser clustering, with broader spreads across weight ranges. This is useful for heavy-bullet intuition (e.g., identifying trends for 140–147gr ELD-Ms in 6.5 Creedmoor), but less reliable for fine-tuned selection compared to SD, which better captures quickness and burn dynamics.
-
-SD provides tighter propellant separation due to caliber normalization. By dividing bullet weight by the square of the caliber (SD = weight / caliber²), SD accounts for how different calibers affect ballistic efficiency and propellant requirements. For instance, a 130-grain bullet in 6.5mm (.264 caliber) has an SD of 0.248, while a similar weight in 7mm (.284 caliber) would have a lower SD of 0.207, indicating different performance envelopes despite similar masses. This normalization leads to more distinct Ba_eff bands and improved predictions across calibers, reducing overlaps that occur when using raw bullet weight alone.
-
-![RC vs Bullet Weight](plots/rc_bulletweight.png)
-
-*RC vs. Bullet Weight: Looser clusters compared to SD, useful for heavy-bullet trends.*
-
-This modern empirical framework preserves the elegant simplicity of the original Powley Computer while delivering substantially higher accuracy for contemporary high-performance reloading.
+The full evidence and dispositions are in
+`docs/audits/modern_powley_full_repository_audit.md`.

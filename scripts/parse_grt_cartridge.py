@@ -4,45 +4,30 @@ Extracts effective volume, bullet info (mass, dia, length), propellant mass, gro
 """
 
 import xml.etree.ElementTree as ET
-import pandas as pd
 import os
 import glob
-
-# Unit conversion constants
-CM3_TO_GR_H2O = 15.432
-MM_TO_INCH = 1 / 25.4
-G_TO_GR = 1 / 0.0648  # Approximately 15.432
 
 # Mapping of GRT fields to desired columns
 CARTRIDGE_MAPPING = {
     # Caliber
-    'casevol': 'case_vol',
-    'Aeff': 'eff_case_vol',  # Assuming effective area as effective volume proxy
-    'Dz': 'groove_dia',
-    'oal': 'oal',
-    'caselen': 'case_length',
+    'casevol': 'case_volume_cm3',
+    'Aeff': 'effective_area_mm2',  # XML unit is mm2; never map area to volume
+    'Dz': 'groove_diameter_mm',
+    'oal': 'cartridge_oal_mm',
+    'caselen': 'case_length_mm',
     # Gun
-    'xe': 'barrel_length',
+    'xe': 'barrel_length_mm',
     # Projectile
-    'mp': 'bullet_mass',
-    'Dbul': 'bullet_dia',
-    'glen': 'bullet_length',
+    'mp': 'bullet_mass_g',
+    'Dbul': 'bullet_diameter_mm',
+    'glen': 'bullet_length_mm',
     # Propellant
-    'mc': 'propellant_mass',
+    'mc': 'propellant_mass_g',
 }
 
-# Fields that need unit conversion
-UNIT_CONVERSIONS = {
-    'case_vol': CM3_TO_GR_H2O,  # cm³ to gr H₂O
-    'groove_dia': MM_TO_INCH,  # mm to inches
-    'oal': MM_TO_INCH,  # mm to inches
-    'case_length': MM_TO_INCH,  # mm to inches
-    'barrel_length': MM_TO_INCH,  # mm to inches
-    'bullet_mass': G_TO_GR,  # g to gr
-    'bullet_dia': MM_TO_INCH,  # mm to inches
-    'bullet_length': MM_TO_INCH,  # mm to inches
-    'propellant_mass': G_TO_GR,  # g to gr
-}
+# Preserve source units at the XML boundary. Any later conversion must be an
+# explicit, separately tested transformation with both source and target units.
+UNIT_CONVERSIONS = {}
 
 def parse_grt_cartridge(file_path):
     """Parse a single GRT XML file and extract cartridge data."""
@@ -116,6 +101,8 @@ def parse_grt_cartridge(file_path):
     return data
 
 def main(grt_dir, output_csv):
+    import pandas as pd
+
     grt_files = glob.glob(os.path.join(grt_dir, '*.grtload'))
     all_data = []
 

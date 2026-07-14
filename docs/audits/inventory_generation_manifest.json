@@ -1,0 +1,30 @@
+{
+  "checkpoint_commit": "6485b3d2f4c9fb48e2349f548ba7c79c8821947d",
+  "checkpoint_tag": "pre_audit_agent_derived_prototype",
+  "command": "uv run python scripts/generate_audit_inventory.py",
+  "environment": {
+    "python": "3.14.4",
+    "runner": "uv"
+  },
+  "generating_script": "scripts/generate_audit_inventory.py",
+  "generating_script_sha256": "bfd1a05f341d7b273853c361ae355c6a89a5acb38f8f96e1d12442bae05f20a1",
+  "inputs": [
+    {
+      "git_commit": "6485b3d2f4c9fb48e2349f548ba7c79c8821947d"
+    },
+    {
+      "glob": "data/*.csv (current audited worktree)"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/audits/pre_audit_file_inventory.csv",
+      "sha256": "7d18542cbb986bebed569e389bfe9e61cb6b172510dabe990838ad48d3206c4c"
+    },
+    {
+      "path": "docs/provenance/data_field_ledger.csv",
+      "sha256": "ffbfc54799a483e65720013c2cffca2db14c1a41a71992d14c71f1c3f4e20072"
+    }
+  ],
+  "timestamp": "2026-07-14T02:38:07-05:00"
+}

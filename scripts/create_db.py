@@ -1,6 +1,6 @@
 """
 Script to create/update SQLite database from CSV cartridge data.
-Usage: python create_db.py [--csv CSV_PATH] [--db DB_PATH]
+Usage: uv run python scripts/create_db.py [--csv CSV_PATH] [--db DB_PATH]
 """
 
 import sqlite3

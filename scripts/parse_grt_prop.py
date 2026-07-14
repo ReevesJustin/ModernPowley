@@ -1,31 +1,16 @@
 """
-Script to parse GRT .grtload XML files and extract propellant parameters to CSV.
-Extracts Ba, a0, z1, z2, bulk_density, Qex, k, etc. from the caliberfile vars.
+Legacy script to transcribe explicit GRT .grtload XML inputs to CSV.
+Unverified caliberfile variable-name mappings are intentionally excluded.
 """
 
 import xml.etree.ElementTree as ET
-import pandas as pd
 import os
 import glob
 
-# Mapping of GRT var names to desired columns (Powley calculations)
-PARAM_MAPPING = {
-    # Propellant params
-    'f': 'Ba',  # Vivacity
-    'c_b_': 'a0',  # Ba(phi) coefficient 0
-    'c_Z': 'z1',  # Lower burn-up limit
-    'c_F': 'z2',  # Upper burn-up limit
-    'c_Q': 'bulk_density',  # Bulk density
-    'c_u_': 'Qex',  # Energy
-    'c_alpha': 'k',  # Adiabatic index
-    # Caliber params
-    'c_L3': 'case_length',  # Case length (mm)
-    'c_Pmax': 'p_max',  # Max pressure
-    'Dz': 'groove_dia',  # Groove diameter (mm)
-    'Aeff': 'eff_area',  # Effective area (mm2)
-    'casevol': 'case_vol',  # Case volume (cm3)
-    # Add more
-}
+# Field names alone are not verification evidence. Explicit propellant/caliber
+# input elements below carry their own units and descriptions; internal
+# caliberfile vars remain excluded until authoritative GRT documentation exists.
+PARAM_MAPPING = {}
 
 def parse_grt_file(file_path):
     """Parse a single GRT XML file and extract params for Powley calculations."""
@@ -96,6 +81,8 @@ def parse_grt_file(file_path):
     return data
 
 def main(grt_dir, output_csv):
+    import pandas as pd
+
     grt_files = glob.glob(os.path.join(grt_dir, '*.grtload'))
     all_data = []
 

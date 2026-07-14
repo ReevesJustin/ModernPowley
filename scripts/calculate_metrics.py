@@ -6,6 +6,11 @@ Outputs to console and optionally to CSV.
 import pandas as pd
 import os
 
+raise RuntimeError(
+    "Legacy metric generation is disabled: upstream field provenance is unresolved "
+    "and velocity/pressure is not an efficiency metric."
+)
+
 # Paths
 script_dir = os.path.dirname(os.path.abspath(__file__))
 data_dir = os.path.join(script_dir, '..', 'data')

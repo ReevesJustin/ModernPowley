@@ -11,6 +11,10 @@ import argparse
 
 def main():
     """Main function to run the propellant selection tool."""
+    raise RuntimeError(
+        "Legacy propellant suggestions are disabled: SD, capacity, barrel-travel, "
+        "Ba_target, and Ba_eff behavior failed provenance audit. See README.md."
+    )
     parser = argparse.ArgumentParser(description="Propellant Selection Tool")
     parser.add_argument('--cartridge', help='Cartridge name')
     parser.add_argument('--groove_dia', type=float, help='Groove diameter (inches)')
