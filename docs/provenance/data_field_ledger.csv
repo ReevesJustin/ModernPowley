@@ -136,22 +136,23 @@ data/reference/original_powley_powder_scale.csv,source_location,online_emulator,
 data/reference/original_powley_powder_scale.csv,attribution_class,online_emulator,controlled vocabulary,SRC-KWK-EMULATOR,archived JavaScript lines 266-283,emulator_derived,reference transcription only; not original-manual scale
 data/reference/original_powley_powder_scale.csv,confidence,online_emulator,controlled text,SRC-KWK-EMULATOR,archived JavaScript lines 266-283,emulator_derived,reference transcription only; not original-manual scale
 data/reference/original_powley_powder_scale.csv,notes,online_emulator,text,SRC-KWK-EMULATOR,archived JavaScript lines 266-283,emulator_derived,reference transcription only; not original-manual scale
-data/reference/davis_1981_table4.csv,table_id,davis,text,SRC-DAVIS-1981-TABLE4,Table 4 transcription,verified_primary,fixed identifier Davis Table 4
-data/reference/davis_1981_table4.csv,source_id,davis,source-ledger identifier,SRC-DAVIS-1981-TABLE4,Table 4 transcription,verified_primary,resolves normalized data provenance
-data/reference/davis_1981_table4.csv,source_location,davis,text,SRC-DAVIS-1981-TABLE4,Table 4 transcription,verified_primary,printed table identifier
-data/reference/davis_1981_table4.csv,source_classification,davis,controlled text,SRC-DAVIS-1981-TABLE4,Table 4 transcription,verified_primary,later_primary_publication
-data/reference/davis_1981_table4.csv,verification_status,davis,controlled vocabulary,SRC-DAVIS-1981-TABLE4,Table 4 transcription,verified_primary,row transcription status
-data/reference/davis_1981_table4.csv,confidence,davis,controlled text,SRC-DAVIS-1981-TABLE4,Table 4 transcription,verified_primary,medium until page-image comparison
-data/reference/davis_1981_table4.csv,expansion_ratio,davis,dimensionless R,SRC-DAVIS-1981-TABLE4,Table 4 row axis,verified_primary,34 tabulated rows from 5.0 through 13.0
-data/reference/davis_1981_table4.csv,mass_ratio_0_20,davis,dimensionless F2 at A=0.20,SRC-DAVIS-1981-TABLE4,Table 4 column,verified_primary,medium confidence pending visual comparison
-data/reference/davis_1981_table4.csv,mass_ratio_0_30,davis,dimensionless F2 at A=0.30,SRC-DAVIS-1981-TABLE4,Table 4 column,verified_primary,medium confidence pending visual comparison
-data/reference/davis_1981_table4.csv,mass_ratio_0_40,davis,dimensionless F2 at A=0.40,SRC-DAVIS-1981-TABLE4,Table 4 column,verified_primary,medium confidence pending visual comparison
-data/reference/davis_1981_table4.csv,mass_ratio_0_50,davis,dimensionless F2 at A=0.50,SRC-DAVIS-1981-TABLE4,Table 4 column,verified_primary,medium confidence pending visual comparison
-data/reference/davis_1981_table4.csv,mass_ratio_0_60,davis,dimensionless F2 at A=0.60,SRC-DAVIS-1981-TABLE4,Table 4 column,verified_primary,medium confidence pending visual comparison
-data/reference/davis_1981_table4.csv,mass_ratio_0_70,davis,dimensionless F2 at A=0.70,SRC-DAVIS-1981-TABLE4,Table 4 column,verified_primary,medium confidence pending visual comparison
-data/reference/davis_1981_table4.csv,mass_ratio_0_80,davis,dimensionless F2 at A=0.80,SRC-DAVIS-1981-TABLE4,Table 4 column,verified_primary,medium confidence pending visual comparison
-data/reference/davis_1981_table4.csv,mass_ratio_0_90,davis,dimensionless F2 at A=0.90,SRC-DAVIS-1981-TABLE4,Table 4 column,verified_primary,medium confidence pending visual comparison
-data/reference/davis_1981_table4.csv,mass_ratio_1_00,davis,dimensionless F2 at A=1.00,SRC-DAVIS-1981-TABLE4,Table 4 column,verified_primary,medium confidence pending visual comparison
+data/reference/davis_1981_table4.csv,table_id,davis,text,SRC-DAVIS-1981-TABLE4,Table 4 transcription,pending_retained_primary_visual_verification,fixed identifier Davis Table 4
+data/reference/davis_1981_table4.csv,source_id,davis,source-ledger identifier,SRC-DAVIS-1981-TABLE4,Table 4 transcription,pending_retained_primary_visual_verification,resolves normalized data provenance
+data/reference/davis_1981_table4.csv,authority_source_id,davis,source-ledger identifier,SRC-DAVIS-1981-TABLE4,Table 4 transcription,pending_retained_primary_visual_verification,resolves underlying publication authority SRC-DAVIS-1981
+data/reference/davis_1981_table4.csv,source_location,davis,text,SRC-DAVIS-1981-TABLE4,Table 4 transcription,pending_retained_primary_visual_verification,printed table identifier
+data/reference/davis_1981_table4.csv,source_classification,davis,controlled text,SRC-DAVIS-1981-TABLE4,Table 4 transcription,pending_retained_primary_visual_verification,normalized_historical_transcription; not a primary artifact
+data/reference/davis_1981_table4.csv,verification_status,davis,controlled vocabulary,SRC-DAVIS-1981-TABLE4,Table 4 transcription,pending_retained_primary_visual_verification,row transcription status
+data/reference/davis_1981_table4.csv,confidence,davis,controlled text,SRC-DAVIS-1981-TABLE4,Table 4 transcription,pending_retained_primary_visual_verification,medium until page-image comparison
+data/reference/davis_1981_table4.csv,expansion_ratio,davis,dimensionless R,SRC-DAVIS-1981-TABLE4,Table 4 row axis,pending_retained_primary_visual_verification,34 tabulated rows from 5.0 through 13.0
+data/reference/davis_1981_table4.csv,mass_ratio_0_20,davis,dimensionless F2 at A=0.20,SRC-DAVIS-1981-TABLE4,Table 4 column,pending_retained_primary_visual_verification,medium confidence pending visual comparison
+data/reference/davis_1981_table4.csv,mass_ratio_0_30,davis,dimensionless F2 at A=0.30,SRC-DAVIS-1981-TABLE4,Table 4 column,pending_retained_primary_visual_verification,medium confidence pending visual comparison
+data/reference/davis_1981_table4.csv,mass_ratio_0_40,davis,dimensionless F2 at A=0.40,SRC-DAVIS-1981-TABLE4,Table 4 column,pending_retained_primary_visual_verification,medium confidence pending visual comparison
+data/reference/davis_1981_table4.csv,mass_ratio_0_50,davis,dimensionless F2 at A=0.50,SRC-DAVIS-1981-TABLE4,Table 4 column,pending_retained_primary_visual_verification,medium confidence pending visual comparison
+data/reference/davis_1981_table4.csv,mass_ratio_0_60,davis,dimensionless F2 at A=0.60,SRC-DAVIS-1981-TABLE4,Table 4 column,pending_retained_primary_visual_verification,medium confidence pending visual comparison
+data/reference/davis_1981_table4.csv,mass_ratio_0_70,davis,dimensionless F2 at A=0.70,SRC-DAVIS-1981-TABLE4,Table 4 column,pending_retained_primary_visual_verification,medium confidence pending visual comparison
+data/reference/davis_1981_table4.csv,mass_ratio_0_80,davis,dimensionless F2 at A=0.80,SRC-DAVIS-1981-TABLE4,Table 4 column,pending_retained_primary_visual_verification,medium confidence pending visual comparison
+data/reference/davis_1981_table4.csv,mass_ratio_0_90,davis,dimensionless F2 at A=0.90,SRC-DAVIS-1981-TABLE4,Table 4 column,pending_retained_primary_visual_verification,medium confidence pending visual comparison
+data/reference/davis_1981_table4.csv,mass_ratio_1_00,davis,dimensionless F2 at A=1.00,SRC-DAVIS-1981-TABLE4,Table 4 column,pending_retained_primary_visual_verification,medium confidence pending visual comparison
 reference/davis_1981/table4_correction_ledger.csv,table_id,davis,text,SRC-DAVIS-1981-TABLE4-CORRECTIONS,row audit ledger,unresolved,fixed table identifier
 reference/davis_1981/table4_correction_ledger.csv,expansion_ratio,davis,dimensionless R,SRC-DAVIS-1981-TABLE4-CORRECTIONS,row audit ledger,unresolved,identifies normalized row
 reference/davis_1981/table4_correction_ledger.csv,cells_reviewed,davis,count,SRC-DAVIS-1981-TABLE4-CORRECTIONS,row audit ledger,unresolved,nine cells per row

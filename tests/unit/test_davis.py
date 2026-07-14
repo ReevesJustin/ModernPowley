@@ -1,6 +1,9 @@
+import csv
 from math import pi
 
 import pytest
+
+import modern_powley.later.davis as davis
 
 from modern_powley.later.davis import (
     boat_tail_correction_water_grains,
@@ -11,6 +14,7 @@ from modern_powley.later.davis import (
     flat_base_displacement_water_grains,
     historical_crusher_pressure,
     initial_charge_weight_grains,
+    load_table4,
     loaded_powder_space_capacity_water_grains,
     loading_density_pressure_scale,
     lookup_table4_f2,
@@ -76,6 +80,53 @@ def test_davis_table4_exact_and_published_r_axis_interpolation():
     assert lookup_table4_f2(0.30, 7.4) == pytest.approx(1.72)
     assert lookup_table4_f2(0.30, 7.6) == pytest.approx(1.76)
     assert lookup_table4_f2(0.30, 7.5) == pytest.approx(1.74)
+
+
+def test_davis_table4_exposes_truthful_derivative_provenance_and_exact_axes():
+    table = load_table4()
+    assert table.source_id == "SRC-DAVIS-1981-TABLE4"
+    assert table.authority_source_id == "SRC-DAVIS-1981"
+    assert table.source_classification == "normalized_historical_transcription"
+    assert table.verification_status == "pending_retained_primary_visual_verification"
+    assert table.confidence == "medium"
+    assert table.mass_ratios == pytest.approx(tuple(index / 10 for index in range(2, 11)))
+    assert tuple(row.expansion_ratio for row in table.rows) == pytest.approx(
+        tuple([round(5.0 + 0.2 * index, 1) for index in range(31)] + [11.5, 12.0, 13.0])
+    )
+    assert sum(len(row.f2_values) for row in table.rows) == 306
+
+
+@pytest.mark.parametrize(
+    ("field", "false_value"),
+    [
+        ("source_id", "SRC-DAVIS-1981"),
+        ("authority_source_id", "SRC-DAVIS-1981-TABLE4"),
+        ("source_classification", "later_primary_publication"),
+        ("verification_status", "verified_primary"),
+        ("confidence", "high"),
+    ],
+)
+def test_davis_table4_rejects_promoted_or_inconsistent_provenance(
+    tmp_path, monkeypatch, field, false_value
+):
+    with davis.TABLE4_PATH.open(newline="", encoding="utf-8") as handle:
+        reader = csv.DictReader(handle)
+        rows = list(reader)
+        fieldnames = reader.fieldnames
+    assert fieldnames is not None
+    rows[0][field] = false_value
+    altered = tmp_path / "table4.csv"
+    with altered.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
+    monkeypatch.setattr(davis, "TABLE4_PATH", altered)
+    davis.load_table4.cache_clear()
+    try:
+        with pytest.raises(ValueError, match="metadata is inconsistent"):
+            davis.load_table4()
+    finally:
+        davis.load_table4.cache_clear()
 
 
 def test_davis_table4_a_axis_and_bilinear_interpolation_are_bounded():

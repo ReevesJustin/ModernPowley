@@ -21,7 +21,7 @@ def test_inventory_manifest_output_hashes_match():
         assert digest(Path(output["path"])) == output["sha256"]
 
 
-def test_local_primary_artifact_hashes_match_source_ledger():
+def test_local_artifact_hashes_match_source_ledger():
     sources = {
         row["source_id"]: row
         for row in csv.DictReader(Path("reference/source_ledger.csv").open(newline="", encoding="utf-8"))

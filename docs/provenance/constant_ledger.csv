@@ -3,9 +3,9 @@ CONST-001,7000,gr/lb,grains per avoirdupois pound,src/modern_powley/original/uni
 CONST-002,253,gr H2O/in3,manual water-volume conversion,src/modern_powley/original/units.py,original_powley,SRC-POWLEY-1961-MANUAL,verified_visual_scan,active historical convention
 CONST-003,0.80,dimensionless,loading density for IMR 4198/4227,src/modern_powley/original/charge.py,original_powley,SRC-POWLEY-1961-MANUAL,verified_visual_scan,active historical convention
 CONST-004,0.86,dimensionless,loading density for other listed IMR powders,src/modern_powley/original/charge.py,original_powley,SRC-POWLEY-1961-MANUAL,verified_visual_scan,active historical convention
-CONST-005,20,index offset,Davis powder-index offset,src/modern_powley/later/davis.py,davis,SRC-DAVIS-1981,verified_primary,active later formulation
-CONST-006,12,index scale,Davis powder-index numerator,src/modern_powley/later/davis.py,davis,SRC-DAVIS-1981,verified_primary,active later formulation
-CONST-007,0.5,exponent,Davis mass-ratio square-root exponent,src/modern_powley/later/davis.py,davis,SRC-DAVIS-1981,verified_primary,active later formulation
+CONST-005,20,index offset,Davis powder-index offset,src/modern_powley/later/davis.py,davis,SRC-DAVIS-1981,user_reviewed_access_restricted_primary,active later formulation
+CONST-006,12,index scale,Davis powder-index numerator,src/modern_powley/later/davis.py,davis,SRC-DAVIS-1981,user_reviewed_access_restricted_primary,active later formulation
+CONST-007,0.5,exponent,Davis mass-ratio square-root exponent,src/modern_powley/later/davis.py,davis,SRC-DAVIS-1981,user_reviewed_access_restricted_primary,active later formulation
 CONST-008,81;91;110;125;145;165;180,index,Davis Table 3 transcribed boundaries,src/modern_powley/later/davis.py,davis,SRC-DAVIS-WEB-TRANSCRIPTION,verified_secondary,endpoint wording retained; Davis page needed
 CONST-009,19,index offset,reported physical-scale approximation,docs/History.md at checkpoint,unknown,SRC-DAVIS-WEB-TRANSCRIPTION,unresolved,not implemented
 CONST-010,0.6,exponent,reported physical-scale approximation,docs/History.md at checkpoint,unknown,SRC-DAVIS-WEB-TRANSCRIPTION,unresolved,not implemented
@@ -29,14 +29,14 @@ CONST-027,0.773,area factor,kwk approximate bore-area factor,kwk emulator JavaSc
 CONST-028,8000,velocity scale,kwk velocity coefficient,kwk emulator JavaScript line 262,online_emulator,SRC-KWK-EMULATOR,emulator_derived,online emulator only
 CONST-029,0.024075;9.3;1.071;0.009736,mixed,kwk Miller-labeled F2 coefficients,kwk emulator JavaScript line 294,online_emulator,SRC-KWK-EMULATOR,emulator_derived,secondary implementation; Miller source absent
 CONST-030,134.7;142,pressure coefficients,kwk Howell-labeled value and Davis comparison,kwk emulator JavaScript line 321,online_emulator,SRC-KWK-EMULATOR,emulator_derived,secondary implementation; Howell source absent and Davis comparison context remains emulator-only
-CONST-031,252.4,gr H2O/in3,Davis water-volume convention near 70 F,src/modern_powley/later/davis.py,davis,SRC-DAVIS-1981,verified_primary,printed precision retained
-CONST-032,198,mixed,Davis flat-base displacement coefficient,src/modern_powley/later/davis.py,davis,SRC-DAVIS-1981,verified_primary,printed precision retained; approximately 252.4*pi/4
-CONST-033,66,mixed,Davis boat-tail displacement coefficient,src/modern_powley/later/davis.py,davis,SRC-DAVIS-1981,verified_primary,printed precision retained
-CONST-034,0.773,area factor,Davis effective-bore coefficient,src/modern_powley/later/davis.py,davis,SRC-DAVIS-1981,verified_primary,printed value includes stated approximate land-area reduction
-CONST-035,0.80;0.86,dimensionless,Davis initial loading densities,src/modern_powley/later/davis.py,davis,SRC-DAVIS-1981,verified_primary,explicit powder designation required
-CONST-036,7000,gr/lb,Davis sectional-density conversion,src/modern_powley/later/davis.py,davis,SRC-DAVIS-1981,verified_primary,active later convention
-CONST-037,8000,velocity scale,Davis velocity coefficient,src/modern_powley/later/davis.py,davis,SRC-DAVIS-1981,verified_primary,printed by Davis and attributed by Davis to Powley
-CONST-038,0.0142,mixed,Davis pressure K1 coefficient,src/modern_powley/later/davis.py,davis,SRC-DAVIS-1981,verified_primary,historical crusher-pressure formulation
-CONST-039,0.53;0.26,dimensionless,Davis pressure K2 coefficients,src/modern_powley/later/davis.py,davis,SRC-DAVIS-1981,verified_primary,historical crusher-pressure formulation
-CONST-040,95;100;110;115;120;135;160;180,arbitrary relative-quickness values,Davis Du Pont relative-quickness table,src/modern_powley/later/davis.py,davis,SRC-DAVIS-1981,verified_primary,ordinal laboratory reference; not ratios or universal burn-rate scale
-CONST-041,0.20..1.00;5.0..13.0,dimensionless,Davis Table 4 supported A and R axes,data/reference/davis_1981_table4.csv,davis,SRC-DAVIS-1981-TABLE4,verified_primary,medium-confidence transcription; extrapolation rejected
+CONST-031,252.4,gr H2O/in3,Davis water-volume convention near 70 F,src/modern_powley/later/davis.py,davis,SRC-DAVIS-1981,user_reviewed_access_restricted_primary,printed precision retained
+CONST-032,198,mixed,Davis flat-base displacement coefficient,src/modern_powley/later/davis.py,davis,SRC-DAVIS-1981,user_reviewed_access_restricted_primary,printed precision retained; approximately 252.4*pi/4
+CONST-033,66,mixed,Davis boat-tail displacement coefficient,src/modern_powley/later/davis.py,davis,SRC-DAVIS-1981,user_reviewed_access_restricted_primary,printed precision retained
+CONST-034,0.773,area factor,Davis effective-bore coefficient,src/modern_powley/later/davis.py,davis,SRC-DAVIS-1981,user_reviewed_access_restricted_primary,printed value includes stated approximate land-area reduction
+CONST-035,0.80;0.86,dimensionless,Davis initial loading densities,src/modern_powley/later/davis.py,davis,SRC-DAVIS-1981,user_reviewed_access_restricted_primary,explicit powder designation required
+CONST-036,7000,gr/lb,Davis sectional-density conversion,src/modern_powley/later/davis.py,davis,SRC-DAVIS-1981,user_reviewed_access_restricted_primary,active later convention
+CONST-037,8000,velocity scale,Davis velocity coefficient,src/modern_powley/later/davis.py,davis,SRC-DAVIS-1981,user_reviewed_access_restricted_primary,printed by Davis and attributed by Davis to Powley
+CONST-038,0.0142,mixed,Davis pressure K1 coefficient,src/modern_powley/later/davis.py,davis,SRC-DAVIS-1981,user_reviewed_access_restricted_primary,historical crusher-pressure formulation
+CONST-039,0.53;0.26,dimensionless,Davis pressure K2 coefficients,src/modern_powley/later/davis.py,davis,SRC-DAVIS-1981,user_reviewed_access_restricted_primary,historical crusher-pressure formulation
+CONST-040,95;100;110;115;120;135;160;180,arbitrary relative-quickness values,Davis Du Pont relative-quickness table,src/modern_powley/later/davis.py,davis,SRC-DAVIS-1981,user_reviewed_access_restricted_primary,ordinal laboratory reference; not ratios or universal burn-rate scale
+CONST-041,0.20..1.00;5.0..13.0,dimensionless,Davis Table 4 supported A and R axes,data/reference/davis_1981_table4.csv,davis,SRC-DAVIS-1981-TABLE4,pending_retained_primary_visual_verification,medium-confidence transcription; extrapolation rejected

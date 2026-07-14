@@ -63,3 +63,47 @@ def test_table4_correction_ledger_keeps_every_row_pending_visual_review():
     assert {row["damaged_ocr_available"] for row in rows} == {"no"}
     assert {row["visual_verification"] for row in rows} == {"pending"}
     assert {row["confidence"] for row in rows} == {"medium"}
+
+
+def test_davis_sources_distinguish_primary_authority_from_local_derivatives():
+    rows = list(
+        csv.DictReader(Path("reference/source_ledger.csv").open(newline="", encoding="utf-8"))
+    )
+    sources = {row["source_id"]: row for row in rows}
+    publication = sources["SRC-DAVIS-1981"]
+    transcription = sources["SRC-DAVIS-1981-TRANSCRIPTION"]
+    table = sources["SRC-DAVIS-1981-TABLE4"]
+
+    assert publication["source_type"] == "later primary publication"
+    assert publication["primary_or_secondary"] == "primary"
+    assert publication["artifact_hash"] == ""
+    assert "access-restricted" in publication["access_status"]
+    assert publication["verification_status"] == "user_reviewed_access_restricted_primary"
+
+    assert transcription["primary_or_secondary"] == "secondary derivative"
+    assert transcription["verification_status"] == "normalized_user_transcription"
+    assert "SRC-DAVIS-1981" in transcription["notes"]
+
+    assert table["primary_or_secondary"] == "secondary derivative"
+    assert table["verification_status"] == "pending_retained_primary_visual_verification"
+    assert table["confidence"] == "medium"
+    assert "SRC-DAVIS-1981" in table["notes"]
+
+
+def test_table4_runtime_rows_are_pending_normalized_derivatives():
+    rows = list(
+        csv.DictReader(
+            Path("data/reference/davis_1981_table4.csv").open(newline="", encoding="utf-8")
+        )
+    )
+    assert len(rows) == 34
+    assert {row["source_id"] for row in rows} == {"SRC-DAVIS-1981-TABLE4"}
+    assert {row["authority_source_id"] for row in rows} == {"SRC-DAVIS-1981"}
+    assert {row["source_classification"] for row in rows} == {
+        "normalized_historical_transcription"
+    }
+    assert {row["verification_status"] for row in rows} == {
+        "pending_retained_primary_visual_verification"
+    }
+    assert {row["confidence"] for row in rows} == {"medium"}
+    assert sum(len([key for key in row if key.startswith("mass_ratio_")]) for row in rows) == 306

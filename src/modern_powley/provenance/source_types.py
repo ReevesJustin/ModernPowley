@@ -22,3 +22,8 @@ class ProvenanceStatus(str, Enum):
     EXPERIMENTAL = "experimental"
     CONTRADICTED = "contradicted"
     UNRESOLVED = "unresolved"
+    USER_REVIEWED_ACCESS_RESTRICTED_PRIMARY = "user_reviewed_access_restricted_primary"
+    NORMALIZED_USER_TRANSCRIPTION = "normalized_user_transcription"
+    PENDING_RETAINED_PRIMARY_VISUAL_VERIFICATION = (
+        "pending_retained_primary_visual_verification"
+    )

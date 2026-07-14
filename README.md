@@ -36,10 +36,15 @@ with `MissingProvenanceError`; they are not guessed from later transcriptions.
 
 W. C. Davis Jr.'s later 1981 formulation is reconstructed separately in
 `later.davis`, including a bounded transcription of his Table 4 pressure factor.
-The Archive page images are access-restricted and are not stored locally, so
-the supplied Table 4 transcription remains medium confidence pending a retained
-visual scan. This does not change the unavailable status of original-Powley
-powder selection, velocity, or pressure operations.
+The Davis publication is a later primary source available through
+access-restricted page viewing. The user reviewed those pages and supplied the
+recovered material. The committed equation transcription and Table 4 CSV are
+normalized secondary derivatives. Because the primary page images are not
+retained, the complete Table 4 remains medium-confidence and pending
+independently reproducible visual verification. Worked-example coordinates and
+secondary transcriptions are cross-checks, not verification of all 306 cells.
+This does not change the unavailable status of original-Powley powder
+selection, velocity, or pressure operations.
 
 The following are quarantined and unvalidated:
 

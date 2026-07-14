@@ -14,6 +14,9 @@ from pathlib import Path
 from modern_powley.provenance.validation import MissingProvenanceError
 
 SOURCE_ID = "SRC-DAVIS-1981"
+TABLE4_SOURCE_ID = "SRC-DAVIS-1981-TABLE4"
+TABLE4_SOURCE_CLASSIFICATION = "normalized_historical_transcription"
+TABLE4_VERIFICATION_STATUS = "pending_retained_primary_visual_verification"
 WATER_GRAINS_PER_CUBIC_INCH = 252.4
 
 DAVIS_RELATIVE_QUICKNESS = {
@@ -248,30 +251,54 @@ class Table4Row:
 
 @dataclass(frozen=True)
 class Table4:
-    """Normalized Davis Table 4 with mass-ratio columns and expansion-ratio rows."""
+    """Normalized Davis Table 4 and its immutable provenance metadata."""
 
+    table_id: str
+    source_id: str
+    authority_source_id: str
+    source_classification: str
+    verification_status: str
+    confidence: str
     mass_ratios: tuple[float, ...]
     rows: tuple[Table4Row, ...]
 
 
 @lru_cache(maxsize=1)
 def load_table4() -> Table4:
-    """Load and validate the source-backed Table 4 transcription."""
+    """Load the bounded, medium-confidence normalized Davis Table 4 transcription."""
     mass_ratios = (0.20, 0.30, 0.40, 0.50, 0.60, 0.70, 0.80, 0.90, 1.00)
     value_columns = tuple(f"mass_ratio_{value:.2f}".replace(".", "_") for value in mass_ratios)
     with TABLE4_PATH.open(newline="", encoding="utf-8") as handle:
-        source_rows = list(csv.DictReader(handle))
+        reader = csv.DictReader(handle)
+        expected_fieldnames = (
+            "table_id",
+            "source_id",
+            "authority_source_id",
+            "source_location",
+            "source_classification",
+            "verification_status",
+            "confidence",
+            "expansion_ratio",
+            *value_columns,
+        )
+        if tuple(reader.fieldnames or ()) != expected_fieldnames:
+            raise ValueError("Davis Table 4 column grid or metadata schema is inconsistent")
+        source_rows = list(reader)
     if len(source_rows) != 34:
         raise ValueError("Davis Table 4 must contain exactly 34 expansion-ratio rows")
 
     rows = []
     for source_row in source_rows:
-        if source_row["table_id"] != "Davis Table 4" or source_row["source_id"] != SOURCE_ID:
+        if (
+            source_row["table_id"] != "Davis Table 4"
+            or source_row["source_id"] != TABLE4_SOURCE_ID
+            or source_row["authority_source_id"] != SOURCE_ID
+        ):
             raise ValueError("Davis Table 4 source metadata is inconsistent")
         if (
             source_row["source_location"] != "Table 4"
-            or source_row["source_classification"] != "later_primary_publication"
-            or source_row["verification_status"] != "verified_primary"
+            or source_row["source_classification"] != TABLE4_SOURCE_CLASSIFICATION
+            or source_row["verification_status"] != TABLE4_VERIFICATION_STATUS
             or source_row["confidence"] != "medium"
         ):
             raise ValueError("Davis Table 4 provenance metadata is inconsistent")
@@ -289,7 +316,21 @@ def load_table4() -> Table4:
         column = [row.f2_values[column_index] for row in rows]
         if any(lower > upper for lower, upper in zip(column, column[1:])):
             raise ValueError("Davis Table 4 F2 must be nondecreasing with expansion ratio")
-    return Table4(mass_ratios=mass_ratios, rows=tuple(rows))
+    expected_expansion_ratios = tuple(
+        [round(5.0 + 0.2 * index, 1) for index in range(31)] + [11.5, 12.0, 13.0]
+    )
+    if tuple(expansion_ratios) != expected_expansion_ratios:
+        raise ValueError("Davis Table 4 expansion-ratio grid is inconsistent")
+    return Table4(
+        table_id="Davis Table 4",
+        source_id=TABLE4_SOURCE_ID,
+        authority_source_id=SOURCE_ID,
+        source_classification=TABLE4_SOURCE_CLASSIFICATION,
+        verification_status=TABLE4_VERIFICATION_STATUS,
+        confidence="medium",
+        mass_ratios=mass_ratios,
+        rows=tuple(rows),
+    )
 
 
 def _bracket(value: float, grid: tuple[float, ...], name: str) -> tuple[int, int, float]:

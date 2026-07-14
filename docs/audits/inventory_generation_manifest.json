@@ -23,9 +23,9 @@
     },
     {
       "path": "docs/provenance/data_field_ledger.csv",
-      "sha256": "beb6fbd7ed0eb2d16a13037a63b7c8c70b43fbb9e0344a68bd309b6c72cac9c4"
+      "sha256": "fc2b94cf9f06db3177d382fbdeaa0862eaf0505c453141eea9ce74e9dd314bc4"
     }
   ],
-  "post_generation_updates": "The data-field ledger was provenance-normalized and extended for the emulator reference scale during the historical reconstruction pass. The Davis reconstruction added the source-backed Table 4 and its row-level correction-ledger fields without regenerating the immutable pre-audit inventory.",
+  "post_generation_updates": "The data-field ledger was provenance-normalized and extended for the emulator reference scale during the historical reconstruction pass. The Davis reconstruction added the normalized Table 4 derivative and its row-level correction-ledger fields without regenerating the immutable pre-audit inventory; the provenance-status correction added the authority-source relationship.",
   "timestamp": "2026-07-14T02:38:07-05:00"
 }

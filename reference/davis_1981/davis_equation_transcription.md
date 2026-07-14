@@ -7,6 +7,9 @@ from visual review of W. C. Davis Jr., "Some Simplified Interior Ballistics for
 Handloaders," *Handloading* (NRA, 1981), approximately pp. 138-144. The Internet
 Archive item `handloading00will` is access-restricted. No page image was
 available to store in this pass, so this file is not a facsimile substitute.
+It is a normalized secondary derivative of user-mediated primary-page review;
+its underlying authority is `SRC-DAVIS-1981`, and its status is not direct
+retained-artifact verification.
 
 ## Printed Symbols
 

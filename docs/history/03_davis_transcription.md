@@ -5,10 +5,17 @@ W. C. Davis Jr., "Some Simplified Interior Ballistics for Handloaders," in
 pp. 138-144, is a later primary publication. It is not direct original-Powley
 evidence. The source volume is access-restricted at the Internet Archive.
 
-The equation transcription supplied for this audit came from visual review of
-the primary page images. This pass confirmed the volume metadata but could not
-independently recapture the restricted pages. Exact page allocation and every
-Table 4 cell therefore remain medium confidence pending a retained page image.
+The Davis publication is a later primary source available through
+access-restricted page viewing. The user reviewed those pages and supplied the
+recovered material. The committed equation transcription and Table 4 CSV are
+normalized secondary derivatives. Because the primary page images are not
+retained, the complete Table 4 remains medium-confidence and pending
+independently reproducible visual verification.
+
+The lack of retained page images is an access limitation, not evidence that the
+Davis publication does not exist. Internet Archive metadata and item identity
+are publicly accessible, while page images require authorized user access.
+Codex did not independently retrieve or inspect those restricted images.
 
 ## Classification
 
@@ -58,10 +65,16 @@ selection.
 
 ## Table 4
 
-The normalized 34-by-9 table is
+The normalized 34-by-9 candidate table is
 `data/reference/davis_1981_table4.csv`. Its rows are expansion ratio `R`, its
 columns are mass ratio `A`, and its values are `F2`. Every lookup is bounded to
 `0.20 <= A <= 1.00` and `5.0 <= R <= 13.0`; extrapolation is rejected.
+
+All 306 values are preserved as a normalized secondary derivative of the
+user-mediated review. No cell-by-cell audit against retained primary images has
+occurred. Secondary online transcriptions are corroborating evidence only.
+Published worked-example coordinates provide direct internal cross-checks but
+do not verify every table cell.
 
 Davis's worked example establishes linear interpolation in `R`:
 
