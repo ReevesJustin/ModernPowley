@@ -227,12 +227,12 @@ The canonical parent empirical-load specification remains `planned`:
 [`empirical_load_evidence_and_validation.md`](workstreams/empirical_load_evidence_and_validation.md).
 Its separately bounded
 [`Empirical Load Evidence Records Phase 1`](workstreams/empirical_load_evidence_records_phase_1.md)
-is `authorized` for a later immutable-record and strict-serialization
-implementation using fictional fixtures only; see its
+is `accepted` as an immutable-record and strict-serialization contract using
+fictional fixtures only; see its
 [`authorization decisions`](decisions/empirical_load_evidence_records_phase_1_authorization.md)
-and [`authorization review`](reviews/empirical_load_evidence_records_phase_1_authorization_review.md).
-It is not implemented or accepted and authorizes no cohort, split, source
-intake, M05 adapter, or model. Candidate M05 method dispositions remain in
+and [`completion review`](reviews/empirical_load_evidence_records_phase_1_completion_review.md).
+It authorizes no cohort, split, scientific source intake, M05 adapter, or model.
+Candidate M05 method dispositions remain in
 [`M05_derivation_readiness_review.md`](reviews/M05_derivation_readiness_review.md).
 No scientific data, high-performance cohort, production M05 derivation, or M06
 model is admitted. A recommendation never authorizes implementation.

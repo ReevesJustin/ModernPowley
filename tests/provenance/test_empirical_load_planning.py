@@ -20,7 +20,7 @@ def test_workstream_is_planned_and_non_authorizing():
     assert "## Status\n\n`planned`" in text
     assert "authorizes no source implementation" in text
     assert "parent workstream" in text
-    assert "does not authorize implementation of its broader scope" in text
+    assert "does not authorize implementation of its broader scope" in " ".join(text.split())
     assert "cohorts, splits, M05 derivation, or M06" in text
 
 

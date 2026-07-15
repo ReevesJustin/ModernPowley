@@ -8,8 +8,8 @@ This repository-authored specification authorizes no source implementation,
 serialization schema, scientific-data intake, model, region derivation, or M06
 work for the workstream as a whole. The separately bounded
 [`Empirical Load Evidence Records Phase 1`](empirical_load_evidence_records_phase_1.md)
-is `authorized` for a later immutable-record and strict-serialization
-implementation with synthetic fixtures only. That authorization does not change
+is `accepted` as an immutable-record and strict-serialization contract with
+synthetic fixtures only. That acceptance does not change
 this parent status or authorize cohorts, splits, intake, M05 methods, or M06.
 
 ## Purpose
@@ -286,7 +286,7 @@ failures, and promotion requirements.
 ## Proposed Serialization Boundary
 
 No schema identifier is assigned for the parent workstream while it is
-`planned`. The separately authorized Phase 1 specification assigns
+`planned`. The separately accepted Phase 1 specification assigns
 `modern_powley.empirical_load_evidence.v1` only to its eight bounded record
 families; it does not cover cohorts or splits. Later workstream phases must
 define their own compatible boundary through explicit authorization. Each
@@ -331,8 +331,9 @@ exists. Licensing and retention rules must be resolved per future source.
 
 ## Authorized Next-Step Boundary
 
-The bounded records-and-strict-serialization Phase 1 has completed a separate
-authorization review and is the only authorized implementation step. This
-parent document still does not authorize implementation of its broader scope,
-any data intake, cohorts, splits, M05 derivation, or M06. Acceptance of Phase 1
-will not authorize another phase. A recommendation never authorizes work.
+The bounded records-and-strict-serialization Phase 1 is accepted for immutable
+records, structural validation, strict serialization, and fictional fixtures
+only. This parent document still does not authorize implementation of its
+broader scope, any data intake, cohorts, splits, M05 derivation, or M06. Phase 1
+acceptance does not authorize another phase. A recommendation never authorizes
+work.

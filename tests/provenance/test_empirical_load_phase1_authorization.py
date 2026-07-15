@@ -14,6 +14,10 @@ REVIEW = Path(
     "docs/modernization/reviews/"
     "empirical_load_evidence_records_phase_1_authorization_review.md"
 )
+COMPLETION = Path(
+    "docs/modernization/reviews/"
+    "empirical_load_evidence_records_phase_1_completion_review.md"
+)
 PARENT = Path(
     "docs/modernization/workstreams/empirical_load_evidence_and_validation.md"
 )
@@ -30,13 +34,14 @@ def _words(text):
     return " ".join(text.split())
 
 
-def test_phase1_is_authorized_while_parent_remains_planned():
+def test_phase1_is_accepted_while_parent_remains_planned():
     phase = PHASE1.read_text(encoding="utf-8")
     parent = PARENT.read_text(encoding="utf-8")
-    assert "## Status\n\n`authorized`" in phase
+    assert "## Status\n\n`accepted`" in phase
     assert "## Status\n\n`planned`" in parent
-    assert "parent empirical-load evidence and validation workstream remains `planned`" in phase
-    assert "Phase 1 is not implemented or accepted" in phase
+    assert "parent empirical-load evidence and validation workstream remains `planned`" in _words(phase)
+    assert "entered `in_progress` before source implementation" in phase
+    assert "No next\nphase is authorized" in phase
     assert "This review authorizes no implementation in this commit" in REVIEW.read_text(
         encoding="utf-8"
     )
@@ -92,7 +97,7 @@ def test_identity_pressure_velocity_trace_and_missingness_boundaries_are_explici
         assert phrase in text
 
 
-def test_strict_schema_and_narrow_architecture_are_authorized_but_not_implemented():
+def test_strict_schema_and_narrow_module_qualified_architecture_is_implemented():
     text = PHASE1.read_text(encoding="utf-8")
     assert "`modern_powley.empirical_load_evidence.v1`" in text
     assert "reject duplicate JSON object\n  keys" in text
@@ -100,7 +105,10 @@ def test_strict_schema_and_narrow_architecture_are_authorized_but_not_implemente
     assert "not exported from\n`modern_powley.modernized.__init__`" in text
 
     modernized = Path("src/modern_powley/modernized")
-    assert not list(modernized.glob("*empirical_load*"))
+    assert {path.name for path in modernized.glob("*empirical_load*")} == {
+        "empirical_load_records.py",
+        "empirical_load_serialization.py",
+    }
     import modern_powley.modernized as package
 
     assert "EMPIRICAL_LOAD_EVIDENCE_SCHEMA_ID" not in package.__all__
@@ -127,6 +135,15 @@ def test_authorization_review_contains_all_fifty_passing_gates():
     assert "not a completion review" in _words(text).casefold()
 
 
+def test_completion_review_contains_all_ninety_seven_passing_gates():
+    text = COMPLETION.read_text(encoding="utf-8")
+    assert "`empirical_evidence_records_phase_1_accepted`" in text
+    for gate in range(1, 98):
+        assert f"| {gate} |" in text
+    assert text.count("| PASS |") == 97
+    assert "structural acceptance is not scientific validation" in text
+
+
 def test_entry_points_agree_on_the_bounded_authorization():
     paths = (
         "README.md",
@@ -139,20 +156,24 @@ def test_entry_points_agree_on_the_bounded_authorization():
     for path in paths:
         text = Path(path).read_text(encoding="utf-8")
         assert "Phase 1" in text
-        assert "authorized" in text
+        assert "accepted" in text
         assert "planned" in text
     roadmap = Path(paths[3]).read_text(encoding="utf-8")
-    assert "It is not implemented or accepted" in roadmap
+    assert "is `accepted` as an immutable-record" in roadmap
     assert "No scientific data" in roadmap
     assert "M06\nmodel is admitted" in roadmap
 
 
-def test_authorization_artifacts_are_hash_ledgered_as_repository_artifacts():
+def test_phase1_artifacts_are_hash_ledgered_as_repository_artifacts():
     rows = _source_rows()
     for source_id, path in (
         ("SRC-EMPIRICAL-LOAD-PHASE1-SPEC", PHASE1),
         ("SRC-EMPIRICAL-LOAD-PHASE1-DECISIONS", DECISIONS),
         ("SRC-EMPIRICAL-LOAD-PHASE1-AUTH-REVIEW", REVIEW),
+        ("SRC-EMPIRICAL-LOAD-PHASE1-DESIGN", Path("docs/modernization/phases/empirical_load_evidence_records_phase_1.md")),
+        ("SRC-EMPIRICAL-LOAD-PHASE1-IMPLEMENTATION", Path("docs/modernization/decisions/empirical_load_evidence_records_phase_1_implementation.md")),
+        ("SRC-EMPIRICAL-LOAD-PHASE1-API", Path("docs/modernization/empirical_load_evidence_records_phase_1_api.md")),
+        ("SRC-EMPIRICAL-LOAD-PHASE1-COMPLETION", COMPLETION),
         ("SRC-EMPIRICAL-LOAD-WORKSTREAM", PARENT),
     ):
         row = rows[source_id]
@@ -164,11 +185,10 @@ def test_authorization_artifacts_are_hash_ledgered_as_repository_artifacts():
         assert "not historical Powley evidence" in row["notes"]
 
 
-def test_no_scientific_ledger_or_existing_schema_is_extended():
+def test_no_equation_or_constant_ledger_is_extended_and_existing_schemas_hold():
     for ledger in (
         "docs/provenance/equation_ledger.csv",
         "docs/provenance/constant_ledger.csv",
-        "docs/provenance/data_field_ledger.csv",
     ):
         text = Path(ledger).read_text(encoding="utf-8")
         assert "EMPIRICAL-LOAD-PHASE1" not in text
@@ -180,3 +200,9 @@ def test_no_scientific_ledger_or_existing_schema_is_extended():
     assert modernized.M03_SCHEMA_ID == "modern_powley.m03.v1"
     assert modernized.M04_SCHEMA_ID == "modern_powley.m04.v1"
     assert modernized.M05_SCHEMA_ID == "modern_powley.m05.v1"
+
+
+def test_phase1_schema_fields_are_definition_ledgered_not_scientific_evidence():
+    text = Path("docs/provenance/data_field_ledger.csv").read_text(encoding="utf-8")
+    assert "EMPIRICAL-LOAD-PHASE1" in text
+    assert "repository schema definition" in text

@@ -113,11 +113,10 @@ region, or numerical behavior exists. Cross-cutting powder evidence, pre-M06 val
 infrastructure, uncertainty, visualization, tooling, hypothesis logging, and
 GRT/web intake remain governed planning directions only.
 
-The empirical-load evidence-record authorization review is complete. The
-dedicated Phase 1 specification is `authorized` for a later implementation of
-immutable records, strict serialization, and conspicuously fictional fixtures
-only. The parent workstream remains `planned`. The next bounded task is Phase 1
-implementation under its canonical specification; data intake, cohorts,
+The empirical-load evidence-record Phase 1 contract is `accepted` for immutable
+records, strict serialization, and conspicuously fictional fixtures only. The
+parent workstream remains `planned`. A later source-intake authorization review
+is required before any scientific evidence is admitted; data intake, cohorts,
 dataset splits, high-performance classification, M05 adapters/derivation, and
 M06 remain unauthorized.
 

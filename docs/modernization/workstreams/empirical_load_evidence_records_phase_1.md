@@ -2,12 +2,13 @@
 
 ## Status
 
-`authorized`
+`accepted`
 
-This is a bounded implementation authorization for immutable evidence records,
-strict serialization, and conspicuously synthetic structural fixtures only. The
-parent empirical-load evidence and validation workstream remains `planned`.
-Phase 1 is not implemented or accepted by this authorization review.
+This is the accepted bounded contract for immutable evidence records, strict
+serialization, and conspicuously synthetic structural fixtures only. The parent
+empirical-load evidence and validation workstream remains `planned`. Phase 1
+entered `in_progress` before source implementation and reached `accepted` only
+after its implementation gates and completion review passed.
 Nothing in this specification authorizes scientific source intake, a production
 dataset, an M05 adapter or derivation, dataset cohorts or splits, or M06.
 
@@ -27,7 +28,7 @@ those later operations.
 
 ## Authority And Relationship To Other Documents
 
-This specification is the scope authority for a later Phase 1 implementation.
+This specification remains the scope authority for the accepted Phase 1 implementation.
 The parent
 [`empirical_load_evidence_and_validation.md`](empirical_load_evidence_and_validation.md)
 remains the planned cross-cutting policy. The accepted M01-M05 specifications
@@ -37,7 +38,8 @@ The binding authorization decisions are in
 [`empirical_load_evidence_records_phase_1_authorization.md`](../decisions/empirical_load_evidence_records_phase_1_authorization.md).
 The authorization evidence is in
 [`empirical_load_evidence_records_phase_1_authorization_review.md`](../reviews/empirical_load_evidence_records_phase_1_authorization_review.md).
-That review is not an implementation completion review.
+That review is not an implementation completion review. Completion evidence is
+in [`empirical_load_evidence_records_phase_1_completion_review.md`](../reviews/empirical_load_evidence_records_phase_1_completion_review.md).
 
 ## Authorized Scope
 
@@ -566,8 +568,8 @@ mark `accepted` only after all gates and completion evidence pass.
 
 ## Authorized Next-Step Boundary
 
-The only authorized next task is a separate implementation of the immutable
-Phase 1 records, strict serialization, synthetic fixtures, tests, documentation,
-and completion evidence described here. It must not begin scientific intake,
-cohorts, splits, M05 adapters or derivation, or M06. The parent workstream
-remains `planned`; acceptance of Phase 1 will not authorize its next phase.
+The immutable Phase 1 records, strict serialization, synthetic fixtures, tests,
+documentation, and completion evidence described here are accepted. No next
+phase is authorized. Scientific intake, cohorts, splits, M05 adapters or
+derivation, and M06 require separate authorization. The parent workstream
+remains `planned`; acceptance of Phase 1 does not authorize its next phase.

@@ -154,11 +154,11 @@ OCR or promote it to a sourced equation.
   evidence, assumptions, falsification, domain, calibration and held-out data,
   failures, promotion requirements, status, and supersession.
 - The empirical-load parent workstream under `docs/modernization/workstreams/`
-  remains `planned`. Its dedicated records Phase 1 specification is the only
-  authorized boundary: a later immutable-record/strict-serialization
-  implementation with fictional fixtures. It authorizes no scientific intake,
-  cohort, split, M05 adapter/derivation, or M06 model. Read that specification
-  and its accepted authorization decisions before Phase 1 source edits. Never
+  remains `planned`. Its dedicated records Phase 1 immutable-record and strict-
+  serialization contract is accepted with fictional fixtures only. It
+  authorizes no scientific intake, cohort, split, M05 adapter/derivation, or M06
+  model. Read that specification and its accepted decisions before Phase 1
+  source edits; require a new authorization before scientific intake. Never
   label source-example, regression, calibration, or in-sample agreement as
   held-out validation or external replication.
 
