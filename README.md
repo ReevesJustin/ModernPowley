@@ -1,7 +1,7 @@
 # ModernPowley: Repository Under Audit
 
 > [!CAUTION]
-> Current powder rankings are not validated. The historical `Ba` target and
+> Current powder rankings are not validated. The prototype `Ba_target` and
 > `Ba_eff` ranking logic are experimental, and some equations, field mappings,
 > and historical attributions were introduced without adequate provenance.
 > Current and preserved prototype outputs must not be treated as load
@@ -11,6 +11,16 @@ This repository is an evidence-based reconstruction of the Powley Computer plus
 a quarantined record of later ModernPowley experiments. The agent-derived
 prototype is preserved at tag `pre_audit_agent_derived_prototype` (commit
 `08e4ee05b5b10ec8b5f30986bd7e5bd945cc6dc8`). History was not rewritten.
+
+Current reconstruction status has two distinct scopes:
+
+- `scalar_arithmetic_core` is source-backed, tested, isolated, and reproducible
+  relative to retained evidence.
+- `complete_historical_method` is `not_ready_to_freeze` because required
+  graphical scales and reading procedures are unavailable.
+
+There is no supported load-selection, powder-recommendation, pressure-prediction,
+velocity-prediction, or burnout-prediction workflow.
 
 The repository uses `uv` exclusively for Python versions, dependency locking,
 environment synchronization, and command execution. `pyproject.toml`,
@@ -30,8 +40,9 @@ Visual inspection of the committed 1961 manual scan directly supports:
 
 The archived emulator's exact powder bands and equations are reproduced only in
 a separate `later.emulator` module. Exact original powder-scale boundaries, the
-original velocity equation, and the original pressure equation remain
-source-incomplete. Those original operations fail
+Expansion Ratio-Velocity surface, and the 1961 muzzle-pressure surface remain
+source-incomplete. The later Powley psi Calculator is a separate unresolved
+artifact. Those original operations fail
 with `MissingProvenanceError`; they are not guessed from later transcriptions.
 
 W. C. Davis Jr.'s later 1981 formulation is reconstructed separately in
@@ -60,6 +71,8 @@ keyword `allow_unvalidated=True`. `Ba_eff` is not ballistic efficiency.
 - `docs/audits/modern_powley_full_repository_audit.md`: finding-by-finding audit.
 - `docs/audits/original_powley_reconstruction_closure.md`: end-to-end original-method closure decision and traceability matrix.
 - `docs/audits/original_powley_reconstruction_completion_audit.md`: freeze-readiness audit of every original operation, source gap, unit, and public function.
+- `docs/provenance/original_powley_evidence_acquisition.md`: capture, intake, and acceptance requirements for missing physical evidence.
+- `TODO.md`: post-audit phase roadmap and prohibited work.
 - `docs/audits/original_powley_scale_recovery.md`: primary-source scale search, graphical evidence, and implementation-readiness decision.
 - `docs/audits/davis_1981_evidence_intake.md`: derivative OCR/reprint intake and remaining primary-image verification boundary.
 - `docs/audits/davis_1981_equation_and_example_reconciliation.md`: Davis scalar-equation, unit, implementation, and worked-example audit.

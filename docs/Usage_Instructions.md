@@ -25,12 +25,15 @@ from modern_powley.original.geometry import sectional_density
 sd = sectional_density(bullet_weight_grains=180, bullet_diameter_inches=0.308)
 ```
 
-Inputs must carry the units named by the function. Net capacity must be measured
-powder-space water capacity or a separately documented gross-minus-intrusion
-derivation. Missing values raise errors.
+Inputs must carry the units named by the function. The original arithmetic
+requires seating-depth-specific measured powder-space water capacity. A derived
+gross-minus-intrusion estimate is not an original-Powley measurement and cannot
+be silently supplied as one. Missing values raise errors.
 
-Original powder selection, velocity and pressure intentionally raise
-`MissingProvenanceError` until exact source material is available.
+Original powder selection, velocity, and 1961 muzzle pressure intentionally
+raise `MissingProvenanceError` until exact source material passes the documented
+evidence and implementation-readiness gates. The later Powley psi Calculator is
+a separate unresolved artifact.
 
 ## Experimental Reproduction
 

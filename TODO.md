@@ -1,36 +1,107 @@
-# TODO
+# ModernPowley Roadmap
 
-## Completed Implementation Steps:
+This roadmap follows the completed provenance audit. Correct attribution and
+explicit failure take priority over producing a numerical result.
 
-- Visualization: A script to generate the RC vs. SD plot with Ba_eff bands + your 9 data points (matplotlib → save to /plots/). [Implemented as plot_rc_sd.py]
-- Automation: Python script to read CartridgeData.csv → compute predictions → output to Predictions.csv. [Implemented as compute_predictions.py]
-- Historical core scripts were added; they are now disabled pending provenance. Environment management has moved from `requirements.txt` to `uv` with `pyproject.toml` and `uv.lock`.
-- Script to parse GRT .propellant XML files → CSV table (Ba, a0, etc.). [Implemented as parse_grt_prop.py]
-- Script to parse GRT cartridge data → CSV (effective volume, bullet info, etc.). [Implemented as parse_grt_cartridge.py with unit conversions]
-- Update propellant_selector.py: Dynamic loading, smarter ranking, closest cartridge lookup, visual tie-in, polish/error handling.
+## Current Status
 
-## Completed Implementation Steps:
+- `scalar_arithmetic_core`: source-backed, tested, isolated, and reproducible
+  relative to retained original-Powley evidence.
+- `complete_historical_method`: `not_ready_to_freeze` because required physical
+  graphical scales and reading procedures are unavailable.
+- `select_powder`, `estimate_velocity`, and `estimate_pressure` must continue to
+  raise `MissingProvenanceError` until the required primary evidence passes an
+  implementation-readiness audit.
 
-- Plotting scripts: Enhanced RC vs. SD and new RC vs. bullet weight with Ba_eff bands, modern aesthetics, dynamic data loading. [Implemented as plot_rc_sd.py and plot_rc_bulletweight.py]
+This is a provenance-completeness determination, not a judgment of predictive
+accuracy and not a loading recommendation.
 
-## Completed Implementation Steps:
+## Phase 0: Completed Audit And Sanitation
 
-- Create comprehensive usage instructions document with clear steps for inputs, outputs, and plotting.
+- Preserve the pre-audit prototype at `pre_audit_agent_derived_prototype`.
+- Standardize the environment on `uv` and add repository agent guidance.
+- Inventory files, equations, constants, fields, generated artifacts, and
+  source hashes.
+- Separate `original/`, `later/`, and `experimental/` namespaces.
+- Reconstruct and test the source-backed original scalar arithmetic core.
+- Audit the original manual, physical-computer photographs, archived emulator,
+  and retained Davis derivatives.
+- Quarantine unsupported `Ba_target`, `Ba_eff`, charge regression, GRT-derived
+  mappings, selectors, plots, and prototype outputs.
+- Sanitize current public notebook and repository-local artifacts.
 
-## Remaining Implementation Steps:
-- Charge predictor function.
-- Update propellant_selector.py: Load propellant data dynamically from CSV, smarter ranking by Ba_eff closeness, lookup closest cartridge, visual output tie-in, polish/error handling.
-- Source calibrated GRT parameters (Ba, a0, z1/z2, bulk density, Qex, k) for additional propellants like RL26, N560, H4831SC, and ultra-slow models.
-- Refine Relative Capacity (RC) for Bullet Seating Displacement: Current RC ≈ eff_case_vol / bore_capacity_per_inch is a good approximation, but bullet seating depth can reduce usable case volume by 5–15% in short-throat or heavy-bullet configurations (e.g., .308 Win with 190gr SMKs, or 6.5 Creedmoor with 140–147gr ELD-Ms). Also, it would be nice to keep track of statistics for fired case volume to seated projectile effective volume for possible calculation shortcuts.
-- Prototype a Simple Tool: Short-term: Google Sheets or Excel version mirroring core calculations (inputs: cartridge dims, bullet weight/SD, barrel length → outputs: predicted charge, RC, recommended Ba_eff band). Longer-term: Streamlit or Gradio app for interactive selector.
+## Phase 1: Blocked Original-Powley Reconstruction
 
-## Future-Proofing
-- Bundle into a simple package or add argparse to scripts for CLI flags.
+The following are historical requirements, not active implementation tasks:
 
-## Completed Enhancements
-- Enhanced propellant_selector.py: Added argparse for CLI flags with fallback to interactive prompts when no flags provided.
-- Embedded key plots in README.md and docs for visual appeal.
-- Added RC vs. SD vs. Bullet Weight comparison in Current_Findings.md.
+- Arrow 2 powder selection is blocked by missing scale geometry, powder
+  boundaries, dividing lines, tie behavior, and revision identity.
+- Original velocity is blocked by the missing Expansion Ratio-Velocity surface,
+  numerical domain, interpolation, edge behavior, precision, and rounding rules.
+- The 1961 muzzle-pressure operation is blocked by its missing surface and
+  reading rules.
+- The separate Powley psi Calculator remains a later unresolved artifact and
+  must not be merged with the numbered 1961 manual.
 
-## Completed Future-Proofing
-- Created Jupyter notebook (`jupyter/demo.ipynb`) in jupyter/ directory for interactive demo combining all scripts/plots.
+No formula, table, fit, or fallback may be added to close these gaps without new
+retained primary evidence.
+
+## Phase 2: Evidence Acquisition
+
+Follow
+`docs/provenance/original_powley_evidence_acquisition.md` for capture, intake,
+authentication, digitization, uncertainty, reconciliation, and authorization
+gates. Priority artifacts are:
+
+1. A relevant 1961 Powley Computer with complete, flat captures of both faces
+   and every movable element.
+2. Complete Arrow 2 and reverse Expansion Ratio-Velocity markings.
+3. Any 1961 muzzle-pressure face, table, worksheet, or companion instructions.
+4. Original instructions and tables for the separate later Powley psi
+   Calculator.
+
+Possessing a photograph does not by itself authorize implementation.
+
+## Phase 3: Later-Method Maintenance
+
+- Keep Davis equations and Table 4 under `later/davis.py`; retain current
+  derivative confidence and primary-image verification gaps.
+- Keep archived-emulator behavior under `later/emulator.py` as a secondary
+  implementation witness.
+- Keep Howell and Miller unavailable until their cited publications are
+  retained, classified, transcribed, and independently audited.
+- Correct cross-references when evidence changes, without promoting any later
+  method into `original/`.
+
+Later methods may be maintained or versioned on their own evidence. They cannot
+complete an original-Powley source gap.
+
+## Phase 4: Quarantined Experimental Or Modern Work
+
+Only a separately authorized experimental phase may consider:
+
+- sourced or measured powder bulk density;
+- newer single-base relative-quickness hypotheses;
+- a separately identified double-base empirical branch;
+- regression research, plotting, ranking, packaging, or interfaces.
+
+Such work must remain under `experimental/`, require explicit opt-in, preserve
+units and provenance, and avoid powder or charge recommendations. Legacy charge
+prediction, `Ba_eff` ranking, GRT-parameter harvesting, selectors, spreadsheets,
+notebooks, Streamlit/Gradio concepts, and plots remain quarantined audit history,
+not current deliverables.
+
+## Prohibited Until New Evidence Is Retained
+
+- Filling Arrow 2 boundaries from Davis, the emulator, burn-rate charts, or
+  expected powder choices.
+- Reconstructing the velocity surface from the seven retained observations.
+- Substituting Davis or emulator pressure arithmetic for either Powley pressure
+  artifact.
+- Treating gross case capacity or a generic seating-intrusion estimate as the
+  original measured powder-space input.
+- Fitting, smoothing, calibrating, or extrapolating missing historical values.
+- Building a load selector, charge predictor, recommended-powder workflow, or
+  user interface around unresolved or experimental behavior.
+- Declaring the complete historical method frozen before the evidence and
+  implementation acceptance gates pass.

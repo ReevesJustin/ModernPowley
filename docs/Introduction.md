@@ -25,10 +25,13 @@ The complete agent-derived prototype is preserved at tag
 
 ## Current Capability
 
-The source-backed package computes sectional density, mass ratio, historical
+The `scalar_arithmetic_core` computes sectional density, mass ratio, historical
 loading-density arithmetic, projectile travel, and separately named expansion
-ratios. Exact original powder selection, velocity and pressure are unavailable
-until sources are complete and therefore raise `MissingProvenanceError`.
+ratios. It is source-backed, tested, isolated, and reproducible relative to
+retained evidence. The `complete_historical_method` is `not_ready_to_freeze`:
+original Arrow 2 powder selection, Expansion Ratio-Velocity execution, and 1961
+muzzle-pressure execution are unavailable and raise `MissingProvenanceError`.
+The later Powley psi Calculator is a separate unresolved artifact.
 
 ModernPowley `Ba_target`, `Ba_eff`, and charge-regression formulas are quarantined
 experiments requiring explicit opt-in. Opt-in reproduces a hypothesis; it does
