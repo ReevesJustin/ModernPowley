@@ -20,7 +20,7 @@ visually verified on PDF scan page 7 of `SRC-POWLEY-1961-MANUAL`.
 | 9 | bullet length | printed | 1 1/16 in | verified_visual_scan |
 | 10 | projectile travel | sum of steps 8 and 9 | 22 3/8 in; manual rounds 22.4 | verified_visual_scan |
 | 11 | effective diameter | manual special-condition convention with nominal .300 bore/.308 groove | 0.304 in | derived input choice |
-| 12 | total expansion ratio | `1 + pi*(0.304/2)^2*22.375*253/51.5` | 8.963; printed scale reading 9.0 | verified_visual_scan definition |
+| 12 | total expansion ratio | `1 + pi*(0.304/2)^2*22.375*253/51.5` | 8.978; printed scale reading 9.0 | verified_visual_scan definition |
 | 13 | velocity | original Expansion Ratio-Velocity Table reading at MR 0.30, ER 9.0 | 2730 ft/s | verified_visual_scan, algorithm unresolved |
 
 The manual does not state the exact diameter behind its printed SD table value,

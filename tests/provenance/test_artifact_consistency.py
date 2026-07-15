@@ -32,6 +32,12 @@ def test_local_artifact_hashes_match_source_ledger():
     assert digest(Path("image/classiccardboard_3.jpg")) == sources["SRC-POWLEY-SLIDE-PHOTO"][
         "artifact_hash"
     ].removeprefix("sha256:")
+    assert digest(Path("reference/powley_scales/ssusa_powley_computers_1985.jpg")) == sources[
+        "SRC-POWLEY-SLIDE-PHOTO-HQ"
+    ]["artifact_hash"].removeprefix("sha256:")
+    assert digest(Path("data/reference/original_powley_velocity_observations.csv")) == sources[
+        "SRC-POWLEY-VELOCITY-OBSERVATIONS"
+    ]["artifact_hash"].removeprefix("sha256:")
     assert digest(Path("reference/powley_manual/powleysmanuals1.md")) == sources[
         "SRC-POWLEY-1961-MANUAL-TRANSCRIPTION"
     ]["artifact_hash"].removeprefix("sha256:")

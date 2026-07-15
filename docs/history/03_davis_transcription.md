@@ -125,3 +125,17 @@ recommendation follows from this reconstruction.
 - the exact printed rule for interpolation along mass ratio `A`;
 - the procedural resolution of the 0.80/0.86 powder-selection dependency;
 - individual records behind Davis's summarized comparison percentages.
+
+## Additional Derivative-Reprint Warnings
+
+A derivative partial reprint reported during the scale-recovery pass corroborates
+the normalized Davis equations and a complete visible `F2` table, including an
+example near `R=6.17`, `A=0.66` that gives `F2=1.432`. No bytes of that additional
+reprint are retained locally, and it is not a facsimile of the NRA volume.
+
+The derivative changes `W` from `42.530520632` to `42.377625032` without an
+explanation. A pressure example is labeled `35.4 gr` but performs its arithmetic
+with `I=36.44475752752 gr`. These are unresolved transcription or example defects.
+Repository examples must be recomputed from stated inputs, and the derivative
+must be compared with the original NRA pages before either discrepancy is
+resolved. It supplies no evidence for the original graphical computer.

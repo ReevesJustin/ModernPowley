@@ -16,12 +16,17 @@ marked **unresolved** is not implemented by inference.
 The manual asks the user to measure barrel length and water capacity, states that
 capacity changes with seating depth and case brand, and recommends averaging
 several readings (pp. 8-9). Visual inspection confirms that loading density uses
-the water weight that fills the **powder space**. It does not instruct the user
-to enter fired-case overflow capacity and does not print a complete weighing or
-fixture procedure. Whether the water space was measured with a seated bullet or
-by another equivalent fixture remains unresolved. Gross capacity minus a
-cylindrical shank estimate is the archived emulator's method, not a verified
-original-manual operation, and has been removed from `original/`.
+the water weight that fills the **powder space**. A publisher web republication
+of Hutton and Powley's March 1963 article describes grooving the intended bullet,
+filling a sized/primed case with water, seating the bullet to the intended depth
+so excess water vents through the groove, and obtaining capacity by weight
+difference. This is medium-confidence documentary evidence because the retained
+web representation is not a facsimile of the original issue. A later Davis
+derivative corroborates the procedure and specifies a fired primer for sealing.
+
+Neither source establishes a generic original equation that subtracts geometric
+bullet intrusion from gross overflow capacity. That cylindrical approximation
+is the archived emulator's method and remains excluded from `original/`.
 
 ## Confirmed Equations
 

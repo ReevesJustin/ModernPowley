@@ -45,7 +45,7 @@ existence of the physical calculator.
 | Historical element | Repository symbol or field | Definition and unit | Domain | Controlling location and evidence class | Code; test | Status |
 |---|---|---|---|---|---|---|
 | Case Capacity / powder space | `net_capacity_water_grains` | water weight filling the space available behind the seated bullet; gr H2O | finite, positive; seating-depth and case specific | manual pp. 3, 8-9; original primary | function input; `tests/unit/test_units_and_charge.py` | implemented and verified |
-| Capacity measurement procedure | same | average several water-capacity readings for the case and seating condition | procedure incomplete | manual pp. 8-9; original primary | documented in `docs/history/02_original_powley_method.md` | ambiguous: exact fixture is not printed |
+| Capacity measurement procedure | same | grooved intended bullet vents water while seated to intended depth; capacity obtained by weight difference | finite positive measured result | manual pp. 8-9 plus 1963 Hutton-Powley publisher republication; original primary content in derivative representation | documented in `docs/history/02_original_powley_method.md` | source-backed procedure at medium confidence; original issue facsimile still needed |
 | Gross-to-net conversion | none | no original equation established | not applicable | no supporting original passage | explicitly absent; `EQ-006`, `EQ-007` | unresolved |
 | Bullet diameter | `bullet_diameter_inches` | diameter used in SD; in | finite, positive | manual p. 9; original primary | `original.geometry.sectional_density`; unit tests | implemented and verified |
 | Bullet weight | `bullet_weight_grains` | projectile weight; gr | finite, positive | manual p. 9; original primary | SD and MR inputs; unit/reference tests | implemented and verified |
@@ -212,8 +212,8 @@ velocity reading do not establish identity.
    derivation specifying their axes, values, interpolation, rounding, and domain.
 3. A primary source defining exact Arrow 2 powder boundaries and lettered
    positions for the 1961 revision.
-4. A primary description of the water-capacity measurement fixture sufficient
-   to reproduce seating-depth-specific powder space without inference.
+4. A facsimile of the March 1963 Hutton-Powley article to independently verify
+   the recovered seating-depth-specific capacity fixture wording.
 5. Dated primary instructions and complete scale data for the separate Powley
    psi Calculator, plus its relationship to the numbered 1961 manual.
 6. A primary definition distinguishing any maximum/chamber crusher quantity

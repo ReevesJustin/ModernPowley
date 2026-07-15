@@ -23,9 +23,9 @@
     },
     {
       "path": "docs/provenance/data_field_ledger.csv",
-      "sha256": "fc2b94cf9f06db3177d382fbdeaa0862eaf0505c453141eea9ce74e9dd314bc4"
+      "sha256": "46a66597853bc655c499a8ba6dd12ab211f81ec19f3887ae888fb89c4ac3d4f2"
     }
   ],
-  "post_generation_updates": "The data-field ledger was provenance-normalized and extended for the emulator reference scale during the historical reconstruction pass. The Davis reconstruction added the normalized Table 4 derivative and its row-level correction-ledger fields without regenerating the immutable pre-audit inventory; the provenance-status correction added the authority-source relationship.",
+  "post_generation_updates": "The data-field ledger was provenance-normalized and extended for the emulator reference scale during the historical reconstruction pass. The Davis reconstruction added the normalized Table 4 derivative and its row-level correction-ledger fields without regenerating the immutable pre-audit inventory; the provenance-status correction added the authority-source relationship. The primary-source scale-recovery pass added fields for the non-executable original velocity-observation transcription. The pre-audit inventory remains an immutable checkpoint inventory.",
   "timestamp": "2026-07-14T02:38:07-05:00"
 }

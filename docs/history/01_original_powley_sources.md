@@ -29,9 +29,21 @@ the powder-selection and Expansion Ratio-Velocity readings.
 device marked 1985. Perspective and resolution permit label corroboration but
 not exact scale-boundary transcription.
 
+`SRC-POWLEY-SLIDE-PHOTO-HQ` is the higher-quality publisher-hosted version at
+`reference/powley_scales/ssusa_powley_computers_1985.jpg`. It resolves the
+publisher provenance and makes scale topology and labels clearer, but it remains
+an oblique photograph of one 1985 slider setting. Its reverse velocity face is
+not visible, and equivalence to the 1961 markings is not established.
+
+`SRC-HUTTON-POWLEY-1963-WEB` is a Guns & Ammo publisher republication of Hutton
+and Powley's March 1963 article. It documents the grooved-bullet direct
+powder-space measurement fixture and an incomplete pressure sequence. The web
+representation is not a facsimile; no local bytes or artifact hash are claimed.
+The original issue pages and referenced pressure table remain acquisition items.
+
 ## Missing Primary Material
 
 - flat, high-resolution scans of both sides and all scales;
 - the original mathematical derivation behind the scales;
-- complete pressure-calculator instructions and equation;
+- complete pressure-calculator instructions, scale/table, and unit definition;
 - documentary evidence identifying revisions between 1961, 1965 and 1985.

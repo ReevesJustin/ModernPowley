@@ -161,3 +161,14 @@ reference/davis_1981/table4_correction_ledger.csv,resolution_basis,davis,text,SR
 reference/davis_1981/table4_correction_ledger.csv,visual_verification,davis,controlled text,SRC-DAVIS-1981-TABLE4-CORRECTIONS,row audit ledger,unresolved,pending for every row
 reference/davis_1981/table4_correction_ledger.csv,confidence,davis,controlled text,SRC-DAVIS-1981-TABLE4-CORRECTIONS,row audit ledger,unresolved,medium for every row
 reference/davis_1981/table4_correction_ledger.csv,disposition,davis,text,SRC-DAVIS-1981-TABLE4-CORRECTIONS,row audit ledger,unresolved,requires retained page image
+data/reference/original_powley_velocity_observations.csv,observation_id,original_powley,identifier,SRC-POWLEY-1961-MANUAL,manual pp.5;9-11,verified_visual_scan,non-executable observation identifier
+data/reference/original_powley_velocity_observations.csv,mass_ratio,original_powley,dimensionless,SRC-POWLEY-1961-MANUAL,manual pp.5;9-11,verified_visual_scan,printed table-line input; blank where source does not print it
+data/reference/original_powley_velocity_observations.csv,total_expansion_ratio,original_powley,dimensionless,SRC-POWLEY-1961-MANUAL,manual pp.5;9-11,verified_visual_scan,printed graphical input observation
+data/reference/original_powley_velocity_observations.csv,velocity_fps,original_powley,ft/s,SRC-POWLEY-1961-MANUAL,manual pp.5;9-11,verified_visual_scan,printed graphical result; not an executable surface
+data/reference/original_powley_velocity_observations.csv,powder_or_position,original_powley,text,SRC-POWLEY-1961-MANUAL,manual pp.9-11,verified_visual_scan,contextual powder or lettered scale position
+data/reference/original_powley_velocity_observations.csv,source_id,original_powley,source-ledger identifier,SRC-POWLEY-1961-MANUAL,source column,verified_visual_scan,controlling source for every row
+data/reference/original_powley_velocity_observations.csv,source_location,original_powley,text,SRC-POWLEY-1961-MANUAL,manual pp.5;9-11,verified_visual_scan,printed manual page
+data/reference/original_powley_velocity_observations.csv,reading_type,original_powley,text,SRC-POWLEY-1961-MANUAL,manual wording,verified_visual_scan,distinguishes graphical examples from numeric tables
+data/reference/original_powley_velocity_observations.csv,precision_or_qualifier,original_powley,text,SRC-POWLEY-1961-MANUAL,manual wording and printed precision,verified_visual_scan,preserves about and rough qualifiers
+data/reference/original_powley_velocity_observations.csv,implementation_status,original_powley,controlled local text,SRC-POWLEY-1961-MANUAL,scale-recovery disposition,unresolved,all rows are non_executable_observation
+data/reference/original_powley_velocity_observations.csv,notes,original_powley,text,SRC-POWLEY-1961-MANUAL,scale-recovery audit,unresolved,does not supply interpolation or extrapolation
