@@ -83,9 +83,10 @@ Dependency order:
    implemented and reviewed as a record/audit layer only; it contains no
    production criteria, catalog search, suitability decision, ranking, or
    ballistics prediction.
-6. **M05 - Future bounded phase:** recommended for specification drafting only;
-   it is not authorized. Its canonical specification must be reviewed and
-   committed before any implementation.
+6. **M05 - Charge-region records:** canonical specification and evidence review
+   completed with status `planned`; implementation is not authorized. The next
+   possible action is explicit user authorization review of the records-only
+   boundary, not numerical region construction.
 7. **M06 - Pressure and velocity baseline.**
 8. **M07 - Burn progression and burnout location.**
 9. **M08 - Muzzle pressure and secondary selection objectives.**
@@ -105,6 +106,10 @@ and descriptive active-mandatory summaries. A pass does not establish physical
 correctness, powder suitability, safety, approval, recommendation, or solver
 readiness. Future milestones follow the specification-first workflow in
 `AGENTS.md`; a recommendation does not authorize implementation.
+
+M05 planning distinguishes charge regions from published load intervals, fill
+constraints, uncertainty intervals, and pressure limits. No M05 serializer,
+public API, production method, real region, or numerical behavior exists.
 
 ## Quarantined And Later Work
 

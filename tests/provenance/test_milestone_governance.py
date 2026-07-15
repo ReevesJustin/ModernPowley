@@ -11,6 +11,7 @@ SPECS = {
     "M02": MILESTONE_DIR / "M02_powder_property_records.md",
     "M03": MILESTONE_DIR / "M03_input_and_domain_diagnostics.md",
     "M04": MILESTONE_DIR / "M04_screening_decision_records.md",
+    "M05": MILESTONE_DIR / "M05_charge_region_records.md",
 }
 
 REQUIRED_HEADINGS = {
@@ -51,7 +52,7 @@ def status(text):
     return match.group(1)
 
 
-def test_m01_through_m04_have_canonical_complete_specs_and_controlled_statuses():
+def test_m01_through_m05_have_canonical_complete_specs_and_controlled_statuses():
     for milestone, path in SPECS.items():
         assert path.is_file(), milestone
         text = path.read_text(encoding="utf-8")
@@ -96,14 +97,15 @@ def test_m04_is_accepted_only_with_gate_18_and_completion_review():
         assert "specified before" in review
 
 
-def test_future_phase_concepts_are_not_implicitly_authorized():
+def test_m05_is_planned_and_later_phase_concepts_are_not_implicitly_authorized():
     roadmap = ROADMAP.read_text(encoding="utf-8")
-    assert "Future phase concepts M05-M11 are not authorized milestones" in roadmap
+    assert status(SPECS["M05"].read_text(encoding="utf-8")) == "planned"
+    assert "implementation is not authorized" in roadmap
     assert "recommendation never authorizes" in roadmap
-    for milestone in range(5, 12):
+    for milestone in range(6, 12):
         heading = f"Future Phase Concept M{milestone:02d}"
         assert heading in roadmap
-    assert not (MILESTONE_DIR / "M05_charge_region_estimation.md").exists()
+    assert not Path("docs/modernization/reviews/M05_completion_review.md").exists()
 
 
 def test_agent_guide_requires_specification_first_and_traceable_amendments():

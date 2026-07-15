@@ -17,11 +17,13 @@ Evidence and maturity terms are defined in
 For M01-M04 the durable chain is: canonical specification -> phase design ->
 accepted implementation decisions -> tests and ledgers -> completion review.
 The specification is the scope authority; a review is evidence, not a substitute.
-Future phase concepts M05-M11 are not authorized milestones. Before any becomes
-implementable, its canonical specification must be reviewed, committed in a
-planning commit, and marked `authorized`. A recommendation never authorizes the
-next milestone. Amendments must be explicit and traceable; completed acceptance
-gates are not rewritten to match implementation.
+M05 now has a canonical specification with status `planned` and a planning-only
+evidence review; it is not authorized for implementation. Future phase concepts
+M06-M11 remain unspecified, unauthorized concepts. Before any planned milestone
+becomes implementable, its specification must be reviewed in a planning commit
+and explicitly marked `authorized`. A recommendation never authorizes the next
+milestone. Amendments must be explicit and traceable; completed acceptance gates
+are not rewritten to match implementation.
 
 ## M00: Program Authorization And Boundaries
 
@@ -115,7 +117,7 @@ ledgers. M02 remains the promoted neutral evidence layer.
 [`decisions`](decisions/M03_implementation_decisions.md), and
 [`completion review`](reviews/M03_completion_review.md). Principal evidence:
 `tests/unit/test_m03_*`, `tests/provenance/test_m03_*`, and equation/data-field
-ledgers. M04 is the active authorized phase.
+ledgers. M03 remains an accepted diagnostic layer; M04 is also accepted.
 
 - **Objective:** Explain whether explicit inputs satisfy a named existing M01
   operation's requirements and whether one query literally satisfies one M02
@@ -173,27 +175,41 @@ tests; ledger entries use `SRC-M04-DESIGN`.
 - **Artifacts:** M04 records, tests, ledgers, specification, decisions, design,
   completion review, and governance contract.
 
-## Future Phase Concept M05: Charge-Region Estimation
+## M05: Charge-Region Records
 
-- **Objective:** Estimate bounded regions for further analysis, never a
-  recommended charge.
-- **Prerequisites:** Promoted M04; explicit fill and property uncertainties.
+**Status: planned; specification-only; implementation is not authorized.** See
+the canonical [`specification`](milestones/M05_charge_region_records.md),
+planning [`evidence and semantics review`](reviews/M05_evidence_and_semantics_review.md),
+and [`specification decisions`](decisions/M05_specification_decisions.md).
+There is no phase implementation design, implementation decision record,
+completion review, serializer, package export, or principal numerical test.
+
+- **Objective:** Define a provenance-preserving contract for bounded analytical
+  regions for further analysis, never a recommended charge or safe range.
+- **Prerequisites:** Accepted M04; explicit user authorization is still required
+  before implementation.
 - **Allowed evidence:** Published primary, manufacturer, and measured relations;
-  fits/calibrations only as experimental candidates with held-out plans.
-- **Required inputs:** Candidate, geometry, fill bounds, property uncertainty,
-  source domain, and pressure-standard identity.
-- **Expected outputs:** Bounded analysis region, outside-domain status, and
-  uncertainty contributors.
+  fits/calibrations remain experimental candidates. This planning pass admits no
+  production method or data.
+- **Required inputs:** Future records would require exact M01/M02 evidence,
+  applicable M03 diagnostics, method/version, units, domain, conditions,
+  uncertainty, conflict, and lineage. M04 references are audit dependencies only.
+- **Expected outputs:** If separately authorized, immutable region records with
+  explicit segments and unavailable/indeterminate/conflicting states.
 - **Exclusions:** Loading instruction, point recommendation, implicit safety
-  assurance, and use of the quarantined charge regression without promotion.
-- **Tests:** Bound ordering, monotonic/invariant checks where sourced, missing
-  inputs, domain edges, and no point recommendation.
-- **Validation gates:** Bounds have traceable causes and cannot exceed source
-  applicability silently.
-- **Promotion criteria:** Independent source reconciliation and conservative
-  measured evaluation plan approved.
-- **Stopping conditions:** A defensible bound cannot be established.
-- **Artifacts:** Method audit, region fixtures, sensitivity report.
+  assurance, numerical implementation, serializer, real region construction,
+  and use of the quarantined charge regression.
+- **Tests:** Current tests enforce planned status, required specification
+  sections, entry-point consistency, and absence of M05 code/API/schema.
+- **Validation gates:** The planning gates in the specification pass; future
+  implementation gates remain predeclared and unexecuted.
+- **Promotion criteria:** A later explicit user authorization must settle the
+  unresolved contract policies and change the specification to `authorized` in
+  a separate planning commit.
+- **Stopping conditions:** No admitted method/data; unresolved pressure,
+  dependency, or region semantics; or any recommendation/safety implication.
+- **Artifacts:** Canonical specification, evidence review, specification
+  decisions, governance tests, and repository design-artifact ledger entries.
 
 ## Future Phase Concept M06: Pressure And Velocity Baseline
 

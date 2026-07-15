@@ -145,6 +145,9 @@ OCR or promote it to a sourced equation.
   architecture, commit it in a planning commit, mark it `authorized`, then
   implement; record decisions separately; complete tests/ledgers/validation;
   create the completion review; and mark `accepted` only after all gates pass.
+- A `planned` specification and its evidence review do not authorize source
+  modules, schemas, exports, or numerical behavior. M05 is currently in that
+  planning-only state.
 
 The controlled milestone statuses are `planned`, `authorized`, `in_progress`,
 `implemented`, `accepted`, `superseded`, `blocked`, and `evidence_limited`.

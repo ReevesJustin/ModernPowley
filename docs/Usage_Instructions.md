@@ -60,6 +60,12 @@ that the supplied evidence satisfied that exact declaration; it is not a powder
 screening, suitability, safety, recommendation, or ballistics result. No
 production criterion set is included.
 
+M05 is specification-only and remains `planned`. The repository can document
+the proposed semantics of a bounded analytical charge-region record, but it has
+no M05 source module, serializer, API, real region data, or numerical derivation.
+No planned region semantics are loading instructions, safe ranges, starting or
+maximum loads, powder-suitability decisions, or pressure/velocity predictions.
+
 ## Experimental Reproduction
 
 Experimental functions live under `modern_powley.experimental` and reject calls
