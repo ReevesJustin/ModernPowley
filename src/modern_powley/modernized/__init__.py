@@ -1,4 +1,4 @@
-"""Promoted M01 inputs, units, provenance, serialization, and geometry."""
+"""Promoted M01 geometry, M02 evidence records, and M03 diagnostics."""
 
 from .geometry import (
     WaterConversionConvention,
@@ -106,6 +106,42 @@ from .m02_serialization import (
     loads_m02_record,
     m02_record_from_dict,
     m02_record_to_dict,
+)
+from .input_requirements import (
+    M03_SCHEMA_ID,
+    ConditionalBranch,
+    InputBundle,
+    InputCandidate,
+    InputCandidateKind,
+    InputRequirement,
+    RequirementKind,
+    RequirementSet,
+    m03_design_provenance,
+    production_requirement_sets,
+)
+from .input_completeness import (
+    CompletenessDiagnostic,
+    CompletenessEvaluation,
+    CompletenessStatus,
+    evaluate_input_completeness,
+)
+from .domain_diagnostics import (
+    ApplicabilityEvaluation,
+    ApplicabilitySummary,
+    ConstraintKind,
+    DomainConstraintDiagnostic,
+    DomainDiagnosticStatus,
+    DomainQueryContext,
+    DomainQueryKind,
+    DomainQueryValue,
+    QueryInterval,
+    diagnose_observation_applicability,
+)
+from .m03_serialization import (
+    dumps_m03_record,
+    loads_m03_record,
+    m03_record_from_dict,
+    m03_record_to_dict,
 )
 
 __all__ = [name for name in globals() if not name.startswith("_")]

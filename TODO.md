@@ -77,8 +77,10 @@ Dependency order:
    see `docs/modernization/reviews/M01_completion_review.md`.
 3. **M02 - Powder-property evidence model:** implemented and reviewed;
    contains records only and no production powder database.
-4. **M03 - Transparent geometric screening:** next active phase.
-5. **M04 - Candidate powder screening.**
+4. **M03 - Input and literal-domain diagnostics:** first bounded increment
+   implemented and reviewed; it does not screen powders or prepare a solver.
+5. **M04 - Candidate powder screening:** next active phase, subject to its own
+   evidence, semantics, and promotion gates.
 6. **M05 - Bounded charge-region estimation.**
 7. **M06 - Pressure and velocity baseline.**
 8. **M07 - Burn progression and burnout location.**
@@ -89,8 +91,10 @@ Dependency order:
 
 M01 establishes canonical inputs and geometry. M02 adds neutral identity,
 property, missingness, domain, and conflict records without powder behavior.
-M03 must consume those explicit records without imputing missing properties or
-selecting powders.
+M03 consumes those explicit records without imputing missing properties or
+selecting powders. Its positive summaries mean only that declared requirements
+or literal domain constraints were satisfied; they do not mean solver readiness,
+physical validity, suitability, or safety.
 
 ## Quarantined And Later Work
 

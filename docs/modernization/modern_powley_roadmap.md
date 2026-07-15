@@ -34,7 +34,7 @@ Evidence and maturity terms are defined in
 ## M01: Canonical Input, Unit, And Geometry Layer
 
 **Status: implemented and reviewed.** See
-`reviews/M01_completion_review.md`. M02 is the next active phase.
+`reviews/M01_completion_review.md`. M01 remains the promoted geometry foundation.
 
 - **Objective:** Define typed, provenance-aware physical inputs and geometry
   without powder ranking or ballistics prediction.
@@ -63,7 +63,7 @@ Evidence and maturity terms are defined in
 ## M02: Powder-Property Evidence Model
 
 **Status: implemented and reviewed.** See
-`reviews/M02_completion_review.md`. M03 is the next active phase.
+`reviews/M02_completion_review.md`. M02 remains the promoted neutral evidence layer.
 
 - **Objective:** Define how identity, bulk density, energy, thermodynamic
   properties, burn behavior, lot/condition, missingness, and provenance are stored.
@@ -86,25 +86,34 @@ Evidence and maturity terms are defined in
 - **Stopping conditions:** Required semantics or units cannot be established.
 - **Artifacts:** Source records, property dictionary, fixtures, and intake audit.
 
-## M03: Transparent Geometric Screening
+## M03: Input Completeness And Literal Domain Diagnostics
 
-- **Objective:** Compute capacity/fill geometry, loading-density measures,
-  expansion ratios, sectional density, mass ratio, and domain checks.
-- **Prerequisites:** Promoted M01; M02 only for powder bulk-volume fields.
-- **Allowed evidence:** Source-backed geometry, measured inputs, published unit
-  conversions, and explicitly derived quantities.
-- **Required inputs:** M01 geometry plus charge mass and, when used, sourced bulk
-  density from M02.
-- **Expected outputs:** Named geometry and fill metrics with assumptions,
-  uncertainty, and rejection reasons.
-- **Exclusions:** Powder suitability, pressure, velocity, burn, and optimality.
-- **Tests:** Dimensional identities, measured/estimated capacity branches,
-  extrema, invalid geometry, and uncertainty propagation.
-- **Validation gates:** No ambiguous `case_volume` or `expansion_ratio`; every
-  rejection is attributable to a stated geometric/domain rule.
-- **Promotion criteria:** Independent fixtures and boundary tests pass.
-- **Stopping conditions:** Geometry uncertainty makes a screen indeterminate.
-- **Artifacts:** Equation records, fixtures, decision logs, and domain report.
+**Status: implemented and reviewed.** See
+`phases/M03_input_and_domain_diagnostics.md` and
+`reviews/M03_completion_review.md`. M04 is the next active phase.
+
+- **Objective:** Explain whether explicit inputs satisfy a named existing M01
+  operation's requirements and whether one query literally satisfies one M02
+  observation's declared domain.
+- **Prerequisites:** Promoted M01 and M02 record contracts.
+- **Allowed evidence:** Explicit M01/M02 records and repository-authored M03
+  requirement definitions; no production powder facts are introduced.
+- **Required inputs:** A named versioned requirement set and explicit candidate
+  bundle, or one observation and an explicit domain-query context.
+- **Expected outputs:** Per-requirement completeness diagnostics and
+  per-constraint literal applicability diagnostics.
+- **Exclusions:** Geometry execution, powder screening or suitability, source
+  selection, solver preparation, interpolation, extrapolation, and prediction.
+- **Tests:** Missingness, dimensions, capacity identity, branch conditions,
+  conflicts, domain endpoints, intervals, categories, units, and serialization.
+- **Validation gates:** No input inference or substitution; unspecified domains
+  do not pass; every rejection identifies its exact requirement or constraint.
+- **Promotion criteria:** Strict schema, architecture, traceability, and all
+  diagnostic boundary tests pass.
+- **Stopping conditions:** Required context is absent, explicitly unavailable,
+  conflicting, unsupported, or only partially comparable.
+- **Artifacts:** Requirement definitions, diagnostic records, decision log,
+  ledgers, fixtures, and completion review.
 
 ## M04: Candidate Powder Screening
 

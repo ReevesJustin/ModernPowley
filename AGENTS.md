@@ -79,9 +79,11 @@ OCR or promote it to a sourced equation.
   Experimental calculations must require `allow_unvalidated=True`.
 - Promoted modernized behavior lives in `src/modern_powley/modernized/`, declares
   evidence and maturity classes, and must pass its phase gates. M01 units,
-  geometry, serialization, and historical adapters plus M02 neutral powder
-  identity/property evidence records are authorized there. Screening,
-  prediction, ranking, and later-phase behavior remain absent.
+  geometry, serialization, and historical adapters; M02 neutral powder
+  identity/property evidence records; and M03 operation-relative input and
+  literal-domain diagnostics are authorized there. A positive M03 diagnostic
+  is not solver readiness, suitability, safety, or physical validation.
+  Screening, prediction, ranking, and later-phase behavior remain absent.
 - `modernized/` may call verified historical scalars only through
   `modernized/adapters/original.py`. `original/` must never import
   `modernized/`.

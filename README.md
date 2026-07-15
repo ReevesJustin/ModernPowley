@@ -87,6 +87,8 @@ keyword `allow_unvalidated=True`. `Ba_eff` is not ballistic efficiency.
 - [M01 completion review](docs/modernization/reviews/M01_completion_review.md): acceptance-gate mapping and remaining limits.
 - [M02 specification](docs/modernization/phases/M02_powder_property_records.md): implemented neutral powder identity, property, missingness, domain, and conflict records.
 - [M02 completion review](docs/modernization/reviews/M02_completion_review.md): evidence and no-behavior acceptance mapping.
+- [M03 diagnostic specification](docs/modernization/phases/M03_input_and_domain_diagnostics.md): implemented operation-relative input completeness and literal M02 domain diagnostics.
+- [M03 completion review](docs/modernization/reviews/M03_completion_review.md): diagnostic, boundary, architecture, and no-screening acceptance mapping.
 - `TODO.md`: active roadmap, dormant historical acquisition work, and deferred phases.
 - `docs/audits/original_powley_scale_recovery.md`: primary-source scale search, graphical evidence, and implementation-readiness decision.
 - `docs/audits/davis_1981_evidence_intake.md`: derivative OCR/reprint intake and remaining primary-image verification boundary.
@@ -103,7 +105,7 @@ keyword `allow_unvalidated=True`. `Ba_eff` is not ballistic efficiency.
 - `src/modern_powley/original/`: only directly supported arithmetic and explicit failures.
 - `src/modern_powley/later/`: later transcriptions, never labeled original.
 - `src/modern_powley/experimental/`: opt-in prototype hypotheses.
-- `src/modern_powley/modernized/`: promoted M01 inputs/geometry and M02 neutral powder-property evidence records; no powder screening, ranking, or ballistics prediction.
+- `src/modern_powley/modernized/`: promoted M01 inputs/geometry, M02 neutral powder-property evidence records, and M03 input/domain diagnostics; no powder screening, ranking, or ballistics prediction.
 - `tests/`: unit, reference, regression-reproduction, and provenance tests.
 
 Legacy CSVs, plots, scripts, and notebook outputs remain for auditability. They

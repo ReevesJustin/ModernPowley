@@ -86,3 +86,38 @@ def test_m02_modules_define_only_contract_domain_and_descriptive_comparison_call
             item for item in definitions
             if any(token in item for token in prohibited_definitions)
         }, path
+
+
+def test_m03_public_api_has_no_screening_selection_prediction_or_solver_names():
+    import modern_powley.modernized as modernized
+
+    prohibited = {
+        "screen_powders", "eligible_powders", "suitable_powders", "rank_candidates",
+        "recommended_inputs", "solver_ready", "load_ready", "effective_capacity",
+        "preferred_observation", "best_record", "select_property", "default_geometry",
+        "estimate_pressure", "estimate_velocity", "charge_predictor",
+    }
+    assert prohibited.isdisjoint(set(modernized.__all__))
+
+
+def test_m03_modules_define_only_requirements_and_literal_diagnostics():
+    prohibited_definitions = {
+        "screen", "select", "rank", "recommend", "interpolate", "extrapolate",
+        "predict", "optimize", "solve", "calibrate", "impute", "infer",
+    }
+    m03_files = (
+        "input_requirements.py", "input_completeness.py",
+        "domain_diagnostics.py", "m03_serialization.py",
+    )
+    for name in m03_files:
+        path = Path("src/modern_powley/modernized") / name
+        tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+        definitions = {
+            node.name.casefold()
+            for node in ast.walk(tree)
+            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef))
+        }
+        assert not {
+            item for item in definitions
+            if any(token in item for token in prohibited_definitions)
+        }, path

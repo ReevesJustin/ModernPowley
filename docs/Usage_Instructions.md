@@ -47,6 +47,12 @@ semantic missingness, applicability domains, and unresolved conflicts. It does
 not include a production powder database, choose among observations, or assign
 computational meaning to source-specific coefficients.
 
+The M03 API evaluates explicit input bundles against named requirement sets for
+existing M01 operations and explains literal comparisons with one observation's
+declared M02 domain. It never infers missing inputs, substitutes capacity types,
+selects conflicting records, or treats a domain pass as powder suitability,
+physical validity, safety, or readiness for a solver.
+
 ## Experimental Reproduction
 
 Experimental functions live under `modern_powley.experimental` and reject calls
