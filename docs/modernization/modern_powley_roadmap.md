@@ -12,6 +12,17 @@ Evidence and maturity terms are defined in
 `evidence_and_model_classes.md`. Model separation and promotion are governed by
 `model_boundaries.md`.
 
+## Milestone Governance
+
+For M01-M04 the durable chain is: canonical specification -> phase design ->
+accepted implementation decisions -> tests and ledgers -> completion review.
+The specification is the scope authority; a review is evidence, not a substitute.
+Future phase concepts M05-M11 are not authorized milestones. Before any becomes
+implementable, its canonical specification must be reviewed, committed in a
+planning commit, and marked `authorized`. A recommendation never authorizes the
+next milestone. Amendments must be explicit and traceable; completed acceptance
+gates are not rewritten to match implementation.
+
 ## M00: Program Authorization And Boundaries
 
 - **Objective:** Establish purpose, safety boundary, evidence classes,
@@ -34,7 +45,12 @@ Evidence and maturity terms are defined in
 ## M01: Canonical Input, Unit, And Geometry Layer
 
 **Status: implemented and reviewed.** See
-`reviews/M01_completion_review.md`. M01 remains the promoted geometry foundation.
+[`specification`](milestones/M01_canonical_inputs_and_geometry.md),
+[`design`](phases/M01_canonical_inputs_and_geometry.md),
+[`decisions`](decisions/M01_implementation_decisions.md), and
+[`completion review`](reviews/M01_completion_review.md). Principal evidence:
+`tests/unit/test_m01_*`, `tests/provenance/test_m01_*`, and equation/data-field
+ledgers. M01 remains the promoted geometry foundation.
 
 - **Objective:** Define typed, provenance-aware physical inputs and geometry
   without powder ranking or ballistics prediction.
@@ -63,7 +79,12 @@ Evidence and maturity terms are defined in
 ## M02: Powder-Property Evidence Model
 
 **Status: implemented and reviewed.** See
-`reviews/M02_completion_review.md`. M02 remains the promoted neutral evidence layer.
+[`specification`](milestones/M02_powder_property_records.md),
+[`design`](phases/M02_powder_property_records.md),
+[`decisions`](decisions/M02_implementation_decisions.md), and
+[`completion review`](reviews/M02_completion_review.md). Principal evidence:
+`tests/unit/test_m02_*`, `tests/provenance/test_m02_*`, and equation/data-field
+ledgers. M02 remains the promoted neutral evidence layer.
 
 - **Objective:** Define how identity, bulk density, energy, thermodynamic
   properties, burn behavior, lot/condition, missingness, and provenance are stored.
@@ -89,8 +110,12 @@ Evidence and maturity terms are defined in
 ## M03: Input Completeness And Literal Domain Diagnostics
 
 **Status: implemented and reviewed.** See
-`phases/M03_input_and_domain_diagnostics.md` and
-`reviews/M03_completion_review.md`. M04 is the next active phase.
+[`specification`](milestones/M03_input_and_domain_diagnostics.md),
+[`design`](phases/M03_input_and_domain_diagnostics.md),
+[`decisions`](decisions/M03_implementation_decisions.md), and
+[`completion review`](reviews/M03_completion_review.md). Principal evidence:
+`tests/unit/test_m03_*`, `tests/provenance/test_m03_*`, and equation/data-field
+ledgers. M04 is the active authorized phase.
 
 - **Objective:** Explain whether explicit inputs satisfy a named existing M01
   operation's requirements and whether one query literally satisfies one M02
@@ -115,29 +140,40 @@ Evidence and maturity terms are defined in
 - **Artifacts:** Requirement definitions, diagnostic records, decision log,
   ledgers, fixtures, and completion review.
 
-## M04: Candidate Powder Screening
+## M04: Declarative Screening Criteria And Auditable Outcome Records
 
-- **Objective:** Develop transparent inclusion and exclusion rules without
-  claiming validated optimal ranking.
-- **Prerequisites:** Promoted M02 and M03.
-- **Allowed evidence:** Published/manufacturer/measured property evidence;
-  experimental candidates only in separately labeled comparisons.
-- **Required inputs:** Candidate identity/properties, geometric metrics, source
-  domains, and explicit screening thresholds.
-- **Expected outputs:** Included, excluded, or indeterminate status with reasons
-  and evidence references.
-- **Exclusions:** Recommended powder, recommended charge, hidden aggregate score,
-  pressure/velocity claims, and commercial burn-chart determinism.
-- **Tests:** Rule isolation, missing properties, conflicting evidence, threshold
-  boundaries, deterministic ordering, and indeterminate handling.
-- **Validation gates:** Every decision is explainable; absence never becomes a
-  default value.
-- **Promotion criteria:** Rules survive source/domain review and representative
-  negative cases.
-- **Stopping conditions:** Screening depends on unavailable or unvalidated data.
-- **Artifacts:** Rule catalog, candidate reports, rejected-method record.
+**Status: accepted and reviewed.** See
+[`specification`](milestones/M04_screening_decision_records.md),
+[`design`](phases/M04_screening_decision_records.md),
+[`decisions`](decisions/M04_implementation_decisions.md), and the completion
+review path `reviews/M04_completion_review.md`. Principal tests are
+`tests/unit/test_m04_*`, `tests/provenance/test_m04_*`, and milestone-governance
+tests; ledger entries use `SRC-M04-DESIGN`.
 
-## M05: Charge-Region Estimation
+- **Objective:** Represent immutable criteria, exact supplied evidence,
+  evaluation contexts, recorded outcomes, and descriptive mandatory summaries.
+- **Prerequisites:** Promoted M01-M03 record contracts.
+- **Allowed evidence:** Exact caller-supplied M01-M03 records; synthetic fixtures
+  only in this increment.
+- **Required inputs:** Versioned criterion and set definitions, exact evidence
+  references, context identity, and explicit evaluation provenance.
+- **Expected outputs:** Literal criterion outcomes and descriptive set summaries
+  with full audit chains and bounded non-implication statements.
+- **Exclusions:** Catalog search, observation discovery, production criteria,
+  powder suitability, ranking, scoring, prediction, solver, or recommendation.
+- **Tests:** Versions, roles, statuses, missing/conflict behavior, exact bounds,
+  interval containment, manual/mechanical separation, schema, architecture, and
+  durable milestone governance.
+- **Validation gates:** All 18 gates in the canonical specification, including
+  specification-first governance, passed before status became `accepted`.
+- **Promotion criteria:** Strict record contract and literal evaluator reviewed;
+  no screening engine or physical policy is promoted.
+- **Stopping conditions:** Required exact evidence, definition, version, or
+  comparison semantics are absent or conflicting.
+- **Artifacts:** M04 records, tests, ledgers, specification, decisions, design,
+  completion review, and governance contract.
+
+## Future Phase Concept M05: Charge-Region Estimation
 
 - **Objective:** Estimate bounded regions for further analysis, never a
   recommended charge.
@@ -159,7 +195,7 @@ Evidence and maturity terms are defined in
 - **Stopping conditions:** A defensible bound cannot be established.
 - **Artifacts:** Method audit, region fixtures, sensitivity report.
 
-## M06: Pressure And Velocity Baseline
+## Future Phase Concept M06: Pressure And Velocity Baseline
 
 - **Objective:** Introduce one documented baseline model at a time for explicitly
   named pressure quantities and projectile velocity.
@@ -180,7 +216,7 @@ Evidence and maturity terms are defined in
 - **Stopping conditions:** Pressure semantics or validation data are inadequate.
 - **Artifacts:** Model record, datasets/splits, metrics, residuals, failures.
 
-## M07: Burn Progression And Burnout Location
+## Future Phase Concept M07: Burn Progression And Burnout Location
 
 - **Objective:** Add burn fraction, burnout time, and burnout travel with an
   explicit pressure-path and combustion-model basis.
@@ -203,7 +239,7 @@ Evidence and maturity terms are defined in
 - **Stopping conditions:** Required burn semantics or measured evidence absent.
 - **Artifacts:** Burn-model audit, validation fixtures, failure cases.
 
-## M08: Muzzle Pressure And Selection Objectives
+## Future Phase Concept M08: Muzzle Pressure And Selection Objectives
 
 - **Objective:** Add muzzle pressure and secondary discriminators after primary
   pressure and burn constraints are available.
@@ -224,7 +260,7 @@ Evidence and maturity terms are defined in
 - **Stopping conditions:** Primary models are not sufficiently valid.
 - **Artifacts:** Objective definitions, comparison reports, validation record.
 
-## M09: Measured Validation And Calibration
+## Future Phase Concept M09: Measured Validation And Calibration
 
 - **Objective:** Evaluate cartridge families, bullet weights, pressure data,
   velocity ladders, and holdout cases under a predeclared protocol.
@@ -245,7 +281,7 @@ Evidence and maturity terms are defined in
 - **Stopping conditions:** Insufficient independent data or unacceptable errors.
 - **Artifacts:** Dataset manifests, splits, metrics, residual plots, decisions.
 
-## M10: Uncertainty And Decision Policy
+## Future Phase Concept M10: Uncertainty And Decision Policy
 
 - **Objective:** Establish rejection thresholds, confidence classes,
   outside-domain behavior, and model-comparison policy.
@@ -264,7 +300,7 @@ Evidence and maturity terms are defined in
 - **Stopping conditions:** Uncertainty cannot be characterized sufficiently.
 - **Artifacts:** Decision-policy version, sensitivity report, test vectors.
 
-## M11: User Workflow
+## Future Phase Concept M11: User Workflow
 
 - **Objective:** Expose only promoted numerical layers through an auditable CLI
   or application workflow.

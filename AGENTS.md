@@ -81,9 +81,10 @@ OCR or promote it to a sourced equation.
   evidence and maturity classes, and must pass its phase gates. M01 units,
   geometry, serialization, and historical adapters; M02 neutral powder
   identity/property evidence records; and M03 operation-relative input and
-  literal-domain diagnostics are authorized there. A positive M03 diagnostic
-  is not solver readiness, suitability, safety, or physical validation.
-  Screening, prediction, ranking, and later-phase behavior remain absent.
+  literal-domain diagnostics; and M04 declarative criterion and outcome records
+  are authorized there. Positive M03 or M04 results are not solver readiness,
+  suitability, safety, recommendation, or physical validation. Catalog
+  screening, prediction, ranking, and later-phase behavior remain absent.
 - `modernized/` may call verified historical scalars only through
   `modernized/adapters/original.py`. `original/` must never import
   `modernized/`.
@@ -122,6 +123,31 @@ OCR or promote it to a sourced equation.
   source fields. Muzzle pressure does not establish burnout.
 
 ## Tests and Changes
+
+### Modernization milestone governance
+
+- Read the applicable canonical specification under
+  `docs/modernization/milestones/` before changing modernized code. The
+  specification is the scope authority; accepted decision records are binding
+  refinements, while completion reviews are evidence and never substitutes for
+  specifications.
+- Do not implement a milestone until its canonical specification exists and is
+  explicitly `authorized`. Do not treat a recommendation in a completion review
+  or roadmap as authorization.
+- Do not broaden a milestone for implementation convenience. Propose a scope
+  change explicitly before coding it.
+- Preserve accepted milestone specifications as historical records. Never
+  retroactively edit an acceptance gate merely to match an implementation.
+- Record an approved specification change in a dated amendment or decision
+  record that identifies changed sections, rationale, and whether scope is
+  broadened, narrowed, or clarified. Update materially affected tests.
+- For M05 and later: draft and review the specification against evidence and
+  architecture, commit it in a planning commit, mark it `authorized`, then
+  implement; record decisions separately; complete tests/ledgers/validation;
+  create the completion review; and mark `accepted` only after all gates pass.
+
+The controlled milestone statuses are `planned`, `authorized`, `in_progress`,
+`implemented`, `accepted`, `superseded`, `blocked`, and `evidence_limited`.
 
 Before changing model behavior, add or update the narrowest relevant test:
 

@@ -79,9 +79,13 @@ Dependency order:
    contains records only and no production powder database.
 4. **M03 - Input and literal-domain diagnostics:** first bounded increment
    implemented and reviewed; it does not screen powders or prepare a solver.
-5. **M04 - Candidate powder screening:** next active phase, subject to its own
-   evidence, semantics, and promotion gates.
-6. **M05 - Bounded charge-region estimation.**
+5. **M04 - Declarative screening criteria and auditable outcome records:**
+   implemented and reviewed as a record/audit layer only; it contains no
+   production criteria, catalog search, suitability decision, ranking, or
+   ballistics prediction.
+6. **M05 - Future bounded phase:** recommended for specification drafting only;
+   it is not authorized. Its canonical specification must be reviewed and
+   committed before any implementation.
 7. **M06 - Pressure and velocity baseline.**
 8. **M07 - Burn progression and burnout location.**
 9. **M08 - Muzzle pressure and secondary selection objectives.**
@@ -95,6 +99,12 @@ M03 consumes those explicit records without imputing missing properties or
 selecting powders. Its positive summaries mean only that declared requirements
 or literal domain constraints were satisfied; they do not mean solver readiness,
 physical validity, suitability, or safety.
+
+M04 records exact criterion definitions, supplied evidence, literal outcomes,
+and descriptive active-mandatory summaries. A pass does not establish physical
+correctness, powder suitability, safety, approval, recommendation, or solver
+readiness. Future milestones follow the specification-first workflow in
+`AGENTS.md`; a recommendation does not authorize implementation.
 
 ## Quarantined And Later Work
 

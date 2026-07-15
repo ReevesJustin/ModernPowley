@@ -143,5 +143,48 @@ from .m03_serialization import (
     m03_record_from_dict,
     m03_record_to_dict,
 )
+from .screening_criteria import (
+    M04_SCHEMA_ID,
+    CriterionDefinition,
+    CriterionForm,
+    CriterionReference,
+    CriterionRole,
+    CriterionSetDefinition,
+    CriterionStatus,
+    FiniteSetThreshold,
+    LiteralThreshold,
+    MissingStateSetThreshold,
+    NumericBoundThreshold,
+    NumericIntervalThreshold,
+    ThresholdKind,
+)
+from .screening_contexts import (
+    ConflictDeclaration,
+    EvaluationContext,
+    EvidenceReference,
+    EvidenceReferenceKind,
+    EvidenceValueKind,
+)
+from .screening_outcomes import (
+    CriterionEvaluationRecord,
+    CriterionOutcomeStatus,
+    CriterionSetOutcomeRecord,
+    CriterionSetSummary,
+    EvaluationMethod,
+    ManualAssertionDetails,
+    ManualReviewStatus,
+    OutcomeCounts,
+)
+from .criterion_evaluation import (
+    evaluate_criterion,
+    record_manual_assertion,
+    summarize_criterion_set,
+)
+from .m04_serialization import (
+    dumps_m04_record,
+    loads_m04_record,
+    m04_record_from_dict,
+    m04_record_to_dict,
+)
 
 __all__ = [name for name in globals() if not name.startswith("_")]

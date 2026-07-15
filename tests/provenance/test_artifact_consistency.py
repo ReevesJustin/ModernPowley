@@ -74,3 +74,9 @@ def test_local_artifact_hashes_match_source_ledger():
     assert digest(Path("docs/modernization/decisions/M03_implementation_decisions.md")) == sources[
         "SRC-M03-DESIGN"
     ]["artifact_hash"].removeprefix("sha256:")
+    assert digest(Path("docs/modernization/decisions/M04_implementation_decisions.md")) == sources[
+        "SRC-M04-DESIGN"
+    ]["artifact_hash"].removeprefix("sha256:")
+    for milestone in ("M01", "M02", "M03", "M04"):
+        source = sources[f"SRC-{milestone}-SPEC"]
+        assert digest(Path(source["url_or_local_path"])) == source["artifact_hash"].removeprefix("sha256:")

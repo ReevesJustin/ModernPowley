@@ -53,6 +53,13 @@ declared M02 domain. It never infers missing inputs, substitutes capacity types,
 selects conflicting records, or treats a domain pass as powder suitability,
 physical validity, safety, or readiness for a solver.
 
+The M04 API records immutable versioned criteria, exact evidence references,
+manual or narrow literal outcomes, and descriptive criterion-set summaries. It
+does not search observations or powder collections. A criterion pass means only
+that the supplied evidence satisfied that exact declaration; it is not a powder
+screening, suitability, safety, recommendation, or ballistics result. No
+production criterion set is included.
+
 ## Experimental Reproduction
 
 Experimental functions live under `modern_powley.experimental` and reject calls
