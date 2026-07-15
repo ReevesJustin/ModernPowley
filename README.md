@@ -60,6 +60,7 @@ keyword `allow_unvalidated=True`. `Ba_eff` is not ballistic efficiency.
 - `docs/audits/modern_powley_full_repository_audit.md`: finding-by-finding audit.
 - `docs/audits/original_powley_reconstruction_closure.md`: end-to-end original-method closure decision and traceability matrix.
 - `docs/audits/original_powley_scale_recovery.md`: primary-source scale search, graphical evidence, and implementation-readiness decision.
+- `docs/audits/davis_1981_evidence_intake.md`: derivative OCR/reprint intake and remaining primary-image verification boundary.
 - `reference/source_ledger.csv`: source access and artifact hashes.
 - `reference/powley_manual/powleysmanuals1.md`: searchable OCR-style manual transcription; verify against the scan.
 - `reference/powley_manual/powleysmanuals1.pdf`: hash-verified primary scan.

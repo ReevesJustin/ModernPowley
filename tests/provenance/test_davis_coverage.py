@@ -60,7 +60,10 @@ def test_table4_correction_ledger_keeps_every_row_pending_visual_review():
     )
     assert len(rows) == 34
     assert {row["cells_reviewed"] for row in rows} == {"9"}
-    assert {row["damaged_ocr_available"] for row in rows} == {"no"}
+    assert {row["damaged_ocr_available"] for row in rows} == {"yes"}
+    assert {row["resolution_basis"] for row in rows} == {
+        "user-supplied normalized transcription; raw OCR unusable for cells"
+    }
     assert {row["visual_verification"] for row in rows} == {"pending"}
     assert {row["confidence"] for row in rows} == {"medium"}
 

@@ -1,0 +1,984 @@
+RAW USER-PROVIDED OCR TRANSCRIPTION
+Wm. C. Davis Jr., NRA Handloading, pages 138-144
+
+Status:
+- This is a raw transcription supplied by the user.
+- It has not been visually reconciled against page images.
+- OCR errors, dropped equations, malformed superscripts, and table corruption are preserved.
+- Do not treat this file as a facsimile or canonical equation/table transcription.
+
+====================
+PAGE 138
+====================
+
+Small arms are least predictable actual pressure and velocity tests, which The most important factors
+is published in the many excellent
+Tn all the science of gun ballistics, The most important characteristics in
+the interior ballistics of small arms is handloading manuals such as those of determining the performance of a car-
+perhaps the part most difficult to deal Hodgdon, Hornady, Nosler, Sierra and tridge are the charge weight, the capacity
+with by calculations. The interior ballisSpeer, and the literature of DuPont,
+Hercules, Norma and Winchester-
+of the powder chamber, the diameter and
+tics of cannon are much more reliably
+Western. Loads established on the basis
+weight of the bullet, and the length of
+predictable from calculations, and most the barrel in which it will be fired. These
+of calculation should not be assumed to
+of the professional literature on interior basic characteristics are combined in
+ballistics deals almost exclusively with be safe loads. If possible, they should be various ways to derive some of the other
+the ballistics of artillery gun/ammunichecked against published data to see terms commonly used in interior ballis-
+that
+tion systems. The classic book on the the expected pressures will not
+tics, such as loading density, expansion
+the English language, excced those of loads that have been
+subject in ratio, sectional density, and the ratio of
+Corner's "Theory of the Interior Ballis found safc in actual firing tests. Where charge weight to bullet weight.
+tics of Guns," devotes only one of its 434 that is not possible, as in the case of It is widely believed that the shape of
+pages to small arms. Corner gives several wildcat cartridges for which such pubthe cartridge case is also of great
+good technical reasons why the interiorlished data are not available, the handimportance, and many wildcat cartridges
+ballistic problems of small arms are not loader should have facilities for remote
+are based on the supposition that some
+amenable to solution by the usual firing during load development, with unusual configuration of the powder
+mathematical methods, and concludes
+effective protection against personal chamber will provide an over-riding
+with the observation that: "Ballistic injury in the event of an unanticipated advantage over all conventional configu-
+methods for small arms are accordingly high-pressure malfunction. Experimentrations, and thus produce ballistic
+more empirical... "which is to say that ing with ammunition is not for the
+inexperienced handloader, or one who
+performance far transcending the ordi-
+velocity and pressure tests, rather than nary. While there is credible
+calculations, are much the preferred way fails to learn from experience, or one evidence that certain shapes of the case
+to obtain reliable ballistic data for small inclined to the derring-do attitude better than others, for various
+arms. That is good advice. toward thrilling new experiences. These
+reasons, the differences are relatively
+Nevertheless, there remains a need for points are made not just as perfunctory small in comparison to the fundamental
+some reasonably simple methods that disclaimers, but should be taken very characteristics mentioned above. This
+serious handloaders can use to answer seriously. article does not deal with such esoteric
+some of their questions on the subject. The methods described here are, in refinements, but for those interested in
+The purpose of this article is to present general, applicable only to DuPont IMR the question, a very informative series of
+some methods of computation, that can powders fired in strong centerfire rifles, articles appeared in THE AMERICAN
+be understood and employed by any capable of withstanding loads that RIFLEMAN, issues of April through
+handloader who is reasonably competent typically develop pressures on the order July in 1946. The author of those
+in algebra at the high-school level, and of 50,000 c.u.p. A few handguns also fall articles conducted a very carefully con-
+who has one of the common electronic into that category. It is assumed that the trolled series of experiments,
+calculators that can perform the squareexperimenter who plans to reduce any of professionally equipped laboratory, us-
+root function. these calculations to practice is suffiing cartridges identical in every way
+It must be understood at the outset, ciently well informed about the strength except for radically different shapes of
+however, that calculations are not to be of his gun and cartridge cases, and about powder chamber. He was unable, in
+trusted to establish safe handloading safe handloading and testing procedures, those particular experiments, to distin-
+data. The best information on safe and to avoid any hazardous practices in his guish the performance of one from
+satisfactory handloads is that based on loading and shooting. another. It appears unlikely, therefore,
+138
+
+====================
+PAGE 139
+====================
+
+TABLE 1.
+FULL CASE CASE CARTRIDGE FULL CASE CASE CARTRIDGE
+CAPACITY LENGTH MAXIMUM CAPACITY LENGTH MAXIMUM
+GRAINS INCHES LENGTH GRAINS INCHES LENGTH
+CARTRIDGE WATER INCHES CARTRIDGE WATER INCHES
+17 REM 26 1.786 2.150 .300 SAV 1.861 2.600
+.22 HORNET 1.393 1.723 308 WIN 2.005 2.800
+.218 BEE 1.335 1.680 7.62MM NATO
+2.484
+9869比S2 2.005 2,800
+.221 FIREBALL 1,390 1,830 .30-06 3.340
+.222 REM 1,690 2.130 .300 H&H MAG 2.835 3,600
+.223 REM 1.750 2.260 .308 NORMA MAG 87 2.550 3.250
+.222 REM MAG 1.840 .300 WIN MAG 2.610 3.340
+.219 WASP 1.770 .300 WEATH MAG 2.815 3.562
+.219 ZIPPER 1.930 7.65MM MAUS 2.096 2.970
+225 WIN 1.920 2,500 303 BRITISH 2.212 3.075
+224 WEATH 1.913 2.312 7.7MM JAP 2.264 3.150
+.22-250 1.902 2.350 32-20 1.295 1.592
+220 SWIFT 2.195 2.680 32-40 2.130 2.500
+6 X 47MM 1.840 2.500 32 SPECIAL 2,030 2.565
+.243 WIN 2.035 2.710 32 REM 2.040 2.525
+6MM/.244 REM 2.223 2.825 8 X 57MM MAUS 2.230 3.250
+.240 WEATH MAG 2.490 8MM-06 2.484 3.340
+256 WIN 1.271 BMM REM MAG 2.840 3.600
+.25-20 WCF 1.320 1.592 338 WIN MAG 2.490 3,340
+.25-35 2.030 2.550 340 WEATH MSG 2.815 3.562
+.250 SAV 1.910 .51 15 348 WIN 2.245 2.795
+.257 ROBERTS 2.223 .38 SPECIAL 1.145 1.550
+.25-06 REM 2.484 357 MAG 1.280 1,590
+223 Ggu
+.257 WEATH MAG 2.540 3.250 .357 HERRETT 1.750 2.550
+6.5 X 54MM M.S. 2.102 3.010 .35 REM 1.910 2,525
+6.5MM JAP 1.974 2.890 351 WIN S.L. 1.370 1,900
+6.5 X 55MM 2.155 3.062 358 WIN 2.005 2,780
+6.5MM REM MAG 2.160 2.800 .35 WHELEN 2.484 3.340
+264 WIN MAG 2.490 3.340 .350 REM MAG 2.160 2.800
+270 WIN 2.530 3.340 .358 NORMA MAG 2.510 3.230
+270 WEATH MAG 2.540 3.250 375 WIN 2.010 2.560
+7 X 57MM MAUS 2.225 3.065 .375 H&H MAG 2.840 3.600
+284 WIN 2.160 2,800 378 WEATH MAG 2,903 3,700
+7MM EXP/.280 REM 2.530 38-40 WCF 1.295 1.592
+7MM-08 REM 3855 2.120 2.550
+7 X 61MM S&H 2.392 MAG 1.275 1.610
+7MM WEATH MAG 2.540 40 I WCF 1.295 1.592
+7MM REM MAG 2.490 MARLIN 2. 15 2.570
+30 CARBINE 1.280 70 .095 2.550
+HERRETT 1.604 WIN MAG
+WEATH MAG
+6Zn2NZ 340
+-40
+080c08 -30 2.
+75828420354558 mG00 3.700
+88669的82的8加68以0与&5比&记5955880095比3015.為5868 응&
+繳碗W喇wwwww
+
+that any particular chamber configurabelow the base of the neck to maintain bearing surface of a bullet, so that water
+tion can be relied upon to free the acceptable overall length for the will have a path to escape when the
+experimenter from the long-standing loaded cartridge, and others leave considbullet is seated in a water-filled case.
+basic constraints of interior ballistics, erable unoccupied space in the case neck. Take a case that has been resized, and
+which are based on the fundamental For cases that are not bottle-necked, of seat a fired primer in the pocket. Weigh
+characteristics mentioned above. course there is no shoulder to define the the case and grooved bullet together on
+Before any useful calculations can be point of measurement. There are more your powder scale. Fill the case to the
+done, reliable data must be obtained for meaningful ways to find and express the mouth with water, seat the bullet
+input into the mathematical formulas. case capacity. carefully to the desired seating depth, dry
+We must first consider, therefore, the The important characteristic from the the exterior of the case and bullet, and
+methods by which the necessary data can standpoint of interior ballistics is the weigh the water-filled cartridge. The
+be obtained. amount of space available for the powder difference between the empty and full
+charge, when a bullet is seated to the weights is obviously the capacity of the
+desired depth in the case neck. This
+Finding powder space by cartridge, with that particular bullet, in
+direct weighing means that bullets having different grains of water.
+seating depths will allow different
+One of the most important characterisamounts of powder capacity, when
+tics in determining the interior-ballistic seated in the same cartridge case. The Calculating powder space from
+measurements
+performance of a cartridge is the capacity volume displaced when the bullet is
+of the powder chamber in the case. There seated must therefore be taken into An alternate method of determining
+is some confusion as to how that can best account for a meaningful comparison case capacity involves a little more
+be determined and expressed. It is among different loads and cartridges. computation, but it is often more con-
+sometimes given as the capacity to the The most direct way to determine the venient, especially if different bullets
+juncture of the neck and shoulder, but volume of the powder space for any and/or different seating depths are
+that is not always meaningful, since particular load is as follows: File a small involved. To begin, the cartridge case
+some bullets must be seated to intrude groove lengthwise on the cylindrical (with the primer pocket sealed by a
+139
+
+====================
+PAGE 140
+====================
+
+primer or otherwise) is first weighed
+empty, and then filled carefully to the
+mouth with water. Some care should be
+taken to fill the case level full, without
+either a concave or convex meniscus in
+the water surface at the mouth, and be
+sure that no air bubbles remain inside.
+The weight of water is obtained by
+subtraction as described before. This is
+the full case capacity, and should be
+recorded for future reference. The length
+of the cartridge case should also be
+carefully measured at this time, and
+recorded for future reference.
+For those who want to compare
+cartridges for which they do not have
+specimens to weigh and measure, Table
+gives the nominal full-case water
+capacity, case length and cartridge
+overall length of some common cartridge
+cases. The numbers in the table should
+be considered approximate, however,
+since cases of the same caliber, but
+different brands or different lots, may be
+found to have capacities differing by as
+much as about five percent.
+It will be found convenient, as mea-
+surements are made, to record them by
+their descriptive names, and identify
+them also by the alphabetic variable
+names assigned in Table 2. These are not
+the variable names assigned in the traditional literature on ballistics, but
+are used here to avoid the necessity of
+using Greek letters and subscripts, in the
+hope that the formulas will seem clearer
+and less formidable in this simpler
+notation.
+The next step is to measure the length
+of the bullet, and establish the desired
+overall length of the loaded cartridge.
+From these measurements, the seating
+depth of the bullet is conveniently
+found, by adding together the length of
+the bullet and the length of the case, and
+subtracting from this sum the overall
+length of the loaded cartridge. The
+formula is:
+S= C+ B - L
+where S = seating depth, inch
+C = case length, inches
+B = bullet length, inches
+L = length overall of loaded
+cartridge, inches
+The amount of water displaced by
+seating a flat-base bullet can now be
+found by the following formula:
+P = 198 x S.x D2
+where P = water displaced by bullet,
+grains
+S = seating depth, inch
+D = bullet diameter, inch
+To find the water capacity of the
+powder chamber, with a flat-base bullet
+seated, the following formula may now
+be used:
+W = F- P
+where W= water capacity of the
+cartridge, grains
+F = full water capacity of
+the case, grains
+P= water displaced by
+seating the bullet, grains
+If a boattail bullet is to be used, a small
+correction can be made to allow for the
+tapered rear end of the bullet. The
+correction is usually less than one grain,
+and hardly necessary, but the formula for
+the correction (K) is:
+K = 66 x H x (2 x D2 - D x J - J°)
+where K = correction for boattail,
+grains
+H = height (axial length) of
+boattail, inch
+D = bullet diameter, inch
+J = tail diameter (small end)
+of boattail, inch
+The correction (K) should be added in
+the formula for water capacity of the
+powder chamber (W), which then be-
+comes (for boattail bullets):
+W = F-P+ K
+where F, P and K are found as
+described above
+Occasionally the handloader may wish
+to consider the use of a bullet of which
+he has no sample for measurement. A
+fair estimate of the bullet length can be
+made by measuring the illustration of
+the bullet in a handloading nanual such
+as the Hornady, Nosler, Sierra or Speer,
+all of which depict the bullet at approxi-
+mately actual size.
+
+Finding the bullet travel
+The next step in acquiring data for the
+calculations is to determine the distance
+that the base of the bullet must travel
+from its starting position until it clears
+the muzzle. This is most easily done by
+adding the length of the barrel (mea-
+sured from the bolt face) to the seating
+depth of the bullet, and subtracting from
+this sum the case length determined as
+described above. In terms of a formula,
+the bullet travel is:
+T = E+S - C
+where T = bullet travel, inches
+E = barrel length, inches
+S = seating depth, inch
+C = case length, inches
+
+Finding the expansion ratio
+The information is now available for
+determining the expansion ratio for the
+cartridge and barrel being considered.
+The expansion ratio in a gun is an
+important factor in determining ballistic
+performance. It is comparable to the
+compression ratio in internal-combus-
+tion engines. Increasing the expansion
+ratio by providing a longer barrel
+generally produces more energy from the
+same powder charge, just as increasing
+the compression ratio of an engine by
+increasing the piston stroke produces
+more energy from the same charge of fuel
+in the cylinder. The expansion ratio in a
+gun is the ratio of the volume of the bore
+plus the powder chamber, to the volume
+of the powder chamber alone. The
+volumes are commonly expressed in
+cubic inches.
+The volume of the powder chamber is
+easily found by dividing the water
+capacity (in grains) by 252.4, which is the
+density of water at a normal room
+temperature of 70 degrees F. In terms of
+the previous formulas, the volume of the
+powder chamber (U) is:
+U = W / 252.4
+where U = volume of powder
+chamber, cubic inch
+W = water capacity of powder
+chamber, grains
+
+The effective volume of the bore can be
+calculated from the effective diameter of
+the bore, and the length of bullet travel.
+The effective diameter of the bore is
+somewhat less than the groove diameter,
+and somewhat more than the land (bore)
+diameter, and it depends on the actual
+height and width of the rifling lands in a
+particular barrel. In general, the lands
+are about .0025 to .0050-inch high, and
+are narrower than the grooves, and the
+necessary allowance for the lands is
+about 1½ per cent of the bore cross-
+sectional area.
+This allowance has been made in the
+following formula, so the diameter of the
+bullet can be used. The formula for
+finding the effective bore volume is then:
+Q= .773 x Tx D2
+
+====================
+PAGE 141
+====================
+
+where Q= effective bore volume,
+cubic inches
+T = bullet travel, inches
+D = bullet diameter (barrel
+groove diameter), inch
+The expansion ratio for the gun and
+cartridge can now be calculated from the
+following formula:
+R = (Q + U) / U
+where R = expansion ratio
+Q = volume of bore
+U = volume of powder chamber
+
+Estimating the powder charge
+Having now the essential data on the
+cartridge, bullet and barrel, we can
+proceed to consider the powder type and
+charge weight. The first problem is to
+identify a potentially suitable type (or
+types) of powders, and that requires
+some understanding of the properties to
+be considered in the powder selection.
+Assuming that we wish to obtain the
+maximum practicable velocity with a
+particular cartridge case and bullet, it is
+obvious that we must try to maximize the
+energy we derive from the powder
+charge. There are two different limita-
+tions on the amount of powder that we
+can use in a cartridge. First is the amount
+that the cartridge case will conveniently
+hold, based on its cubic capacity. The
+second limitation is the amount of any
+particular powder that we can burn
+without producing excessive chamber
+pressure. What we seek, therefore, is a
+powder with which we can just conve-
+niently fill the available powder space in
+the cartridge, with a charge weight that
+will closely approach, but not exceed, a
+safe working chamber pressure.
+For the DuPont IMR powders, and
+some similar powders sold by Hodgdon,
+it will be found that the maximum
+charge weight which can be conve-
+niently loaded into a cartridge case,
+without compressing the powder, is
+about 80 to 90 per cent of the weight of
+water required to fill the powder space.
+This concept is expressed in interior
+ballistics by the term "density of load-
+ing" (or "loading density") which is
+defined as the ratio of the weight of
+powder charge to the weight of water
+required to fill the available volume of
+the powder chamber. Some powders
+pack more densely than others, owing
+mostly to the size, shape and surface
+finish of the powder granules, and this
+characteristic is expressed by another
+term called "bulk density," or "gravi-
+metric density." The bulk density of
+IMR-4227 and IMR-4198 is somewhat
+less than that of the other IMR canister
+powders, and for that reason, it will be
+found that a charge weight equal to
+about 80 per cent of the water capacity
+will nearly fill the available powder
+space. For the other IMR powders, a
+charge weight equal to about 86 per cent
+of the water capacity can be accommo-
+dated, without quite filling the available
+powder space. The "ideal" charge
+weight will therefore be about 80 per
+cent of the water capacity for IMR-4227
+and IMR-4198, and about 86 per cent of
+the water capacity for the other IMR
+canister powders. In terms of a formula,
+therefore, we can determine our esti-
+mated charge weight (I) as follows:
+I = .86 x W (except for IMR 4227
+and IMR 4198)
+or I = .80 x W (for IMR 4227 and
+IMR 4198)
+where I = charge weight, grains
+W= water capacity of
+powder chamber, grains
+Defining the powder characteristics
+Having decided on the amount of
+powder, we must now consider the
+burning characteristics desired, so that
+the established charge will closely ap-
+proach, but not exceed, the maximum
+safe working pressure in the gun. For
+powders of similar composition and
+grain form, such as the Du Pont IMR
+powders, the chamber pressure deve-
+loped under given conditions of loading
+depends mostly on a characteristic called
+"relative quickness." When handloaders
+speak of "fast-burning" "fast"
+powders, and "slow-burning" or "slow"
+powders, they are referring to this
+property that ballisticians call relative
+quickness. We will use the handloaders'
+terms "fast" and "slow" in that sense in
+this article, though some professional
+ballisticians might object to that usage,
+since it could be confused with terms
+referring to the linear burning rate of
+powder, which is an entirely different
+concept and one we will not describe
+here.
+The relative quickness of the Du Pont
+powders is expressed on an arbitrary
+scale, on which IMR-4350 is assigned a
+value of 100. "Faster" powders have
+higher numbers, and "slower" powders
+have lower numbers. The IMR powders
+available to handloaders (called "canis-
+ter powders"), rank as follows on the Du
+Pont scale of relative quickness:
+Powder Type Relative Quickness
+IMR 4227 180
+IMR 4198 160
+IMR 3031 135
+IMR 4064 120
+IMR 4895 115
+IMR 4320 110
+IMR 4350 100
+IMR 4831 95
+Relative-quickness data are based on
+laboratory tests instead of on gun firings,
+and serve as a general guide for the
+expected performance in cartridges, but
+it is found that powders which are placed
+fairly close together in the relative-
+quickness range may change their
+
+relative positions if ranked according to
+their performance in actual gun firings.
+This is particularly true of IMR-4064,
+IMR-4895 and IMR-4320, which rank in
+that order according to relative quick-
+ness, from "fastest" to "slowest." In
+actual firing, however, IMR-4064 is often
+found to allow higher charge weights,
+and produce higher velocities at accepta-
+ble pressure, than do either IMR-4895 or
+IMR-4320, both of which rank lower
+("slower") on the relative-quickness
+scale. For that reason, it is impossible to
+say with certainty which of the powders
+in this group of three - IMR-4064, IMR-
+4895 or IMR-4320 - will be found most
+suitable in a particular load for which all
+three have reasonably suitable character-
+istics. The same is occasionally true of
+IMR-4350 and IMR-4831, which are
+separated by only five points on the
+relative quickness scale. The choice
+among powders within these groupings
+cannot be reliably predicted by calcula-
+tion, but must be determined by actual
+firing tests in the cartridge under
+consideration. What we are seeking.
+terms of relative quickness, is a powder
+"fast" enough to produce the maximum
+safe working pressure at the selected
+charge weight, but "slow" enough not to
+produce excessive pressure before the
+powder chamber in the case is nearly
+filled.
+
+The degree of relative quickness re-
+quired to meet our conditions depends
+most importantly on three factors: (1) the
+ratio of powder-charge weight to bullet
+weight, which is sometimes called the
+"mass ratio"; (2) the sectional density of
+the bullet; and (3) the maximum work-
+ing chamber pressure we are prepared to
+accept. For purposes of the method
+described here, we will establish the
+maximum working pressure in the
+approximate range 45,000 c.u.p. to
+50,000 c.u.p. We can now proceed to find
+the other factors that enter into the
+powder-selection decision.
+The first step is to establish the charge
+weight. If it appears that a powder
+"slower" than IMR-4198 will be re-
+quired, we can proceed on the assump-
+tion that the density of loading should be
+86, as explained before. If it appears that
+a powder "faster" than IMR-3031 will be
+required, we can assume that the loading
+density should be .80. These rules will
+not select compressed charges, but will
+leave little free airspace in the cartridge
+case, and thus minimize the undesirable
+effects of shifting powder position from
+shot to shot. There is nothing inherently
+wrong about using compressed charges,
+and sometimes they are advantageous,
+but this simplified program does not
+cover their use.
+The powder-selection index
+Having found the estimated charge
+weight as described before, our next step
+
+====================
+PAGE 142
+====================
+
+is to find the ratio of charge weight to
+bullet weight, which is sometimes called
+the "mass ratio" for the load. The
+formula for the mass ratio (A) is:
+A = I / G
+where I = charge weight, grains
+G = bullet weight, grains
+The next step is to find the sectional
+density of the bullet. Most reloading
+manuals list this information, but it is
+also easily found from the following
+formula:
+Z = G / (7000 x Dº)
+where Z = sectional density, 1b/in?
+G = bullet weight, grains
+D = bullet diameter, inch
+The next step in the procedure is to
+find a number that we will call the
+"powder-selection index," and assign to
+it the variable name X. It is not a term
+found in traditional ballistics. It has
+been empirically determined to yield
+numbers corresponding roughly to the
+Du Pont index of relative quickness,
+when the working chamber pressure is
+about 45,000 to 50,000 c.u.p. The
+correspondence with the Du Pont
+relative-quickness scale is not perfect, of
+course, partly because the behavior of
+powders in different cartridges and loads
+sometimes indicates a different ranking
+than that established by the relative-
+quickness numbers, as explained before.
+It should also be emphasized that the
+powder selected by calculation is an
+"ideal" IMR powder, which would yield
+pressures of 45,000 to 50,000 c.u.p. when
+loaded in a particular cartridge, at the
+assumed loading density of .86 (or .80) as
+described before. This "ideal" powder
+for any particular cartridge probably
+will not correspond exactly to any of the
+canister IMR powders actually available,
+since only eight powders could hardly be
+"ideal" for nearly 100 cartridges and
+perhaps a thousand different bullets that
+might be used. The best we can do,
+therefore, is to identify the selected
+powder as similar to one or more of the
+available IMR canister powders, recog-
+nizing that the final determination must
+be made on the basis of actual firing tests
+in the cartridge being considered. The
+formula for finding the powder-selection
+index (X) is then:
+
+Table 3 can now be used to identify the
+powder, or group of powders, which will
+most nearly correspond to the "ideal"
+IMR powder for the load in question.
+The final step in the powder-selection
+process is to reexamine the choice of the
+loading density chosen to calculate the
+charge weight. If the charge weight was
+based on the loading density of .86,
+
+assuming that a powder "slower" than
+IMR-4198 would be used, but the
+powder-selection index was found to
+indicate IMR-4198 or IMR-4227, then
+the charge weight should now be
+recalculated using a loading density of
+80, as explained before. Conversely, if a
+loading density of .80 was assumed, but
+the powder-selection index was found to
+indicate IMR-3031 or a "slower" pow-
+der, then the charge weight should now
+be recalculated at a loading density of
+.86, as explained before.
+Calculating the velocity performance
+Having now established all the charac-
+teristics of the load, we can proceed to
+calculate the expected performance. In
+this part of the method, we are indebted
+to Homer S. Powley, for a key equation
+that he developed some years ago to
+predict the performance of rifle loads
+using the Du Pont IMR powders. The
+Powley Computer for Handloaders
+(available from Homer S. Powley, Petra
+Lane, RR 1, Eldridge, IA 52748) is an
+ingenious slide-rule device, having
+eleven scales on the front and five scales
+on the back, which can be used to select
+an IMR powder, estimate a charge
+weight, and predict the velocity ex-
+pected, all on the basis of input measure-
+ments similar to those described in this
+article. Powley's equation is a semi-
+empirical one, which gives remarkably
+accurate results considering the compli-
+cations of small-arms interior ballistics,
+and it has the great virtue of being
+simpler than any of the other methods so
+far devised. Even so, in its original form,
+the equation might appear formidable to
+those not accustomed to solving lengthy
+equations. We shall therefore break
+TABLE 3.
+POWDER-SELECTION TABLE
+Powder
+Selection
+Index (X) Powders Indicated
+Less than Powder indicated is much
+81 "slower" than IMR-4831.
+There is no very suitable
+IMR canister powder available.
+Use only loads specifically
+pressure-tested, and do not
+experiment.
+81 to 91 Powder indicated is "slower"
+than IMR-4831 and IMR-4350,
+and calculated charges must
+be reduced by about 5 to 10
+percent if IMR-4831 or IMR-
+4350 is used.
+91 to 110 Powder indicated is similar
+to IMR-4831 and IMR-4350.
+110 to 125 Powder indicated is similar
+to IMR-4064, IMR-4895 and
+IMR-4320.
+125 to 145 Powder indicated is similar
+to IMR-3031.
+145 to 165 Powder indicated is similar
+to IMR-4198
+165 to 180 Powder indicated is similar
+to IMR-4227.
+More than Powder indicated is "faster"
+180 than IMR-4227. For lower
+pressures, IMR-4227 may be
+used, but velocities will be
+less than predicted.
+
+down the equation into simpler steps for
+solution. We do this by introducing
+three additional variables, which we will
+define in terms of other variables that we
+have already found. They are as follows:
+M = 1V R
+N = (1 - M)
+Y = (G+ I/3)
+In terms of these variables, Powley's
+equation for muzzle velocity (V) now
+becomes:
+V = 8000 x SQR (I - N / Y)
+(SQR indicates "square root of")
+
+A WORKED-OUT EXAMPLE
+To illustrate the method, which takes
+much longer to explain than to perform,
+let us use the example of establishing a
+load for the .30-06, with a 180-grain
+boattail bullet. It would be much easier,
+of course, to find the load in a handload-
+ing manual, but our purpose is to
+illustrate the method on a cartridge for
+which we have tested data available to
+compare.
+Suppose we do not have a .30-06 case
+available for taking weights or measurements, and so we consult Table 1 for
+typical values, finding:
+Case Length, inches: C = 2.484
+Full case capacity-
+Grs water: F = 69
+We next measure the 180-grain boat-
+tail bullet (or a life-size illustration of it)
+and find the following:
+Bullet length, inches: B = 1.220
+Length of boattail, inch: H = .150
+Diameter of tail, inch: J = .200
+Diameter of bullet, inch: D = .308
+Weight of bullet, grains: G = 180
+We decide to load the cartridge to an
+overall length of 3.30 inches:
+Cartridge length, inches: L = 3.30
+
+We now measure the length of the .30-
+06 barrel which we plan to use in our
+firing:
+Barrel length, inches: E = 24
+We are now ready to begin the calculations.
+The seating depth of the bullet is:
+S= C + B - L
+= 2.484 + 1.220 - 3.30
+= 404 inch
+The water displaced by seating a flat-
+base bullet would be:
+P = 198 x S x D2
+= 198 x .404 x .3082
+= 7.59 grains
+The correction required for the boat-
+tail bullet is found as follows:
+K = 66 x H x (2xD2 - DxJ - J2)
+= 66 x .150 x (2 x .3082-
+.308 x .200 - .200-)
+= .87 grain
+The water capacity of the powder
+chamber in the cartridge, with the
+boattail bullet seated, is then:
+
+====================
+PAGE 143
+====================
+
+W= F - P+ K
+= 69 - 7.59 + .87
+= 62.3 grains
+The bullet travel through the 24-inch
+barrel is:
+T = E+S - C
+= 24 + .404 - 2.484
+= 21.9 inches
+The cubic volume of the powder
+chamber is:
+U = W / 252.4
+= 62.3 / 252.4
+= .247 cubic inch
+The effective volume of the bore is:
+Q = .773 x T x D2
+= .773 x 21.9 x .3082
+= 1.606 cubic inches
+The expansion ratio is:
+R = (Q + U) / U
+= (1.606 + 247) / .247
+= 7.50
+The estimated charge weight is:
+I = 86x
+= .86 x 62.3
+= 53.6 grains
+The mass ratio (charge weight/bullet
+weight) is:
+A = I / G
+= 53.6 / 180
+= 298
+The sectional density of the bullet is:
+Z = G / (7000 x D?)
+= 180 / (7000 x 3082)
+= .271
+The powder-selection index is:
+X = 20 + 12/(Zx VA)
+= 20 + 12/(.271 x V.298)
+= 101
+Consulting Table 3, we find that the
+powder is similar to IMR-4831 and IMR-
+4350.
+We solve now for the variable M. (The
+fourth root of a number is easily found
+by entering the number in the calculator,
+and pressing the square-root key twice.)
+M = 1/VR
+= 1/$ 7.50
+= 604
+We now find the variables N and Y:
+N = (1 - M)
+= (1 - .604)
+=396
+Y = (G + I / 3)
+= (180 + 53.6 / 3)
+= 197.9
+Powley's equation for velocity, in
+terms of these variables, is then:
+V = 8000 x SQR (I x N /- Y)
+= 8000 x SQR (53.6 x .396/197.9)
+= 2620 fps
+
+====================
+PAGE 144
+====================
+
+A chamber-pressure example
+For example, suppose that we wish to
+calculate the chamber pressure of the
+previously described load for the .30-06,
+using a 180-grain bullet and 53.6 grains
+of IMR powder similar to IMR 4350 or
+IMR 4831. Suppose also that we have
+measured the velocity of the load, and
+confirmed that the muzzle velocity is
+2620 fps when fired from a 24-inch bar-
+rel. These, and the other parameters
+found as described before, are as follows:
+I = 53.6 grains R = 7.5
+W= 62.3 grains A = 298
+G= 180 grains V = 2620 fps
+Looking now for the value of F2 in
+Table 4, we find that A equals.298, or
+practically .30, and no interpolation is
+required. The expansion ratio R equals
+7.5, however, so we must interpolate
+between 7.4 and 7.6 in the table. Making
+the proper interpolation, we find:
+F2 = 1.74
+Our three derived variables, KI, K2
+and K3, can now be found:
+KI= .0142 x I x F2 x V2
+= 0142 x 53.6 x 1.74 x 26202
+= 9,090,854
+K2= .53 x (G/I) + .26
+= .53 x (180/53.6) + .26
+= 2.040
+K3= W x (R - 1.0)
+= 62.3 x (7.5 - 1.0) = 405
+We can now calculate the pressure, P,
+as follows:
+P = K1 x K2/K3
+= 9,090,854 x 2.040/405
+= 45,790 psi (copper crusher)
+The pressures calculated by this
+method are practically the same as those
+determined by the Powley psi Calcula-
+tor. They are usefully accurate estimates,
+but their limitations must be under-
+stood. For a variety of reasons, the actual
+measured pressures may be somewhat
+different. A comparison was made
+between pressures calculated by this
+method, and pressures measured for the
+same loads as recorded in the DuPont
+Handloader's Guide for Smokeless
+Powders (1975-1976).
+The results indicated that the calcu-
+lated pressures for cartridges from about
+.25-caliber to .338-caliber were usually
+within about 10 per cent of the measured
+pressures, about equally divided above
+and below. For the smaller calibers, the
+calculated pressures were typically some-
+what below the measured pressures, the
+average being about 4 per cent lower for
+the 6mm/.243 calibers, and about 8 per
+cent for the .22 calibers. For calibers
+larger than the .338, the calculated pres-
+sures were typically somewhat higher
+than the measured pressures, the aver-
+age being about 7 per cent higher for the
+.35-caliber cartridges, and about 15 per
+cent higher for the .458 Winchester Mag-
+num. The .375 H&H Magnum, in ex-
+ception to the trend, gave calculated
+pressures in very good agreement with
+the measured pressures.
+
+The reason for this apparent caliber-
+dependence of the difference between
+calculated and measured pressures is not
+known. It is not certain that it truly
+exists, since some of the details for the
+Du Pont test loads were not known, and
+typical values for the cartridges were
+used in the calculations. It is possible to
+improve the agreement between calcu-
+lated and measured pressures, for these
+particular data, by introducing another
+factor into the equation for pressure
+calculations, but it is doubtful if the
+accuracy of the data warrant that re-
+finement. Experimenters should be
+aware, however, that some such trend
+might exist, and treat their calculations
+accordingly.
+It must be emphasized again that these
+calculations, like others in the interior
+ballistics of small arms, cannot be relied
+upon where matters of safety might be
+involved. Testing must be done only
+with appropriate safeguards against
+injury in the event of unanticipated
+excessive chamber pressures.
+
+====================
+TABLE 4 RAW OCR
+====================
+
+TABLE 4
+EXPANSION MASS RATIO (CHARGE WEIGHT/BULLET WEIGHT)
+RATIO (A)
+(R) 0.20 40 50 .60 .70 .80 1.00
+5.0 1.27 1.26 1.25 1.24 1.22 1.21 1.19 1.18 1.17
+5.2 1.31 1.30 1.29 1.28 1.26 1.25 1.23 1.22 1.20
+5.4 1.35 1.34 1.33 1.32 1.30 1.28 1.26 1.25 1.24
+5.6 1.39 1.38 1.36 1.35 1.33 1.31 1.30 1.27
+1.43 1.42 1.40 1.39 1.37 1.35 1.34 1.31
+1.47 1.46 1.44 1.43 1.41 1.39 1.38
+1.50 1.49 1.48 1.46 1.45 1.43 1.41 .38
+1.54 1.53 1.52 1.50 1.48 1.45 1.41
+1.58 1.57 1.55 1.53 1.52 1.50 1.48 1.46 1.45
+1.62 1.60 1.59 1.57 1.56 .54 1.52 1.50 1.48
+1.66 1.64 1.63 1.61 1.59 1.56 -
+1.70 1.68 1.66 1.64 1.63
+1.73 1.72 1.70 1.69 1.67
+525559
+1.77 1.76 1.74 1.72 1.70 1.64
+1.81 1.79 1.77 1.76 1.74
+55885 1.67 -
+62 65
+1.85 1.83 1.81 1.79 1.77 1.71 1.69
+1.88 1.86 1.85 1.83 1.81 1.79 1.74 1.72
+1.92 1.90 1.88 1.86 1.84 1.8 1.78 1.75
+1.96 1.94 1.92 1.90 1.88 1.86 1.81 1.79
+1.99 1.97 1.95 1.93 1.91 1.89 1.84 1.82
+2.03 2.01 1.99 1.97 1.94 1.92 1.85
+2.07 2.05 2.02 2. .00 .98 .96 88
+06 02 .00 .97 94 92
+09 07 .05 ,97
+2. 01
+07 2. .02
+2. 07 2.
+2. 08
+17 2. 14 N 11
+35 33 27 2.23 2. .17 2. 14
+39 36 .33 2 .30 2.25 2.23 2.20 2. 17
+2. 47 2. 42 2 .39 36 33 2.31 2.28 2. 25
+12.0 56 2. 2 2.44 2. .41 2.
+13.0 2.73 2. 70 N .60 2. 57 2.

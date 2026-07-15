@@ -17,6 +17,13 @@ Davis publication does not exist. Internet Archive metadata and item identity
 are publicly accessible, while page images require authorized user access.
 Codex did not independently retrieve or inspect those restricted images.
 
+Two additional derivative artifacts are now retained: the intentionally
+uncorrected [raw OCR](../../reference/davis_1981/davis_1981_pages_138_144_raw_ocr.txt)
+and a [derivative partial reprint](../../reference/davis_1981/derivative_partial_reprint.pdf).
+Their intake and limitations are recorded in
+`docs/audits/davis_1981_evidence_intake.md`. Neither changes the primary-image
+verification status of the normalized equations or Table 4.
+
 ## Classification
 
 - Davis's geometry, charge, powder-index, velocity, pressure, and loading-density
@@ -125,6 +132,7 @@ recommendation follows from this reconstruction.
 - the exact printed rule for interpolation along mass ratio `A`;
 - the procedural resolution of the 0.80/0.86 powder-selection dependency;
 - individual records behind Davis's summarized comparison percentages.
+- retained physical NRA page images for visual reconciliation of pages 138-144.
 
 ## Additional Derivative-Reprint Warnings
 

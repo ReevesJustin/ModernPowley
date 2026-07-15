@@ -50,6 +50,15 @@ def test_local_artifact_hashes_match_source_ledger():
     assert digest(Path("reference/davis_1981/davis_equation_transcription.md")) == sources[
         "SRC-DAVIS-1981-TRANSCRIPTION"
     ]["artifact_hash"].removeprefix("sha256:")
+    assert digest(Path("reference/davis_1981/davis_1981_pages_138_144_raw_ocr.txt")) == sources[
+        "SRC-DAVIS-1981-RAW-OCR"
+    ]["artifact_hash"].removeprefix("sha256:")
+    assert digest(Path("reference/davis_1981/derivative_partial_reprint.pdf")) == sources[
+        "SRC-DAVIS-1981-DERIVATIVE-REPRINT"
+    ]["artifact_hash"].removeprefix("sha256:")
+    assert digest(Path("reference/davis_1981/SHA256SUMS.txt")) == sources[
+        "SRC-DAVIS-1981-INTAKE-MANIFEST"
+    ]["artifact_hash"].removeprefix("sha256:")
     assert digest(Path("data/reference/davis_1981_table4.csv")) == sources[
         "SRC-DAVIS-1981-TABLE4"
     ]["artifact_hash"].removeprefix("sha256:")

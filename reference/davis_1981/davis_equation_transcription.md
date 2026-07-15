@@ -84,9 +84,11 @@ I2 = W2 LDtarget
 | damaged velocity radical | `V = 8000 sqrt(I N / Y)` | image review and worked value |
 | boat-tail expression ending damaged | final term is `-J^2` | image review, frustum geometry, and worked value |
 
-The actual damaged OCR artifact was not supplied or downloadable in this pass.
-These correction records preserve the reported damaged strings but cannot hash
-or reproduce the complete OCR file.
+The actual raw OCR artifact is now retained at
+`reference/davis_1981/davis_1981_pages_138_144_raw_ocr.txt`. It is intentionally
+uncorrected and not visually reconciled against primary page images. These
+normalized correction records remain user-mediated interpretations; possession
+of the damaged OCR does not verify the repaired typography.
 
 ## Worked .30-06 Values
 
