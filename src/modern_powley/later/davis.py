@@ -224,7 +224,9 @@ def muzzle_velocity_fps(
 ) -> float:
     """Davis-printed, Davis-attributed Powley equation V = 8000 sqrt(I N / Y)."""
     charge = _positive(charge_weight_grains, "charge_weight_grains")
-    n_value = _positive(velocity_fraction_n_value, "velocity_fraction_n")
+    n_value = _nonnegative(velocity_fraction_n_value, "velocity_fraction_n")
+    if n_value >= 1.0:
+        raise ValueError("velocity_fraction_n must be less than 1")
     moving_weight = _positive(
         effective_moving_weight_grains_value,
         "effective_moving_weight_grains",
@@ -469,7 +471,7 @@ TRANSCRIBED_BANDS = (
     TranscribedBand(110, 125, "similar to IMR-4064, IMR-4895, and IMR-4320"),
     TranscribedBand(125, 145, "similar to IMR-3031"),
     TranscribedBand(145, 165, "similar to IMR-4198"),
-    TranscribedBand(165, 180, "similar to IMR-4227 (secondary transcription contains 4427)"),
+    TranscribedBand(165, 180, "similar to IMR-4227"),
     TranscribedBand(180, None, "faster than IMR-4227", lower_inclusive=False),
 )
 

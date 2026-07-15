@@ -6,7 +6,7 @@ CONST-004,0.86,dimensionless,loading density for other listed IMR powders,src/mo
 CONST-005,20,index offset,Davis powder-index offset,src/modern_powley/later/davis.py,davis,SRC-DAVIS-1981,user_reviewed_access_restricted_primary,active later formulation
 CONST-006,12,index scale,Davis powder-index numerator,src/modern_powley/later/davis.py,davis,SRC-DAVIS-1981,user_reviewed_access_restricted_primary,active later formulation
 CONST-007,0.5,exponent,Davis mass-ratio square-root exponent,src/modern_powley/later/davis.py,davis,SRC-DAVIS-1981,user_reviewed_access_restricted_primary,active later formulation
-CONST-008,81;91;110;125;145;165;180,index,Davis Table 3 transcribed boundaries,src/modern_powley/later/davis.py,davis,SRC-DAVIS-WEB-TRANSCRIPTION,verified_secondary,endpoint wording retained; Davis page needed
+CONST-008,81;91;110;125;145;165;180,index,Davis Table 3 transcribed boundaries,src/modern_powley/later/davis.py,davis,SRC-DAVIS-1981-DERIVATIVE-REPRINT,verified_secondary,derivative PDF supports boundary labels; endpoint inclusivity remains unresolved pending primary page images
 CONST-009,19,index offset,reported physical-scale approximation,docs/History.md at checkpoint,unknown,SRC-DAVIS-WEB-TRANSCRIPTION,unresolved,not implemented
 CONST-010,0.6,exponent,reported physical-scale approximation,docs/History.md at checkpoint,unknown,SRC-DAVIS-WEB-TRANSCRIPTION,unresolved,not implemented
 CONST-011,252.3,gr H2O/in3,legacy bore-volume conversion,scripts/plot_rc_sd.py,unknown,,contradicted,rejected in original namespace

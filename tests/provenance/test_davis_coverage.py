@@ -25,10 +25,11 @@ DAVIS_EQUATIONS = {
     "lookup_table4_f2": "EQ-084",
     "loading_density_pressure_scale": "EQ-082",
     "charge_for_target_loading_density": "EQ-083",
+    "matching_transcribed_bands": "EQ-090",
 }
 
 
-def test_every_davis_equation_function_has_primary_or_interpretive_ledger_coverage():
+def test_every_davis_equation_function_has_evidence_or_interpretive_ledger_coverage():
     rows = list(csv.DictReader(Path("docs/provenance/equation_ledger.csv").open(newline="", encoding="utf-8")))
     by_id = {row["equation_id"]: row for row in rows}
     module = Path("src/modern_powley/later/davis.py")

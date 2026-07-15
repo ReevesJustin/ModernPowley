@@ -98,10 +98,17 @@ The correction ledger records pending visual verification by row.
 
 ## Table 3
 
-The older web transcription of Table 3 remains secondary evidence. Its adjacent
-"x to y" bands have unresolved endpoint overlap, so the API returns all matching
-bands at an endpoint. The new primary-source report did not include a complete
-visual Table 3 capture; it is not silently upgraded.
+The retained derivative partial reprint visibly includes Table 3 and supports
+its labels as verified secondary evidence. Its adjacent "x to y" bands retain
+unresolved endpoint overlap, so the API returns all matching bands at an
+endpoint. The raw OCR corroborates the table location but cannot verify its
+typography. Primary NRA page images are still required before promotion.
+
+The raw OCR also appears to warn that IMR-4064 can allow greater charge weight
+and velocity at acceptable pressure than IMR-4895 or IMR-4320 in some cartridge
+firings despite their laboratory relative-quickness ordering. This is retained
+as OCR corroboration pending primary visual verification, not as a universal
+powder ordering.
 
 ## Derived Algebra
 
