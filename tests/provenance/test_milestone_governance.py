@@ -97,10 +97,11 @@ def test_m04_is_accepted_only_with_gate_18_and_completion_review():
         assert "specified before" in review
 
 
-def test_m05_is_planned_and_later_phase_concepts_are_not_implicitly_authorized():
+def test_m05_is_records_only_authorized_and_later_phases_are_not_authorized():
     roadmap = ROADMAP.read_text(encoding="utf-8")
-    assert status(SPECS["M05"].read_text(encoding="utf-8")) == "planned"
-    assert "implementation is not authorized" in roadmap
+    assert status(SPECS["M05"].read_text(encoding="utf-8")) == "authorized"
+    assert "authorized only for a later records-and-strict-serialization increment" in roadmap
+    assert "no numerical method/data is admitted" in roadmap
     assert "recommendation never authorizes" in roadmap
     for milestone in range(6, 12):
         heading = f"Future Phase Concept M{milestone:02d}"

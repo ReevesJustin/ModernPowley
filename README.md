@@ -95,9 +95,11 @@ keyword `allow_unvalidated=True`. `Ba_eff` is not ballistic efficiency.
 - [M04 canonical specification](docs/modernization/milestones/M04_screening_decision_records.md): bounded declarative criteria and auditable outcome records.
 - [M04 design](docs/modernization/phases/M04_screening_decision_records.md): exact evidence references, literal comparisons, and explicit non-implications.
 - [M04 completion review](docs/modernization/reviews/M04_completion_review.md): all 18 record, boundary, isolation, validation, and governance gates.
-- [M05 canonical specification](docs/modernization/milestones/M05_charge_region_records.md): planned record semantics only; numerical implementation is not authorized.
+- [M05 canonical specification](docs/modernization/milestones/M05_charge_region_records.md): authorized for a later records-and-strict-serialization implementation only; no numerical method is authorized.
 - [M05 evidence and semantics review](docs/modernization/reviews/M05_evidence_and_semantics_review.md): candidate evidence classifications, non-implications, and unresolved promotion blockers.
 - [M05 specification decisions](docs/modernization/decisions/M05_specification_decisions.md): planning clarifications that do not authorize an API or serializer.
+- [M05 records-only authorization](docs/modernization/decisions/M05_records_only_authorization.md): binding segment, state, evidence, dependency, and no-arithmetic boundary.
+- [Cross-cutting workstreams](docs/modernization/cross_cutting_workstreams.md): future data, validation, uncertainty, modeling, visualization, tooling, hypothesis, and GRT/web direction; no current capability.
 - `TODO.md`: active roadmap, dormant historical acquisition work, and deferred phases.
 - `docs/audits/original_powley_scale_recovery.md`: primary-source scale search, graphical evidence, and implementation-readiness decision.
 - `docs/audits/davis_1981_evidence_intake.md`: derivative OCR/reprint intake and remaining primary-image verification boundary.
@@ -114,7 +116,7 @@ keyword `allow_unvalidated=True`. `Ba_eff` is not ballistic efficiency.
 - `src/modern_powley/original/`: only directly supported arithmetic and explicit failures.
 - `src/modern_powley/later/`: later transcriptions, never labeled original.
 - `src/modern_powley/experimental/`: opt-in prototype hypotheses.
-- `src/modern_powley/modernized/`: promoted M01 inputs/geometry, M02 neutral powder-property evidence records, M03 input/domain diagnostics, and accepted M04 declarative decision records; M05 remains specification-only and no catalog screening, ranking, recommendation, charge-region API, or ballistics prediction exists.
+- `src/modern_powley/modernized/`: promoted M01 inputs/geometry, M02 neutral powder-property evidence records, M03 input/domain diagnostics, and accepted M04 declarative decision records; M05 records/serialization are authorized but not implemented, and no catalog screening, ranking, recommendation, real charge region, safe-region claim, or ballistics prediction exists.
 - `tests/`: unit, reference, regression-reproduction, and provenance tests.
 
 Legacy CSVs, plots, scripts, and notebook outputs remain for auditability. They

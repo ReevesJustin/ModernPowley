@@ -2,278 +2,257 @@
 
 ## Status
 
-`planned`
+`authorized`
 
-This specification is the scope authority for a possible future M05 record
-contract. It does not authorize implementation. The evidence and semantics
-review found no admitted production method for deriving a real charge region.
+M05 is authorized only for the immutable records, structural validation, and
+strict serialization increment defined here. This authorization commit does not
+implement or accept M05. It admits no production method or dataset and
+authorizes no numerical creation or transformation of a region.
 
 ## Purpose
 
-Define how a future immutable, versioned record could preserve one or more
-bounded charge-mass regions for further analysis without presenting a
-recommended charge, starting load, maximum load, safe range, loading
-instruction, powder-suitability decision, pressure prediction, or velocity
-prediction.
-
-A charge-region record would state only what bounds were declared or derived,
-their exact basis and inputs, and the limitations of that basis. It would not
-state that every point in a region is valid or tested.
+Define a versioned record contract for one or more explicitly supplied bounded
+analytical charge-region segments and non-numeric region states. A record is not
+a recommended, preferred, starting, or maximum charge; safe region; loading
+instruction; suitability statement; pressure/velocity prediction; proof that
+every interior point is valid; or proof that any point was tested.
 
 ## Starting Repository State Or Predecessor
 
-Planning predecessor: accepted M04 at
-`884c5bd7fe2bf4d9494f5c8fb06c65513f07bc72`, with M01-M04 contracts unchanged.
-This planning pass creates no M05 source module, export, serializer, production
-data, or numerical behavior.
+Authorization predecessor: planned M05 at
+`14ae7bcf3fea70494ac61dc2aa08e0b3bf9a3a94`, following accepted M04. This
+authorization pass changes documentation and governance only. Implementation
+must occur in a later commit.
 
 ## Scope
 
-The future contract may represent explicitly sourced charge-mass segments,
-non-numeric region states, exact derivation lineage, source domains, conditions,
-uncertainty status, conflicts, activation, and supersession. It may preserve a
-literal intersection only after that operation and its semantics receive
-separate implementation authorization.
+The implementation may define controlled enums/identifiers, charge-mass
+segments, endpoint inclusion, multiple disjoint segments, explicit region
+states, exact references, method/basis identity, provenance/applicability,
+conflict and lifecycle metadata, uncertainty/dependency status,
+non-implications, and strict `modern_powley.m05.v1` serialization. Synthetic
+fixtures may exercise the contract.
 
-The proposed controlled basis vocabulary is:
+The basis vocabulary is provenance semantics:
 
 - `source_declared_interval`;
 - `measurement_supported_interval`;
 - `geometry_or_fill_constraint`;
 - `property_uncertainty_constraint`;
 - `intersection_of_explicit_constraints`;
-- `experimental_estimate`;
-- `unavailable`;
-- `indeterminate`;
-- `conflicting`.
+- `experimental_estimate`.
 
-These labels describe provenance, not authority, safety, or permission to load.
-`measurement_supported_interval` must identify the actual measured points and
-must not imply that unmeasured interior points were tested.
+The region-state vocabulary is exclusively `bounded`, `empty`, `unavailable`,
+`indeterminate`, and `conflicting`. Basis and state are not interchangeable.
+`duplicate` is validation failure, not state. `superseded` is lifecycle metadata,
+separate from state and activation.
 
 ## Explicitly Permitted Behavior
 
-A separately authorized implementation may:
-
-- retain finite, explicitly unit-tagged charge-mass bounds and endpoint rules;
-- retain multiple disjoint segments without filling gaps;
-- preserve exact source values separately from rounded display values;
-- represent empty, unavailable, indeterminate, and conflicting region states;
-- reference exact M01/M02 inputs and exact M03 diagnostics;
-- reference M04 outcomes as audit dependencies without treating passes as
-  scientific validation;
-- retain pressure records as contextual evidence with exact pressure quantity,
-  method, standard, units, conditions, and source limits;
-- report derivation lineage and non-implications.
+- Store immutable, versioned records and explicitly supplied finite charge-mass
+  segments.
+- Require caller-supplied canonical ascending segment order.
+- Reject out-of-order, overlapping, and exact duplicate segments.
+- Preserve disjoint gaps and explicit endpoint inclusion.
+- Represent a point segment only with equal bounds and both endpoints included.
+- Validate consistency between segments and the declared region state.
+- Retain source text/value, normalized quantity, reported precision,
+  uncertainty, dependency, evidence, maturity, domain, conditions, conflicts,
+  activation, supersession, qualifications, and exact lineage.
+- Serialize externally supplied basis declarations, including an intersection
+  basis, without calculating the basis result.
+- Retain exact pressure-evidence references as non-computational context.
+- Strictly serialize and deserialize `modern_powley.m05.v1`.
 
 ## Explicitly Prohibited Behavior
 
-Real-component loading instructions; recommended, optimal, preferred, starting,
-or maximum charge language; safety, pressure-tested, or validated claims beyond
-the exact evidence; catalog discovery; powder selection; ranking or scoring;
-point or midpoint recommendations; automatic rounding; hidden tolerances;
-unsupported interpolation or extrapolation; probability claims without a
-defined basis; default source preference; averaging conflicts; gross/net
-capacity substitution; silent conversion among charge mass, fill fraction,
-loading density, and volume; silent `0.80` or `0.86` factors; the quarantined
-charge regression; pressure, velocity, burn, burnout, or muzzle-pressure
-prediction; and loading-manual replacement behavior.
+Charge-region derivation; intersection, union, interval arithmetic, segment
+normalization, sorting/reordering, merge, gap fill, expansion/contraction,
+midpoint/point selection, automatic rounding, unit guessing, source discovery,
+catalog lookup, source preference, evidence ranking, conflict resolution,
+averaging, fallback, aliases, capacity substitution, fill-to-charge conversion,
+loading-density arithmetic, uncertainty propagation, Monte Carlo,
+pressure-to-charge calculation, any pressure/velocity/burn/burnout/muzzle
+prediction, powder suitability/ranking, loading instructions, safe-region claims,
+production powder/cartridge/load records or dataset ingestion, promotion of GRT,
+jRT, QuickLOAD, emulator, regression, later, or experimental behavior, M06, web,
+plotting, or interface implementation.
 
-No region may be called safe, suitable, approved, recommended, or validated
-merely because it is bounded or because an M04 criterion passed.
+No retained value, interval, criterion outcome, pressure observation, or bounded
+region may be described as safe merely because it is bounded.
 
 ## Required Data And Record Models
 
-A future implementation must define separate immutable concepts for:
+The implementation must provide immutable concepts for region ID/version;
+method/basis ID/version; charge-mass segment and endpoint rules; region state;
+exact M01/M02 input and M03 diagnostic references; optional M04 audit references;
+source/locator; evidence/maturity; domain/conditions; exact source wording and
+reported precision; uncertainty kind/status; declarative dependency status;
+conflict members; qualifications/non-implications; derivation lineage supplied
+by the caller; and independent activation/supersession metadata.
 
-- region identity and version;
-- method or basis identity and version;
-- charge-mass segment with lower/upper bound and endpoint inclusion;
-- region state: bounded segments, empty, unavailable, indeterminate, or
-  conflicting;
-- exact input-record and diagnostic references;
-- source identity and locator;
-- evidence class and model maturity;
-- applicability domain and measurement conditions;
-- uncertainty status and qualifications;
-- conflict members and unresolved reason;
-- derivation lineage;
-- activation and supersession as independent fields;
-- explicit non-implication statements.
+Dependency status is limited to `not_applicable`, `unknown`,
+`explicitly_declared`, and `externally_referenced`. No covariance, correlation,
+joint distribution, or propagated bound is calculated.
 
-One record may contain multiple ordered, non-overlapping segments. Disjoint
-segments must never be enveloped into a single continuous interval. A point
-segment is permitted only when the source or method explicitly yields that
-point; it remains an analytical record, not a point recommendation.
+## Segment And Bound Policy
 
-Determinate segment bounds must be finite, dimensionally compatible charge
-masses, ordered, and physically positive. Open-ended or missing bounds must be
-retained as source constraints or non-determinate region states rather than
-silently converted into a bounded region. Empty intersections are explicit;
-partial or unresolved intersections are indeterminate; conflicts retain all
-members.
+A bounded record contains one or more caller-ordered segments. Each determinate
+bound is finite, dimensionally compatible charge mass and physically positive.
+Lower must not exceed upper. Equal bounds form a point only when both endpoints
+are inclusive. Canonical order is ascending; overlaps and exact duplicates fail.
+The implementation performs no sorting, merging, normalization, or envelope.
+
+Open-ended, missing-bound, infinite, NaN, negative, and zero statements are not
+determinate bounded M05 regions. The first increment need not define a general
+open-constraint schema; such evidence remains in exact references and
+qualifications or yields `unavailable`/`indeterminate` when a bounded record is
+requested.
 
 ## Evidence And Provenance Boundaries
 
-Every future record must retain its source, locator, exact inputs, units,
-conditions, domain, evidence class, maturity, uncertainty status, method version,
-qualifications, and lineage. A derived record is a `derived_quantity`; it retains
-all material input evidence classes and must not claim stronger admission or
-maturity than any material input permits. Evidence classes are not an automatic
-preference ordering.
+Every record retains all material evidence and maturity references without an
+automatic ranking or collapsed winner. An externally supplied/derived record
+cannot claim stronger authority than its material inputs support; promotion is
+an explicit review action, not weakest/strongest-wins arithmetic.
 
-Original Powley and Davis arithmetic remain historical method records, not
-modern safety bounds. Manufacturer data may support a source-declared interval
-only after the exact publication, components, lot where available, pressure
-quantity, standard, conditions, and domain are retained. Laboratory or user
-measurements require method, apparatus, conditions, uncertainty, and actual
-sample identities. Emulator, GRT, jRT, QuickLOAD, regressions, and legacy
-artifacts remain contextual or experimental unless separately promoted.
+Schema capability admits no evidence. `measurement_supported_interval` retains
+exact measured-point references and never implies unmeasured interior testing.
+`property_uncertainty_constraint` never turns uncertainty into permission.
+`intersection_of_explicit_constraints` can label an externally supplied record,
+but this increment cannot calculate it. No real evidence family, production
+method, powder record, load record, or dataset is admitted.
 
-An uncertainty interval is not a charge region. Unknown dependence or
-correlation remains explicit. No uncertainty propagation arithmetic is
-authorized by this specification.
+## Source Rounding And Uncertainty
+
+Exact source wording/value, normalized machine quantity, source
+rounding/reported precision, measurement uncertainty, model-form uncertainty,
+and unknown uncertainty are distinct. Source rounding never becomes tolerance;
+an uncertainty interval never becomes a bounded analytical charge region; and no
+uncertainty arithmetic is authorized.
+
+## Pressure Context
+
+Pressure references preserve quantity identity, measurement method,
+standard/protocol, instrument type, units, conditions, locator, and source
+limitations. CUP, piezoelectric PSI, strain-derived pressure, crusher pressure,
+and modeled pressure remain distinct. Pressure cannot establish a charge bound
+without a separately admitted and authorized method.
 
 ## Namespace And Dependency Boundaries
 
-Any future M05 code must remain under `modern_powley.modernized` and may depend
-only on promoted M01-M04 contracts. M01 owns quantities, geometry, capacity
-identities, provenance, and uncertainty. M02 owns neutral observations,
-missingness, conflicts, conditions, and domains. M03 owns completeness and
-literal applicability diagnostics. M04 owns criteria and recorded outcomes.
-
-M05 must reference exact underlying M01/M02 evidence and exact relevant M03
-diagnostics. An M04 outcome may be retained as an audit dependency but cannot
-replace underlying evidence or establish a scientific region. M05 must not
-import `later/`, `experimental/`, emulator, GRT, jRT, QuickLOAD, or legacy code.
-`original/` must not depend on M05.
+M05 stays under `modern_powley.modernized`, depending only on promoted M01-M04
+contracts. M01 owns quantities/units/geometry; M02 owns observations,
+missingness/conflicts/domains; M03 owns completeness/applicability diagnostics;
+M04 owns criteria/outcomes. M05 requires exact relevant M01/M02 references and
+M03 diagnostics. M04 references are optional audit dependencies and cannot
+establish a region, safety, or suitability. M05 duplicates none of their logic.
+No imports from `later/`, `experimental/`, emulator, GRT, jRT, QuickLOAD, or
+legacy code; `original/` cannot import M05.
 
 ## Serialization Requirements
 
-A future implementation may propose `modern_powley.m05.v1` only after explicit
-authorization. The serializer must be strict and versioned, reject unknown
-fields/types/versions and non-finite numbers, preserve explicit tagged unions,
-units, endpoint semantics, disjoint segments, missing/conflict states, exact
-references, and source wording, and perform no implicit migration or field
-dropping. M01-M04 serialization semantics must remain unchanged.
-
-This planning milestone creates no schema implementation and no package export.
+Strict `modern_powley.m05.v1` serialization is authorized. It must reject
+unknown fields/types/versions, malformed unions/units/endpoints, and non-finite
+numbers; preserve explicit state/basis, caller order, gaps, references, source
+semantics, lifecycle, uncertainty/dependency metadata, and non-implications; and
+perform no implicit migration or field dropping. M01-M04 schemas remain
+unchanged. This authorization commit creates no serializer or export.
 
 ## Required Repository Deliverables
 
-A future authorized implementation would require: bounded-region records;
-controlled basis and state vocabularies; strict serializer; synthetic fixtures;
-unit, endpoint, disjoint-region, missing/conflict, provenance, architecture, and
-serialization tests; design document; implementation decision record; ledger
-entries for actual admitted definitions; documentation; and a completion review.
-No production powder or load dataset is required or authorized merely to test
-the record contract.
+Later implementation deliverables: M05 records/structural validators/serializer;
+synthetic tests for ordering, overlap, duplicates, disjoint/point/non-numeric
+states, provenance, lifecycle, strict payloads, architecture and prohibited APIs;
+design and implementation decisions; appropriate definition/data-field ledger
+entries; documentation; and `M05_completion_review.md`. No production data or
+derivation method is required or permitted.
 
 ## Required Policy Decisions
 
-Before implementation authorization, resolve or reaffirm:
-
-1. whether the first increment is records-only or admits literal intersection;
-2. exact segment normalization without merging gaps;
-3. handling of overlapping segments from the same declared source;
-4. whether open-ended source constraints are only contextual records;
-5. exact meanings and permitted uses of every basis category;
-6. dependency/correlation representation without propagation arithmetic;
-7. representation of source rounding versus measurement uncertainty;
-8. activation and supersession behavior without deletion;
-9. minimum provenance for manufacturer and measured evidence;
-10. pressure-quantity and pressure-standard metadata requirements;
-11. whether any real evidence is admitted for production M05 records;
-12. explicit prohibition on automatic discovery, preference, fallback, and
-    conflict resolution.
+The records-only policies are binding in
+[`M05_records_only_authorization.md`](../decisions/M05_records_only_authorization.md).
+Any change that adds arithmetic, normalization, production evidence/data,
+recommendation semantics, or broader dependency behavior requires a dated
+specification amendment and separate user authorization.
 
 ## Acceptance Gates
 
-Predeclared gates for a future implementation are:
-
-1. A separately reviewed planning commit changes status to `authorized` before
-   source implementation begins.
-2. M01-M04 APIs and schemas remain unchanged.
-3. Region, source load interval, fill constraint, uncertainty interval, and
-   pressure limit are distinct record concepts.
-4. Every record retains method/version, exact inputs, provenance, units, domain,
-   conditions, uncertainty, qualifications, conflicts, and lineage.
-5. Bounds are finite compatible charge masses with explicit endpoints; invalid,
-   negative, zero, reversed, NaN, and infinite determinate bounds fail.
-6. Point, empty, open-ended, missing, unavailable, indeterminate, conflicting,
-   duplicate, and superseded cases are explicit.
-7. Multiple disjoint segments are preserved; no gap is filled or midpoint
-   selected.
-8. An uncertainty interval never automatically becomes a charge region and no
-   undisclosed propagation occurs.
-9. Pressure quantity, method, standard, and units remain explicit; no CUP/PSI
-   conversion or safety inference exists.
-10. Exact M01/M02 evidence and M03 diagnostics are referenced; M04 passes never
-    substitute for scientific evidence.
-11. No discovery, source preference, alias inference, averaging, substitution,
-    fallback, interpolation, extrapolation, rounding, or recommendation exists.
-12. No powder selection, charge calculation, pressure/velocity/burn prediction,
-    ranking, scoring, solver, safety, or suitability behavior exists.
-13. Strict future serialization round trips and prior schemas remain unchanged.
-14. No quarantined data or method is promoted; any real record has explicit
-    authorization and provenance.
-15. Architecture, documentation, ledgers, tests, scope review, full validation,
-    and completion review pass before status can become `accepted`.
+1. This reviewed authorization commit precedes implementation.
+2. M01-M04 APIs, behavior, and schemas remain unchanged.
+3. Immutable versioned segment/region records retain every required identity,
+   provenance, context, qualification, dependency, and non-implication.
+4. Region, published load interval, fill constraint, uncertainty interval, and
+   pressure limit remain distinct.
+5. Finite positive compatible bounds and endpoint rules are enforced.
+6. Caller ascending order is required; out-of-order, overlapping, and duplicate
+   segments fail without sorting, merging, or normalization.
+7. Disjoint gaps and explicit point semantics round trip exactly.
+8. Five non-equivalent region states are explicit; supersession/activation are
+   lifecycle metadata.
+9. Source rounding, uncertainty kinds, and declarative dependency status remain
+   distinct; no uncertainty arithmetic exists.
+10. Pressure context remains non-computational and quantity-specific.
+11. Exact M01/M02/M03 references are required where applicable; M04 is audit-only.
+12. No region derivation, intersection, union, interval arithmetic, selection,
+    discovery, preference, fallback, ranking, recommendation, or prediction.
+13. No production method, evidence family, powder/load record, or dataset admitted.
+14. Strict M05 serialization round trips and M01-M04 serializers remain unchanged.
+15. Architecture, scope, provenance, documentation, ledgers, tests, and full
+    validation pass before M05 becomes `accepted`.
 
 ## Required Validation Commands
 
-Future implementation validation must include `uv sync --locked --offline`,
-`uv lock --check`, `uv run pytest -q`, focused M05 tests, `uv run python -m
-compileall -q src tests scripts`, `git diff --check`, and repository CSV, JSON,
-notebook, Markdown-link, artifact-hash, controlled-vocabulary, package-import,
-circular-boundary, milestone-governance, and roadmap/status checks.
+`uv sync --locked --offline`; `uv lock --check`; `uv run pytest -q`; focused M05
+record/serialization/provenance/architecture tests; `uv run python -m compileall
+-q src tests scripts`; `git diff --check`; CSV, JSON, notebook, Markdown-link,
+artifact-hash, controlled-vocabulary, package-import, circular-boundary,
+milestone-governance, roadmap/status, and prior-schema checks.
 
 ## Scope-Control Review Checklist
 
-Confirm no original/prior-schema change; no real load instruction; no production
-method or data without authorization; no charge recommendation, point/midpoint
-selection, automatic rounding, source discovery/preference, conflict resolution,
-capacity substitution, implicit factor, hidden default/tolerance, interpolation,
-extrapolation, probability claim, safety/suitability implication, ballistics
-prediction, quarantined-source promotion, or loading-manual replacement.
+No original/prior-schema change; production method/data; region arithmetic;
+sort/merge/normalization; point/midpoint selection; automatic rounding;
+discovery/preference/conflict resolution; capacity substitution; implicit factor;
+hidden default/tolerance; uncertainty propagation/distribution; pressure
+calculation; safety/suitability/recommendation; ballistics prediction; source
+promotion; web/plot/UI behavior; or M06 implementation.
 
 ## Completion-Report Requirements
 
-Report initial/final state; authorization commit; files and public API; region,
-basis, segment, state, uncertainty, pressure, provenance, conflict, activation,
-and supersession semantics; exact M01-M04 dependencies; admitted evidence;
-unavailable behavior; every gate; exact validation; scope review; commit/push;
-remaining limitations; and the next bounded recommendation. A recommendation
-must not authorize M06.
+Report authorization predecessor; files/API/schema; segment/state/basis,
+ordering, point/disjoint, open-bound, uncertainty/dependency, evidence/maturity,
+M01-M04 and pressure policies; explicit unavailable behavior; every gate and
+validation command; scope review; no production data/method; commit/push/final
+state; limitations; and one bounded recommendation that does not authorize M06.
 
 ## Commit And Release Expectations
 
-This planning specification is committed separately as documentation and remains
-`planned`. A future user authorization must change it to `authorized` in a
-reviewed planning commit before implementation. Implementation must use a later
-bounded commit, never amend this planning commit, and preserve historical tags.
+Implementation occurs in a later bounded commit. Mark M05 `accepted` only after
+all gates and its completion review pass. Do not amend this authorization commit,
+rewrite history, force-push, or alter the preservation tag.
 
 ## Known Limitations
 
-No retained production evidence currently establishes a modern charge-region
-method. No manufacturer load dataset or qualified independent measurement set is
-retained. M02 contains no production powder database. Geometry/fill constraints
-cannot become charge mass without explicitly sourced powder-volume semantics.
-No uncertainty propagation or dependency model is authorized. Cross-standard
-pressure comparison remains unresolved.
+No production charge-region method or qualified manufacturer/laboratory dataset
+is admitted. No region is calculated. No uncertainty propagation/dependence
+model or cross-standard pressure method exists. Open-ended constraints have no
+general M05 schema. Records cannot establish safety, suitability, or advice.
 
 ## Authorized Next-Milestone Boundary
 
-Only evidence review, specification amendment, and a user authorization review
-are permitted next. Numerical implementation, serializer creation, package
-exports, real region construction, and M06 work remain unauthorized. A review
-recommendation is not authorization.
+Only the records-only M05 implementation defined here is authorized next.
+Numerical derivation, literal intersection, production data, M06, visualization,
+tooling changes, GRT intake, and web interfaces remain unauthorized. A
+recommendation never authorizes later work.
 
 ## Implementation Decisions And Completion Evidence
 
-Specification-level decisions are recorded in
-[`M05_specification_decisions.md`](../decisions/M05_specification_decisions.md).
-The planning evidence review is
-[`M05_evidence_and_semantics_review.md`](../reviews/M05_evidence_and_semantics_review.md).
-There is no M05 implementation decision record or completion review because M05
-is not authorized or implemented.
+Planning evidence and decisions remain in
+[`M05_evidence_and_semantics_review.md`](../reviews/M05_evidence_and_semantics_review.md)
+and [`M05_specification_decisions.md`](../decisions/M05_specification_decisions.md).
+The binding amendment and authorization evidence are
+[`M05_records_only_authorization.md`](../decisions/M05_records_only_authorization.md)
+and [`M05_records_only_authorization_review.md`](../reviews/M05_records_only_authorization_review.md).
+No implementation decision record or `M05_completion_review.md` exists because
+M05 is authorized but not implemented or accepted.

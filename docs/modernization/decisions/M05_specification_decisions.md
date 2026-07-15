@@ -1,9 +1,10 @@
 # M05 Specification Decisions
 
-Status: `planning_only`
+Status: `superseded_in_part`
 
-These decisions clarify the canonical M05 specification. They do not authorize
-implementation and are not M05 implementation decisions.
+These planning decisions still explain the evidence review. Decision 9's
+planning status was superseded by the explicit records-only authorization in
+`M05_records_only_authorization.md`; no numerical method was authorized.
 
 ## Decision 1: Region Shape
 
@@ -128,19 +129,21 @@ implementation and are not M05 implementation decisions.
 - **Remaining uncertainty:** Minimum diagnostic set for each future method.
 - **Roadmap effect:** Clarifies dependency direction.
 
-## Decision 9: First Implementation Boundary
+## Decision 9: First Implementation Boundary (Superseded In Part)
 
 - **Question:** Does this planning pass authorize a serializer or arithmetic?
 - **Alternatives considered:** implement immediately; authorize records plus
   intersection; remain planned.
 - **Evidence:** No admitted production method/dataset exists, and governance
   requires a separate explicit authorization.
-- **Decision:** M05 remains `planned`. Recommend a later user review of a
-  records-only implementation boundary; do not authorize it here.
+- **Decision:** At this planning commit M05 remained `planned`. The later user
+  authorization at `M05_records_only_authorization.md` now authorizes only the
+  records/structural-validation/serialization boundary.
 - **Rationale:** The data contract can be reviewed independently of a derivation
   method.
-- **Consequences:** No `modern_powley.m05.v1`, source module, export, or numerical
-  test is created.
+- **Consequences:** This decision record itself created no schema or code. The
+  authorization amendment permits those record-contract artifacts only in a
+  later implementation commit and continues to prohibit numerical derivation.
 - **Remaining uncertainty:** Whether the user will authorize a records-only
   increment and which unresolved segment policies must be settled first.
 - **Roadmap effect:** Narrows the next possible step; does not authorize it.

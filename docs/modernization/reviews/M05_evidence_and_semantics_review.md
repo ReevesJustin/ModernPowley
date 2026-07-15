@@ -1,5 +1,12 @@
 # M05 Evidence And Semantics Review
 
+Review status: `completed_planning_snapshot`
+
+This review records the evidence state at the planning commit. Its conclusion
+that M05 was then `planned` is preserved for traceability; the later records-only
+authorization changes the active milestone status without admitting a numerical
+method or production evidence.
+
 ## Finding
 
 A provenance-preserving charge-region record contract can be specified without
