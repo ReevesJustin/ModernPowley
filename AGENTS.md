@@ -153,11 +153,14 @@ OCR or promote it to a sourced equation.
   interpretations require a versioned hypothesis record covering claim,
   evidence, assumptions, falsification, domain, calibration and held-out data,
   failures, promotion requirements, status, and supersession.
-- The planned empirical-load workstream under `docs/modernization/workstreams/`
-  is the scope authority for future load-evidence and dataset-split records. It
-  authorizes no schema, source intake, M05 derivation, or M06 model. Never label
-  source-example, regression, calibration, or in-sample agreement as held-out
-  validation or external replication.
+- The empirical-load parent workstream under `docs/modernization/workstreams/`
+  remains `planned`. Its dedicated records Phase 1 specification is the only
+  authorized boundary: a later immutable-record/strict-serialization
+  implementation with fictional fixtures. It authorizes no scientific intake,
+  cohort, split, M05 adapter/derivation, or M06 model. Read that specification
+  and its accepted authorization decisions before Phase 1 source edits. Never
+  label source-example, regression, calibration, or in-sample agreement as
+  held-out validation or external replication.
 
 The controlled milestone statuses are `planned`, `authorized`, `in_progress`,
 `implemented`, `accepted`, `superseded`, `blocked`, and `evidence_limited`.

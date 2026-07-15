@@ -68,11 +68,12 @@ maximum loads, powder-suitability decisions, or pressure/velocity predictions.
 Cross-cutting data, validation, uncertainty, plots, tooling, and GRT/web plans
 are documentation direction rather than available workflows.
 
-Empirical-load source, shot, trace, cohort, and dataset-split records are also a
-planned contract only. No load dataset has been ingested, no high-performance
-cohort exists, and no M05 derivation method is admitted. Validation-data
-infrastructure must be separately authorized and accepted before M06, which
-remains unauthorized.
+The broader empirical-load evidence/validation workstream remains planned. A
+dedicated Phase 1 is authorized for a later immutable source/load/shot/series/
+trace-metadata/chronograph/aggregate record contract and strict serialization
+with fictional fixtures only; it is not implemented. Cohorts, dataset splits,
+source intake, trace samples/processing, M05 adapters/derivation, and M06 remain
+unauthorized. No load dataset or high-performance cohort exists.
 
 ## Experimental Reproduction
 

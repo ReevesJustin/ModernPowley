@@ -101,6 +101,8 @@ keyword `allow_unvalidated=True`. `Ba_eff` is not ballistic efficiency.
 - [M05 records-only authorization](docs/modernization/decisions/M05_records_only_authorization.md): binding segment, state, evidence, dependency, and no-arithmetic boundary.
 - [M05 completion review](docs/modernization/reviews/M05_completion_review.md): record, serialization, isolation, and no-derivation gate mapping.
 - [Empirical-load evidence and validation workstream](docs/modernization/workstreams/empirical_load_evidence_and_validation.md): planned source/load/shot/trace/cohort/split contracts required before M05 derivation or M06.
+- [Empirical-load evidence records Phase 1](docs/modernization/workstreams/empirical_load_evidence_records_phase_1.md): authorized for a later immutable-record and strict-serialization implementation with fictional fixtures only; no intake, cohort, split, adapter, or model.
+- [Phase 1 authorization review](docs/modernization/reviews/empirical_load_evidence_records_phase_1_authorization_review.md): the 50-gate scope and repository-boundary review; no implementation completion claim.
 - [M05 derivation-readiness review](docs/modernization/reviews/M05_derivation_readiness_review.md): candidate method dispositions and exact evidence blockers; no method is admitted.
 - [Cross-cutting workstreams](docs/modernization/cross_cutting_workstreams.md): future data, validation, uncertainty, modeling, visualization, tooling, hypothesis, and GRT/web direction; no current capability.
 - `TODO.md`: active roadmap, dormant historical acquisition work, and deferred phases.
@@ -122,10 +124,13 @@ keyword `allow_unvalidated=True`. `Ba_eff` is not ballistic efficiency.
 - `src/modern_powley/modernized/`: accepted M01 inputs/geometry, M02 evidence records, M03 diagnostics, M04 decision records, and M05 immutable charge-region records/strict serialization; M05 has no estimation method or real region data, and bounded does not mean safe.
 - `tests/`: unit, reference, regression-reproduction, and provenance tests.
 
-Empirical-load evidence and validation contracts are planned only. No
-scientific load data, high-performance cohort, production M05 derivation, or
-M06 model has been admitted. A planned cohort classification would be
-operation-relative and would establish neither safety nor a recommendation.
+The broader empirical-load evidence and validation workstream remains planned.
+Its bounded Phase 1 is authorized for later immutable evidence records, strict
+serialization, and fictional structural fixtures only; it is not implemented.
+No scientific load data, cohort/split, high-performance cohort, source intake,
+production M05 derivation, or M06 model has been admitted. A future cohort
+classification would be operation-relative and would establish neither safety
+nor a recommendation.
 
 Legacy CSVs, plots, scripts, and notebook outputs remain for auditability. They
 are stale unless accompanied by a current generation manifest, and they do not

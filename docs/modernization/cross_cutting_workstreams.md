@@ -20,7 +20,10 @@ is authorized now.
 
 The canonical planned specification is
 [`workstreams/empirical_load_evidence_and_validation.md`](workstreams/empirical_load_evidence_and_validation.md).
-It authorizes no implementation or intake.
+Its separately bounded records Phase 1 is `authorized` for later immutable
+evidence records, strict serialization, and fictional fixtures only. The parent
+workstream remains planned; cohorts, splits, intake, M05 adapters/derivation,
+and M06 are outside that authorization.
 
 Formal validation remains M09, but its record contracts and split policy must
 begin before M06. Distinguish source-example reproduction, regression

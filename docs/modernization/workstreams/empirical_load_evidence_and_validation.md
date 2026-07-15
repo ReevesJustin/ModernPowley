@@ -6,7 +6,11 @@
 
 This repository-authored specification authorizes no source implementation,
 serialization schema, scientific-data intake, model, region derivation, or M06
-work. A later explicit authorization is required.
+work for the workstream as a whole. The separately bounded
+[`Empirical Load Evidence Records Phase 1`](empirical_load_evidence_records_phase_1.md)
+is `authorized` for a later immutable-record and strict-serialization
+implementation with synthetic fixtures only. That authorization does not change
+this parent status or authorize cohorts, splits, intake, M05 methods, or M06.
 
 ## Purpose
 
@@ -281,12 +285,16 @@ failures, and promotion requirements.
 
 ## Proposed Serialization Boundary
 
-No final schema identifier is assigned while this workstream is `planned`. A
-future authorization should define one strict versioned family with explicit
-record-type tags, exact nested fields and nullability, no unknown-field dropping,
-no aliases or coercion, exact units/references, source wording/precision,
-missing/conflict/lifecycle states, raw hashes, cohort membership, split roles,
-and immutable lineage. Existing M01-M05 serializers remain unchanged.
+No schema identifier is assigned for the parent workstream while it is
+`planned`. The separately authorized Phase 1 specification assigns
+`modern_powley.empirical_load_evidence.v1` only to its eight bounded record
+families; it does not cover cohorts or splits. Later workstream phases must
+define their own compatible boundary through explicit authorization. Each
+strict versioned family requires explicit record-type tags, exact nested fields
+and nullability, no unknown-field dropping, no aliases or coercion, exact
+units/references, source wording/precision, missing/conflict/lifecycle states,
+raw hashes, and immutable lineage. Existing M01-M05 serializers remain
+unchanged.
 
 ## Future Implementation Gates
 
@@ -323,7 +331,8 @@ exists. Licensing and retention rules must be resolved per future source.
 
 ## Authorized Next-Step Boundary
 
-This document recommends a later authorization review for a records-and-strict-
-serialization implementation only, using conspicuously synthetic fixtures. It
-does not authorize that implementation, any data intake, M05 derivation, or M06.
-A recommendation never authorizes work.
+The bounded records-and-strict-serialization Phase 1 has completed a separate
+authorization review and is the only authorized implementation step. This
+parent document still does not authorize implementation of its broader scope,
+any data intake, cohorts, splits, M05 derivation, or M06. Acceptance of Phase 1
+will not authorize another phase. A recommendation never authorizes work.

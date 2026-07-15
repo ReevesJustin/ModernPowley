@@ -113,11 +113,13 @@ region, or numerical behavior exists. Cross-cutting powder evidence, pre-M06 val
 infrastructure, uncertainty, visualization, tooling, hypothesis logging, and
 GRT/web intake remain governed planning directions only.
 
-The next recommended authorization review is limited to immutable empirical-load
-evidence records and strict serialization with synthetic fixtures. The canonical
-workstream is `docs/modernization/workstreams/empirical_load_evidence_and_validation.md`.
-It remains `planned`: no data intake, high-performance cohort, M05 derivation,
-or M06 implementation is authorized.
+The empirical-load evidence-record authorization review is complete. The
+dedicated Phase 1 specification is `authorized` for a later implementation of
+immutable records, strict serialization, and conspicuously fictional fixtures
+only. The parent workstream remains `planned`. The next bounded task is Phase 1
+implementation under its canonical specification; data intake, cohorts,
+dataset splits, high-performance classification, M05 adapters/derivation, and
+M06 remain unauthorized.
 
 ## Quarantined And Later Work
 

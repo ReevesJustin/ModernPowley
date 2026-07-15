@@ -223,14 +223,19 @@ dataset-split foundations begin before M06; formal model validation remains M09.
 M06-M08 remain future unauthorized model concepts, and a recommendation never
 authorizes any workstream.
 
-The canonical `planned` empirical-load specification is
-[`empirical_load_evidence_and_validation.md`](workstreams/empirical_load_evidence_and_validation.md),
-with candidate M05 method dispositions in
+The canonical parent empirical-load specification remains `planned`:
+[`empirical_load_evidence_and_validation.md`](workstreams/empirical_load_evidence_and_validation.md).
+Its separately bounded
+[`Empirical Load Evidence Records Phase 1`](workstreams/empirical_load_evidence_records_phase_1.md)
+is `authorized` for a later immutable-record and strict-serialization
+implementation using fictional fixtures only; see its
+[`authorization decisions`](decisions/empirical_load_evidence_records_phase_1_authorization.md)
+and [`authorization review`](reviews/empirical_load_evidence_records_phase_1_authorization_review.md).
+It is not implemented or accepted and authorizes no cohort, split, source
+intake, M05 adapter, or model. Candidate M05 method dispositions remain in
 [`M05_derivation_readiness_review.md`](reviews/M05_derivation_readiness_review.md).
 No scientific data, high-performance cohort, production M05 derivation, or M06
-model is admitted. The recommended next authorization review covers only
-immutable evidence records and strict serialization with synthetic fixtures;
-the recommendation itself authorizes nothing.
+model is admitted. A recommendation never authorizes implementation.
 
 ## Future Phase Concept M06: Pressure And Velocity Baseline
 

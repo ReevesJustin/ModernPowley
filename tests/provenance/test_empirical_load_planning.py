@@ -19,8 +19,9 @@ def test_workstream_is_planned_and_non_authorizing():
     text = WORKSTREAM.read_text(encoding="utf-8")
     assert "## Status\n\n`planned`" in text
     assert "authorizes no source implementation" in text
-    assert "No final schema identifier is assigned" in text
-    assert "does not authorize that implementation" in text
+    assert "parent workstream" in text
+    assert "does not authorize implementation of its broader scope" in text
+    assert "cohorts, splits, M05 derivation, or M06" in text
 
 
 def test_distinct_record_families_and_layers_are_specified():
@@ -93,7 +94,9 @@ def test_entry_points_agree_and_m06_remains_unauthorized():
     assert all("M05" in text for text in texts.values())
     assert all("planned" in text.casefold() for text in texts.values())
     assert "M06" in texts["docs/Usage_Instructions.md"]
-    assert "remains unauthorized" in texts["docs/Usage_Instructions.md"]
+    assert "remain unauthorized" in " ".join(
+        texts["docs/Usage_Instructions.md"].split()
+    )
     assert "M06-M08 remain future unauthorized" in texts["docs/modernization/modern_powley_roadmap.md"]
 
 
