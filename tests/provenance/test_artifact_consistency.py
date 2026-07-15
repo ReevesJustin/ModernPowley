@@ -68,3 +68,6 @@ def test_local_artifact_hashes_match_source_ledger():
     assert digest(Path("docs/modernization/decisions/M01_implementation_decisions.md")) == sources[
         "SRC-M01-DESIGN"
     ]["artifact_hash"].removeprefix("sha256:")
+    assert digest(Path("docs/modernization/decisions/M02_implementation_decisions.md")) == sources[
+        "SRC-M02-DESIGN"
+    ]["artifact_hash"].removeprefix("sha256:")

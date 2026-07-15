@@ -54,6 +54,6 @@ uncertainty propagation is implemented.
 ## Decision
 
 All independently supportable M01 acceptance gates pass. M01 is promoted as the
-canonical modernized input and geometry layer. M02 is the next phase; it must
-define powder-property evidence without changing M01 quantity identities or
-introducing prediction behavior prematurely.
+canonical modernized input and geometry layer. M02 subsequently implemented the
+neutral powder-property evidence contract without changing M01 quantity
+identities or introducing prediction behavior.

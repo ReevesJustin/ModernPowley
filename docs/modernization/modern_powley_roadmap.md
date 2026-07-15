@@ -62,6 +62,9 @@ Evidence and maturity terms are defined in
 
 ## M02: Powder-Property Evidence Model
 
+**Status: implemented and reviewed.** See
+`reviews/M02_completion_review.md`. M03 is the next active phase.
+
 - **Objective:** Define how identity, bulk density, energy, thermodynamic
   properties, burn behavior, lot/condition, missingness, and provenance are stored.
 - **Prerequisites:** Promoted M01 records and unit policy.

@@ -220,3 +220,40 @@ modern_powley.m01.v1,charge_to_bullet_mass_ratio,derived_quantity,dimensionless,
 modern_powley.m01.v1,charge_to_gross_water_capacity_mass_ratio,derived_quantity,dimensionless,SRC-M01-DESIGN,EQ-102,verified_primary,not volumetric powder fill
 modern_powley.m01.v1,charge_to_measured_usable_water_capacity_mass_ratio,derived_quantity,dimensionless,SRC-M01-DESIGN,EQ-102,verified_primary,not volumetric powder fill
 modern_powley.m01.v1,charge_to_estimated_usable_water_capacity_mass_ratio,derived_quantity,dimensionless,SRC-M01-DESIGN,EQ-102,verified_primary,requires explicit equivalent water mass; not volumetric powder fill
+modern_powley.m02.v1,schema,modernized_powley,identifier,SRC-M02-DESIGN,M02 strict serialization,verified_primary,fixed value modern_powley.m02.v1; no implicit migration
+modern_powley.m02.v1,record_type,modernized_powley,controlled tagged union,SRC-M02-DESIGN,M02 serialization tests,verified_primary,unknown record types rejected
+modern_powley.m02.v1,record_id,modernized_powley,stable identifier,SRC-M02-DESIGN,M02 record contract,verified_primary,required nonblank identity
+modern_powley.m02.v1,powder_identity.responsible_organization,modernized_powley,text,SRC-M02-DESIGN,M02 identity contract,verified_primary,manufacturer or responsible organization retained literally
+modern_powley.m02.v1,powder_identity.published_designation,modernized_powley,text,SRC-M02-DESIGN,M02 identity contract,verified_primary,no name-based identity merge
+modern_powley.m02.v1,powder_identity.normalized_display_designation,modernized_powley,text,SRC-M02-DESIGN,M02 identity contract,verified_primary,display normalization does not assert equivalence
+modern_powley.m02.v1,powder_identity.source_specific_designation,modernized_powley,text,SRC-M02-DESIGN,M02 identity contract,verified_primary,source wording retained
+modern_powley.m02.v1,powder_identity.product_family,modernized_powley,present-or-missing text union,SRC-M02-DESIGN,M02 identity contract,verified_primary,semantic missing state required when unavailable
+modern_powley.m02.v1,powder_identity.product_class,modernized_powley,present-or-missing text union,SRC-M02-DESIGN,M02 identity contract,verified_primary,canister or other class never inferred
+modern_powley.m02.v1,powder_identity.lot_or_batch,modernized_powley,present-or-missing text union,SRC-M02-DESIGN,M02 identity contract,verified_primary,lots remain distinct
+modern_powley.m02.v1,powder_identity.manufacturing_date_or_era,modernized_powley,present-or-missing text union,SRC-M02-DESIGN,M02 identity contract,verified_primary,eras remain distinct
+modern_powley.m02.v1,powder_identity.formulation_or_revision,modernized_powley,present-or-missing text union,SRC-M02-DESIGN,M02 identity contract,verified_primary,formulations remain distinct
+modern_powley.m02.v1,powder_identity.country_or_market,modernized_powley,present-or-missing text union,SRC-M02-DESIGN,M02 identity contract,verified_primary,market equivalence never inferred
+modern_powley.m02.v1,powder_identity_relationship.relationship,modernized_powley,directional controlled category,SRC-M02-DESIGN,M02 identity relation contract,verified_primary,identical renamed related replacement and similar remain distinct assertions
+modern_powley.m02.v1,property_definition.property_id,modernized_powley,controlled identifier,SRC-M02-DESIGN,M02 property vocabulary,verified_primary,schema capability does not authorize a property value
+modern_powley.m02.v1,property_definition.definition,modernized_powley,text,SRC-M02-DESIGN,M02 property vocabulary,verified_primary,similar physical terms remain separate
+modern_powley.m02.v1,property_definition.value_kind,modernized_powley,controlled category,SRC-M02-DESIGN,M02 property vocabulary,verified_primary,dimensional categorical ordinal textual interval tabular or source-specific
+modern_powley.m02.v1,property_definition.expected_dimension,modernized_powley,M01 dimension or explicit absent value,SRC-M02-DESIGN,M02 dimensional contract,verified_primary,unsupported source units are not assigned speculative dimensions
+modern_powley.m02.v1,property_definition.source_specific_identity,modernized_powley,text,SRC-M02-DESIGN,M02 source-specific contract,verified_primary,required for source-specific coefficient table and publication index IDs
+modern_powley.m02.v1,observation.powder_identity_id,modernized_powley,record identifier,SRC-M02-DESIGN,M02 observation contract,verified_primary,observation never identifies powder by name alone
+modern_powley.m02.v1,observation.value,modernized_powley,strict tagged value union,SRC-M02-DESIGN,M02 property contract,verified_primary,reported units and wording retained
+modern_powley.m02.v1,observation.transformation,modernized_powley,controlled category,SRC-M02-DESIGN,M02 provenance contract,verified_primary,direct transcribed converted derived inferred fitted or asserted remain distinct
+modern_powley.m02.v1,observation.uncertainty_qualification,modernized_powley,present-or-missing text union,SRC-M02-DESIGN,M02 uncertainty contract,verified_primary,non-dimensional uncertainty is explicit; dimensional values retain M01 uncertainty
+modern_powley.m02.v1,observation.source_locator,modernized_powley,source ID locator and transcription status,SRC-M02-DESIGN,M02 source contract,verified_primary,must match provenance source ID
+modern_powley.m02.v1,observation.context,modernized_powley,known-or-missing method apparatus condition and era fields,SRC-M02-DESIGN,M02 context contract,verified_primary,omission never implies universal conditions
+modern_powley.m02.v1,missing_property_observation.missing_state,modernized_powley,controlled semantic state,SRC-M02-DESIGN,M02 missingness contract,verified_primary,zero NaN empty and absent keys are not missing sentinels
+modern_powley.m02.v1,missing_property_observation.related_record_ids,modernized_powley,identifier list,SRC-M02-DESIGN,M02 missingness contract,verified_primary,required when conflicting evidence is asserted
+modern_powley.m02.v1,applicability_domain.status,modernized_powley,unspecified or declared,SRC-M02-DESIGN,M02 domain contract,verified_primary,unspecified never means unrestricted
+modern_powley.m02.v1,applicability_domain.numeric_constraints,modernized_powley,M01 quantities with explicit bounds,SRC-M02-DESIGN,EQ-108,verified_primary,literal membership only
+modern_powley.m02.v1,applicability_domain.source_scalar_constraints,modernized_powley,literal source units conventions and bounds,SRC-M02-DESIGN,EQ-108,verified_primary,no conversion interpolation or extrapolation
+modern_powley.m02.v1,applicability_domain.categorical_constraints,modernized_powley,literal allowed-value sets,SRC-M02-DESIGN,EQ-108,verified_primary,no inferred categories
+modern_powley.m02.v1,conflict_comparison.identity_comparison,derived_quantity,controlled descriptive category,SRC-M02-DESIGN,EQ-109,verified_primary,same identity different identity and known lot difference retained
+modern_powley.m02.v1,conflict_comparison.definition_comparison,derived_quantity,controlled descriptive category,SRC-M02-DESIGN,EQ-109,verified_primary,similar names do not establish common definition
+modern_powley.m02.v1,conflict_comparison.unit_comparison,derived_quantity,controlled descriptive category,SRC-M02-DESIGN,EQ-109,verified_primary,M01 conversion only or exact source unit and definition match
+modern_powley.m02.v1,conflict_comparison.numeric_comparison,derived_quantity,controlled descriptive category,SRC-M02-DESIGN,EQ-109,verified_primary,no preferred value averaging or resolution
+modern_powley.m02.v1,conflict_comparison.domain_comparison,derived_quantity,controlled descriptive category,SRC-M02-DESIGN,EQ-109,verified_primary,domains are compared but never combined
+modern_powley.m02.v1,conflict_comparison.provenance,derived_quantity,method and two input observation identities,SRC-M02-DESIGN,EQ-109,verified_primary,descriptive result has no authority beyond its retained inputs

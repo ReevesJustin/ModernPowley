@@ -19,6 +19,11 @@ def test_original_namespace_has_no_experimental_later_modernized_or_grt_imports(
 
 
 def test_modernized_imports_original_only_through_explicit_adapter():
+    forbidden_import_prefixes = (
+        "modern_powley.later",
+        "modern_powley.experimental",
+        "scripts.",
+    )
     for path in Path("src/modern_powley/modernized").rglob("*.py"):
         tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
         imported = []
@@ -30,7 +35,7 @@ def test_modernized_imports_original_only_through_explicit_adapter():
         original_imports = [name for name in imported if name.startswith("modern_powley.original")]
         if original_imports:
             assert path.as_posix().endswith("modernized/adapters/original.py"), path
-        assert not [name for name in imported if name.startswith(("modern_powley.later", "modern_powley.experimental"))], path
+        assert not [name for name in imported if name.startswith(forbidden_import_prefixes)], path
 
 
 def test_m01_canonical_api_has_no_ambiguous_or_later_phase_symbols():
@@ -42,3 +47,42 @@ def test_m01_canonical_api_has_no_ambiguous_or_later_phase_symbols():
         "select_powder", "estimate_pressure", "estimate_velocity", "burnout", "muzzle_pressure",
         "Ba_eff", "Ba_target", "optimal_charge", "recommend",
     }
+
+
+def test_m02_public_api_has_no_selection_prediction_or_resolution_behavior():
+    import modern_powley.modernized as modernized
+
+    public = set(modernized.__all__)
+    prohibited = {
+        "screen_powders", "select_powder", "selected_powder", "rank_powders",
+        "recommend", "recommended_value", "preferred_record", "best_property",
+        "effective_property", "default_powder", "resolve_conflict",
+        "interpolate_property", "extrapolate_property", "complete_property",
+        "estimate_charge", "estimate_pressure", "estimate_velocity",
+        "calculate_energy_release", "burnout", "muzzle_pressure", "solver",
+    }
+    assert not public & prohibited
+
+
+def test_m02_modules_define_only_contract_domain_and_descriptive_comparison_calls():
+    prohibited_definitions = {
+        "screen", "select", "rank", "recommend", "resolve", "interpolate",
+        "extrapolate", "predict", "optimize", "solve", "impute",
+    }
+    m02_files = (
+        "powder_identity.py", "powder_properties.py", "property_domains.py",
+        "missing_values.py", "property_observations.py", "property_conflicts.py",
+        "m02_serialization.py",
+    )
+    for name in m02_files:
+        path = Path("src/modern_powley/modernized") / name
+        tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+        definitions = {
+            node.name.casefold()
+            for node in ast.walk(tree)
+            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef))
+        }
+        assert not {
+            item for item in definitions
+            if any(token in item for token in prohibited_definitions)
+        }, path

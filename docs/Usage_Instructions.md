@@ -42,6 +42,11 @@ serialization, transparent Euclidean geometry, and one-way historical scalar
 adapters. It provides no powder screening, charge estimation, pressure,
 velocity, burnout, muzzle pressure, ranking, or recommendation workflow.
 
+The M02 API records powder identities and source observations, including
+semantic missingness, applicability domains, and unresolved conflicts. It does
+not include a production powder database, choose among observations, or assign
+computational meaning to source-specific coefficients.
+
 ## Experimental Reproduction
 
 Experimental functions live under `modern_powley.experimental` and reject calls

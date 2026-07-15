@@ -50,5 +50,62 @@ from .records import (
 from .serialization import dumps_record, loads_record, record_from_dict, record_to_dict
 from .uncertainty import Uncertainty, UncertaintyKind
 from .units import Dimension, Quantity, Unit
+from .missing_values import IdentityQualifier, MissingState
+from .powder_identity import (
+    M02_SCHEMA_ID,
+    PowderIdentity,
+    PowderIdentityRelationship,
+    PowderRelationshipKind,
+)
+from .powder_properties import (
+    CategoricalPropertyValue,
+    DimensionalPropertyValue,
+    IntervalPropertyValue,
+    OrdinalPropertyValue,
+    PropertyDefinition,
+    PropertyId,
+    PropertyValueKind,
+    SourceScalarPropertyValue,
+    TabularReferencePropertyValue,
+    TextualPropertyValue,
+    standard_property_definition,
+)
+from .property_domains import (
+    ApplicabilityDomain,
+    BoundKind,
+    CategoricalDomainConstraint,
+    DomainBound,
+    DomainMembership,
+    DomainMembershipStatus,
+    DomainStatus,
+    NumericDomainConstraint,
+    SourceScalarDomainBound,
+    SourceScalarDomainConstraint,
+    SourceScalarDomainValue,
+    test_domain_membership,
+)
+from .property_observations import (
+    MissingPropertyObservation,
+    ObservationContext,
+    ObservationTransformation,
+    PowderPropertyObservation,
+    SourceLocator,
+    TranscriptionStatus,
+)
+from .property_conflicts import (
+    ConflictComparison,
+    DefinitionComparison,
+    DomainComparison,
+    IdentityComparison,
+    NumericComparison,
+    UnitComparison,
+    compare_property_observations,
+)
+from .m02_serialization import (
+    dumps_m02_record,
+    loads_m02_record,
+    m02_record_from_dict,
+    m02_record_to_dict,
+)
 
 __all__ = [name for name in globals() if not name.startswith("_")]

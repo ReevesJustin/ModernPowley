@@ -23,9 +23,9 @@
     },
     {
       "path": "docs/provenance/data_field_ledger.csv",
-      "sha256": "07f64d78c0d5c8084ff5636788f18fa9d396b2fdc06a3f8280fcbf73171badbe"
+      "sha256": "0af59aa87f44c4c0966af06557541fb8cdbd946bd68719a4f4851f668ab30651"
     }
   ],
-  "post_generation_updates": "The data-field ledger was provenance-normalized and extended for the emulator reference scale during the historical reconstruction pass. The Davis reconstruction added the normalized Table 4 derivative and its row-level correction-ledger fields without regenerating the immutable pre-audit inventory; the provenance-status correction added the authority-source relationship. The primary-source scale-recovery pass added fields for the non-executable original velocity-observation transcription. The Davis evidence-intake pass updated the correction-ledger field descriptions to record that raw OCR is retained but is unsuitable for cell verification. M01 added the versioned modernized record schema and derived-field definitions under SRC-M01-DESIGN without regenerating the immutable pre-audit inventory. The pre-audit inventory remains an immutable checkpoint inventory.",
+  "post_generation_updates": "The data-field ledger was provenance-normalized and extended for the emulator reference scale during the historical reconstruction pass. The Davis reconstruction added the normalized Table 4 derivative and its row-level correction-ledger fields without regenerating the immutable pre-audit inventory; the provenance-status correction added the authority-source relationship. The primary-source scale-recovery pass added fields for the non-executable original velocity-observation transcription. The Davis evidence-intake pass updated the correction-ledger field descriptions to record that raw OCR is retained but is unsuitable for cell verification. M01 added the versioned modernized record schema and derived-field definitions under SRC-M01-DESIGN without regenerating the immutable pre-audit inventory. M02 added the versioned neutral powder-property evidence schema under SRC-M02-DESIGN without regenerating the immutable pre-audit inventory. The pre-audit inventory remains an immutable checkpoint inventory.",
   "timestamp": "2026-07-14T02:38:07-05:00"
 }

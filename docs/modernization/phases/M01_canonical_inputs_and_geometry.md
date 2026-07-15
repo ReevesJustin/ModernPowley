@@ -4,7 +4,8 @@
 
 M01 is implemented and reviewed. Its promoted API is
 `modern_powley.modernized`; the acceptance mapping is in
-`../reviews/M01_completion_review.md`. M02 is the next active phase.
+`../reviews/M01_completion_review.md`. M02 has since implemented the neutral
+powder-property evidence contract; M03 is the next active phase.
 
 M01 establishes physical quantity identity, units, provenance, validation, and
 geometry before powder screening or prediction. It must interoperate with the

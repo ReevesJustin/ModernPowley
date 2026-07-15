@@ -29,7 +29,8 @@ def test_roadmap_separates_historical_and_modern_development_paths():
     assert "must not be reconstructed from Davis, the emulator, GRT" in text
     assert "Modernized development is authorized outside `original/`" in text
     assert "M01" in text and "implemented and reviewed" in text
-    assert "M02" in text and "next active phase" in text
+    assert "M02" in text and "implemented and reviewed" in text
+    assert "M03" in text and "next active phase" in text
     assert "none may enter\n`original/`" in text
 
 
@@ -76,7 +77,8 @@ def test_modernization_governance_documents_exist_and_separate_provenance():
 def test_m01_is_geometry_only_and_has_promotion_gates():
     text = M01.read_text(encoding="utf-8")
     assert "M01 is implemented and reviewed" in text
-    assert "M02 is the next active phase" in text
+    assert "M02 has since implemented" in text
+    assert "M03 is the next active phase" in text
     assert "Canonical Internal Unit Policy" in text
     assert "Measured seating-specific usable powder space is authoritative" in text
     assert "M01 Exclusions" in text

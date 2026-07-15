@@ -73,4 +73,4 @@ def test_m01_completion_review_maps_every_acceptance_gate():
         "No ballistics prediction, screening, ranking, or interface",
     ):
         assert phrase in text
-    assert "M02 is the next phase" in text
+    assert "M02 subsequently implemented" in text
