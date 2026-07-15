@@ -2,11 +2,11 @@
 
 ## Status
 
-`authorized`
+`accepted`
 
-M05 is authorized only for the immutable records, structural validation, and
-strict serialization increment defined here. This authorization commit does not
-implement or accept M05. It admits no production method or dataset and
+M05 entered `in_progress` before source implementation and is now accepted only
+for the immutable records, structural validation, and strict serialization
+increment defined here. Acceptance admits no production method or dataset and
 authorizes no numerical creation or transformation of a region.
 
 ## Purpose
@@ -157,7 +157,7 @@ unknown fields/types/versions, malformed unions/units/endpoints, and non-finite
 numbers; preserve explicit state/basis, caller order, gaps, references, source
 semantics, lifecycle, uncertainty/dependency metadata, and non-implications; and
 perform no implicit migration or field dropping. M01-M04 schemas remain
-unchanged. This authorization commit creates no serializer or export.
+unchanged. The accepted implementation provides this bounded serializer/export contract.
 
 ## Required Repository Deliverables
 
@@ -228,9 +228,9 @@ state; limitations; and one bounded recommendation that does not authorize M06.
 
 ## Commit And Release Expectations
 
-Implementation occurs in a later bounded commit. Mark M05 `accepted` only after
-all gates and its completion review pass. Do not amend this authorization commit,
-rewrite history, force-push, or alter the preservation tag.
+Implementation occurred in this bounded records-only commit. M05 became
+`accepted` only after its gates and completion review passed. Do not rewrite
+history, force-push, or alter the preservation tag.
 
 ## Known Limitations
 
@@ -241,10 +241,10 @@ general M05 schema. Records cannot establish safety, suitability, or advice.
 
 ## Authorized Next-Milestone Boundary
 
-Only the records-only M05 implementation defined here is authorized next.
-Numerical derivation, literal intersection, production data, M06, visualization,
-tooling changes, GRT intake, and web interfaces remain unauthorized. A
-recommendation never authorizes later work.
+No follow-on implementation is authorized by M05 acceptance. Numerical
+derivation, literal intersection, production data, M06, visualization, tooling
+changes, GRT intake, and web interfaces remain unauthorized. A recommendation
+never authorizes later work.
 
 ## Implementation Decisions And Completion Evidence
 
@@ -254,5 +254,7 @@ and [`M05_specification_decisions.md`](../decisions/M05_specification_decisions.
 The binding amendment and authorization evidence are
 [`M05_records_only_authorization.md`](../decisions/M05_records_only_authorization.md)
 and [`M05_records_only_authorization_review.md`](../reviews/M05_records_only_authorization_review.md).
-No implementation decision record or `M05_completion_review.md` exists because
-M05 is authorized but not implemented or accepted.
+Binding implementation decisions and acceptance evidence are in
+[`M05_implementation_decisions.md`](../decisions/M05_implementation_decisions.md)
+and [`M05_completion_review.md`](../reviews/M05_completion_review.md). Acceptance
+covers records and serialization only, never a derivation method.

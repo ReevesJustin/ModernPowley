@@ -146,10 +146,9 @@ OCR or promote it to a sourced equation.
   implement; record decisions separately; complete tests/ledgers/validation;
   create the completion review; and mark `accepted` only after all gates pass.
 - A `planned` specification and its evidence review do not authorize source
-  modules, schemas, exports, or numerical behavior. M05 is now `authorized` only
-  for the records/structural-validation/strict-serialization boundary in its
-  canonical specification; no derivation, production data, or M06 behavior is
-  authorized.
+  modules, schemas, exports, or numerical behavior. M05 is accepted only for
+  immutable records, structural validation, and strict serialization; no
+  derivation, production data, or M06 behavior is authorized.
 - New empirical fits, correction layers, model variants, and experimental
   interpretations require a versioned hypothesis record covering claim,
   evidence, assumptions, falsification, domain, calibration and held-out data,

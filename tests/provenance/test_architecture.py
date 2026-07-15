@@ -121,3 +121,38 @@ def test_m03_modules_define_only_requirements_and_literal_diagnostics():
             item for item in definitions
             if any(token in item for token in prohibited_definitions)
         }, path
+
+
+def test_m05_modules_are_records_and_serialization_only():
+    prohibited = {
+        "estimate", "derive", "intersect", "union", "normalize", "merge",
+        "rank", "recommend", "select", "round", "propagate", "simulate",
+        "predict", "calculate", "parse_grt", "plot", "upload",
+    }
+    for name in ("charge_regions.py", "m05_serialization.py"):
+        path = Path("src/modern_powley/modernized") / name
+        tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+        public_definitions = {
+            node.name.casefold()
+            for node in ast.walk(tree)
+            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef))
+            and not node.name.startswith("_")
+        }
+        assert not {
+            item for item in public_definitions
+            if any(token in item for token in prohibited)
+        }, path
+
+
+def test_m05_has_no_forbidden_namespace_dependencies():
+    forbidden = {"original", "later", "experimental", "emulator", "grt", "jrt", "quickload", "scripts", "plot", "web"}
+    for name in ("charge_regions.py", "m05_serialization.py"):
+        path = Path("src/modern_powley/modernized") / name
+        tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+        imported = []
+        for node in ast.walk(tree):
+            if isinstance(node, ast.Import):
+                imported.extend(alias.name for alias in node.names)
+            elif isinstance(node, ast.ImportFrom):
+                imported.append(node.module or "")
+        assert not [item for item in imported if forbidden.intersection(item.casefold().split("."))], path

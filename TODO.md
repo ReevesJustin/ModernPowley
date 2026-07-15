@@ -83,10 +83,9 @@ Dependency order:
    implemented and reviewed as a record/audit layer only; it contains no
    production criteria, catalog search, suitability decision, ranking, or
    ballistics prediction.
-6. **M05 - Charge-region records:** status `authorized` for a later immutable
-   records, structural-validation, and strict-serialization increment only. It
-   is not implemented or accepted; numerical derivation, real regions, methods,
-   and datasets remain unauthorized.
+6. **M05 - Charge-region records:** accepted immutable records, structural
+   validation, and strict serialization only. Numerical derivation, real
+   regions, production methods, and datasets remain unauthorized.
 7. **M06 - Pressure and velocity baseline.**
 8. **M07 - Burn progression and burnout location.**
 9. **M08 - Muzzle pressure and secondary selection objectives.**
@@ -107,10 +106,10 @@ correctness, powder suitability, safety, approval, recommendation, or solver
 readiness. Future milestones follow the specification-first workflow in
 `AGENTS.md`; a recommendation does not authorize implementation.
 
-M05 authorization distinguishes bounded analytical charge regions from
+M05 records distinguish bounded analytical charge regions from
 published load intervals, fill constraints, uncertainty intervals, and pressure
-limits. No M05 serializer, public API, production method, real region, or
-numerical behavior exists yet. Cross-cutting powder evidence, pre-M06 validation
+limits. The serializer/public record API exists, but no production method, real
+region, or numerical behavior exists. Cross-cutting powder evidence, pre-M06 validation
 infrastructure, uncertainty, visualization, tooling, hypothesis logging, and
 GRT/web intake remain governed planning directions only.
 

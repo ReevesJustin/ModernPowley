@@ -60,9 +60,9 @@ that the supplied evidence satisfied that exact declaration; it is not a powder
 screening, suitability, safety, recommendation, or ballistics result. No
 production criterion set is included.
 
-M05 is `authorized` only for a later records-and-strict-serialization increment;
-it is not implemented or accepted. The repository currently has no M05 source
-module, serializer, API, real region data, or numerical derivation.
+M05 is accepted only as an immutable records, structural-validation, and strict-
+serialization contract. It has no estimation method, production evidence, real
+region data, or numerical derivation.
 No planned region semantics are loading instructions, safe ranges, starting or
 maximum loads, powder-suitability decisions, or pressure/velocity predictions.
 Cross-cutting data, validation, uncertainty, plots, tooling, and GRT/web plans

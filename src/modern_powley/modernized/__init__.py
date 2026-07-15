@@ -186,5 +186,31 @@ from .m04_serialization import (
     m04_record_from_dict,
     m04_record_to_dict,
 )
+from .charge_regions import (
+    M05_SCHEMA_ID,
+    ActivationStatus,
+    ChargeMassEndpoint,
+    ChargeMassSegment,
+    ChargeRegionRecord,
+    DependencyStatus,
+    EndpointInclusion,
+    ExactRecordReference,
+    ExactReferenceRole,
+    LifecycleMetadata,
+    MethodReference,
+    NonImplicationDeclaration,
+    PressureEvidenceContext,
+    RegionBasis,
+    RegionState,
+    UncertaintyDeclaration,
+    UncertaintyDeclarationKind,
+    VersionedRegionReference,
+)
+from .m05_serialization import (
+    dumps_m05_record,
+    loads_m05_record,
+    m05_record_from_dict,
+    m05_record_to_dict,
+)
 
 __all__ = [name for name in globals() if not name.startswith("_")]

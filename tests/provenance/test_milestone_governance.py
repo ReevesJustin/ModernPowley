@@ -97,16 +97,16 @@ def test_m04_is_accepted_only_with_gate_18_and_completion_review():
         assert "specified before" in review
 
 
-def test_m05_is_records_only_authorized_and_later_phases_are_not_authorized():
+def test_m05_is_records_only_accepted_and_later_phases_are_not_authorized():
     roadmap = ROADMAP.read_text(encoding="utf-8")
-    assert status(SPECS["M05"].read_text(encoding="utf-8")) == "authorized"
-    assert "authorized only for a later records-and-strict-serialization increment" in roadmap
+    assert status(SPECS["M05"].read_text(encoding="utf-8")) == "accepted"
+    assert "accepted only for records, structural validation, and strict serialization" in roadmap
     assert "no numerical method/data is admitted" in roadmap
     assert "recommendation never authorizes" in roadmap
     for milestone in range(6, 12):
         heading = f"Future Phase Concept M{milestone:02d}"
         assert heading in roadmap
-    assert not Path("docs/modernization/reviews/M05_completion_review.md").exists()
+    assert Path("docs/modernization/reviews/M05_completion_review.md").exists()
 
 
 def test_agent_guide_requires_specification_first_and_traceable_amendments():

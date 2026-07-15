@@ -17,8 +17,8 @@ Evidence and maturity terms are defined in
 For M01-M04 the durable chain is: canonical specification -> phase design ->
 accepted implementation decisions -> tests and ledgers -> completion review.
 The specification is the scope authority; a review is evidence, not a substitute.
-M05 is authorized only for a later records-and-strict-serialization increment;
-it is not implemented or accepted and no numerical method/data is admitted.
+M05 is accepted only for records, structural validation, and strict serialization;
+no numerical method/data is admitted.
 Future phase concepts M06-M11 remain unspecified, unauthorized concepts. Before
 any planned milestone
 becomes implementable, its specification must be reviewed in a planning commit
@@ -178,24 +178,23 @@ tests; ledger entries use `SRC-M04-DESIGN`.
 
 ## M05: Charge-Region Records
 
-**Status: authorized for records and strict serialization only; not implemented
-or accepted.** See
+**Status: accepted for records and strict serialization only.** See
 the canonical [`specification`](milestones/M05_charge_region_records.md),
 planning [`evidence and semantics review`](reviews/M05_evidence_and_semantics_review.md),
 [`specification decisions`](decisions/M05_specification_decisions.md),
 [`authorization decision`](decisions/M05_records_only_authorization.md), and
 [`authorization review`](reviews/M05_records_only_authorization_review.md).
-There is no implementation design, implementation decision record,
-completion review, serializer, package export, or principal numerical test.
+See also the [`implementation design`](phases/M05_charge_region_records.md),
+[`implementation decisions`](decisions/M05_implementation_decisions.md), and
+[`completion review`](reviews/M05_completion_review.md).
 
 - **Objective:** Define a provenance-preserving contract for bounded analytical
   regions for further analysis, never a recommended charge or safe range.
-- **Prerequisites:** Accepted M04 and the retained records-only authorization
-  commit; implementation must be a later task.
+- **Prerequisites:** Accepted M04 and retained records-only authorization.
 - **Allowed evidence:** Published primary, manufacturer, and measured relations;
-  fits/calibrations remain experimental candidates. This planning pass admits no
-  production method or data.
-- **Required inputs:** Future records would require exact M01/M02 evidence,
+  fits/calibrations remain experimental candidates. The accepted records layer
+  admits no production method or data.
+- **Required inputs:** Records require exact M01/M02 evidence,
   applicable M03 diagnostics, method/version, units, domain, conditions,
   uncertainty, conflict, and lineage. M04 references are audit dependencies only.
 - **Expected outputs:** Immutable caller-supplied region records, structural
@@ -203,16 +202,16 @@ completion review, serializer, package export, or principal numerical test.
 - **Exclusions:** Loading instruction, point recommendation, implicit safety
   assurance, all region derivation/intersection arithmetic, real region
   construction, production data, and the quarantined regression.
-- **Tests:** Authorization tests enforce scope, statuses, entry-point consistency,
-  no M05 code/API/schema yet, and no dependency/data changes.
-- **Validation gates:** The authorization review passes; implementation gates
-  remain predeclared and unexecuted.
-- **Promotion criteria:** A later implementation satisfies the canonical gates
-  and completion review without adding numerical region behavior.
+- **Tests:** Unit, serialization, architecture, provenance, and governance tests
+  enforce the contract and no dependency/data changes.
+- **Validation gates:** Canonical record/serialization gates and completion
+  review pass without numerical region behavior.
+- **Promotion criteria:** Records layer accepted; numerical work requires a new
+  amendment and explicit authorization.
 - **Stopping conditions:** No admitted method/data; unresolved pressure,
   dependency, or region semantics; or any recommendation/safety implication.
 - **Artifacts:** Canonical specification, evidence review, specification
-  decisions, authorization review, governance tests, and ledger entries.
+  decisions, authorization/completion reviews, tests, serializer, and ledgers.
 
 ## Cross-Cutting Governed Workstreams
 
