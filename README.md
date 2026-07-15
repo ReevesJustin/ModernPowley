@@ -100,6 +100,8 @@ keyword `allow_unvalidated=True`. `Ba_eff` is not ballistic efficiency.
 - [M05 specification decisions](docs/modernization/decisions/M05_specification_decisions.md): planning clarifications that do not authorize an API or serializer.
 - [M05 records-only authorization](docs/modernization/decisions/M05_records_only_authorization.md): binding segment, state, evidence, dependency, and no-arithmetic boundary.
 - [M05 completion review](docs/modernization/reviews/M05_completion_review.md): record, serialization, isolation, and no-derivation gate mapping.
+- [Empirical-load evidence and validation workstream](docs/modernization/workstreams/empirical_load_evidence_and_validation.md): planned source/load/shot/trace/cohort/split contracts required before M05 derivation or M06.
+- [M05 derivation-readiness review](docs/modernization/reviews/M05_derivation_readiness_review.md): candidate method dispositions and exact evidence blockers; no method is admitted.
 - [Cross-cutting workstreams](docs/modernization/cross_cutting_workstreams.md): future data, validation, uncertainty, modeling, visualization, tooling, hypothesis, and GRT/web direction; no current capability.
 - `TODO.md`: active roadmap, dormant historical acquisition work, and deferred phases.
 - `docs/audits/original_powley_scale_recovery.md`: primary-source scale search, graphical evidence, and implementation-readiness decision.
@@ -119,6 +121,11 @@ keyword `allow_unvalidated=True`. `Ba_eff` is not ballistic efficiency.
 - `src/modern_powley/experimental/`: opt-in prototype hypotheses.
 - `src/modern_powley/modernized/`: accepted M01 inputs/geometry, M02 evidence records, M03 diagnostics, M04 decision records, and M05 immutable charge-region records/strict serialization; M05 has no estimation method or real region data, and bounded does not mean safe.
 - `tests/`: unit, reference, regression-reproduction, and provenance tests.
+
+Empirical-load evidence and validation contracts are planned only. No
+scientific load data, high-performance cohort, production M05 derivation, or
+M06 model has been admitted. A planned cohort classification would be
+operation-relative and would establish neither safety nor a recommendation.
 
 Legacy CSVs, plots, scripts, and notebook outputs remain for auditability. They
 are stale unless accompanied by a current generation manifest, and they do not

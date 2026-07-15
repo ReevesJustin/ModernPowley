@@ -68,6 +68,12 @@ maximum loads, powder-suitability decisions, or pressure/velocity predictions.
 Cross-cutting data, validation, uncertainty, plots, tooling, and GRT/web plans
 are documentation direction rather than available workflows.
 
+Empirical-load source, shot, trace, cohort, and dataset-split records are also a
+planned contract only. No load dataset has been ingested, no high-performance
+cohort exists, and no M05 derivation method is admitted. Validation-data
+infrastructure must be separately authorized and accepted before M06, which
+remains unauthorized.
+
 ## Experimental Reproduction
 
 Experimental functions live under `modern_powley.experimental` and reject calls

@@ -18,6 +18,10 @@ is authorized now.
 
 ## Validation Foundation Before M06
 
+The canonical planned specification is
+[`workstreams/empirical_load_evidence_and_validation.md`](workstreams/empirical_load_evidence_and_validation.md).
+It authorizes no implementation or intake.
+
 Formal validation remains M09, but its record contracts and split policy must
 begin before M06. Distinguish source-example reproduction, regression
 reproduction, calibration, in-sample fit, interpolation evaluation,

@@ -55,9 +55,14 @@ exists.
 | 31 full validation | pass | commands recorded in final report |
 | 32 review mapping | pass | this table |
 | 33 final status | pass | canonical specification `accepted` |
-| 34 normal commit/push | pending final commit | must complete normally |
-| 35 clean synchronization | pending push | final verification required |
+| 34 normal commit/push | pass | commit `0c3020fcf8480b0f2a2df4016a56b397cf0f90fc` pushed normally to `origin/main` |
+| 35 clean synchronization | pass | `HEAD` and `origin/main` verified equal at `0c3020f`; worktree clean after push |
 | 36 historical tag | pass | target unchanged |
+
+Gates 34 and 35 were prepared as post-commit checks and therefore appeared as
+pending in the initially committed review. This documentary reconciliation was
+performed only after verifying the accepted commit, synchronized remote, clean
+worktree, and unchanged preservation tag. It changes no M05 scope or behavior.
 
 ## Serialization Decision
 

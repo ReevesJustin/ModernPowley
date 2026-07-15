@@ -113,6 +113,12 @@ region, or numerical behavior exists. Cross-cutting powder evidence, pre-M06 val
 infrastructure, uncertainty, visualization, tooling, hypothesis logging, and
 GRT/web intake remain governed planning directions only.
 
+The next recommended authorization review is limited to immutable empirical-load
+evidence records and strict serialization with synthetic fixtures. The canonical
+workstream is `docs/modernization/workstreams/empirical_load_evidence_and_validation.md`.
+It remains `planned`: no data intake, high-performance cohort, M05 derivation,
+or M06 implementation is authorized.
+
 ## Quarantined And Later Work
 
 The following may be evaluated as candidates in their correct evidence class,
