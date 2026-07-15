@@ -11,7 +11,7 @@ supplements and are not part of the numbered 1961 instruction manual.
 | later insert | 1 | Hutton Rifle Ranch Rifle Powder Selection | table | none | 16-position cross-brand burning-rate table | not implemented | verified_visual_scan | Later sheet mentions 1975 data; not evidence for the 1961 calculator scale. |
 | later insert | 2 | Examples and Powley psi Calculator | examples/instructions | small-change percentage rules | .30-30, .25-06, and .270 examples | not implemented | verified_visual_scan | Separate later pressure sheet; not the numbered manual. |
 | cover/contents | 3 | Powley Computer for Handloaders | contents | none | section/page index | not applicable | verified_visual_scan | Establishes manual pages 3-12. |
-| 3 | 4 | Efficient Powder Selection | narrative/definitions | loading density 0.80 or 0.86 | no numeric calculator scale | charge arithmetic implemented | verified_visual_scan | Defines loading density as powder weight divided by water weight filling powder space. |
+| 3 | 4 | Efficient Powder Selection | narrative/definitions | loading density 0.80 or 0.86 | no numeric calculator scale | charge arithmetic implemented | verified_visual_scan | Defines loading density as powder weight divided by water weight filling powder space. The scan appears to print `4427` here; manual p. 4 prints the actual IMR designation `4227`, which the normalized implementation uses. |
 | 4 | 5 | IMR Powders | narrative/tables | none | cartridge/powder and bullet/powder examples; energy table | descriptive only | verified_visual_scan | Powder selection is a calculator reading, not a printed equation. |
 | 5 | 5 | Ballistic Efficiency; Bore Capacity | definitions/examples | total expansion-ratio definition | expansion-ratio/velocity readings at ER 4 and 12 | geometry implemented | verified_visual_scan | Velocity values are graphical/table readings. |
 | 6 | 6 | Muzzle Pressure; Primers; Other Powders | narrative/readings | none complete | isolated muzzle-pressure readings | not implemented | verified_visual_scan | No complete interpolation algorithm is printed. |
@@ -26,5 +26,9 @@ supplements and are not part of the numbered 1961 instruction manual.
 
 The Markdown transcription has a single marker before manual page 3 and merges
 manual pages 3-12. Visual inspection corrected navigation, not source wording.
-Known OCR risks include `41.M psi`, fractions, `4427`/`4227`, and lost page
-boundaries. Numeric evidence in ledgers cites the scan page and manual page.
+Known OCR risks include `41.M psi`, fractions, and lost page boundaries. The
+`4427`/`4227` discrepancy is visible in the scan itself rather than being only
+an OCR error: p. 3 appears to print `4427`, while p. 4 prints `4227`. Numeric
+evidence in ledgers cites the scan page and manual page. The audit classifies
+this as an internal primary-source printing or legibility inconsistency; it does
+not resolve the p. 3 glyph as merely an OCR error.

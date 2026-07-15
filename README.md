@@ -59,6 +59,7 @@ keyword `allow_unvalidated=True`. `Ba_eff` is not ballistic efficiency.
 
 - `docs/audits/modern_powley_full_repository_audit.md`: finding-by-finding audit.
 - `docs/audits/original_powley_reconstruction_closure.md`: end-to-end original-method closure decision and traceability matrix.
+- `docs/audits/original_powley_reconstruction_completion_audit.md`: freeze-readiness audit of every original operation, source gap, unit, and public function.
 - `docs/audits/original_powley_scale_recovery.md`: primary-source scale search, graphical evidence, and implementation-readiness decision.
 - `docs/audits/davis_1981_evidence_intake.md`: derivative OCR/reprint intake and remaining primary-image verification boundary.
 - `docs/audits/davis_1981_equation_and_example_reconciliation.md`: Davis scalar-equation, unit, implementation, and worked-example audit.

@@ -46,4 +46,4 @@ def test_unresolved_original_operations_have_no_fabricated_equation():
     rows = list(csv.DictReader(Path("docs/provenance/equation_ledger.csv").open(newline="", encoding="utf-8")))
     unresolved = {row["equation_name"]: row for row in rows if row["equation_id"] in {"EQ-022", "EQ-023"}}
     assert unresolved["original velocity"]["equation_text"] == "unresolved"
-    assert unresolved["original pressure"]["equation_text"] == "unresolved"
+    assert unresolved["1961 manual muzzle-pressure reading"]["equation_text"] == "unresolved"
