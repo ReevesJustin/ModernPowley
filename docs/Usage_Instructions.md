@@ -35,6 +35,12 @@ raise `MissingProvenanceError` until exact source material passes the documented
 evidence and implementation-readiness gates. The later Powley psi Calculator is
 a separate unresolved artifact.
 
+The `original/` namespace is evidence-only: modern geometry, later equations,
+and fitted behavior cannot be used as fallbacks. Modernized development is
+authorized separately, but M01 currently specifies inputs and geometry only;
+it provides no powder screening, charge, pressure, velocity, burnout, muzzle
+pressure, ranking, or recommendation workflow.
+
 ## Experimental Reproduction
 
 Experimental functions live under `modern_powley.experimental` and reject calls

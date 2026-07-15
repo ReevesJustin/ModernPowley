@@ -1,4 +1,4 @@
-# ModernPowley: Repository Under Audit
+# ModernPowley: Historical Reference And Modernization Program
 
 > [!CAUTION]
 > Current powder rankings are not validated. The prototype `Ba_target` and
@@ -7,17 +7,22 @@
 > Current and preserved prototype outputs must not be treated as load
 > recommendations or as evidence of pressure, velocity, or burnout performance.
 
-This repository is an evidence-based reconstruction of the Powley Computer plus
-a quarantined record of later ModernPowley experiments. The agent-derived
-prototype is preserved at tag `pre_audit_agent_derived_prototype` (commit
+This repository preserves an evidence-based reconstruction of the Powley
+Computer, later published methods, and quarantined prototype experiments. The
+historical audit is complete relative to retained evidence. A separately
+governed modernized-Powley development program is now authorized; it does not
+claim to recover missing historical scales. The agent-derived prototype remains
+preserved at tag `pre_audit_agent_derived_prototype` (commit
 `08e4ee05b5b10ec8b5f30986bd7e5bd945cc6dc8`). History was not rewritten.
 
-Current reconstruction status has two distinct scopes:
+Repository status has three independent scopes:
 
-- `scalar_arithmetic_core` is source-backed, tested, isolated, and reproducible
-  relative to retained evidence.
-- `complete_historical_method` is `not_ready_to_freeze` because required
+- `scalar_arithmetic_core: verified_reference` - source-backed, tested,
+  isolated, and reproducible relative to retained original-Powley evidence.
+- `complete_historical_method: evidence_limited` - incomplete because required
   graphical scales and reading procedures are unavailable.
+- `modernized_powley: authorized_for_development` - a provenance-separated
+  engineering research track governed by documented phase and promotion gates.
 
 There is no supported load-selection, powder-recommendation, pressure-prediction,
 velocity-prediction, or burnout-prediction workflow.
@@ -44,6 +49,8 @@ Expansion Ratio-Velocity surface, and the 1961 muzzle-pressure surface remain
 source-incomplete. The later Powley psi Calculator is a separate unresolved
 artifact. Those original operations fail
 with `MissingProvenanceError`; they are not guessed from later transcriptions.
+The `original/` namespace is maintained under an evidence-only policy. Missing
+historical behavior cannot be supplied from the modernized track.
 
 W. C. Davis Jr.'s later 1981 formulation is reconstructed separately in
 `later.davis`, including a bounded transcription of his Table 4 pressure factor.
@@ -72,7 +79,12 @@ keyword `allow_unvalidated=True`. `Ba_eff` is not ballistic efficiency.
 - `docs/audits/original_powley_reconstruction_closure.md`: end-to-end original-method closure decision and traceability matrix.
 - `docs/audits/original_powley_reconstruction_completion_audit.md`: freeze-readiness audit of every original operation, source gap, unit, and public function.
 - `docs/provenance/original_powley_evidence_acquisition.md`: capture, intake, and acceptance requirements for missing physical evidence.
-- `TODO.md`: post-audit phase roadmap and prohibited work.
+- [Modernization charter](docs/modernization/modern_powley_charter.md): purpose, safety boundary, and engineering principles.
+- [Evidence and model classes](docs/modernization/evidence_and_model_classes.md): evidence and maturity classifications.
+- [Model boundaries](docs/modernization/model_boundaries.md): historical, later, experimental, and future-modern separation.
+- [Modernized roadmap](docs/modernization/modern_powley_roadmap.md): gated M00-M11 development sequence.
+- [M01 specification](docs/modernization/phases/M01_canonical_inputs_and_geometry.md): next authorized implementation phase; not yet implemented.
+- `TODO.md`: active roadmap, dormant historical acquisition work, and deferred phases.
 - `docs/audits/original_powley_scale_recovery.md`: primary-source scale search, graphical evidence, and implementation-readiness decision.
 - `docs/audits/davis_1981_evidence_intake.md`: derivative OCR/reprint intake and remaining primary-image verification boundary.
 - `docs/audits/davis_1981_equation_and_example_reconciliation.md`: Davis scalar-equation, unit, implementation, and worked-example audit.

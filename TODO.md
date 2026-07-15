@@ -1,107 +1,117 @@
 # ModernPowley Roadmap
 
-This roadmap follows the completed provenance audit. Correct attribution and
-explicit failure take priority over producing a numerical result.
+This roadmap follows the completed historical audit and authorizes a separately
+governed modernized-Powley program. Historical reconstruction and modernization
+have independent status and acceptance gates.
 
-## Current Status
+## Repository Status
 
-- `scalar_arithmetic_core`: source-backed, tested, isolated, and reproducible
-  relative to retained original-Powley evidence.
-- `complete_historical_method`: `not_ready_to_freeze` because required physical
-  graphical scales and reading procedures are unavailable.
-- `select_powder`, `estimate_velocity`, and `estimate_pressure` must continue to
-  raise `MissingProvenanceError` until the required primary evidence passes an
-  implementation-readiness audit.
+- `scalar_arithmetic_core: verified_reference` - source-backed, tested,
+  isolated, and reproducible relative to retained original-Powley evidence.
+- `complete_historical_method: evidence_limited` - incomplete because required
+  physical graphical scales and reading procedures are unavailable.
+- `modernized_powley: authorized_for_development` - active, provenance-separated
+  engineering development outside `original/`.
 
-This is a provenance-completeness determination, not a judgment of predictive
-accuracy and not a loading recommendation.
+Historical `select_powder`, `estimate_velocity`, and `estimate_pressure` must
+continue to raise `MissingProvenanceError`. This is a provenance boundary, not
+a loading recommendation and not a prohibition on modernized development.
 
-## Phase 0: Completed Audit And Sanitation
+## Completed Historical Work
 
-- Preserve the pre-audit prototype at `pre_audit_agent_derived_prototype`.
-- Standardize the environment on `uv` and add repository agent guidance.
-- Inventory files, equations, constants, fields, generated artifacts, and
-  source hashes.
-- Separate `original/`, `later/`, and `experimental/` namespaces.
-- Reconstruct and test the source-backed original scalar arithmetic core.
-- Audit the original manual, physical-computer photographs, archived emulator,
-  and retained Davis derivatives.
-- Quarantine unsupported `Ba_target`, `Ba_eff`, charge regression, GRT-derived
-  mappings, selectors, plots, and prototype outputs.
-- Sanitize current public notebook and repository-local artifacts.
+- Preserved the pre-audit prototype and sanitized the public repository.
+- Standardized the environment on `uv` and established agent guidance.
+- Created source, equation, constant, field, GRT-mapping, and artifact ledgers.
+- Separated original, later, emulator, and experimental behavior.
+- Implemented and tested the retained source-backed scalar arithmetic core.
+- Reconciled original and Davis examples without conflating their provenance.
+- Added provenance, namespace, artifact-hash, and reconciliation tests.
+- Completed reconstruction closure, scale-recovery, and completion audits.
+- Identified every unresolved historical graphical operation explicitly.
 
-## Phase 1: Blocked Original-Powley Reconstruction
+## Historical Evidence-Only Maintenance
 
-The following are historical requirements, not active implementation tasks:
+`src/modern_powley/original/` is under an evidence-only change policy.
 
-- Arrow 2 powder selection is blocked by missing scale geometry, powder
-  boundaries, dividing lines, tie behavior, and revision identity.
-- Original velocity is blocked by the missing Expansion Ratio-Velocity surface,
-  numerical domain, interpolation, edge behavior, precision, and rounding rules.
-- The 1961 muzzle-pressure operation is blocked by its missing surface and
-  reading rules.
-- The separate Powley psi Calculator remains a later unresolved artifact and
-  must not be merged with the numbered 1961 manual.
+Permitted work:
 
-No formula, table, fit, or fallback may be added to close these gaps without new
-retained primary evidence.
+- integrate newly retained original primary evidence;
+- correct demonstrated transcription or implementation errors;
+- improve provenance mappings, documentation, and tests;
+- perform non-behavioral maintenance.
 
-## Phase 2: Evidence Acquisition
+Prohibited work:
 
-Follow
-`docs/provenance/original_powley_evidence_acquisition.md` for capture, intake,
-authentication, digitization, uncertainty, reconciliation, and authorization
-gates. Priority artifacts are:
+- insert modern substitutions or later equations for missing original scales;
+- infer graphical boundaries or fit historical tables;
+- present emulator or GRT behavior as original;
+- silently change source units, constants, domains, or rounding rules.
 
-1. A relevant 1961 Powley Computer with complete, flat captures of both faces
-   and every movable element.
-2. Complete Arrow 2 and reverse Expansion Ratio-Velocity markings.
-3. Any 1961 muzzle-pressure face, table, worksheet, or companion instructions.
-4. Original instructions and tables for the separate later Powley psi
-   Calculator.
+## Dormant Historical Evidence Acquisition
 
-Possessing a photograph does not by itself authorize implementation.
+These tasks resume only if additional evidence becomes available:
 
-## Phase 3: Later-Method Maintenance
+- recover Arrow 2 powder-selection geometry and reading rules;
+- recover the Expansion Ratio-Velocity surface and interpolation rules;
+- recover the 1961 muzzle-pressure surface and reading rules;
+- classify and recover the separate later Powley psi Calculator.
 
-- Keep Davis equations and Table 4 under `later/davis.py`; retain current
-  derivative confidence and primary-image verification gaps.
-- Keep archived-emulator behavior under `later/emulator.py` as a secondary
-  implementation witness.
-- Keep Howell and Miller unavailable until their cited publications are
-  retained, classified, transcribed, and independently audited.
-- Correct cross-references when evidence changes, without promoting any later
-  method into `original/`.
+Follow `docs/provenance/original_powley_evidence_acquisition.md`. Missing scales
+must not be reconstructed from Davis, the emulator, GRT, regressions, modern
+powder behavior, or sparse observations inside `original/`.
 
-Later methods may be maintained or versioned on their own evidence. They cannot
-complete an original-Powley source gap.
+## Active Modernized-Powley Program
 
-## Phase 4: Quarantined Experimental Or Modern Work
+Modernized development is authorized outside `original/` and does not depend on
+recovery of the missing historical scales. The controlling documents are:
 
-Only a separately authorized experimental phase may consider:
+- `docs/modernization/modern_powley_charter.md`;
+- `docs/modernization/evidence_and_model_classes.md`;
+- `docs/modernization/model_boundaries.md`;
+- `docs/modernization/modern_powley_roadmap.md`.
 
-- sourced or measured powder bulk density;
-- newer single-base relative-quickness hypotheses;
-- a separately identified double-base empirical branch;
-- regression research, plotting, ranking, packaging, or interfaces.
+Dependency order:
 
-Such work must remain under `experimental/`, require explicit opt-in, preserve
-units and provenance, and avoid powder or charge recommendations. Legacy charge
-prediction, `Ba_eff` ranking, GRT-parameter harvesting, selectors, spreadsheets,
-notebooks, Streamlit/Gradio concepts, and plots remain quarantined audit history,
-not current deliverables.
+1. **M00 - Program authorization and boundaries:** completed by documentation.
+2. **M01 - Canonical inputs, units, and geometry:** next active implementation
+   phase; specification only at present.
+3. **M02 - Powder-property evidence model.**
+4. **M03 - Transparent geometric screening.**
+5. **M04 - Candidate powder screening.**
+6. **M05 - Bounded charge-region estimation.**
+7. **M06 - Pressure and velocity baseline.**
+8. **M07 - Burn progression and burnout location.**
+9. **M08 - Muzzle pressure and secondary selection objectives.**
+10. **M09 - Measured validation and calibration.**
+11. **M10 - Uncertainty and decision policy.**
+12. **M11 - CLI or application workflow after numerical promotion gates pass.**
 
-## Prohibited Until New Evidence Is Retained
+M01 must establish the canonical data and geometry layer before powder ranking
+or ballistics prediction. It must not implement powder selection, charge,
+pressure, velocity, burnout, muzzle pressure, ranking, or recommendations.
 
-- Filling Arrow 2 boundaries from Davis, the emulator, burn-rate charts, or
-  expected powder choices.
-- Reconstructing the velocity surface from the seven retained observations.
-- Substituting Davis or emulator pressure arithmetic for either Powley pressure
-  artifact.
-- Treating gross case capacity or a generic seating-intrusion estimate as the
-  original measured powder-space input.
-- Fitting, smoothing, calibrating, or extrapolating missing historical values.
-- Building a load selector, charge predictor, recommended-powder workflow, or
-  user interface around unresolved or experimental behavior.
-- Declaring the complete historical method frozen before the evidence and
-  implementation acceptance gates pass.
+## Quarantined And Later Work
+
+The following may be evaluated as candidates in their correct evidence class,
+but none is automatically part of the modernized method and none may enter
+`original/`:
+
+- Davis equations and Table 4;
+- unresolved Howell and Miller methods;
+- archived emulator behavior;
+- GRT-derived fields and behavior;
+- `Ba`, `Ba_target`, and `Ba_eff`;
+- regression or fitted ranking models;
+- modern powder databases;
+- empirical pressure, velocity, or burn models.
+
+Existing prototype outputs remain quarantined. Similar output, worked-example
+agreement, or regression reproduction does not establish provenance or satisfy
+a promotion gate.
+
+## Deferred Product Work
+
+Spreadsheets, notebooks, Streamlit, Gradio, graphical selectors, aggregate
+rankings, and public recommendation interfaces remain deferred through M10.
+Only promoted numerical layers may support M11. No current output is a loading
+instruction or recommended charge.

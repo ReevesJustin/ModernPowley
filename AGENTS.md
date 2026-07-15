@@ -2,10 +2,10 @@
 
 ## Mission
 
-ModernPowley is an evidence-based audit and reconstruction of Homer Powley's
-historical method. It also preserves later work without confusing it with the
-historical baseline. Correct attribution and explicit uncertainty take priority
-over producing a numerical result.
+ModernPowley preserves an evidence-based reconstruction of Homer Powley's
+historical method and authorizes a separate, provenance-controlled modernized
+development program. Correct attribution, model boundaries, and explicit
+uncertainty take priority over producing a numerical result.
 
 This repository does not provide loading recommendations. Do not introduce
 charge advice, component substitutions, pressure assurances, burnout assurances,
@@ -68,10 +68,18 @@ OCR or promote it to a sourced equation.
 
 - `src/modern_powley/original/` may contain only directly sourced original
   arithmetic or explicit `MissingProvenanceError` failures.
+- `src/modern_powley/original/` is under an evidence-only maintenance policy.
+  Behavioral changes require newly retained primary evidence or correction of a
+  demonstrated transcription or implementation error. Modern substitutions,
+  fitted scale data, and later methods are prohibited there.
 - `src/modern_powley/later/` keeps Davis, Howell, Miller, and emulator material
   separate from original Powley.
 - `src/modern_powley/experimental/` contains unvalidated ModernPowley behavior.
   Experimental calculations must require `allow_unvalidated=True`.
+- Future modernized behavior must remain outside `original/`, declare evidence
+  and maturity classes, and pass the promotion gates in `docs/modernization/`.
+  Do not create or promote a modernized numerical namespace until its phase is
+  explicitly authorized.
 - Never describe the Davis formula, the kwk emulator, `Ba_target`, `Ba_eff`, or
   the charge regression as an original Powley equation.
 - Never call `Ba_eff` ballistic efficiency.
