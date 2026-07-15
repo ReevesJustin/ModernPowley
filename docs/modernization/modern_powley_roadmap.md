@@ -33,6 +33,9 @@ Evidence and maturity terms are defined in
 
 ## M01: Canonical Input, Unit, And Geometry Layer
 
+**Status: implemented and reviewed.** See
+`reviews/M01_completion_review.md`. M02 is the next active phase.
+
 - **Objective:** Define typed, provenance-aware physical inputs and geometry
   without powder ranking or ballistics prediction.
 - **Prerequisites:** M00; detailed specification in

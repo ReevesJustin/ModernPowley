@@ -83,7 +83,8 @@ keyword `allow_unvalidated=True`. `Ba_eff` is not ballistic efficiency.
 - [Evidence and model classes](docs/modernization/evidence_and_model_classes.md): evidence and maturity classifications.
 - [Model boundaries](docs/modernization/model_boundaries.md): historical, later, experimental, and future-modern separation.
 - [Modernized roadmap](docs/modernization/modern_powley_roadmap.md): gated M00-M11 development sequence.
-- [M01 specification](docs/modernization/phases/M01_canonical_inputs_and_geometry.md): next authorized implementation phase; not yet implemented.
+- [M01 specification](docs/modernization/phases/M01_canonical_inputs_and_geometry.md): implemented canonical inputs, units, provenance, serialization, and transparent geometry.
+- [M01 completion review](docs/modernization/reviews/M01_completion_review.md): acceptance-gate mapping and remaining limits.
 - `TODO.md`: active roadmap, dormant historical acquisition work, and deferred phases.
 - `docs/audits/original_powley_scale_recovery.md`: primary-source scale search, graphical evidence, and implementation-readiness decision.
 - `docs/audits/davis_1981_evidence_intake.md`: derivative OCR/reprint intake and remaining primary-image verification boundary.
@@ -100,6 +101,7 @@ keyword `allow_unvalidated=True`. `Ba_eff` is not ballistic efficiency.
 - `src/modern_powley/original/`: only directly supported arithmetic and explicit failures.
 - `src/modern_powley/later/`: later transcriptions, never labeled original.
 - `src/modern_powley/experimental/`: opt-in prototype hypotheses.
+- `src/modern_powley/modernized/`: promoted M01 records, units, transparent geometry, and explicit historical adapters; no powder or ballistics prediction.
 - `tests/`: unit, reference, regression-reproduction, and provenance tests.
 
 Legacy CSVs, plots, scripts, and notebook outputs remain for auditability. They

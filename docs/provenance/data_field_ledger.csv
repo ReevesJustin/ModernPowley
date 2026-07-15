@@ -172,3 +172,51 @@ data/reference/original_powley_velocity_observations.csv,reading_type,original_p
 data/reference/original_powley_velocity_observations.csv,precision_or_qualifier,original_powley,text,SRC-POWLEY-1961-MANUAL,manual wording and printed precision,verified_visual_scan,preserves about and rough qualifiers
 data/reference/original_powley_velocity_observations.csv,implementation_status,original_powley,controlled local text,SRC-POWLEY-1961-MANUAL,scale-recovery disposition,unresolved,all rows are non_executable_observation
 data/reference/original_powley_velocity_observations.csv,notes,original_powley,text,SRC-POWLEY-1961-MANUAL,scale-recovery audit,unresolved,does not supply interpolation or extrapolation
+modern_powley.m01.v1,schema,modernized_powley,identifier,SRC-M01-DESIGN,M01 strict serialization,verified_primary,fixed value modern_powley.m01.v1
+modern_powley.m01.v1,record_type,modernized_powley,controlled identifier,SRC-M01-DESIGN,M01 strict tagged union,verified_primary,unknown types rejected
+modern_powley.m01.v1,record_id,modernized_powley,stable identifier,SRC-M01-DESIGN,M01 record contract,verified_primary,required nonblank identity
+modern_powley.m01.v1,quantity.value,modernized_powley,unit identified by sibling field,SRC-M01-DESIGN,M01 quantity contract,verified_primary,finite source value preserved
+modern_powley.m01.v1,quantity.unit,modernized_powley,controlled unit code,SRC-NIST-SP811,M01 unit vocabulary,verified_primary,dimension checked and SI-normalized
+modern_powley.m01.v1,quantity.si_value,derived_quantity,canonical SI unit by dimension,SRC-NIST-SP811,M01 exact conversion tests,verified_primary,computed property not serialized as source replacement
+modern_powley.m01.v1,provenance.evidence_class,modernized_powley,controlled evidence class,SRC-M01-DESIGN,M01 evidence policy,verified_primary,required for supplied and derived values
+modern_powley.m01.v1,provenance.origin,modernized_powley,controlled value origin,SRC-M01-DESIGN,M01 evidence policy,verified_primary,measured published transcribed inferred assumed derived fitted or calibrated
+modern_powley.m01.v1,provenance.source_id,modernized_powley,source or measurement identifier,SRC-M01-DESIGN,M01 provenance contract,verified_primary,required nonblank
+modern_powley.m01.v1,provenance.model_maturity,modernized_powley,controlled maturity class,SRC-M01-DESIGN,M01 promotion policy,verified_primary,does not follow from evidence confidence
+modern_powley.m01.v1,provenance.method_id,derived_quantity,method identifier,SRC-M01-DESIGN,M01 derivation contract,verified_primary,required only for derived values
+modern_powley.m01.v1,provenance.input_record_ids,derived_quantity,identifier list,SRC-M01-DESIGN,M01 derivation contract,verified_primary,required nonempty for derived values
+modern_powley.m01.v1,uncertainty.kind,modernized_powley,controlled tagged-union discriminator,SRC-M01-DESIGN,M01 bounded uncertainty policy,verified_primary,unknown is explicit and not zero
+modern_powley.m01.v1,uncertainty.magnitude,modernized_powley,quantity object,SRC-M01-DESIGN,M01 bounded uncertainty policy,verified_primary,resolution or symmetric absolute only
+modern_powley.m01.v1,uncertainty.lower,modernized_powley,quantity object,SRC-M01-DESIGN,M01 bounded uncertainty policy,verified_primary,finite ordered interval lower bound
+modern_powley.m01.v1,uncertainty.upper,modernized_powley,quantity object,SRC-M01-DESIGN,M01 bounded uncertainty policy,verified_primary,finite ordered interval upper bound
+modern_powley.m01.v1,conditions.case_condition,modernized_powley,controlled case state,SRC-M01-DESIGN,M01 measurement vocabulary,verified_primary,OTHER requires detail and UNKNOWN remains explicit
+modern_powley.m01.v1,conditions.primer_pocket_treatment,modernized_powley,controlled primer basis,SRC-M01-DESIGN,M01 measurement vocabulary,verified_primary,no inferred pocket geometry
+modern_powley.m01.v1,conditions.fill_boundary,modernized_powley,controlled capacity boundary,SRC-M01-DESIGN,M01 measurement vocabulary,verified_primary,OTHER requires detail and UNKNOWN remains explicit
+modern_powley.m01.v1,conditions.water_condition,modernized_powley,text,SRC-M01-DESIGN,M01 measurement contract,verified_primary,required and may explicitly state unknown
+modern_powley.m01.v1,conditions.water_temperature,modernized_powley,temperature quantity,SRC-M01-DESIGN,M01 measurement contract,verified_primary,optional but dimension checked
+modern_powley.m01.v1,cartridge_identity.case_length,modernized_powley,length quantity,SRC-M01-DESIGN,M01 cartridge contract,verified_primary,optional sourced or measured case length; identity is not inferred from dimensions
+modern_powley.m01.v1,gross_case_capacity.water_mass,modernized_powley,mass quantity,SRC-M01-DESIGN,M01 distinct capacity type,verified_primary,gross capacity cannot masquerade as usable capacity
+modern_powley.m01.v1,gross_case_capacity.water_volume,modernized_powley,volume quantity,SRC-M01-DESIGN,M01 explicit conversion pathway,verified_primary,optional and requires conversion convention identity
+modern_powley.m01.v1,measured_usable_powder_space.water_mass,modernized_powley,mass quantity,SRC-M01-DESIGN,M01 distinct measured capacity type,verified_primary,seating-specific measurement identity retained
+modern_powley.m01.v1,measured_usable_powder_space.water_volume,modernized_powley,volume quantity,SRC-M01-DESIGN,M01 explicit conversion pathway,verified_primary,optional and never supplied implicitly
+modern_powley.m01.v1,estimated_usable_powder_space.usable_volume,derived_quantity,volume quantity,SRC-M01-DESIGN,M01 geometric estimate EQ-106,verified_primary,never overwrites measured record
+modern_powley.m01.v1,estimated_usable_powder_space.equivalent_water_mass,derived_quantity,mass quantity,SRC-M01-DESIGN,M01 explicit water conversion,verified_primary,optional and required for estimated water-mass ratio
+modern_powley.m01.v1,primer_pocket_volume.volume,modernized_powley,volume quantity,SRC-M01-DESIGN,M01 explicit primer boundary,verified_primary,optional sourced or measured volume; never inferred from primer identity
+modern_powley.m01.v1,projectile.mass,modernized_powley,mass quantity,SRC-M01-DESIGN,M01 projectile contract,verified_primary,positive with provenance and uncertainty
+modern_powley.m01.v1,projectile.diameter,modernized_powley,length quantity,SRC-M01-DESIGN,M01 projectile contract,verified_primary,distinct from bore groove and effective diameters
+modern_powley.m01.v1,projectile.seating_depth,modernized_powley,length quantity plus direct-or-derived tag,SRC-M01-DESIGN,M01 seating contract,verified_primary,derivation requires compatible reference conventions
+modern_powley.m01.v1,projectile.boat_tail_length,modernized_powley,length quantity,SRC-M01-DESIGN,M01 projectile geometry,verified_primary,paired with base diameter
+modern_powley.m01.v1,projectile.boat_tail_base_diameter,modernized_powley,length quantity,SRC-M01-DESIGN,M01 projectile geometry,verified_primary,cannot exceed shank diameter
+modern_powley.m01.v1,projectile.geometry_adequacy,modernized_powley,controlled status,SRC-M01-DESIGN,M01 geometry contract,verified_primary,outside-model geometry cannot produce estimate
+modern_powley.m01.v1,firearm.bore_diameter,modernized_powley,length quantity,SRC-M01-DESIGN,M01 firearm contract,verified_primary,no automatic bore-groove average
+modern_powley.m01.v1,firearm.groove_diameter,modernized_powley,length quantity,SRC-M01-DESIGN,M01 firearm contract,verified_primary,distinct convention
+modern_powley.m01.v1,firearm.effective_diameter,modernized_powley,length quantity,SRC-M01-DESIGN,M01 firearm contract,verified_primary,caller supplied only; historical mean stays in adapter
+modern_powley.m01.v1,firearm.barrel_length,modernized_powley,length quantity plus reference points,SRC-M01-DESIGN,M01 firearm contract,verified_primary,not projectile travel
+modern_powley.m01.v1,firearm.projectile_travel,modernized_powley,length quantity plus initial and final references,SRC-M01-DESIGN,M01 firearm contract,verified_primary,no COAL or fixed subtraction shortcut
+modern_powley.m01.v1,firearm.freebore_length,modernized_powley,length quantity plus explicit reference,SRC-M01-DESIGN,M01 firearm contract,verified_primary,optional supplied value only; never inferred
+modern_powley.m01.v1,firearm.pressure_standard_identity,modernized_powley,metadata text,SRC-M01-DESIGN,M01 firearm contract,verified_primary,does not yield a pressure value
+modern_powley.m01.v1,barrel_volume_ratio,derived_quantity,dimensionless,SRC-M01-DESIGN,EQ-099,verified_primary,means Vb/V0 only
+modern_powley.m01.v1,total_expansion_ratio,derived_quantity,dimensionless,SRC-M01-DESIGN,EQ-100,verified_primary,means (V0+Vb)/V0 only
+modern_powley.m01.v1,charge_to_bullet_mass_ratio,derived_quantity,dimensionless,SRC-M01-DESIGN,EQ-102,verified_primary,external charge only; no estimate
+modern_powley.m01.v1,charge_to_gross_water_capacity_mass_ratio,derived_quantity,dimensionless,SRC-M01-DESIGN,EQ-102,verified_primary,not volumetric powder fill
+modern_powley.m01.v1,charge_to_measured_usable_water_capacity_mass_ratio,derived_quantity,dimensionless,SRC-M01-DESIGN,EQ-102,verified_primary,not volumetric powder fill
+modern_powley.m01.v1,charge_to_estimated_usable_water_capacity_mass_ratio,derived_quantity,dimensionless,SRC-M01-DESIGN,EQ-102,verified_primary,requires explicit equivalent water mass; not volumetric powder fill

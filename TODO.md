@@ -73,9 +73,9 @@ recovery of the missing historical scales. The controlling documents are:
 Dependency order:
 
 1. **M00 - Program authorization and boundaries:** completed by documentation.
-2. **M01 - Canonical inputs, units, and geometry:** next active implementation
-   phase; specification only at present.
-3. **M02 - Powder-property evidence model.**
+2. **M01 - Canonical inputs, units, and geometry:** implemented and reviewed;
+   see `docs/modernization/reviews/M01_completion_review.md`.
+3. **M02 - Powder-property evidence model:** next active phase.
 4. **M03 - Transparent geometric screening.**
 5. **M04 - Candidate powder screening.**
 6. **M05 - Bounded charge-region estimation.**
@@ -86,9 +86,9 @@ Dependency order:
 11. **M10 - Uncertainty and decision policy.**
 12. **M11 - CLI or application workflow after numerical promotion gates pass.**
 
-M01 must establish the canonical data and geometry layer before powder ranking
-or ballistics prediction. It must not implement powder selection, charge,
-pressure, velocity, burnout, muzzle pressure, ranking, or recommendations.
+M01 establishes the canonical data and geometry layer without powder ranking or
+ballistics prediction. M02 must preserve that boundary and may define only the
+powder-property evidence model authorized by its phase gates.
 
 ## Quarantined And Later Work
 

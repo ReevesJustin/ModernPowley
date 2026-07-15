@@ -43,10 +43,11 @@ derived artifact must use one of the repository's attribution classes:
 4. Miller modification
 5. GRT-derived parameter or behavior
 6. ModernPowley experimental hypothesis
-7. Empirical regression
-8. Derived quantity
-9. Agent-generated assumption
-10. Unknown or unresolved
+7. Modernized Powley promoted method
+8. Empirical regression
+9. Derived quantity
+10. Agent-generated assumption
+11. Unknown or unresolved
 
 Relevant evidence lives in:
 
@@ -76,10 +77,13 @@ OCR or promote it to a sourced equation.
   separate from original Powley.
 - `src/modern_powley/experimental/` contains unvalidated ModernPowley behavior.
   Experimental calculations must require `allow_unvalidated=True`.
-- Future modernized behavior must remain outside `original/`, declare evidence
-  and maturity classes, and pass the promotion gates in `docs/modernization/`.
-  Do not create or promote a modernized numerical namespace until its phase is
-  explicitly authorized.
+- Promoted modernized behavior lives in `src/modern_powley/modernized/`, declares
+  evidence and maturity classes, and must pass its phase gates. Only M01 units,
+  records, serialization, transparent geometry, and explicit historical
+  adapters are currently authorized there; later-phase behavior remains absent.
+- `modernized/` may call verified historical scalars only through
+  `modernized/adapters/original.py`. `original/` must never import
+  `modernized/`.
 - Never describe the Davis formula, the kwk emulator, `Ba_target`, `Ba_eff`, or
   the charge regression as an original Powley equation.
 - Never call `Ba_eff` ballistic efficiency.

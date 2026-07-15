@@ -2,9 +2,9 @@
 
 ## Status
 
-M01 is the next active implementation phase after M00. This document is an
-implementation specification only; no M01 numerical package or API is created
-by the documentation transition.
+M01 is implemented and reviewed. Its promoted API is
+`modern_powley.modernized`; the acceptance mapping is in
+`../reviews/M01_completion_review.md`. M02 is the next active phase.
 
 M01 establishes physical quantity identity, units, provenance, validation, and
 geometry before powder screening or prediction. It must interoperate with the
@@ -23,7 +23,7 @@ verified historical scalar reference through explicit adapters without changing
 
 ## Canonical Internal Unit Policy
 
-The future modernized layer will normalize calculations to SI quantities:
+The modernized layer normalizes M01 calculations to SI quantities:
 
 | Dimension | Canonical internal unit |
 |---|---|
@@ -31,9 +31,6 @@ The future modernized layer will normalize calculations to SI quantities:
 | area | square metre (`m2`) |
 | volume | cubic metre (`m3`) |
 | mass | kilogram (`kg`) |
-| time | second (`s`) |
-| velocity | metre per second (`m/s`) |
-| pressure | pascal (`Pa`) with pressure-kind metadata |
 | temperature | kelvin (`K`) |
 
 Source-faithful inch-pound values remain accepted at adapters and retained in
@@ -56,7 +53,7 @@ as a universal modern conversion.
 
 ## Common Provenance Fields
 
-Each supplied quantity should eventually include:
+Each supplied dimensional value includes:
 
 - value and unit;
 - evidence class;
@@ -249,15 +246,12 @@ M01 is complete only when:
    is introduced.
 10. Schema, implementation, tests, and decision record receive explicit review.
 
-## Open Design Decisions Before Implementation
+## Implemented Decisions
 
-- Select the quantity/type mechanism that enforces SI normalization without a
-  large or opaque dependency.
-- Choose the versioned serialization shape and migration policy.
-- Define uncertainty representation for scalar bounds versus distributions.
-- Decide how measurement condition vocabularies are controlled.
-- Decide whether primer-pocket geometry is a structured submodel or a declared
-  included/excluded state in M01.
-
-These decisions must be resolved in the M01 implementation plan before APIs are
-created. They do not authorize expansion into M02 or later phases.
+M01 uses frozen, slotted standard-library dataclasses and controlled enums. It
+serializes strict tagged JSON-compatible records under
+`modern_powley.m01.v1`; unsupported versions fail and future migrations must be
+explicit. Scalar uncertainty is an explicit tagged union. Primer-pocket state
+is declared, and a correction requires an explicitly measured or sourced
+volume. No primer-pocket geometry is inferred. Full rationale is retained in
+`../decisions/M01_implementation_decisions.md`.

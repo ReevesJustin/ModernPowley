@@ -27,6 +27,7 @@ classes must remain individually visible.
 | `empirical_fit` | Equation or parameters fitted to observations | Never original evidence | Experimental candidate until promoted | Dataset identities, selection, duplicates, preprocessing, objective, algorithm, residuals, uncertainty, and split required | Yes, by definition | Only on disjoint holdout or external data |
 | `calibrated_parameter` | Parameter adjusted so a model agrees with designated calibration cases | Never original evidence | Model-specific candidate | Base model, parameter meaning/units, calibration cases, objective, bounds, covariance/sensitivity, and version required | Yes | Not on calibration cases; external or held-out cases required |
 | `exploratory_hypothesis` | Agent/user proposal without sufficient source or validation | Never | Quarantined exploration only | Author/date, rationale, units, assumptions, expected falsification test, and known gaps required | Not for promoted behavior | No |
+| `derived_quantity` | Deterministic mathematical transformation of explicitly identified input records | Only when the historical equation is independently source-backed | Yes for transparent geometry and conversion | Method/version, input identities, units, assumptions, and uncertainty treatment required | No | Not independent evidence; evaluate the underlying model and inputs |
 
 ### Evidence Rules
 
@@ -37,6 +38,8 @@ classes must remain individually visible.
 - Calibration and evaluation cases must be labeled at row level.
 - A value with unresolved units or semantics is excluded from numerical use.
 - Evidence confidence and model maturity are separate dimensions.
+- A derived quantity inherits no historical or measurement authority merely from
+  its inputs; method provenance remains explicit.
 
 ## Model Maturity Classes
 

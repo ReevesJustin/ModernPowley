@@ -9,6 +9,8 @@ class AttributionClass(str, Enum):
     ONLINE_EMULATOR = "online_emulator"
     GRT = "grt"
     EXPERIMENTAL = "modern_powley_experiment"
+    MODERNIZED = "modernized_powley"
+    DERIVED = "derived_quantity"
     UNKNOWN = "unknown"
 
 

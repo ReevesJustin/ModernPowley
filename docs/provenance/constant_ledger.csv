@@ -40,3 +40,7 @@ CONST-038,0.0142,mixed,Davis pressure K1 coefficient,src/modern_powley/later/dav
 CONST-039,0.53;0.26,dimensionless,Davis pressure K2 coefficients,src/modern_powley/later/davis.py,davis,SRC-DAVIS-1981,user_reviewed_access_restricted_primary,historical crusher-pressure formulation
 CONST-040,95;100;110;115;120;135;160;180,arbitrary relative-quickness values,Davis Du Pont relative-quickness table,src/modern_powley/later/davis.py,davis,SRC-DAVIS-1981,user_reviewed_access_restricted_primary,ordinal laboratory reference; not ratios or universal burn-rate scale
 CONST-041,0.20..1.00;5.0..13.0,dimensionless,Davis Table 4 supported A and R axes,data/reference/davis_1981_table4.csv,davis,SRC-DAVIS-1981-TABLE4,pending_retained_primary_visual_verification,medium-confidence transcription; extrapolation rejected
+CONST-042,0.0254,m/in,exact international inch definition,src/modern_powley/modernized/units.py,modernized_powley,SRC-NIST-SP811,verified_primary,active M01 conversion
+CONST-043,0.45359237,kg/lb,exact avoirdupois pound definition,src/modern_powley/modernized/units.py,modernized_powley,SRC-NIST-SP811,verified_primary,active M01 conversion
+CONST-044,1/7000,lb/gr,exact grain as one seven-thousandth avoirdupois pound,src/modern_powley/modernized/units.py,modernized_powley,SRC-NIST-SP811,verified_primary,active M01 conversion; implementation derives kg/gr from CONST-043
+CONST-045,273.15,K offset from degC,exact Celsius-to-kelvin offset,src/modern_powley/modernized/units.py,modernized_powley,SRC-NIST-SP811,verified_primary,active M01 temperature conversion

@@ -65,3 +65,6 @@ def test_local_artifact_hashes_match_source_ledger():
     assert digest(Path("reference/davis_1981/table4_correction_ledger.csv")) == sources[
         "SRC-DAVIS-1981-TABLE4-CORRECTIONS"
     ]["artifact_hash"].removeprefix("sha256:")
+    assert digest(Path("docs/modernization/decisions/M01_implementation_decisions.md")) == sources[
+        "SRC-M01-DESIGN"
+    ]["artifact_hash"].removeprefix("sha256:")
