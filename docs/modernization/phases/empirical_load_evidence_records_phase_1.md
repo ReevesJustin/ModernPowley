@@ -96,9 +96,10 @@ general canonical JSON bytes.
 
 ## Synthetic Fixtures And Tests
 
-Fixtures live under `tests/fixtures/` and use `SYN-ELE-*` identifiers, fictional
-organizations/components/apparatus, explicit `synthetic_fixture=True`, and
-non-actionable structural values. Tests cover all records, immutability,
+Fixtures live only within the test tree; the shared builders are in
+`tests/unit/test_empirical_load_evidence_records.py`. They use `SYN-ELE-*`
+identifiers, fictional organizations/components/apparatus, explicit
+`synthetic_fixture=True`, and non-actionable structural values. Tests cover all records, immutability,
 conditionals, pressure/velocity separation, missingness, conflicts, exclusions,
 duplicate lineage, trace metadata, strict round trips/failures, no root exports,
 dependency boundaries, and absence of prohibited APIs/data.

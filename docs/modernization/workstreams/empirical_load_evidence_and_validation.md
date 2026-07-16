@@ -337,3 +337,6 @@ only. This parent document still does not authorize implementation of its
 broader scope, any data intake, cohorts, splits, M05 derivation, or M06. Phase 1
 acceptance does not authorize another phase. A recommendation never authorizes
 work.
+
+The current durable handoff is
+[`2026-07-15_empirical_evidence_phase_1_handoff.md`](../../checkpoints/2026-07-15_empirical_evidence_phase_1_handoff.md).
