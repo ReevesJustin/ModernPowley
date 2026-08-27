@@ -2,18 +2,17 @@
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from decimal import Decimal, InvalidOperation
 from enum import Enum
-import re
 from typing import Any
 
 from .missing_values import IdentityQualifier, MissingState
 from .property_observations import SourceLocator
 from .provenance import EvidenceClass, ModelMaturity
 from .uncertainty import Uncertainty
-from .units import Dimension, Quantity, require_dimension, require_positive
-
+from .units import Dimension, Quantity, require_positive
 
 EMPIRICAL_LOAD_EVIDENCE_SCHEMA_ID = "modern_powley.empirical_load_evidence.v1"
 

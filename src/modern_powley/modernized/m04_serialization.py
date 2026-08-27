@@ -3,12 +3,12 @@
 from __future__ import annotations
 
 import json
-from typing import Any, Mapping, TypeAlias
+from collections.abc import Mapping
+from typing import Any, TypeAlias
 
 from .screening_contexts import EvaluationContext
-from .screening_criteria import CriterionDefinition, CriterionSetDefinition, M04_SCHEMA_ID
+from .screening_criteria import M04_SCHEMA_ID, CriterionDefinition, CriterionSetDefinition
 from .screening_outcomes import CriterionEvaluationRecord, CriterionSetOutcomeRecord
-
 
 M04Record: TypeAlias = (
     CriterionDefinition

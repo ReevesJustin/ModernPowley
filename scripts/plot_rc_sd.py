@@ -4,10 +4,11 @@ Uses dynamic Ba_eff from propellant_params.csv.
 Saves to plots/rc_sd_banded.png
 """
 
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
 import os
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
 
 raise RuntimeError(
     "Legacy Ba_eff plot generation is disabled; committed plots are stale audit artifacts."
@@ -75,7 +76,7 @@ if len(df) > 10:
         levels = np.linspace(df['Ba_eff'].min(), df['Ba_eff'].max(), 5)
         cs = plt.tricontour(df['RC'], df['SD'], df['Ba_eff'], levels=levels, colors='k', linewidths=0.5)
         plt.clabel(cs, inline=True, fontsize=8)
-    except:
+    except Exception:
         pass  # Skip if contour fails
 
 # Labels: annotate each point with cartridge

@@ -2,11 +2,15 @@ import math
 
 import pytest
 
-from modern_powley.modernized.provenance import EvidenceClass, ModelMaturity, Provenance, ValueOrigin
+from modern_powley.modernized.provenance import (
+    EvidenceClass,
+    ModelMaturity,
+    Provenance,
+    ValueOrigin,
+)
 from modern_powley.modernized.records import PhysicalValue, UncertaintyTreatment
 from modern_powley.modernized.uncertainty import Uncertainty, UncertaintyKind
 from modern_powley.modernized.units import (
-    Dimension,
     GRAIN_TO_KILOGRAM_EXACT,
     INCH_TO_METRE_EXACT,
     POUND_TO_KILOGRAM_EXACT,

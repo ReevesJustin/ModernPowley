@@ -3,9 +3,10 @@ Script to calculate charge predictions, expansion ratios, etc.
 Loads CartridgeData.csv, computes ER, predicts charge_mass.
 """
 
-import pandas as pd
-import numpy as np
 import os
+
+import numpy as np
+import pandas as pd
 
 raise RuntimeError(
     "Legacy charge generation is disabled. The regression is quarantined under "

@@ -4,7 +4,6 @@ from math import pi
 import pytest
 
 import modern_powley.later.davis as davis
-
 from modern_powley.later.davis import (
     boat_tail_correction_water_grains,
     bullet_travel_inches,

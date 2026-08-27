@@ -2,7 +2,6 @@ import csv
 import hashlib
 from pathlib import Path
 
-
 WORKSTREAM = Path("docs/modernization/workstreams/empirical_load_evidence_and_validation.md")
 REVIEW = Path("docs/modernization/reviews/M05_derivation_readiness_review.md")
 DECISIONS = Path("docs/modernization/decisions/empirical_load_evidence_and_validation_decisions.md")

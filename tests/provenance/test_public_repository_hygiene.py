@@ -3,7 +3,6 @@ import re
 import subprocess
 from pathlib import Path
 
-
 ROOT = Path(__file__).resolve().parents[2]
 NOTEBOOK = ROOT / "jupyter/demo.ipynb"
 PERSONAL_HOME = re.compile(

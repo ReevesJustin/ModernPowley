@@ -1,7 +1,6 @@
 import hashlib
 from pathlib import Path
 
-
 SPEC = Path("docs/modernization/milestones/M05_charge_region_records.md")
 REVIEW = Path("docs/modernization/reviews/M05_evidence_and_semantics_review.md")
 DECISIONS = Path("docs/modernization/decisions/M05_specification_decisions.md")

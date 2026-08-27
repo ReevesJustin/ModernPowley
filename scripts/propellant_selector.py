@@ -4,10 +4,12 @@ Dynamically loads propellant data, ranks by Ba_eff closeness to ideal, looks up 
 provides text-based chart position, includes error handling, and optional summary file output.
 """
 
-import pandas as pd
-import numpy as np
-import os
 import argparse
+import os
+
+import numpy as np
+import pandas as pd
+
 
 def main():
     """Main function to run the propellant selection tool."""

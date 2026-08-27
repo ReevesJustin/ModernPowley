@@ -2,7 +2,6 @@ import ast
 import csv
 from pathlib import Path
 
-
 DAVIS_EQUATIONS = {
     "seating_depth_inches": "EQ-061",
     "flat_base_displacement_water_grains": "EQ-062",

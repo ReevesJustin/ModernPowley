@@ -1,10 +1,10 @@
 import pytest
 
+from modern_powley.later.howell import pressure_correction
+from modern_powley.later.miller import pressure_ratio
 from modern_powley.original.powder_index import select_powder
 from modern_powley.original.pressure import estimate_pressure
 from modern_powley.original.velocity import estimate_velocity
-from modern_powley.later.howell import pressure_correction
-from modern_powley.later.miller import pressure_ratio
 from modern_powley.provenance.validation import MissingProvenanceError
 
 

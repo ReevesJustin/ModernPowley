@@ -2,11 +2,12 @@
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass
 from enum import Enum
 from math import isfinite
 from numbers import Real
-from typing import Any, Mapping
+from typing import Any
 
 from .records import PhysicalValue
 from .units import Quantity, require_dimension

@@ -9,6 +9,7 @@ from typing import Any
 
 from .empirical_load_records import (
     EMPIRICAL_LOAD_EVIDENCE_SCHEMA_ID,
+    RECORD_CLASS_BY_TYPE,
     ActivationState,
     AggregateOrigin,
     AggregateStatistic,
@@ -46,7 +47,6 @@ from .empirical_load_records import (
     PressureTraceMetadataRecord,
     PressureUnit,
     QuantityOrMissing,
-    RECORD_CLASS_BY_TYPE,
     RecordEnvelope,
     ReferenceOrMissing,
     ReferenceRole,
@@ -70,7 +70,6 @@ from .property_observations import SourceLocator, TranscriptionStatus
 from .provenance import EvidenceClass, ModelMaturity
 from .uncertainty import Uncertainty, UncertaintyKind
 from .units import Quantity, Unit
-
 
 _TOP_FIELDS = {"schema", "schema_version", "record_type", "envelope", "payload"}
 

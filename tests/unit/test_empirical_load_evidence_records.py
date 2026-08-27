@@ -1,5 +1,5 @@
-from dataclasses import FrozenInstanceError, replace
 import math
+from dataclasses import FrozenInstanceError, replace
 
 import pytest
 
@@ -94,7 +94,13 @@ def missing_value(state=MissingState.NOT_MEASURED):
     return MissingValue(state=state, explanation="synthetic missing evidence")
 
 
-def ref_or_missing(reference=None, state=MissingState.NOT_REPORTED if hasattr(MissingState, "NOT_REPORTED") else MissingState.NOT_SUPPLIED_BY_SOURCE):
+def ref_or_missing(reference=None, state=None):
+    if state is None:
+        state = (
+            MissingState.NOT_REPORTED
+            if hasattr(MissingState, "NOT_REPORTED")
+            else MissingState.NOT_SUPPLIED_BY_SOURCE
+        )
     if reference is not None:
         return ReferenceOrMissing(reference=reference, missing=None)
     return ReferenceOrMissing(reference=None, missing=missing_value(state))

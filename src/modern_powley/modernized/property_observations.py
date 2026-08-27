@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass
 from enum import Enum
-from typing import Any, Mapping
+from typing import Any
 
 from .missing_values import IdentityQualifier, MissingState
 from .powder_identity import M02_SCHEMA_ID, _strict_record
@@ -22,9 +23,7 @@ from .powder_properties import (
     property_value_from_dict,
 )
 from .property_domains import ApplicabilityDomain
-from .provenance import Provenance
-from .provenance import ValueOrigin
-from .units import Dimension
+from .provenance import Provenance, ValueOrigin
 
 
 class TranscriptionStatus(str, Enum):

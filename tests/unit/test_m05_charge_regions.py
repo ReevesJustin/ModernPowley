@@ -1,16 +1,34 @@
-from dataclasses import FrozenInstanceError, replace
 import math
+from dataclasses import FrozenInstanceError, replace
 
 import pytest
 
 from modern_powley.modernized import (
-    ActivationStatus, ChargeMassEndpoint, ChargeMassSegment, ChargeRegionRecord,
-    DependencyStatus, EndpointInclusion, EvidenceClass, ExactRecordReference,
-    ExactReferenceRole, LifecycleMetadata, MethodReference, ModelMaturity,
-    NonImplicationDeclaration, Provenance, RegionBasis, RegionState, SourceLocator,
+    ActivationStatus,
+    ChargeMassEndpoint,
+    ChargeMassSegment,
+    ChargeRegionRecord,
+    DependencyStatus,
+    EndpointInclusion,
+    EvidenceClass,
+    ExactRecordReference,
+    ExactReferenceRole,
+    LifecycleMetadata,
+    MethodReference,
+    ModelMaturity,
+    NonImplicationDeclaration,
     PressureEvidenceContext,
-    TranscriptionStatus, UncertaintyDeclaration, UncertaintyDeclarationKind,
-    Unit, Quantity, ValueOrigin, VersionedRegionReference,
+    Provenance,
+    Quantity,
+    RegionBasis,
+    RegionState,
+    SourceLocator,
+    TranscriptionStatus,
+    UncertaintyDeclaration,
+    UncertaintyDeclarationKind,
+    Unit,
+    ValueOrigin,
+    VersionedRegionReference,
 )
 
 

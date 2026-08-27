@@ -1,6 +1,5 @@
 from pathlib import Path
 
-
 ROADMAP = Path("TODO.md")
 ACQUISITION = Path("docs/provenance/original_powley_evidence_acquisition.md")
 README = Path("README.md")

@@ -2,8 +2,13 @@ import json
 
 import pytest
 
-from modern_powley.modernized.provenance import EvidenceClass, ModelMaturity, Provenance, ValueOrigin
-from modern_powley.modernized.records import CartridgeIdentity, SCHEMA_ID
+from modern_powley.modernized.provenance import (
+    EvidenceClass,
+    ModelMaturity,
+    Provenance,
+    ValueOrigin,
+)
+from modern_powley.modernized.records import SCHEMA_ID, CartridgeIdentity
 from modern_powley.modernized.serialization import dumps_record, loads_record, record_from_dict
 
 

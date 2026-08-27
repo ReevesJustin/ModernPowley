@@ -22,8 +22,8 @@ from modern_powley.later.emulator import (
     seating_depth_inches,
     select_powder_band,
     total_expansion_ratio_from_geometry,
-    velocity_fps,
     velocity_for_target_cup,
+    velocity_fps,
 )
 
 

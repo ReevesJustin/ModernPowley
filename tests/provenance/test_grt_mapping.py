@@ -1,5 +1,5 @@
-from pathlib import Path
 import xml.etree.ElementTree as ET
+from pathlib import Path
 
 
 def test_aeff_is_area_and_not_effective_case_volume():

@@ -3,8 +3,9 @@ Script to calculate derived metrics from cartridge data.
 Outputs to console and optionally to CSV.
 """
 
-import pandas as pd
 import os
+
+import pandas as pd
 
 raise RuntimeError(
     "Legacy metric generation is disabled: upstream field provenance is unresolved "

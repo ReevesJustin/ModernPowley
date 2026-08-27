@@ -4,7 +4,6 @@ import pytest
 
 from modern_powley.later import davis
 
-
 getcontext().prec = 40
 D = Decimal
 

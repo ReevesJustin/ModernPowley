@@ -2,14 +2,15 @@
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass
 from enum import Enum
-from typing import Any, Mapping, TypeAlias
+from typing import Any, TypeAlias
 
 from .missing_values import MissingState
 from .property_domains import BoundKind
 from .property_observations import SourceLocator
-from .provenance import ModelMaturity, Provenance
+from .provenance import Provenance
 from .units import Quantity
 
 M04_SCHEMA_ID = "modern_powley.m04.v1"

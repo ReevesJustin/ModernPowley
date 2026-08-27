@@ -13,19 +13,21 @@ from modern_powley.modernized import (
     IdentityComparison,
     NumericComparison,
     NumericDomainConstraint,
-    Uncertainty,
-    UncertaintyKind,
-    Quantity,
     PropertyDefinition,
     PropertyId,
     PropertyValueKind,
-    SourceScalarPropertyValue,
-    UnitComparison,
+    Quantity,
     SourceScalarDomainBound,
     SourceScalarDomainConstraint,
     SourceScalarDomainValue,
+    SourceScalarPropertyValue,
+    Uncertainty,
+    UncertaintyKind,
     Unit,
+    UnitComparison,
     compare_property_observations,
+)
+from modern_powley.modernized import (
     test_domain_membership as literal_domain_membership,
 )
 from tests.unit.test_m02_identity_properties_and_missing import (

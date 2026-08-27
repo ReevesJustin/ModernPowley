@@ -15,8 +15,8 @@ from modern_powley.modernized import (
     DomainStatus,
     MissingState,
     NumericDomainConstraint,
-    QueryInterval,
     Quantity,
+    QueryInterval,
     SourceScalarDomainBound,
     SourceScalarDomainConstraint,
     SourceScalarDomainValue,
@@ -24,7 +24,10 @@ from modern_powley.modernized import (
     diagnose_observation_applicability,
 )
 from tests.unit.test_m02_domains_and_conflicts import physical
-from tests.unit.test_m02_identity_properties_and_missing import bulk_observation, synthetic_provenance
+from tests.unit.test_m02_identity_properties_and_missing import (
+    bulk_observation,
+    synthetic_provenance,
+)
 
 
 def domain():

@@ -4,14 +4,32 @@ from dataclasses import replace
 import pytest
 
 from modern_powley.modernized import (
-    ApplicabilityDomain, BoundKind, CategoricalDomainConstraint, DomainBound,
-    DomainQueryContext, DomainQueryKind, DomainQueryValue, DomainStatus,
-    InputBundle, InputCandidate, InputCandidateKind, NumericDomainConstraint,
-    Quantity, Unit, diagnose_observation_applicability, dumps_m03_record,
-    evaluate_input_completeness, loads_m03_record, m03_record_from_dict,
+    ApplicabilityDomain,
+    BoundKind,
+    CategoricalDomainConstraint,
+    DomainBound,
+    DomainQueryContext,
+    DomainQueryKind,
+    DomainQueryValue,
+    DomainStatus,
+    InputBundle,
+    InputCandidate,
+    InputCandidateKind,
+    NumericDomainConstraint,
+    Quantity,
+    Unit,
+    diagnose_observation_applicability,
+    dumps_m03_record,
+    evaluate_input_completeness,
+    loads_m03_record,
+    m03_record_from_dict,
     production_requirement_sets,
 )
-from tests.unit.test_m02_identity_properties_and_missing import bulk_observation, physical, synthetic_provenance
+from tests.unit.test_m02_identity_properties_and_missing import (
+    bulk_observation,
+    physical,
+    synthetic_provenance,
+)
 
 
 def circle_inputs():
@@ -63,7 +81,7 @@ def test_every_m03_record_type_round_trips_strictly(index):
 def test_unsupported_schema_versions_fail(schema):
     data = records()[0].to_dict()
     data["schema"] = schema
-    with pytest.raises(ValueError, match="unsupported|invalid"):
+    with pytest.raises(ValueError, match=r"unsupported|invalid"):
         m03_record_from_dict(data)
 
 

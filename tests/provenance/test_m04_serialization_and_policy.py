@@ -6,13 +6,13 @@ import pytest
 
 import modern_powley.modernized as modernized
 from modern_powley.modernized import (
+    M04_SCHEMA_ID,
     CriterionForm,
     CriterionOutcomeStatus,
+    CriterionSetOutcomeRecord,
     CriterionSetSummary,
     EvaluationContext,
-    M04_SCHEMA_ID,
     OutcomeCounts,
-    CriterionSetOutcomeRecord,
     dumps_m04_record,
     evaluate_criterion,
     loads_m04_record,

@@ -12,7 +12,6 @@ from modern_powley.original.geometry import (
     total_expansion_ratio_from_dimensions,
 )
 
-
 REPORT = Path("docs/audits/original_powley_reconstruction_closure.md")
 UNRESOLVED_ORIGINAL_IDS = {"EQ-022", "EQ-023", "EQ-047"}
 ORIGINAL_CONSTANTS = {

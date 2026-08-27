@@ -3,9 +3,9 @@ Legacy script to transcribe explicit GRT .grtload XML inputs to CSV.
 Unverified caliberfile variable-name mappings are intentionally excluded.
 """
 
-import xml.etree.ElementTree as ET
-import os
 import glob
+import os
+import xml.etree.ElementTree as ET
 
 # Field names alone are not verification evidence. Explicit propellant/caliber
 # input elements below carry their own units and descriptions; internal

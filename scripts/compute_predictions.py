@@ -2,8 +2,9 @@
 Automation script to compute charge predictions from CartridgeData.csv and output to Predictions.csv.
 """
 
-import pandas as pd
 import os
+
+import pandas as pd
 
 raise RuntimeError(
     "Legacy prediction generation is disabled. Use the opt-in experimental API "

@@ -2,7 +2,6 @@ import csv
 import hashlib
 from pathlib import Path
 
-
 ROOT = Path("reference/davis_1981")
 OCR = ROOT / "davis_1981_pages_138_144_raw_ocr.txt"
 REPRINT = ROOT / "derivative_partial_reprint.pdf"

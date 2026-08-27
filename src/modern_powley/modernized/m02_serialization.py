@@ -3,11 +3,12 @@
 from __future__ import annotations
 
 import json
-from typing import Any, Mapping, TypeAlias
+from collections.abc import Mapping
+from typing import Any, TypeAlias
 
 from .powder_identity import M02_SCHEMA_ID, PowderIdentity, PowderIdentityRelationship
-from .property_observations import MissingPropertyObservation, PowderPropertyObservation
 from .property_conflicts import ConflictComparison
+from .property_observations import MissingPropertyObservation, PowderPropertyObservation
 
 M02Record: TypeAlias = PowderIdentity | PowderIdentityRelationship | PowderPropertyObservation | MissingPropertyObservation | ConflictComparison
 

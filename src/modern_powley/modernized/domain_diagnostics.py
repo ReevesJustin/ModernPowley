@@ -2,14 +2,14 @@
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass
 from enum import Enum
-from typing import Any, Mapping, TypeAlias
+from typing import Any, TypeAlias
 
 from .input_requirements import M03_SCHEMA_ID
 from .missing_values import MissingState
 from .property_domains import (
-    ApplicabilityDomain,
     BoundKind,
     CategoricalDomainConstraint,
     DomainStatus,

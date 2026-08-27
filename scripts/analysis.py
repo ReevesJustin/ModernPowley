@@ -3,9 +3,10 @@ Analysis script for cartridge data.
 Loads data from CSVs, performs statistical analysis, validation, and suggests visualizations.
 """
 
-import pandas as pd
-import numpy as np
 import os
+
+import numpy as np
+import pandas as pd
 
 raise RuntimeError(
     "Legacy validation analysis is disabled: it reports in-sample selected-row metrics as validation. "

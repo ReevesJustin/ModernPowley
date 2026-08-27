@@ -10,7 +10,6 @@ from .screening_contexts import (
     EvaluationContext,
     EvidenceReference,
     EvidenceReferenceKind,
-    EvidenceValueKind,
 )
 from .screening_criteria import (
     CriterionDefinition,
@@ -33,7 +32,6 @@ from .screening_outcomes import (
     ManualAssertionDetails,
     OutcomeCounts,
 )
-
 
 _INACTIVE_STATUSES = {
     CriterionStatus.INACTIVE,
@@ -278,7 +276,6 @@ def evaluate_criterion(
 
     reference = references[0]
     passed = False
-    failed = False
     comparison = "Applied the exact controlled criterion form."
     reason = ""
     if criterion.form is CriterionForm.REQUIRED_REFERENCE_PRESENT:
@@ -287,7 +284,6 @@ def evaluate_criterion(
     elif criterion.form is CriterionForm.PROHIBITED_MISSING_STATE_ABSENT:
         assert isinstance(criterion.threshold, MissingStateSetThreshold)
         passed = all(item.missing_state not in criterion.threshold.states for item in references)
-        failed = not passed
         reason = "No prohibited missing state is present." if passed else "A prohibited missing state is present."
     elif criterion.form in {
         CriterionForm.REQUIRED_M03_DIAGNOSTIC_CLASSIFICATION,
@@ -301,13 +297,12 @@ def evaluate_criterion(
             if reference.conflict_declaration is not None
             else reference.literal_value
         )
-        passed, failed = actual == criterion.threshold.value, actual != criterion.threshold.value
+        passed = actual == criterion.threshold.value
         comparison = "Compared the supplied literal and declared literal for exact equality."
         reason = "Exact literal equality was satisfied." if passed else "Exact literal equality was not satisfied."
     elif criterion.form is CriterionForm.CATEGORY_IN_FINITE_SET:
         assert isinstance(criterion.threshold, FiniteSetThreshold)
         passed = reference.literal_value in criterion.threshold.values
-        failed = not passed
         comparison = "Compared the supplied category with the declared finite set literally."
         reason = "Category is in the declared finite set." if passed else "Category is not in the declared finite set."
     elif criterion.form in {
@@ -338,7 +333,6 @@ def evaluate_criterion(
             CriterionForm.NUMERIC_AT_OR_BELOW: value <= bound,
             CriterionForm.NUMERIC_BELOW: value < bound,
         }[criterion.form]
-        failed = not passed
         comparison = "Converted compatible M01 quantities to SI and applied the declared endpoint rule."
         reason = "Numeric bound was satisfied." if passed else "Numeric bound was not satisfied."
     elif criterion.form is CriterionForm.NUMERIC_POINT_INSIDE_INTERVAL:
@@ -360,7 +354,6 @@ def evaluate_criterion(
                 provenance=provenance, source_locator=source_locator,
             )
         passed = _inside_point(reference.quantity.si_value, criterion.threshold)
-        failed = not passed
         comparison = "Converted compatible quantities to SI and applied both declared interval endpoints."
         reason = "Point is inside the declared interval." if passed else "Point is outside the declared interval."
     elif criterion.form is CriterionForm.NUMERIC_INTERVAL_FULLY_CONTAINED:
@@ -390,7 +383,7 @@ def evaluate_criterion(
                 reason="Intervals partially overlap; the supplied interval is not fully contained.",
                 provenance=provenance, source_locator=source_locator,
             )
-        passed, failed = relation == "contained", relation == "disjoint"
+        passed = relation == "contained"
         comparison = "Compared full interval containment with exact endpoint inclusion."
         reason = "Supplied interval is fully contained." if passed else "Supplied interval is disjoint from the criterion interval."
     else:

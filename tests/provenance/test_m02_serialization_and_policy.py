@@ -3,18 +3,18 @@ import json
 import pytest
 
 from modern_powley.modernized import (
-    ApplicabilityDomain,
     M02_SCHEMA_ID,
+    ApplicabilityDomain,
     MissingPropertyObservation,
     MissingState,
     PowderIdentityRelationship,
     PowderRelationshipKind,
+    compare_property_observations,
     dumps_m02_record,
     dumps_record,
     loads_m02_record,
     loads_record,
     m02_record_from_dict,
-    compare_property_observations,
 )
 from tests.unit.test_m02_identity_properties_and_missing import (
     bulk_observation,

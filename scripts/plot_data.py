@@ -3,10 +3,11 @@ Script to generate data visualizations from cartridge data.
 Saves plots to ../plots/ directory.
 """
 
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
 import os
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
 
 raise RuntimeError(
     "Legacy plots are disabled because their data provenance and scientific labels failed audit."

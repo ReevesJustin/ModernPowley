@@ -3,9 +3,9 @@ Script to parse GRT .grtload XML files and extract cartridge data for calculatio
 Extracts effective volume, bullet info (mass, dia, length), propellant mass, groove dia, case vol, barrel length, etc.
 """
 
-import xml.etree.ElementTree as ET
-import os
 import glob
+import os
+import xml.etree.ElementTree as ET
 
 # Mapping of GRT fields to desired columns
 CARTRIDGE_MAPPING = {

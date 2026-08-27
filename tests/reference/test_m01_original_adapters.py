@@ -10,7 +10,12 @@ from modern_powley.modernized.adapters.original import (
     original_sectional_density,
     original_total_expansion_ratio,
 )
-from modern_powley.modernized.provenance import EvidenceClass, ModelMaturity, Provenance, ValueOrigin
+from modern_powley.modernized.provenance import (
+    EvidenceClass,
+    ModelMaturity,
+    Provenance,
+    ValueOrigin,
+)
 from modern_powley.modernized.records import (
     CapacityFillBoundary,
     CaseCondition,

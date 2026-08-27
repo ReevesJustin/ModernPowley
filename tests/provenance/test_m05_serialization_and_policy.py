@@ -1,15 +1,26 @@
 import json
-from dataclasses import replace
 from pathlib import Path
 
 import pytest
 
 from modern_powley.modernized import (
-    M05_SCHEMA_ID, ActivationStatus, DependencyStatus, ExactReferenceRole,
-    LifecycleMetadata, PressureEvidenceContext, RegionBasis, RegionState,
-    SourceLocator, TranscriptionStatus, UncertaintyDeclaration,
-    UncertaintyDeclarationKind, VersionedRegionReference,
-    dumps_m05_record, loads_m05_record, m05_record_from_dict, m05_record_to_dict,
+    M05_SCHEMA_ID,
+    ActivationStatus,
+    DependencyStatus,
+    ExactReferenceRole,
+    LifecycleMetadata,
+    PressureEvidenceContext,
+    RegionBasis,
+    RegionState,
+    SourceLocator,
+    TranscriptionStatus,
+    UncertaintyDeclaration,
+    UncertaintyDeclarationKind,
+    VersionedRegionReference,
+    dumps_m05_record,
+    loads_m05_record,
+    m05_record_from_dict,
+    m05_record_to_dict,
 )
 from tests.unit.test_m05_charge_regions import record, ref, segment
 

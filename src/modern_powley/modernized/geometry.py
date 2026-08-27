@@ -23,7 +23,7 @@ from .records import (
     UncertaintyTreatment,
 )
 from .uncertainty import Uncertainty
-from .units import Dimension, Quantity, Unit, require_dimension, require_positive
+from .units import Dimension, Quantity, Unit, require_positive
 
 METHOD_CIRCLE_AREA = "M01-GEO-CIRCLE-AREA"
 METHOD_CYLINDER_VOLUME = "M01-GEO-CYLINDER-VOLUME"

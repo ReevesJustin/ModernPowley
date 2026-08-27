@@ -2,8 +2,9 @@
 Script to batch process propellant CSV and add Ba_eff column.
 """
 
-import pandas as pd
 import os
+
+import pandas as pd
 
 raise RuntimeError(
     "Legacy Ba_eff generation is disabled. The hypothesis is quarantined under "

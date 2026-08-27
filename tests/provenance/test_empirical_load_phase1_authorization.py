@@ -2,7 +2,6 @@ import csv
 import hashlib
 from pathlib import Path
 
-
 PHASE1 = Path(
     "docs/modernization/workstreams/empirical_load_evidence_records_phase_1.md"
 )

@@ -1,7 +1,6 @@
 import re
 from pathlib import Path
 
-
 MILESTONE_DIR = Path("docs/modernization/milestones")
 ROADMAP = Path("docs/modernization/modern_powley_roadmap.md")
 AGENT_GUIDE = Path("AGENTS.md")

@@ -3,7 +3,8 @@
 from __future__ import annotations
 
 import json
-from typing import Any, Mapping, TypeAlias
+from collections.abc import Mapping
+from typing import Any, TypeAlias
 
 from .domain_diagnostics import ApplicabilityEvaluation, DomainQueryContext
 from .input_completeness import CompletenessEvaluation

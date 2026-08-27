@@ -4,10 +4,11 @@ Uses dynamic Ba_eff from propellant_params.csv.
 Saves to plots/rc_bulletweight.png
 """
 
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
 import os
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
 
 raise RuntimeError(
     "Legacy Ba_eff plot generation is disabled; committed plots are stale audit artifacts."

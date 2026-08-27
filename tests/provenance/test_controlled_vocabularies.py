@@ -3,7 +3,6 @@ from pathlib import Path
 
 from modern_powley.provenance.source_types import AttributionClass, ProvenanceStatus
 
-
 LEDGERS = (
     Path("reference/source_ledger.csv"),
     Path("docs/provenance/equation_ledger.csv"),

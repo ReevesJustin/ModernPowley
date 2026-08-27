@@ -8,11 +8,24 @@ from numbers import Real
 from typing import Any
 
 from .charge_regions import (
-    M05_SCHEMA_ID, ActivationStatus, ChargeMassEndpoint, ChargeMassSegment,
-    ChargeRegionRecord, DependencyStatus, EndpointInclusion, ExactRecordReference,
-    ExactReferenceRole, LifecycleMetadata, MethodReference, NonImplicationDeclaration,
-    PressureEvidenceContext, RegionBasis, RegionState, UncertaintyDeclaration,
-    UncertaintyDeclarationKind, VersionedRegionReference,
+    M05_SCHEMA_ID,
+    ActivationStatus,
+    ChargeMassEndpoint,
+    ChargeMassSegment,
+    ChargeRegionRecord,
+    DependencyStatus,
+    EndpointInclusion,
+    ExactRecordReference,
+    ExactReferenceRole,
+    LifecycleMetadata,
+    MethodReference,
+    NonImplicationDeclaration,
+    PressureEvidenceContext,
+    RegionBasis,
+    RegionState,
+    UncertaintyDeclaration,
+    UncertaintyDeclarationKind,
+    VersionedRegionReference,
 )
 from .property_observations import SourceLocator, TranscriptionStatus
 from .provenance import EvidenceClass, ModelMaturity, Provenance, ValueOrigin

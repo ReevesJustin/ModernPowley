@@ -9,7 +9,6 @@ from modern_powley.original.pressure import estimate_pressure
 from modern_powley.original.velocity import estimate_velocity
 from modern_powley.provenance.validation import MissingProvenanceError
 
-
 REPORT = Path("docs/audits/original_powley_scale_recovery.md")
 OBSERVATIONS = Path("data/reference/original_powley_velocity_observations.csv")
 

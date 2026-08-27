@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass
 from enum import Enum
-from typing import Any, Mapping
+from typing import Any
 
 from .provenance import Provenance
 from .uncertainty import Uncertainty
@@ -86,7 +87,9 @@ def _detail_required(value: Enum, detail: str, name: str) -> None:
         raise ValueError(f"{name} detail is required for OTHER")
 
 
-def _strict(data: Mapping[str, Any], required: set[str], optional: set[str] = set()) -> None:
+def _strict(
+    data: Mapping[str, Any], required: set[str], optional: frozenset[str] = frozenset()
+) -> None:
     if not required <= set(data) or set(data) - required - optional:
         raise ValueError(f"malformed fields; required={sorted(required)} optional={sorted(optional)}")
 

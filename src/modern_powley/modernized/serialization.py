@@ -3,9 +3,11 @@
 from __future__ import annotations
 
 import json
-from typing import Any, Mapping, TypeAlias
+from collections.abc import Mapping
+from typing import Any, TypeAlias
 
 from .records import (
+    SCHEMA_ID,
     CapacityComparison,
     CartridgeIdentity,
     EstimatedUsablePowderSpace,
@@ -14,7 +16,6 @@ from .records import (
     MeasuredUsablePowderSpace,
     PrimerPocketVolume,
     ProjectileRecord,
-    SCHEMA_ID,
 )
 
 M01Record: TypeAlias = CartridgeIdentity | GrossCaseCapacity | MeasuredUsablePowderSpace | PrimerPocketVolume | ProjectileRecord | FirearmRecord | EstimatedUsablePowderSpace | CapacityComparison
