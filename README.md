@@ -139,6 +139,10 @@ become measured data merely because they are committed.
 
 ## Reproducible Audit Commands
 
+Equivalent shortcuts: `just check` (validation) and `just audit` (the two
+audit scripts below). Raw commands, for anyone reproducing this without
+`just`:
+
 ```bash
 uv sync --locked
 uv run pytest -q

@@ -13,7 +13,8 @@ or generic safety language that obscures a specific technical limitation.
 
 ## Environment: Use uv
 
-`uv` is the only supported environment and dependency manager.
+`uv` is the only supported environment and dependency manager. `just check`
+is the single validation entry point (see below); CI runs the same command.
 
 ```bash
 uv sync --locked
@@ -94,33 +95,11 @@ OCR or promote it to a sourced equation.
 - Do not fill missing historical operations by inference. Fail explicitly and
   update the unresolved-source list.
 
-## Units and Geometry
+## Units, Geometry, and Data Rules
 
-- Preserve source units at every parser boundary and encode units in field names
-  where practical, such as `effective_area_mm2` and `case_volume_cm3`.
-- Do not map area to volume or gross fired-case capacity to net powder space.
-- Net powder-space capacity is distinct from gross capacity. Any geometric
-  intrusion estimate must be labeled derived and state its shape assumptions.
-- Use `barrel_volume_ratio = Vb/V0` and
-  `total_expansion_ratio = (V0+Vb)/V0`; never call both simply expansion ratio.
-- Projectile travel is initial bullet-base position to muzzle. Do not subtract
-  COAL or a fixed nominal length from barrel length.
-- Reject missing, non-finite, non-positive, or dimensionally incompatible inputs.
-
-## Data and Simulator Rules
-
-- GRT and QuickLOAD values are modeled data, not laboratory measurements.
-- Do not infer GRT semantics from a field name. Require XML unit/description plus
-  authoritative model documentation for calculations.
-- Keep measured, manufacturer-published, manual-published, user-measured,
-  simulated, geometry-derived, regression-predicted, manually entered,
-  agent-generated, and unknown values distinguishable.
-- Never mean-impute a missing powder parameter, borrow another powder's value, or
-  collapse unknown scientific values to an average.
-- Relative burn-rate charts are rough ordinal references, never deterministic
-  internal-ballistics mappings or universal powder orderings.
-- Burnout claims require explicit burn fraction/distance/time, definition, and
-  source fields. Muzzle pressure does not establish burnout.
+Touching parsers, geometry, or data-provenance code? Read
+`docs/agent_reference.md` first. Not needed for documentation-only or
+governance work.
 
 ## Tests and Changes
 
@@ -145,22 +124,23 @@ OCR or promote it to a sourced equation.
   architecture, commit it in a planning commit, mark it `authorized`, then
   implement; record decisions separately; complete tests/ledgers/validation;
   create the completion review; and mark `accepted` only after all gates pass.
-- A `planned` specification and its evidence review do not authorize source
-  modules, schemas, exports, or numerical behavior. M05 is accepted only for
-  immutable records, structural validation, and strict serialization; no
-  derivation, production data, or M06 behavior is authorized.
 - New empirical fits, correction layers, model variants, and experimental
   interpretations require a versioned hypothesis record covering claim,
   evidence, assumptions, falsification, domain, calibration and held-out data,
   failures, promotion requirements, status, and supersession.
-- The empirical-load parent workstream under `docs/modernization/workstreams/`
-  remains `planned`. Its dedicated records Phase 1 immutable-record and strict-
-  serialization contract is accepted with fictional fixtures only. It
-  authorizes no scientific intake, cohort, split, M05 adapter/derivation, or M06
-  model. Read that specification and its accepted decisions before Phase 1
-  source edits; require a new authorization before scientific intake. Never
-  label source-example, regression, calibration, or in-sample agreement as
-  held-out validation or external replication.
+- Never label source-example, regression, calibration, or in-sample agreement
+  as held-out validation or external replication.
+
+The empirical-load workstream (`docs/modernization/workstreams/`) is
+`planned`; its Phase 1 immutable-record and serialization contract is
+`accepted`, for fictional fixtures only — no scientific intake or M06 model.
+
+A given milestone's or workstream's full authorized scope and exclusions are
+recorded in its own file under `docs/modernization/milestones/`,
+`docs/modernization/decisions/`, and `docs/modernization/workstreams/`, and
+summarized in `README.md`'s Repository Guide. Do not restate one milestone's
+exact scope here beyond its current status — detail goes stale as milestones
+advance and duplicates the authoritative record.
 
 The controlled milestone statuses are `planned`, `authorized`, `in_progress`,
 `implemented`, `accepted`, `superseded`, `blocked`, and `evidence_limited`.
@@ -172,14 +152,11 @@ Before changing model behavior, add or update the narrowest relevant test:
 - `tests/provenance/` for source failures, mappings, hashes, and artifact policy
 - `tests/regression/` for reproduction of quarantined committed behavior
 
-Always run:
-
-```bash
-uv run pytest -q
-uv run python -m compileall -q src scripts tests
-uv lock --check
-git diff --check
-```
+Always run `just check` (wraps `uv run pytest -q`,
+`uv run python -m compileall -q src scripts tests`, `uv lock --check`,
+`git diff --check`, and `uv run ruff check .`; CI runs the same command).
+`just typecheck` runs `mypy` separately -- not yet part of `check`; see
+`pyproject.toml`'s `[tool.mypy]` comment for why and its current findings.
 
 Also validate CSV column counts, JSON syntax, local documentation links, and
 artifact hashes when touching ledgers, notebooks, or generated files.
