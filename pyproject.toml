@@ -16,6 +16,8 @@ dependencies = [
 [dependency-groups]
 dev = [
     "pytest>=9",
+    "ruff>=0.6",
+    "mypy>=1.10",
 ]
 
 [tool.uv]
@@ -27,3 +29,45 @@ where = ["src"]
 [tool.pytest.ini_options]
 pythonpath = ["src", "."]
 testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "C4", "RUF"]
+# Ignored deliberately, not by default: each was checked against the actual
+# codebase before being excluded, not disabled preemptively.
+#   E501   - line length: the established style favors long, explicit,
+#            fully-named test assertions and call sites; enforcing 100 (or
+#            any similarly low limit) would force reformatting ~600+
+#            existing lines with no correctness benefit.
+#   UP042  - class Foo(str, Enum) -> StrEnum: touches ~80 enum declarations
+#            whose exact repr/serialization behavior existing strict M01-M05
+#            record schemas depend on; a behavior-adjacent change requiring
+#            the project's own specification-change process, not a lint fix.
+#   E701/E702/E731 - one-line if/lambda/semicolon statements: existing style
+#            in ~40 call sites; cosmetic, deferred to a dedicated pass.
+#   C408/RUF005/RUF007 - dict()/list() literals, concatenation, zip/pairwise
+#            style: cosmetic, deferred to a dedicated pass.
+#   B905   - zip() without strict=: adding strict=True changes runtime
+#            behavior (raises on length mismatch) at each of 7 call sites;
+#            requires per-call-site review, not a blanket lint fix.
+ignore = ["E501", "UP042", "E701", "E702", "E731", "C408", "RUF005", "RUF007", "B905"]
+
+[tool.ruff.lint.per-file-ignores]
+# Re-exports computed dynamically (__all__ = [name for name in globals() ...]),
+# so ruff's static unused-import check can't see they're used; the dynamic
+# __all__ itself is exercised by tests/provenance/test_architecture.py.
+"src/modern_powley/modernized/__init__.py" = ["F401"]
+
+[tool.mypy]
+python_version = "3.11"
+# Not wired into `just check` or CI yet: a first run surfaces 33 findings
+# concentrated in the modernized/ record and serialization modules (M02-M05),
+# several sharing one pattern -- a dispatch dict typed too loosely for mypy to
+# see that every value has `.from_dict` (m02/m03/m04_serialization.py,
+# domain_diagnostics.py) -- plus several real union-narrowing gaps in
+# property_domains.py and empirical_load_serialization.py. Fixing these touches
+# already-accepted, strictly-serialized record schemas and belongs to this
+# project's own specification-change process, not an unreviewed lint pass.
+# Run `uv run mypy src` directly to see current findings.
