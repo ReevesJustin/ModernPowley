@@ -4,6 +4,9 @@
 
 `resolved_with_refusal_guard` — a maintenance fix, not a specification. This
 record documents a defect and its bounded fix, not a milestone or workstream.
+A follow-up review of the first fix (below, "Follow-Up Review Findings")
+found the guard's guarantee did not yet match this document's original
+claims; those gaps are also closed here.
 
 ## Defect
 
@@ -45,7 +48,10 @@ with content the script would not reproduce exactly:
   outputs.
 - `manifest_overwrite_conflict()` refuses if the existing manifest JSON
   carries any top-level key outside the script's own fixed schema
-  (`MANIFEST_SCHEMA_KEYS`).
+  (`MANIFEST_SCHEMA_KEYS`), or if any schema key's value differs from the
+  candidate (including nested content such as `outputs` or `environment`),
+  except the explicit `MANIFEST_VOLATILE_KEYS` allowlist (currently only
+  `timestamp`, which legitimately differs on every rerun).
 
 `main()` collects every conflict before writing any file and exits nonzero
 via `sys.exit()` with all conflict messages if any check fails. No output is
@@ -62,17 +68,59 @@ review of the current 315-row schema against this script's original scope.
 to that entry point without a `justfile` change. `just check` does not invoke
 this script and was never affected.
 
+## Follow-Up Review Findings (This Fix)
+
+An independent review of the first pass (commit `13eede3`) found three real
+gaps, confirmed by inspection and by isolated `tmp_path` reproduction, none
+of which touched a repository file:
+
+1. **CI failure, not a passing guard.** `test_main_refuses_...` invokes
+   `build_inventory_csv()`, which needs `git show`/`git ls-tree` against the
+   fixed pre-audit checkpoint commit. GitHub's default
+   `actions/checkout@v4` is a shallow, single-commit clone, so that commit is
+   unreachable in CI and the test failed on a `CalledProcessError`, not on
+   the guard. Fixed by setting `fetch-depth: 0` in
+   `.github/workflows/ci.yml` so CI has the same history a normal clone has.
+   The test itself now also skips, with an explicit reason, if the
+   checkpoint commit is unreachable in whatever clone runs it (see
+   `_checkpoint_commit_available()`), so a genuinely shallow local clone
+   fails legibly instead of looking like a broken guard; the other tests in
+   the file are pure `tmp_path` logic tests with no history dependency.
+2. **The stated guarantee exceeded the implementation.** The original
+   `manifest_overwrite_conflict()` only checked for *unknown* top-level keys
+   and would have silently accepted a changed value on a *known* key, or
+   changed nested content (for example inside `outputs`), once
+   `post_generation_updates` was no longer present. Separately, `main()`
+   built the manifest dict *after* writing both CSVs, so an unexpected
+   failure while building the manifest (reproduced by an injected failure)
+   left the two CSVs written with no manifest — a partial write, not a
+   refusal, and a direct contradiction of the "builds every output in memory
+   first" claim above. Both are fixed: `manifest_overwrite_conflict()` now
+   takes the in-memory candidate manifest and compares full content against
+   the existing file, excluding only the explicit `MANIFEST_VOLATILE_KEYS`
+   allowlist; `main()` now builds the manifest dict immediately after the two
+   CSV byte-strings and before any conflict check or write, so a failure at
+   any point in candidate-building can never leave any output partially
+   written.
+3. `mypy` was not implicated; this is a runtime logic and CI-configuration
+   fix, kept separate from the repository's known `mypy` backlog per the
+   maintainer's instruction.
+
 ## Regression Coverage
 
 `tests/provenance/test_generate_audit_inventory_guard.py`:
 
 - runs `main()` against the real repository's current (diverged) state and
   asserts it raises `SystemExit` and that all three protected files remain
-  byte-identical before and after;
+  byte-identical before and after (skipped with an explicit reason if the
+  checkpoint commit is unreachable, for example in a shallow clone);
+- proves an injected failure while building a later candidate (the manifest)
+  leaves no output written, closing the partial-write gap above;
 - confirms the ledger conflict and the manifest conflict are each detected
   and correctly attributed;
 - unit-tests `csv_overwrite_conflict()` and `manifest_overwrite_conflict()`
-  in isolation against synthetic `tmp_path` files for the match/mismatch and
+  in isolation against synthetic `tmp_path` files for the match/mismatch,
+  changed-known-value, changed-nested-content, volatile-key-exemption, and
   valid/invalid-JSON cases.
 
 ## Documentation Corrected

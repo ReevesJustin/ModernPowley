@@ -13,9 +13,14 @@ not write at all.
 
 Regenerating any of these three files unconditionally would silently
 overwrite that hand-maintained content with this script's narrower,
-checkpoint-era output. `main()` refuses instead: it computes every output in
-memory first and, before writing anything, refuses if a target file already
-exists with content this script would not reproduce exactly. See
+checkpoint-era output. `main()` refuses instead: it computes every candidate
+output in memory first -- including the manifest, which needs only the other
+two candidates' in-memory bytes, not an on-disk read -- and, before writing
+anything, refuses if a target file already exists with content this script
+would not reproduce exactly. The two CSVs are compared byte-for-byte; the
+manifest is compared field-for-field, including nested content, against
+everything except `MANIFEST_VOLATILE_KEYS` (currently only `timestamp`,
+which legitimately differs on every rerun). See
 `docs/provenance/generate_audit_inventory_ownership.md` for the governance
 record. Realigning this script's own generation logic to the current
 maintained schemas is a separate, larger task; this script does not attempt
@@ -57,6 +62,12 @@ MANIFEST_SCHEMA_KEYS = frozenset(
         "timestamp",
     }
 )
+
+# Keys expected to legitimately differ between two otherwise-identical
+# generations (for example, a rerun on the same environment produces a new
+# `timestamp`). Every other schema key, including nested content such as
+# `outputs` or `environment`, must match exactly or the write is refused.
+MANIFEST_VOLATILE_KEYS = frozenset({"timestamp"})
 
 
 def git(*args: str) -> bytes:
@@ -226,10 +237,13 @@ def csv_overwrite_conflict(path: Path, candidate: bytes) -> str | None:
     )
 
 
-def manifest_overwrite_conflict(path: Path) -> str | None:
-    """Return a refusal reason if the existing manifest carries keys this
-    script's own schema does not write (hand-maintained fields it would
-    silently delete), else None."""
+def manifest_overwrite_conflict(path: Path, candidate: dict) -> str | None:
+    """Return a refusal reason if writing `candidate` to `path` would
+    silently discard or change existing manifest content this script did not
+    produce, else None. Compares full content (including nested values), not
+    just top-level key presence; `MANIFEST_VOLATILE_KEYS` are excluded from
+    the value comparison since they are expected to differ on every
+    legitimate rerun."""
     if not path.exists():
         return None
     try:
@@ -237,26 +251,45 @@ def manifest_overwrite_conflict(path: Path) -> str | None:
     except json.JSONDecodeError:
         return f"{_display(path)} exists and is not valid JSON. Refusing to write."
     extra_keys = sorted(set(existing) - MANIFEST_SCHEMA_KEYS)
-    if not extra_keys:
-        return None
-    return (
-        f"{_display(path)} already carries hand-maintained field(s) "
-        f"{extra_keys} that are not part of this script's own manifest "
-        "schema; regenerating it would silently delete them. Refusing to "
-        "write."
-    )
+    if extra_keys:
+        return (
+            f"{_display(path)} already carries hand-maintained field(s) "
+            f"{extra_keys} that are not part of this script's own manifest "
+            "schema; regenerating it would silently delete them. Refusing to "
+            "write."
+        )
+    existing_stable = {k: v for k, v in existing.items() if k not in MANIFEST_VOLATILE_KEYS}
+    candidate_stable = {k: v for k, v in candidate.items() if k not in MANIFEST_VOLATILE_KEYS}
+    if existing_stable != candidate_stable:
+        changed = sorted(
+            key
+            for key in set(existing_stable) | set(candidate_stable)
+            if existing_stable.get(key) != candidate_stable.get(key)
+        )
+        return (
+            f"{_display(path)} already exists and differs from what this "
+            f"script would generate in field(s) {changed} (ignoring only the "
+            f"volatile field(s) {sorted(MANIFEST_VOLATILE_KEYS)}). Refusing "
+            "to write."
+        )
+    return None
 
 
 def main() -> None:
+    # Every candidate output is built in memory before anything is written,
+    # including the manifest -- it needs no on-disk CSV, only the in-memory
+    # bytes' hashes -- so a refusal, or any unexpected failure while building
+    # a candidate, can never leave the three outputs partially written.
     inventory_bytes = build_inventory_csv()
     field_ledger_bytes = build_field_ledger_csv()
+    manifest = build_manifest(inventory_bytes, field_ledger_bytes)
 
     conflicts = [
         message
         for message in (
             csv_overwrite_conflict(INVENTORY_PATH, inventory_bytes),
             csv_overwrite_conflict(FIELD_LEDGER_PATH, field_ledger_bytes),
-            manifest_overwrite_conflict(MANIFEST_PATH),
+            manifest_overwrite_conflict(MANIFEST_PATH, manifest),
         )
         if message is not None
     ]
@@ -270,7 +303,6 @@ def main() -> None:
     INVENTORY_PATH.write_bytes(inventory_bytes)
     FIELD_LEDGER_PATH.parent.mkdir(parents=True, exist_ok=True)
     FIELD_LEDGER_PATH.write_bytes(field_ledger_bytes)
-    manifest = build_manifest(inventory_bytes, field_ledger_bytes)
     MANIFEST_PATH.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
