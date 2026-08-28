@@ -34,16 +34,23 @@ question this draft resolves first, before any implementation detail, is
 complete 1981 velocity and pressure chain — `muzzle_velocity_fps` (EQ-077)
 and `historical_crusher_pressure` (EQ-081), plus every geometry/charge input
 they need. `docs/audits/davis_1981_equation_and_example_reconciliation.md`
-independently re-derived Davis's printed `.30-06` worked example at 40-digit
-precision and found the implementation agrees with Davis's own arithmetic to
-within source-rounding error (largest relative difference 0.18% across
-fifteen intermediate values; the final printed velocity and pressure agree to
-0.023% and 0.007% respectively). This is attribution class `davis` (repo-wide
-class 2, "Later Davis transcription or extension") — never original
-Powley — and is already independent of the evidence-limited original-Powley
-reconstruction, exactly as the project's own modernization principle says
-later work should be. No new equation, transcription, or evidence intake is
-needed to use it.
+independently re-derived the `.30-06` worked example preserved in the
+retained secondary derivatives (raw OCR plus a partial reprint PDF — the
+physical 1981 NRA pages themselves are not retained) at 40-digit precision,
+and found the implementation agrees with those source-example figures to
+within source-rounding error (largest relative difference 0.284%, the
+boat-tail correction `K`, across fifteen intermediate values; the final
+printed velocity and pressure agree to 0.023% and 0.007% respectively). This
+is *agreement with a source example preserved in secondary derivatives* —
+corroboration, not primary-source visual verification — and Table 4's F2
+factor remains explicitly medium-confidence, pending that primary
+verification; the reconciliation does not resolve either limitation. This is
+attribution class `davis` (repo-wide class 2, "Later Davis transcription or
+extension") — never original Powley — and is already independent of the
+evidence-limited original-Powley reconstruction, exactly as the project's
+own modernization principle says later work should be. No new equation,
+transcription, or evidence intake is needed to use it as-is, at its existing
+confidence level.
 
 **Option A (this draft recommends this option):** M06's first deliverable is
 a `modernized/adapters/davis.py` module, mirroring the existing
@@ -113,8 +120,12 @@ A later, separately authorized implementation task may add only:
    activation, evidence class, maturity, creation/review context, lineage)
    M01-M05 already require;
 3. explicit rejection, not extrapolation or silent substitution, for any
-   input outside Davis's existing validated domain, matching
-   `later/davis.py`'s current behavior;
+   input outside Table 4's existing lookup bounds
+   (`0.20<=A<=1.00`, `5.0<=R<=13.0`), matching `later/davis.py`'s current
+   behavior. Those bounds describe where the table can be evaluated at all,
+   not a region where Davis's predictions have demonstrated physical
+   accuracy — accuracy is a separate, unresolved question (see "Software
+   Correctness Versus Scientific Validity");
 4. tests that reproduce the existing independent `.30-06` worked-example
    agreement (`tests/reference/test_davis_equation_reconciliation.py`)
    through the new adapter, proving the adapter's unit handling and record
@@ -136,8 +147,8 @@ Option B's generic method contract.
 - CUP-to-PSI or any cross-standard pressure conversion.
 - Any claim, test, or documentation statement that Davis's method (as
   distinct from the adapter's faithfulness to it) is scientifically
-  accurate for real firearms beyond reproducing Davis's own printed
-  examples.
+  accurate for real firearms beyond agreement with the source-example
+  figures preserved in the retained secondary derivatives.
 - Using the DEVA report, or any other single real observation, as
   validation. See "Software Correctness Versus Scientific Validity."
 - Option B's generic `DeclaredMethod` architecture, dataset cohorts/splits,
@@ -158,18 +169,46 @@ worked-example fixtures. It requires no new evidence.
 **Scientific validity** means: Davis's 1981 method, for a real load, predicts
 a pressure or velocity close enough to reality to be useful. The existing
 reconciliation establishes only that the repository's Davis implementation
-matches *Davis's own printed arithmetic* — a claim about implementation
-fidelity, not about physical accuracy. Nothing in this repository currently
-establishes the latter. The one informally supplied DEVA observation (see
-`docs/modernization/reviews/deva_14981_protocol_provenance_note.md`) — one
-configuration, seven shot observations, not a dataset — could at most serve
-as one illustrative real-world comparison point for a Davis-computed
-estimate on the same configuration, explicitly labeled as such; it is never
-validation, never a sample, and never evidence of general accuracy. Formal
-scientific validity requires the versioned hypothesis record `AGENTS.md`
-requires for model variants and, for anything beyond source-example
-reproduction, M09's dataset/cohort/split infrastructure, which this
-specification does not build.
+matches the source-example figures preserved in retained secondary
+derivatives (corroboration, not primary-source visual verification) — a
+claim about implementation fidelity, not about physical accuracy. Nothing in
+this repository currently establishes the latter.
+
+The one informally supplied DEVA observation (see
+`docs/modernization/reviews/deva_14981_protocol_provenance_note.md`) is a
+small sample — seven individual shot observations — but under exactly one
+configuration, one firearm, one date. That narrow *coverage*, not sample
+size as such, is what limits it: it cannot speak to other configurations,
+firearms, lots, or conditions, with or without any comparison to Davis.
+
+If a Davis-computed estimate is ever compared to the DEVA observations for
+their shared `.30-06` configuration, that comparison needs its own
+scrutiny before it means anything, independent of the coverage limit above:
+
+- **Pressure-method incompatibility.** DEVA reports piezoelectric pressure
+  (Kistler transducer); Davis's `historical_crusher_pressure` is explicitly
+  copper-crusher, not modern piezoelectric PSI. The two must never become a
+  direct prediction-error comparison merely because both carry pressure
+  units — this repeats, for this specific pair, the general CUP/piezo
+  non-equivalence this specification and Phase 1 already state.
+- **Propellant scope.** DEVA's load uses Vihtavuori N140; Davis's printed
+  worked examples and Table 3/4 evidence are for specific tested IMR
+  powders. Whether Davis's method has any supporting evidence for N140 at
+  all is unresolved. Vihtavuori's own published burn-rate chart is an
+  approximate ordering that Vihtavuori itself states explicitly excludes
+  load development from its use — a burn-rate *ranking* position is not a
+  calibrated *scaling coefficient*, and neither this specification nor
+  anything else in the repository supplies one for extending Davis's method
+  to N140.
+
+None of this is resolved here, and none of it is required to authorize the
+adapter itself (see "Evidence Gaps" below) — it is required before any
+comparison against DEVA is treated as more than one heavily caveated,
+single-configuration illustration. Formal scientific validity, beyond that,
+requires the versioned hypothesis record `AGENTS.md` requires for model
+variants and, for anything beyond source-example reproduction, M09's
+dataset/cohort/split infrastructure, which this specification does not
+build.
 
 ## Evidence Gaps: What They Block
 
@@ -180,10 +219,13 @@ specification does not build.
 | Only one informally supplied real observation (DEVA), uncustodied, unadmitted | No | No | No | Yes, alone | Yes |
 | Davis's method has no versioned hypothesis record | No | No | No | Yes | Yes |
 | Original-Powley pressure/velocity scales remain evidence-limited | No | No — Option A does not depend on them | No | No — orthogonal to Davis | No |
+| No evidence that Davis's method covers Vihtavuori N140 (DEVA's powder); manufacturer burn-rate chart is an explicitly non-load-development ordering, not a scaling coefficient | No | No | No | Yes, specifically for any DEVA comparison | Yes |
+| DEVA reports piezoelectric pressure; Davis outputs copper-crusher pressure | No | No | No | Yes — blocks any direct pressure comparison, not just accuracy | Yes |
 
 Nothing here blocks drafting or implementing the adapter itself. Everything
-about *scientific validity beyond reproducing Davis's own printed examples*
-remains blocked, and this specification does not claim otherwise anywhere.
+about *scientific validity beyond agreement with the retained source-example
+figures* remains blocked, and this specification does not claim otherwise
+anywhere.
 
 ## Non-Implications
 
@@ -254,7 +296,11 @@ gates pass:
 7. **The DEVA anchor point.** May it ever be cited, once its own custody/
    privacy questions resolve, as one explicitly-labeled illustrative
    comparison alongside a Davis-computed estimate for the same
-   configuration — never as validation?
+   configuration — never as validation, and only once the propellant-scope
+   (does Davis's evidence say anything about Vihtavuori N140) and
+   pressure-method (copper-crusher versus DEVA's piezoelectric reading)
+   prerequisites in "Software Correctness Versus Scientific Validity" are
+   separately addressed?
 8. **Option B's status.** Confirm it is deferred, not abandoned or silently
    forgotten, pending a second real method that would need shared plumbing.
 
