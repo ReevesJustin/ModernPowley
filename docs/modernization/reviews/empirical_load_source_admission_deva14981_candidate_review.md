@@ -7,6 +7,12 @@ a source selection, and not the checkpoint's named "Empirical Evidence Source
 Intake Authorization Review." It precedes and informs that review without
 replacing it.
 
+**Update:** the maintainer subsequently supplied an actual transcription of
+this report. See
+[`deva_1990_protocol_provenance_note.md`](deva_1990_protocol_provenance_note.md)
+for the resulting provenance note. This document is preserved unchanged as a
+record of what was knowable before that transcription existed.
+
 ## Purpose
 
 Apply the draft, unauthorized
