@@ -5,287 +5,258 @@
 `planned` — draft canonical specification, not authorized. Nothing in this
 document authorizes an implementation, a record schema, a serializer, a
 promoted pressure or velocity method, or any change to the accepted M01-M05
-foundation or the accepted empirical-load Phase 1 contract. It becomes the
-scope authority for M06 only if the maintainer separately authorizes it,
-following the same draft-review-decide-authorize sequence used for M05 and
-Phase 1 (`AGENTS.md`, "Modernization milestone governance"). The roadmap's
-existing "Future Phase Concept M06" sketch
+foundation, the accepted empirical-load Phase 1 contract, or `later/davis.py`.
+It becomes the scope authority for M06 only if the maintainer separately
+authorizes it. The roadmap's existing "Future Phase Concept M06" sketch
 (`docs/modernization/modern_powley_roadmap.md`) is a planning recommendation,
-not this specification, and is superseded as the scope authority once (if)
-this document is authorized; it remains a historical planning record.
+not this specification.
+
+**Revision note:** an earlier version of this draft proposed a generic,
+method-agnostic `DeclaredMethod`/`BaselineRecord` architecture with no
+promoted method, reasoning that no pressure/velocity equation was available
+because the original-Powley scales are evidence-limited. Reviewer feedback
+correctly identified this as substituting infrastructure for the milestone's
+actual goal: the modernized program does not depend on completing the
+historical reconstruction, and a real, already-reconciled candidate method
+was sitting unexamined in `src/modern_powley/later/davis.py`. This revision
+leads with that candidate instead.
 
 ## Purpose
 
-M01-M05 built inputs, geometry, powder-property evidence, diagnostics,
-decision records, and charge-region records without computing a pressure or
-velocity value anywhere in `modernized/`. Empirical-load Phase 1 built
-immutable evidence-record containers, also without computing anything. No
-milestone has yet given the modernized program a capability to produce a
-pressure or velocity number at all — accepted or otherwise.
+No milestone through M05 computes a pressure or velocity value anywhere in
+`modernized/`. M06 is where that capability should first appear. The
+question this draft resolves first, before any implementation detail, is
+*how*.
 
-M06 proposes that capability, narrowly: **the software capability to
-construct a fully attributed, immutable, structurally validated pressure
-and/or velocity baseline record from one explicitly declared, versioned
-method plus an explicit load configuration.** M06 does not itself supply,
-validate, or promote any specific method. Whether a real method's *output* is
-scientifically trustworthy is a separate question this specification
-deliberately does not answer — see "Software Correctness Versus
-Scientific Validity" below.
+## Scope Decision — Resolve This Before Anything Else Below
 
-## Why This Scope, Not A Working Prediction
+**Finding:** `src/modern_powley/later/davis.py` already implements Davis's
+complete 1981 velocity and pressure chain — `muzzle_velocity_fps` (EQ-077)
+and `historical_crusher_pressure` (EQ-081), plus every geometry/charge input
+they need. `docs/audits/davis_1981_equation_and_example_reconciliation.md`
+independently re-derived Davis's printed `.30-06` worked example at 40-digit
+precision and found the implementation agrees with Davis's own arithmetic to
+within source-rounding error (largest relative difference 0.18% across
+fifteen intermediate values; the final printed velocity and pressure agree to
+0.023% and 0.007% respectively). This is attribution class `davis` (repo-wide
+class 2, "Later Davis transcription or extension") — never original
+Powley — and is already independent of the evidence-limited original-Powley
+reconstruction, exactly as the project's own modernization principle says
+later work should be. No new equation, transcription, or evidence intake is
+needed to use it.
 
-Three facts in the current codebase and evidence base directly shape this
-proposal, and are the reason it is scoped to architecture rather than to any
-actual prediction:
+**Option A (this draft recommends this option):** M06's first deliverable is
+a `modernized/adapters/davis.py` module, mirroring the existing
+`modernized/adapters/original.py` pattern exactly, that wraps Davis's already
+-reconciled velocity and pressure functions behind M01 `Quantity`-aware,
+explicitly attributed entry points and produces an immutable, attributed
+baseline record. This delivers an actual, working, evidence-grounded
+pressure-and-velocity computation the first time — not a hypothetical
+plugin surface waiting for a method that may never arrive.
 
-1. **No original-Powley pressure or velocity equation is reconstructed.**
-   `src/modern_powley/original/pressure.py` and `velocity.py` are explicit
-   `MissingProvenanceError` stubs — the 1961 manual's muzzle-pressure and
-   velocity graphical scales are not source-complete
-   (`complete_historical_method: evidence_limited` in `TODO.md`). The only
-   working original arithmetic
-   (`src/modern_powley/modernized/adapters/original.py`) covers sectional
-   density, mass ratio, effective bore diameter, projectile travel, barrel
-   volume and expansion ratios, and charge weight for eight named IMR
-   powders — none of it pressure or velocity.
-2. **No alternative method is promoted.** Davis's equations, the archived
-   emulator, GRT-derived behavior, and any regression remain quarantined
-   (`TODO.md`, "Quarantined And Later Work") — evaluable as candidates in
-   their own evidence class, but none is automatically part of the
-   modernized method, and none has been.
-3. **No measured-validation dataset exists.** The empirical-load evidence and
-   validation workstream remains `planned`; its accepted Phase 1 admits only
-   immutable record containers with conspicuously fictional fixtures — no
-   scientific source, cohort, or split. Exactly one real, informally supplied
-   measurement is currently known to this repository at all — a DEVA test
-   protocol supplied as a plain-text transcription (see
-   `docs/modernization/reviews/`, DEVA provenance review) — which is a single
-   uncustodied anchor point, not a dataset, and is not formally admitted
-   anywhere.
+**Option B (deferred, not recommended now):** the earlier generic
+`DeclaredMethod`/`BaselineRecord` architecture, decoupled from any specific
+method. Kept only as a possible later increment if a second real method
+someday needs the same plumbing (a recovered original-Powley scale, or a new
+empirical fit that has cleared its own hypothesis-record and promotion
+process). Building it now, before a second method exists to design it
+against, risks exactly the wrong kind of speculative machinery — it is not
+built out further in this draft.
 
-Given this, a specification that tried to promote a working, evidence-backed
-pressure/velocity *prediction* would either have to fabricate evidentiary
-support that does not exist, or stall indefinitely on data this repository
-does not have and cannot manufacture. Neither is acceptable. This
-specification instead separates two questions that the roadmap's earlier
-concept sketch left bundled together: whether the **software** correctly
-executes a declared computation (answerable now, with synthetic fixtures,
-exactly as M01-M05 and Phase 1 did), and whether any particular **method's
-output** is scientifically valid (not answerable now, and gated below).
+This draft is written around Option A. Everything below is provisional on
+the maintainer confirming Option A over Option B (see decision 1).
 
-## Relationship To M01-M05 And Phase 1
+## Relationship To M01-M05 And `later/davis.py`
 
 - Reuses M01 `Quantity`, `Unit`, `Dimension`, and provenance primitives
-  wherever their existing semantics are exact. M01 currently defines no
-  pressure, velocity, or time dimension (confirmed in
-  `src/modern_powley/modernized/units.py`); M06 does not amend M01 to add
-  them (see "Decisions Requiring Authorization").
-- Reuses the empirical-load Phase 1 pattern for representing a
-  not-yet-M01-native quantity: a source- or method-preserving reported-value
-  union with explicit unit label, quantity definition, and uncertainty/
-  precision references, rather than inventing a second, incompatible
-  pattern. M06's baseline value is a *computed* counterpart to Phase 1's
-  *reported* value — architecturally parallel, not the same type.
-- References M02 powder-property records, M03 diagnostics, and M04 decision
-  records as optional, exact, non-duplicating inputs where a declared method
-  needs them, using the same `ExactReferenceRole`-style pattern M05 already
-  established (`src/modern_powley/modernized/charge_regions.py`).
-- References M05 charge-region records as an optional input only; M06 does
-  not require a bounded charge region to exist, and does not compute one.
-- Does not depend on the empirical-load workstream reaching cohorts or
-  splits. M06's own correctness tests use synthetic fixtures, matching every
-  prior milestone; only *evaluating* a real method's *accuracy* would need
-  that infrastructure (see "Evidence Gaps" below), and no such evaluation is
-  authorized by this document.
+  wherever exact. M01 has no pressure/velocity/time dimension; M06 does not
+  amend M01 to add them (see decision 5).
+- Does not modify `src/modern_powley/later/davis.py` — no equation,
+  constant, or Table 4 value changes. M06 wraps it exactly as
+  `modernized/adapters/original.py` wraps `original/`, without executing
+  research into whether Davis's equations are correct (already independently
+  reconciled) or reopening that reconciliation.
+- Carries Davis's existing dual attribution forward unchanged: the
+  repo-wide attribution class is `davis` (equation ledger), and the
+  `modernized/` `EvidenceClass` enum's closest existing value is
+  `OTHER_PUBLISHED_PRIMARY` — Davis's EQ-077/EQ-081 ledger rows already carry
+  `verification_status: user_reviewed_access_restricted_primary` and the
+  exact disposition notes ("printed by Davis and attributed by Davis to
+  Powley; no original-source verification" and "not modern piezoelectric
+  PSI; explicit F2 required") that any M06 record must preserve, not
+  paraphrase away.
+- References M02/M03/M04/M05 records as optional, non-duplicating inputs
+  only where Davis's own inputs need them (for example, an M05 charge-region
+  record is never required).
 
 ## Authorized Scope
 
 A later, separately authorized implementation task may add only:
 
-1. a `DeclaredMethod` identity structure: name, version, evidence class
-   (reusing the repository's existing eleven attribution classes),
-   maturity, applicable domain, exact required-input specification, and
-   exact source/provenance references — describing a method, not executing
-   research into which methods are correct;
-2. a computed pressure-and/or-velocity reported-value structure, following
-   the Phase 1 source-preserving pattern, extended with an explicit
-   `computed_by_method` reference in place of (never in addition to, for the
-   same field) a source-statement reference;
-3. an immutable `BaselineRecord` that binds one `DeclaredMethod` invocation
-   to its exact input record references (M01 geometry/inputs, optionally
-   M02/M03/M04/M05 records), its computed value(s), an explicit domain/
-   applicability statement, and the common envelope (identity, versioning,
-   activation, evidence class, maturity, creation/review context, lineage,
-   supersession) M01-M05 already require;
-4. a narrow, explicit calling contract: given a `DeclaredMethod` (supplied
-   by the caller as a plain callable plus its identity metadata, not
-   selected or ranked by M06) and valid inputs, M06 constructs a
-   `BaselineRecord` deterministically or raises an explicit, typed failure;
-   M06 itself contains no pressure or velocity arithmetic and picks no
-   method;
-5. explicit failure/rejection behavior for out-of-domain inputs, missing
-   required inputs, and dimensionally invalid outputs;
-6. unit, architecture, provenance, and governance tests using conspicuously
-   synthetic declared methods and fixtures (no real pressure/velocity
-   equation is exercised as more than an interchangeable test double); and
-7. documentation stating exactly this boundary.
+1. `modernized/adapters/davis.py`: explicit one-way wrapper functions for
+   Davis's existing geometry/charge chain and its two terminal outputs
+   (`muzzle_velocity_fps`, `historical_crusher_pressure`), each requiring
+   explicit M01 records as input (mirroring `original.py`'s
+   `HistoricalScalarResult` pattern) and performing only unit conversion via
+   `.to(Unit.X)` before calling the existing, already-reconciled `later.davis`
+   functions unchanged;
+2. an immutable `DavisBaselineRecord` (exact name is an implementation
+   decision) carrying: the computed velocity (ft/s) and/or historical
+   crusher pressure value, an explicit, un-droppable statement that this
+   pressure is copper-crusher, not modern piezoelectric PSI, the Table 4 F2
+   value used and its existing `pending_retained_primary_visual_verification`
+   / medium-confidence status, the exact EQ-077/EQ-081 (and supporting
+   EQ-061 through EQ-086) equation-ledger references, exact input record
+   references, domain bounds actually enforced (`0.20<=A<=1.00`,
+   `5.0<=R<=13.0`, no extrapolation — Davis's existing `ValueError` behavior
+   is preserved, not loosened), and the common envelope (identity, version,
+   activation, evidence class, maturity, creation/review context, lineage)
+   M01-M05 already require;
+3. explicit rejection, not extrapolation or silent substitution, for any
+   input outside Davis's existing validated domain, matching
+   `later/davis.py`'s current behavior;
+4. tests that reproduce the existing independent `.30-06` worked-example
+   agreement (`tests/reference/test_davis_equation_reconciliation.py`)
+   through the new adapter, proving the adapter's unit handling and record
+   construction, not re-deriving Davis's equations again;
+5. documentation stating the exact attribution, confidence-disclosure, and
+   non-piezoelectric-pressure requirements above.
 
-No authorized behavior selects, ranks, validates, or recommends a method. A
-`BaselineRecord`'s existence means only that some declared method produced
-some value for some inputs — nothing about whether that value is close to
-anything real.
+No authorized behavior changes `later/davis.py`, claims Davis's method is
+scientifically validated beyond source-example reproduction, or builds
+Option B's generic method contract.
 
 ## Explicit Exclusions
 
-M06, as scoped here, does not authorize:
-
-- an original-Powley, Davis, or any other named pressure/velocity equation's
-  *admission* as a working method — that is a separate, later evidentiary
-  and promotion decision per method, not a byproduct of this architecture;
-- any claim, test assertion, or documentation statement that a
-  `BaselineRecord`'s value is accurate, validated, safe, or recommended;
-- CUP-to-PSI or any other cross-standard pressure conversion;
-- model-family fallback, ensembling, or averaging across methods;
-- ranking or comparing methods against each other;
-- burn progression, burnout location, or muzzle-pressure/objective work
-  (M07, M08);
-- formal measured validation, error metrics, or holdout evaluation (M09) —
-  M06 defines the record a future M09 evaluation would reference, but does
-  not perform that evaluation;
-- dataset cohorts, splits, or any empirical-load workstream phase beyond the
-  accepted Phase 1 record containers;
-- amending M01, M02, M03, M04, or M05's accepted specifications, APIs, or
-  serializers;
-- a database, dataframe, plotting, notebook, web/API, or CLI surface (M11).
+- Any change to `later/davis.py` equations, constants, Table 4 values, or
+  its existing domain/rejection behavior.
+- Promotion of original-Powley pressure/velocity arithmetic — it remains an
+  explicit `MissingProvenanceError` stub; this milestone does not depend on
+  it and does not change it.
+- CUP-to-PSI or any cross-standard pressure conversion.
+- Any claim, test, or documentation statement that Davis's method (as
+  distinct from the adapter's faithfulness to it) is scientifically
+  accurate for real firearms beyond reproducing Davis's own printed
+  examples.
+- Using the DEVA report, or any other single real observation, as
+  validation. See "Software Correctness Versus Scientific Validity."
+- Option B's generic `DeclaredMethod` architecture, dataset cohorts/splits,
+  M07/M08/M09 work, and any database/dataframe/plotting/web/CLI surface.
+- Amending M01-M05's accepted specifications, APIs, or serializers.
 
 ## Software Correctness Versus Scientific Validity
 
-This distinction is the spine of the specification and must be kept
-explicit in every test, docstring, and future completion review:
+**Software correctness**, for this milestone, means: the adapter converts
+M01 quantities into exactly the inputs Davis's already-reconciled functions
+expect, calls those functions unchanged, and constructs a record whose
+fields, units, domain bounds, and attribution exactly reflect that call.
+Because the functions being wrapped are fixed, known, and already
+independently reconciled — not an arbitrary caller-supplied callable — this
+is ordinary, fully testable software engineering today, using the existing
+worked-example fixtures. It requires no new evidence.
 
-**Software correctness** means: given a `DeclaredMethod` (including a
-synthetic, fictional one used only in tests) and a fully specified set of
-inputs, M06's architecture (a) calls the method with correctly unit-converted
-arguments, (b) rejects out-of-domain or incomplete inputs before calling it,
-(c) constructs a `BaselineRecord` whose fields, references, units, and
-attribution exactly and deterministically reflect the call that was made,
-(d) never silently substitutes a default, another method, or a cached value,
-and (e) is fully verifiable today with synthetic fixtures, independent of
-whether any real pressure/velocity equation exists yet. This is ordinary
-software testing and requires no new evidence.
-
-**Scientific validity** means: a specific method's output, for real inputs,
-is close enough to a real measured pressure or velocity to be useful or
-trustworthy for some stated purpose. This is not established by software
-correctness, by an in-sample or source-example reproduction, by regression
-reproduction against another unvalidated tool, or by any number of
-`BaselineRecord`s existing. It requires the versioned hypothesis record
-`AGENTS.md` already requires for empirical fits and model variants
-(claim, assumptions, falsification, domain, calibration/held-out data,
-failures, promotion requirements), and, for any claim beyond source-example
-reproduction, the dataset/cohort/split and formal evaluation infrastructure
-this specification explicitly does not build (M09's role, per the
-empirical-load workstream). A `BaselineRecord` under this specification
-carries no maturity value that means "scientifically validated"; the
-existing `ModelMaturity`/`EvidenceClass` vocabulary is reused exactly, not
-reinterpreted to imply more than it already means elsewhere in the
-repository.
-
-A future completion review for this specification must be able to state
-plainly: "the architecture is tested and correct; no method admitted through
-it has been scientifically validated" — and that must remain true regardless
-of how many synthetic or even real `DeclaredMethod`s are later registered
-against it, until a separate, explicit promotion gate (not part of this
-specification) says otherwise for one specific method.
+**Scientific validity** means: Davis's 1981 method, for a real load, predicts
+a pressure or velocity close enough to reality to be useful. The existing
+reconciliation establishes only that the repository's Davis implementation
+matches *Davis's own printed arithmetic* — a claim about implementation
+fidelity, not about physical accuracy. Nothing in this repository currently
+establishes the latter. The one informally supplied DEVA observation (see
+`docs/modernization/reviews/deva_14981_protocol_provenance_note.md`) — one
+configuration, seven shot observations, not a dataset — could at most serve
+as one illustrative real-world comparison point for a Davis-computed
+estimate on the same configuration, explicitly labeled as such; it is never
+validation, never a sample, and never evidence of general accuracy. Formal
+scientific validity requires the versioned hypothesis record `AGENTS.md`
+requires for model variants and, for anything beyond source-example
+reproduction, M09's dataset/cohort/split infrastructure, which this
+specification does not build.
 
 ## Evidence Gaps: What They Block
 
-Per the maintainer's explicit direction, gaps are classified by what they
-block, not treated uniformly as blocking everything:
-
-| Gap | Blocks drafting this spec? | Blocks implementing the M06 architecture? | Blocks admitting any real method? | Blocks M09 evaluation of a method? | Blocks promoting a method? |
+| Gap | Blocks drafting this spec? | Blocks implementing the Davis adapter? | Blocks claiming source-example reproduction? | Blocks claiming real-world scientific validity? | Blocks M09 evaluation? |
 |---|---|---|---|---|---|
-| No original-Powley pressure/velocity equation exists | No | No | Yes, for that method specifically | N/A until admitted | Yes |
-| Davis/GRT/emulator/regression remain quarantined | No | No | Yes, until independently evidence-reviewed and promoted under its own class | N/A until admitted | Yes |
-| M01 has no pressure/velocity/time dimension | No (M06 uses its own reported-value structure, per Phase 1's precedent) | No | No | No | No |
-| Empirical-load workstream has no cohort/split infrastructure | No | No | No (a method can be admitted with a narrow, explicit domain and no dataset, same as any M01-M05 record can exist without production data) | Yes | Yes |
-| Only one informally supplied real observation (DEVA) exists, uncustodied | No | No | No, on its own — it is supporting evidence for one narrow domain point, not sufficient alone to admit a general method | Yes, for anything beyond a single anchor comparison | Yes |
-| No versioned hypothesis record exists for any candidate method | No | No | Yes | Yes | Yes |
+| Table 4 is medium-confidence, pending primary visual verification | No | No — the adapter surfaces this status honestly rather than resolving it | No | Yes | Yes |
+| No dataset/cohort/split infrastructure exists | No | No | No | Yes | Yes |
+| Only one informally supplied real observation (DEVA), uncustodied, unadmitted | No | No | No | Yes, alone | Yes |
+| Davis's method has no versioned hypothesis record | No | No | No | Yes | Yes |
+| Original-Powley pressure/velocity scales remain evidence-limited | No | No — Option A does not depend on them | No | No — orthogonal to Davis | No |
 
-Nothing in this table blocks authorizing and implementing the architecture
-itself. Everything in the "admitting/evaluating/promoting a method" columns
-remains blocked, per method, until its own evidence is in hand — this
-specification does not and cannot resolve that per-method work in advance.
+Nothing here blocks drafting or implementing the adapter itself. Everything
+about *scientific validity beyond reproducing Davis's own printed examples*
+remains blocked, and this specification does not claim otherwise anywhere.
 
 ## Non-Implications
 
-Constructing a `BaselineRecord`, passing M06's tests, or this specification
-being authorized establishes none of the following:
+Constructing a `DavisBaselineRecord`, passing M06's tests, or this
+specification being authorized establishes none of the following:
 
-- that any pressure or velocity value is accurate, safe, or recommended;
-- that a declared method is scientifically valid, calibrated, or superior to
-  another;
+- that Davis's computed pressure or velocity is accurate, safe, or
+  recommended for any real load;
+- that historical crusher pressure is equivalent to, or convertible to,
+  modern piezoelectric PSI;
+- that Davis's Table 4 factor is fully verified against the primary NRA
+  publication — it remains medium-confidence pending primary images;
 - suitability, a starting or maximum charge, or any loading instruction;
-- solver readiness, M07/M08/M09 readiness, or M11 readiness;
-- that the original-Powley, Davis, or any other named method is admitted —
-  admission of any specific method is a separate, later, per-method decision
-  requiring its own evidence review and, where it is a fit or model variant,
-  the versioned hypothesis record `AGENTS.md` requires.
+- that original-Powley pressure/velocity arithmetic is now available —
+  it is unchanged and still evidence-limited;
+- M07/M08/M09/M11 readiness.
 
-## Required Future Implementation Deliverables
+## Acceptance Gates
 
-1. A design document and separate implementation decision record, following
-   the same pattern as `docs/modernization/phases/` and
-   `docs/modernization/decisions/` for M01-M05.
-2. The smallest coherent module set inside `modernized/` (for example
-   `modernized/baseline.py` or a `modernized/baseline/` package — exact
-   naming is an implementation decision).
-3. Tests using only synthetic, fictional `DeclaredMethod`s and fixtures,
-   covering: correct unit handling, domain rejection, deterministic record
-   construction, reference/lineage integrity, and architecture boundaries
-   (no import from `original/`, `later/`, `experimental/`, or legacy
-   scripts; no amendment to M01-M05 files).
-4. A completion review mapping every gate below before status may become
-   `accepted`, explicitly stating the software-correctness/scientific-
-   validity distinction as fact, not aspiration.
+A later implementation may mark this milestone `accepted` only when all
+gates pass:
+
+1. `src/modern_powley/later/davis.py` is unmodified — no equation, constant,
+   or Table 4 value changes; its existing domain-rejection behavior is
+   unchanged.
+2. `modernized/adapters/davis.py` accepts only explicit M01 records as
+   input; no bare floats or ad hoc unit handling.
+3. All unit conversion uses M01's `.to(Unit.X)`, not inline arithmetic.
+4. Every produced record surfaces the Table 4 F2 medium-confidence /
+   pending-primary-verification status and the copper-crusher (not modern
+   PSI) statement; neither can be omitted, defaulted, or paraphrased away.
+5. Domain bounds (`0.20<=A<=1.00`, `5.0<=R<=13.0`) are enforced exactly as
+   `later/davis.py` already enforces them; no extrapolation is added.
+6. Tests reproduce the existing independent `.30-06` worked-example
+   agreement (source rounding only, no implementation defect) through the
+   new adapter.
+7. Every record cites EQ-077/EQ-081 (and its supporting EQ-061 through
+   EQ-086 chain), the `davis` repo-wide attribution class, and the
+   maintainer-selected `EvidenceClass` value (decision 2).
+8. No test, docstring, or documentation claims validation, confirmation, or
+   real-world accuracy beyond source-example reproduction.
+9. No import from `original/`, `experimental/`, legacy scripts, or any
+   M01-M05 file changes beyond what this specification authorizes.
+10. `just check` passes; a completion review maps every gate above.
 
 ## Decisions Requiring Authorization
 
-This draft resolves none of the following:
-
-1. **Overall scope acceptance** — is "architecture and record contract, no
-   promoted method" the right first M06 increment, or does the maintainer
-   want a narrower or broader first cut (for example, deferring even the
-   `DeclaredMethod` contract until a real candidate method exists to design
-   it against)?
-2. **Pressure/velocity representation** — reuse and extend the Phase 1
-   source-preserving reported-value pattern (as proposed), or amend M01 to
-   add native pressure/velocity/time dimensions? The latter would require a
-   separate M01 amendment process since M01 is `accepted`.
-3. **Method-calling contract shape** — is a caller-supplied plain callable
-   plus identity metadata (as proposed) the right interface, or should M06
-   define a registry/protocol class instead? A registry raises the question
-   of whether M06 would then be "selecting" methods, which this draft
-   deliberately avoids.
-4. **Serialization** — does M06 need its own strict schema (e.g.
-   `modern_powley.m06.v1`), matching M02-M05's pattern, in this first
-   increment, or should it start as an in-memory-only record type (no
-   serializer) until real usage demonstrates the need, similar to how Phase
-   1 stayed module-qualified before any export review?
-5. **Relationship to the DEVA anchor point** — should the DEVA provenance
-   review's single observation be usable, once the maintainer resolves its
-   own open custody/privacy questions, as one synthetic-adjacent but
-   real-world test case for the architecture (clearly labeled as one
-   anchor, not validation), or should M06's tests remain entirely fictional
-   until a real dataset exists? This draft defaults to entirely fictional
-   fixtures, consistent with every prior milestone.
-6. **Naming** — `M06_pressure_velocity_baseline.md` versus a more precise
-   name reflecting the narrower "architecture only" scope (for example,
-   distinguishing this from a hypothetical later "M06 Phase 2: promoted
-   method").
+1. **Confirm Option A over Option B.** This draft recommends wrapping
+   Davis's already-reconciled chain (Option A) as M06's actual first
+   deliverable, instead of building a generic method-agnostic architecture
+   with no promoted method (Option B, deferred). This is the decision every
+   other item below depends on.
+2. **`EvidenceClass` mapping.** Is `OTHER_PUBLISHED_PRIMARY` the right
+   existing value for Davis-derived M06 records, or does the `EvidenceClass`
+   enum need a more specific addition (the enum currently has no dedicated
+   "later Davis" value, unlike the repo-wide ledger's `davis` class)?
+3. **Table 4 confidence disclosure mechanism.** A typed status field, a
+   required free-text disclaimer, or both?
+4. **Supporting geometry outputs.** Does M06 expose only the final
+   velocity/pressure, or also Davis's intermediate geometry values (seating
+   depth, expansion ratio, etc.) as their own attributed records?
+5. **Pressure/velocity representation.** Reuse and extend the empirical-load
+   Phase 1 source-preserving reported-value pattern (as Option A implicitly
+   assumes), or amend M01 to add native pressure/velocity dimensions? The
+   latter needs its own M01 amendment process.
+6. **Serialization.** A strict schema now (`modern_powley.m06.v1`,
+   matching M02-M05), or in-memory-only until real usage demonstrates need?
+7. **The DEVA anchor point.** May it ever be cited, once its own custody/
+   privacy questions resolve, as one explicitly-labeled illustrative
+   comparison alongside a Davis-computed estimate for the same
+   configuration — never as validation?
+8. **Option B's status.** Confirm it is deferred, not abandoned or silently
+   forgotten, pending a second real method that would need shared plumbing.
 
 No implementation, schema, or authorization follows from this document. The
-next step is the maintainer's review of the six decisions above, resulting
-in either an authorization decision record (mirroring
-`docs/modernization/decisions/M05_records_only_authorization.md`) or a
-determination that this draft should be revised.
+next step is the maintainer's review of the eight decisions above.
