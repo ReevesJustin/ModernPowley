@@ -222,10 +222,19 @@ exactly one tag. Each assertion requires **[new]**:
   not weaken the closed relationship-type vocabulary;
 - reviewer identity and timestamp.
 
-`duplicate_publication_of` and `derivative_transcription_of` targets are
-proposed to never count toward replicate count or sample size in any later
-cohort or split — consistent with Phase 1's existing prohibition on inflated
-replication.
+A record that carries a `duplicate_publication_of` or
+`derivative_transcription_of` assertion is proposed to contribute no
+additional replication credit of its own beyond its target — the asserting
+record (the republication or transcription) does not count as a separate,
+independent replicate of the same underlying observation. This does not
+exclude the target record itself, and it does not decide either record's
+actual cohort or split eligibility or count; that determination belongs
+entirely to a later, separately authorized cohort/split specification. This
+proposal only prevents an admitted duplicate or derivative copy from
+silently inflating apparent sample size — consistent with Phase 1's existing
+prohibition on inflated replication. An earlier version of this sentence was
+ambiguous about which record ("target" vs. asserting record) the prohibition
+applied to; this is the corrected reading.
 
 ### No Default To Independence
 
@@ -275,7 +284,13 @@ does not implement anything, so none of these are evaluated here.
 ## Decisions Requiring Authorization
 
 This draft resolves none of the following. It surfaces them because Phase 2
-cannot be marked `authorized` until they are:
+cannot be marked `authorized` until they are. **Maintainer-stated
+preference, not yet a formal decision record:** keep this rubric
+documentation-only until one actual source package receives its own
+source-selection and custody review, do not introduce another serializer,
+and do not amend accepted Phase 1 records yet — bearing on (1), (2)/(5), and
+(6) below. This narrows what a future authorization decision record would
+need to formalize; it does not itself authorize anything.
 
 1. **Sequencing** — should this admission-requirements draft be authorized
    and resolved before the checkpoint's named "Source Intake Authorization
