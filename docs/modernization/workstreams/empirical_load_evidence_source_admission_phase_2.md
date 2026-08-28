@@ -284,13 +284,14 @@ does not implement anything, so none of these are evaluated here.
 ## Decisions Requiring Authorization
 
 This draft resolves none of the following. It surfaces them because Phase 2
-cannot be marked `authorized` until they are. **Maintainer-stated
-preference, not yet a formal decision record:** keep this rubric
-documentation-only until one actual source package receives its own
-source-selection and custody review, do not introduce another serializer,
-and do not amend accepted Phase 1 records yet — bearing on (1), (2)/(5), and
-(6) below. This narrows what a future authorization decision record would
-need to formalize; it does not itself authorize anything.
+cannot be marked `authorized` until they are. **Reviewer-recommended
+preference — not yet adopted by the maintainer, not a formal decision
+record:** keep this rubric documentation-only until one actual source
+package receives its own source-selection and custody review, do not
+introduce another serializer, and do not amend accepted Phase 1 records yet —
+bearing on (1), (2)/(5), and (6) below. Recording it here narrows what a
+future authorization decision record would need to formalize; it does not
+itself authorize anything or bind the maintainer to it.
 
 1. **Sequencing** — should this admission-requirements draft be authorized
    and resolved before the checkpoint's named "Source Intake Authorization
