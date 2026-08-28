@@ -155,6 +155,19 @@ git diff --stat
 The regression command reports in-sample artifact reproduction only. It is not
 independent validation.
 
+`generate_audit_inventory.py` (and therefore `just audit`) is not a routine
+idempotent step. `docs/audits/pre_audit_file_inventory.csv` and
+`docs/provenance/data_field_ledger.csv` have been hand-maintained beyond this
+script's original checkpoint-era logic, and
+`docs/audits/inventory_generation_manifest.json` carries a hand-maintained
+`post_generation_updates` field. The script refuses, before writing anything,
+if a target already carries content it would not reproduce exactly; a
+nonzero exit from `just audit` for this reason is expected and safe, not a
+bug to work around by deleting or force-overwriting the protected files. See
+the script's module docstring and
+[`generate_audit_inventory_ownership.md`](docs/provenance/generate_audit_inventory_ownership.md)
+for the governance record.
+
 ## Source and Data Policy
 
 Every scientific value must retain units and one of the attribution classes in

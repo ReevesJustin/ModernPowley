@@ -24,6 +24,15 @@ uv run python scripts/generate_audit_inventory.py
 uv lock --check
 ```
 
+- `generate_audit_inventory.py` (and `just audit`, which calls it) is not a
+  routine, always-succeeding step: it refuses, before writing anything, if
+  `docs/audits/pre_audit_file_inventory.csv`,
+  `docs/provenance/data_field_ledger.csv`, or
+  `docs/audits/inventory_generation_manifest.json` already carry
+  hand-maintained content it would silently overwrite. A nonzero exit is
+  expected and safe; see
+  `docs/provenance/generate_audit_inventory_ownership.md`. Do not bypass the
+  refusal by force-overwriting those files.
 - Run Python tools through `uv run`; do not call project tooling with bare
   `python`, `python3`, `pip`, or an activated ad hoc virtual environment.
 - Declare runtime dependencies in `[project].dependencies` and development tools
