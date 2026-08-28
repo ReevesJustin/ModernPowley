@@ -105,6 +105,8 @@ keyword `allow_unvalidated=True`. `Ba_eff` is not ballistic efficiency.
 - [Phase 1 authorization review](docs/modernization/reviews/empirical_load_evidence_records_phase_1_authorization_review.md): the 50-gate scope and repository-boundary review; no implementation completion claim.
 - [Phase 1 completion review](docs/modernization/reviews/empirical_load_evidence_records_phase_1_completion_review.md): structural, serialization, architecture, and no-intake acceptance evidence.
 - [M05 derivation-readiness review](docs/modernization/reviews/M05_derivation_readiness_review.md): candidate method dispositions and exact evidence blockers; no method is admitted.
+- [Empirical-load Phase 2 source-admission proposal](docs/modernization/workstreams/empirical_load_evidence_source_admission_phase_2.md): `planned`, unauthorized draft proposing source-agnostic admission requirements and duplicate/related-observation identifiability, with open decisions listed; no source, schema, or implementation is authorized.
+- [DEVA 14981 candidate review](docs/modernization/reviews/empirical_load_source_admission_deva14981_candidate_review.md): documentation-only checklist dry run of the Phase 2 proposal against the checkpoint's named (not selected) candidate example; selects nothing and admits no record.
 - [Cross-cutting workstreams](docs/modernization/cross_cutting_workstreams.md): future data, validation, uncertainty, modeling, visualization, tooling, hypothesis, and GRT/web direction; no current capability.
 - `TODO.md`: active roadmap, dormant historical acquisition work, and deferred phases.
 - `docs/audits/original_powley_scale_recovery.md`: primary-source scale search, graphical evidence, and implementation-readiness decision.

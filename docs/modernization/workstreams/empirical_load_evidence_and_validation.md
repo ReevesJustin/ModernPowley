@@ -340,3 +340,7 @@ work.
 
 The current durable handoff is
 [`2026-07-15_empirical_evidence_phase_1_handoff.md`](../../checkpoints/2026-07-15_empirical_evidence_phase_1_handoff.md).
+An unauthorized draft proposal for a source-agnostic admission-requirements
+phase exists at
+[`empirical_load_evidence_source_admission_phase_2.md`](empirical_load_evidence_source_admission_phase_2.md);
+it does not change this workstream's `planned` status or authorize anything.
