@@ -6,13 +6,8 @@ inputs or models failed provenance audit.
 
 ## Verify the Repository
 
-```bash
-uv sync --locked
-uv run pytest -q
-uv run python scripts/audit_regression.py
-uv run python scripts/generate_audit_inventory.py
-uv lock --check
-```
+Run `just check` (validation) and `just audit` (the two audit scripts). The
+`justfile` is the canonical list of what each recipe runs.
 
 ## Source-Backed Arithmetic
 

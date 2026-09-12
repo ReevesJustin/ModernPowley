@@ -15,14 +15,12 @@ or generic safety language that obscures a specific technical limitation.
 
 `uv` is the only supported environment and dependency manager. `just check`
 is the single validation entry point (see below); CI runs the same command.
+The `justfile` is the canonical list of what each recipe runs; do not copy
+its commands into this file or other documents.
 
-```bash
-uv sync --locked
-uv run pytest -q
-uv run python scripts/audit_regression.py
-uv run python scripts/generate_audit_inventory.py
-uv lock --check
-```
+Run `just freshness` once per session before substantive work; stop on
+failure. It fetches `origin`, fast-forwards only when the branch is clean and
+strictly behind, and never merges, rebases, or pushes.
 
 - `generate_audit_inventory.py` (and `just audit`, which calls it) is not a
   routine, always-succeeding step: it refuses, before writing anything, if
@@ -88,13 +86,15 @@ OCR or promote it to a sourced equation.
 - `src/modern_powley/experimental/` contains unvalidated ModernPowley behavior.
   Experimental calculations must require `allow_unvalidated=True`.
 - Promoted modernized behavior lives in `src/modern_powley/modernized/`, declares
-  evidence and maturity classes, and must pass its phase gates. M01 units,
-  geometry, serialization, and historical adapters; M02 neutral powder
-  identity/property evidence records; and M03 operation-relative input and
-  literal-domain diagnostics; and M04 declarative criterion and outcome records
-  are authorized there. Positive M03 or M04 results are not solver readiness,
-  suitability, safety, recommendation, or physical validation. Catalog
-  screening, prediction, ranking, and later-phase behavior remain absent.
+  evidence and maturity classes, and must pass its phase gates. A milestone or
+  workstream phase is authorized there only when the `## Status` of its own
+  specification under `docs/modernization/milestones/` or
+  `docs/modernization/workstreams/` is `authorized`, `in_progress`,
+  `implemented`, or `accepted`; that field, not this file, is the current
+  list. Positive diagnostic, screening-record, or charge-region-record results
+  are not solver readiness, suitability, safety, recommendation, or physical
+  validation. Catalog screening, prediction, ranking, and later-phase behavior
+  remain absent.
 - `modernized/` may call verified historical scalars only through
   `modernized/adapters/original.py`. `original/` must never import
   `modernized/`.
@@ -161,9 +161,8 @@ Before changing model behavior, add or update the narrowest relevant test:
 - `tests/provenance/` for source failures, mappings, hashes, and artifact policy
 - `tests/regression/` for reproduction of quarantined committed behavior
 
-Always run `just check` (wraps `uv run pytest -q`,
-`uv run python -m compileall -q src scripts tests`, `uv lock --check`,
-`git diff --check`, and `uv run ruff check .`; CI runs the same command).
+Always run `just check`; the `justfile` lists what it runs, and CI runs the
+same command.
 `just typecheck` runs `mypy` separately -- not yet part of `check`; see
 `pyproject.toml`'s `[tool.mypy]` comment for why and its current findings.
 
@@ -188,7 +187,8 @@ artifact hashes when touching ledgers, notebooks, or generated files.
   reformat unrelated user changes.
 - Preserve the checkpoint tag `pre_audit_agent_derived_prototype` and never
   rewrite history unless the user explicitly requests it.
-- Use `rg`/`rg --files` for search and `apply_patch` for manual text edits.
+- Use `rg`/`rg --files` for search and the agent's patch tool for manual text
+  edits.
 - Keep changes scoped; do not revive disabled legacy selectors or generators.
 - At completion, report changed files, uv commands run, tests, unresolved
   questions, sources still needed, and what remains unverified.

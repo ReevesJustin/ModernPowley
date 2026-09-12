@@ -109,9 +109,10 @@ keyword `allow_unvalidated=True`. `Ba_eff` is not ballistic efficiency.
 - [DEVA 14981 candidate review](docs/modernization/reviews/empirical_load_source_admission_deva14981_candidate_review.md): documentation-only checklist dry run of the Phase 2 proposal against the checkpoint's named (not selected) candidate example; selects nothing and admits no record.
 - [DEVA 14981 protocol provenance note](docs/modernization/reviews/deva_14981_protocol_provenance_note.md): proportionate provenance review of a real, maintainer-supplied transcription (one configuration, seven shot observations); decision `source_intake_not_ready`; no record admitted, one field redacted pending a publication decision.
 - [M06 canonical specification](docs/modernization/milestones/M06_pressure_velocity_baseline.md): `planned`, unauthorized draft recommending a `modernized/adapters/davis.py` wrapper around the already-reconciled Davis 1981 velocity/pressure chain as M06's first real deliverable; separates software correctness (adapter faithfulness) from scientific validity (real-world accuracy, not established); does not modify `later/davis.py`.
-- [2026-08-28 handoff checkpoint](docs/checkpoints/2026-08-28_m06_pivot_and_screening_direction_handoff.md): session-end record of the maintainer's product reframing (a propellant candidate-screening tool, not a simulator) and the finding that M01's expansion-ratio and fill-ratio computations plus M04's criterion vocabulary already support the first two screening criteria; read before continuing M06 or M04 work.
+- [Product direction (2026-08-28)](docs/modernization/modern_powley_charter.md): the charter section recording the maintainer's reframing (a propellant candidate-screening tool, not a simulator) and the finding that accepted M01 and M04 code already supports the first two screening criteria; read before continuing M06 or M04 work. Session evidence: [2026-08-28 handoff checkpoint](docs/checkpoints/2026-08-28_m06_pivot_and_screening_direction_handoff.md).
 - [Cross-cutting workstreams](docs/modernization/cross_cutting_workstreams.md): future data, validation, uncertainty, modeling, visualization, tooling, hypothesis, and GRT/web direction; no current capability.
 - `TODO.md`: active roadmap, dormant historical acquisition work, and deferred phases.
+- `docs/Usage_Instructions.md`: what the repository can be used for, and what remains unauthorized.
 - `docs/audits/original_powley_scale_recovery.md`: primary-source scale search, graphical evidence, and implementation-readiness decision.
 - `docs/audits/davis_1981_evidence_intake.md`: derivative OCR/reprint intake and remaining primary-image verification boundary.
 - `docs/audits/davis_1981_equation_and_example_reconciliation.md`: Davis scalar-equation, unit, implementation, and worked-example audit.
@@ -144,21 +145,13 @@ become measured data merely because they are committed.
 
 ## Reproducible Audit Commands
 
-Equivalent shortcuts: `just check` (validation) and `just audit` (the two
-audit scripts below). Raw commands, for anyone reproducing this without
-`just`:
+`just check` is the single validation gate and `just audit` runs the two
+audit scripts. The `justfile` is the canonical list of what each recipe runs;
+`just --list` shows the surface. Do not copy those commands into other
+documents.
 
-```bash
-uv sync --locked
-uv run pytest -q
-uv run python scripts/audit_regression.py
-uv run python scripts/generate_audit_inventory.py
-uv lock --check
-git diff --stat
-```
-
-The regression command reports in-sample artifact reproduction only. It is not
-independent validation.
+The regression script (`scripts/audit_regression.py`) reports in-sample
+artifact reproduction only. It is not independent validation.
 
 `generate_audit_inventory.py` (and therefore `just audit`) is not a routine
 idempotent step. `docs/audits/pre_audit_file_inventory.csv` and

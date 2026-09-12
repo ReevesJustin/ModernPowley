@@ -1,5 +1,9 @@
 # Current Audited Findings
 
+Historical record from the provenance audit, unchanged since 2026-07-14. Current
+status lives in `README.md`; full dispositions in
+`docs/audits/modern_powley_full_repository_audit.md`.
+
 ## Confirmed Defects
 
 - GRT `Aeff` (`mm2`) was mapped to effective case volume.

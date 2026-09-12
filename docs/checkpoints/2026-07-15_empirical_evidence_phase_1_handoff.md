@@ -1,5 +1,8 @@
 # Empirical Evidence Phase 1 Handoff
 
+Status: superseded by `2026-08-28_m06_pivot_and_screening_direction_handoff.md`.
+The repository state below describes the closure commit of that session only.
+
 ## Repository State
 
 - Branch: `main`

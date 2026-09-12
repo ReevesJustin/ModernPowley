@@ -4,6 +4,11 @@
 default:
     @just --list
 
+# Stdlib-only and run with the system interpreter on purpose: it must work
+# before `uv sync`, since it decides whether this checkout is current.
+freshness:
+    python3 scripts/freshness.py
+
 setup:
     uv sync --locked
 

@@ -61,6 +61,28 @@ M01 is the next authorized implementation phase. It defines inputs, units,
 provenance, and geometry only. It does not authorize ballistics prediction or a
 new numerical package namespace by this documentation commit.
 
+## Product Direction (2026-08-28)
+
+The maintainer restated the product objective on 2026-08-28: the intended
+product is a simple propellant candidate-screening tool, not a GRT or QuickLOAD
+replacement or a general internal-ballistics simulator. Its first two screening
+criteria are adequate case fill and probable burnout before the muzzle, a core
+original-Powley operational-window concept. Historical reconstruction, the
+record architecture (M01 to M05), and any Davis adapter (draft M06) are
+supporting work, not the objective.
+
+Inputs the first two criteria need already exist as accepted, tested code:
+expansion ratio through `modernized/adapters/original.py`, the case-fill ratios
+in `modernized/geometry.py`, and the interval and threshold criterion forms in
+`modernized/screening_criteria.py`. No M01 amendment is needed for fill ratio.
+
+This section records direction and does not authorize a specification, a
+milestone, a criterion definition, or a screening bound. The primary-source
+burnout statement (manual page 6) is scoped to "powders selected by the
+computer"; whether it generalizes to an arbitrary candidate is unresolved and
+must be settled in a specification before any bound is used. Session evidence:
+`docs/checkpoints/2026-08-28_m06_pivot_and_screening_direction_handoff.md`.
+
 ## Modeling Principles
 
 Every modernized numerical method must provide:

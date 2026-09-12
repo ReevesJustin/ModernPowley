@@ -1,5 +1,9 @@
 # M06 Pivot And Screening-Tool Direction Handoff
 
+Status: current. The durable product direction this session recorded lives in
+`docs/modernization/modern_powley_charter.md` ("Product Direction (2026-08-28)");
+this file is the session evidence behind it.
+
 ## Repository State
 
 - Branch: `main`.
